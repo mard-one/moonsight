@@ -1,0 +1,22 @@
+.header{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid rgba(255,255,255,.37);
+  padding: 2rem 0;
+  max-width: 1220px;
+  margin: 0 auto;
+}
+
+.lists {
+  color: white;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  list-style: none;
+  padding: 0 40px;
+}
+
+.lists li{
+  margin: 0 40px
+}
