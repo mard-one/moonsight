@@ -6,6 +6,7 @@ import Image from "../components/image"
 import SEO from "../components/seo"
 import Typography from "../components/typography"
 import Cta from "../components/cta"
+import Footer from "../components/footer"
 
 const IndexPage = () => (
   <Layout>
@@ -41,6 +42,7 @@ const IndexPage = () => (
     <Typography variant="fake">fake</Typography>
     <Typography>without varian</Typography>
     <Cta/>
+    <Footer/>
   </Layout>
 )
 
