@@ -16,7 +16,7 @@ import "../styles/reset.css"
 import Cta from "./cta"
 import Footer from "./footer"
 
-const Layout = ({ children }) => {
+const Layout = ({ children, isCtaVisible = true, ctaText }) => {
   const data = useStaticQuery(graphql`
     query SiteTitleQuery {
       site {
@@ -26,7 +26,6 @@ const Layout = ({ children }) => {
       }
     }
   `)
-
 
   return (
     <>
@@ -51,7 +50,7 @@ const Layout = ({ children }) => {
         </footer>
       </div> */
       }
-      <Cta />
+      {isCtaVisible && <Cta ctaText={ctaText} />}
       <Footer />
     </>
   )

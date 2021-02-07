@@ -2,19 +2,16 @@ import React from "react"
 import Typography from "./typography"
 import Button from "./button"
 
-const Cta = () => {
+const Cta = ({ ctaText = "Have a project in mind? Let's get to work." }) => {
   return (
-    <div style={{margin: '200px 0'}}>
+    <div style={{ margin: "200px auto", width: '70%' }}>
       <Typography
         variant="h1"
         style={{ textAlign: "center", marginBottom: "56px" }}
       >
-        Have a project in mind? <br />
-        Let's get to work.
+        {ctaText}
       </Typography>
-      <Button style={{ margin: "0 auto", display: "block" }}>
-        Create Something Together
-      </Button>
+      <Button style={{ margin: "0 auto", display: "block" }}>Create Something Together</Button>
     </div>
   )
 }
