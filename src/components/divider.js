@@ -1,7 +1,7 @@
 import React from "react"
 import Typography from "./typography"
 
-const Divider = ({ leftText, middleText = "Section #", rightText }) => {
+const Divider = ({ leftText, middleText = "Section #", rightText, style }) => {
   return (
     <div
       style={{
@@ -9,17 +9,18 @@ const Divider = ({ leftText, middleText = "Section #", rightText }) => {
         justifyContent: "space-between",
         padding: "10px 0",
         borderTop: "1px solid #FFFFFF",
+        ...style
       }}
     >
       <Typography variant="overline" style={{ lineHeight: "2em" }}>
         {leftText}
       </Typography>
-      <Typography
+      {middleText && <Typography
         variant="overline"
         style={{ lineHeight: "2em", flexBasis: "30%" }}
       >
         {middleText}
-      </Typography>
+      </Typography>}
       <Typography variant="overline" style={{ lineHeight: "2em" }}>
         {rightText}
       </Typography>

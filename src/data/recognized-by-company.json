@@ -1,0 +1,44 @@
+{
+  "organizations": [
+    {
+      "name": "pwc",
+      "logo": "../images/recognized-by-companies/pwc.svg"
+    },
+    {
+      "name": "skolkovo",
+      "logo": "../images/recognized-by-companies/skolkovo.svg"
+    },
+    {
+      "name": "mckinsey",
+      "logo": "../images/recognized-by-companies/mckinsey.svg"
+    },
+    {
+      "name": "tinkoff",
+      "logo": "../images/recognized-by-companies/tinkoff.svg"
+    },
+    {
+      "name": "mashreq",
+      "logo": "../images/recognized-by-companies/mashreq.svg"
+    },
+    {
+      "name": "skolkovo",
+      "logo": "../images/recognized-by-companies/skolkovo.svg"
+    },
+    {
+      "name": "pwc",
+      "logo": "../images/recognized-by-companies/pwc.svg"
+    },
+    {
+      "name": "tinkoff",
+      "logo": "../images/recognized-by-companies/tinkoff.svg"
+    },
+    {
+      "name": "mckinsey",
+      "logo": "../images/recognized-by-companies/mckinsey.svg"
+    },
+    {
+      "name": "mashreq",
+      "logo": "../images/recognized-by-companies/mashreq.svg"
+    }
+  ]
+}

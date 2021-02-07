@@ -1,0 +1,41 @@
+{
+  "capabilities": [
+    {
+      "title": "Branding",
+      "list": [
+        "Visual benchmarking",
+        "Style exploration",
+        "Brand strategy",
+        "Identity development",
+        "Visual language",
+        "Art direction",
+        "Brand guidelines"
+      ]
+    },
+    {
+      "title": "Design",
+      "list": [
+        "Marketing websites",
+        "Digital products",
+        "Dashboards & User Interfaces",
+        "Mobile apps",
+        "Design systems",
+        "Prototyping & Testing",
+        "Illustrations",
+        "Animations"
+      ]
+    },
+    {
+      "title": "Development",
+      "list": [
+        "Front-end development",
+        "Website development",
+        "Responsive interface development",
+        "Angular, Vue.js, React framework's usage",
+        "Content Management integrations",
+        "Webflow pages, CMS build",
+        "Custom Wordpress Theme / Gutenberg Blocks"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,13 @@
+{
+  "platforms": [
+    { "text": "Be", "bgColor": "#004FFF", "color": "#F2F3F1", "number": "4" },
+    { "text": "In", "bgColor": "#C19F63", "color": "#F2F3F1", "number": "4" },
+    { "text": "Ps", "bgColor": "#001E36", "color": "#F2F3F1", "number": "4" },
+    { "text": "Mo", "bgColor": "#C19F63", "color": "#F2F3F1", "number": "24" },
+    { "text": "Gr", "bgColor": "#C19F63", "color": "#F2F3F1", "number": "23" },
+    { "text": "P", "bgColor": "#C4C4C4", "color": "#F2F3F1", "number": "11" },
+    { "text": "Il", "bgColor": "#C19F63", "color": "#F2F3F1", "number": "2" },
+    { "text": "Ai", "bgColor": "#330000", "color": "#FF9A00", "number": "4" },
+    { "text": "Id", "bgColor": "#49021F", "color": "#FF3366", "number": "120" }
+  ]
+}

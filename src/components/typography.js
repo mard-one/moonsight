@@ -26,7 +26,6 @@ const Typography = ({ variant, style, children }) => {
     },
   }
 
-
   const selectedComp = components[variant] || components["p"]
 
   return React.createElement(

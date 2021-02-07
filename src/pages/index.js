@@ -3,7 +3,6 @@ import { graphql, Link, useStaticQuery } from "gatsby"
 import Img from "gatsby-image"
 
 import Layout from "../components/layout"
-import Image from "../components/image"
 import SEO from "../components/seo"
 import Typography from "../components/typography"
 import Cta from "../components/cta"

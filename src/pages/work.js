@@ -14,7 +14,7 @@ const Work = () => {
     query {
       allDataJson {
         nodes {
-          allProjects {
+          projects {
             id
             name
             type
@@ -31,7 +31,7 @@ const Work = () => {
       }
     }
   `)
-  const projects = data.allDataJson.nodes[0].allProjects
+  const projects = data.allDataJson.nodes[0].projects
   const allProjectTypes = [...new Set(projects.map(project => project.type))]
 
   const handleSelectAll = event => {
