@@ -138,38 +138,42 @@ const About = () => {
           }
         }
       }
-      allDataJson {
-        nodes {
-          organizations {
-            name
-            logo {
-              publicURL
-            }
+      companiesJson {
+        organizations {
+          logo {
+            publicURL
           }
-          platforms {
-            bgColor
-            color
-            number
-            text
-          }
-          influences {
-            platform
-            views
-            viewType
-          }
-          capabilities {
-            title
-            list
-          }
+          name
+        }
+      }
+      platformsJson {
+        platforms {
+          bgColor
+          color
+          number
+          text
+        }
+      }
+      influenceJson {
+        influences {
+          platform
+          viewType
+          views
+        }
+      }
+      capabilitiesJson {
+        capabilities {
+          list
+          title
         }
       }
     }
   `)
   console.log("data", data)
-  const organizations = data.allDataJson.nodes[0].organizations
-  const platforms = data.allDataJson.nodes[1].platforms
-  const influences = data.allDataJson.nodes[2].influences
-  const capabilities = data.allDataJson.nodes[3].capabilities
+  const organizations = data.companiesJson.organizations
+  const platforms = data.platformsJson.platforms
+  const influences = data.influenceJson.influences
+  const capabilities = data.capabilitiesJson.capabilities
   return (
     <Layout>
       <header style={{ marginTop: "140px", marginBottom: "100px" }}>
@@ -205,10 +209,14 @@ const About = () => {
           exceptional experiences and build your business, by design.
         </Typography>
         <div style={{ display: "flex", justifyContent: "space-between" }}>
-          {capabilities.map(capability => {
-            const { title, list } = capability
-            return <CapabilityDetail key={title} title={title} list={list} />
-          })}
+          {capabilities ? (
+            capabilities.map(capability => {
+              const { title, list } = capability
+              return <CapabilityDetail key={title} title={title} list={list} />
+            })
+          ) : (
+            <></>
+          )}
         </div>
       </section>
       <section
@@ -247,36 +255,44 @@ const About = () => {
             marginBottom: "190px",
           }}
         >
-          {influences.map(influence => {
-            const { platform, views, viewType } = influence
-            return (
-              <Influence
-                key={platform}
-                platform={platform}
-                views={views}
-                viewType={viewType}
-              />
-            )
-          })}
+          {influences ? (
+            influences.map(influence => {
+              const { platform, views, viewType } = influence
+              return (
+                <Influence
+                  key={platform}
+                  platform={platform}
+                  views={views}
+                  viewType={viewType}
+                />
+              )
+            })
+          ) : (
+            <></>
+          )}
         </div>
       </section>
       <section style={{ marginBottom: "330px" }}>
         <div style={{ position: "relative" }}>
           <Divider leftText="Recognition" middleText="" rightText="" />
           <div style={{ position: "absolute", right: 0, top: 1 }}>
-            {platforms.map((platform, index) => {
-              const { bgColor, color, number, text } = platform
-              return (
-                <RecognitionFlag
-                  key={text}
-                  text={text}
-                  bgColor={bgColor}
-                  color={color}
-                  number={number}
-                  lastElem={index === platforms.length - 1}
-                />
-              )
-            })}
+            {platforms ? (
+              platforms.map((platform, index) => {
+                const { bgColor, color, number, text } = platform
+                return (
+                  <RecognitionFlag
+                    key={text}
+                    text={text}
+                    bgColor={bgColor}
+                    color={color}
+                    number={number}
+                    lastElem={index === platforms.length - 1}
+                  />
+                )
+              })
+            ) : (
+              <></>
+            )}
           </div>
         </div>
         <Typography
@@ -294,16 +310,20 @@ const About = () => {
             gridAutoRows: "180px",
           }}
         >
-          {organizations.map((organization, index) => {
-            const { name, logo } = organization
-            return (
-              <RecognizedByCompany
-                key={name + index}
-                logo={logo.publicURL}
-                name={name}
-              />
-            )
-          })}
+          {organizations ? (
+            organizations.map((organization, index) => {
+              const { name, logo } = organization
+              return (
+                <RecognizedByCompany
+                  key={name + index}
+                  logo={logo.publicURL}
+                  name={name}
+                />
+              )
+            })
+          ) : (
+            <></>
+          )}
         </div>
       </section>
     </Layout>

@@ -12,26 +12,25 @@ const Work = () => {
   const [selProjTypes, setSelProjTypes] = useState([])
   const data = useStaticQuery(graphql`
     query {
-      allDataJson {
-        nodes {
-          projects {
-            id
-            name
-            type
-            span
-            imgLink {
-              childImageSharp {
-                fluid(maxHeight: 550) {
-                  ...GatsbyImageSharpFluid_withWebp
-                }
+      projectsJson {
+        projects {
+          id
+          imgLink {
+            childImageSharp {
+              fluid(maxHeight: 550) {
+                ...GatsbyImageSharpFluid_withWebp
               }
             }
           }
+          name
+          span
+          type
         }
       }
     }
   `)
-  const projects = data.allDataJson.nodes[0].projects
+  const projects = data.projectsJson.projects
+  console.log('projects', projects);
   const allProjectTypes = [...new Set(projects.map(project => project.type))]
 
   const handleSelectAll = event => {
@@ -106,11 +105,11 @@ const Work = () => {
             textAlign: "center",
             padding: "70px 100px 80px",
             border: "2px dashed #FFFFFF",
-            borderRadius: "9px"
+            borderRadius: "9px",
           }}
         >
           <Typography variant="overline">unfortunately</Typography>
-          <Typography variant="h3" style={{marginTop: '10px'}}>
+          <Typography variant="h3" style={{ marginTop: "10px" }}>
             We have 20+ projects under NDA <br /> which we cannot show...
           </Typography>
         </div>
