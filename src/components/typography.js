@@ -26,7 +26,6 @@ const Typography = ({ variant, style, children }) => {
     },
   }
 
-  console.log("variant", variant)
 
   const selectedComp = components[variant] || components["p"]
 

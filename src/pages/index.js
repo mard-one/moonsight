@@ -259,8 +259,6 @@ const IndexPage = () => {
           </ul>
         </div>
       </div>
-      <Cta />
-      <Footer />
     </Layout>
   )
 }

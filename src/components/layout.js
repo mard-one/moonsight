@@ -13,6 +13,8 @@ import Header from "./header"
 import "./layout.css"
 import "../styles/font-import.css"
 import "../styles/reset.css"
+import Cta from "./cta"
+import Footer from "./footer"
 
 const Layout = ({ children }) => {
   const data = useStaticQuery(graphql`
@@ -25,7 +27,6 @@ const Layout = ({ children }) => {
     }
   `)
 
-  console.log("data", data)
 
   return (
     <>
@@ -50,6 +51,8 @@ const Layout = ({ children }) => {
         </footer>
       </div> */
       }
+      <Cta />
+      <Footer />
     </>
   )
 }
