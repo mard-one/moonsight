@@ -10,6 +10,8 @@ import Footer from "../components/footer"
 import handEmoji from "../images/hand-emoji.svg"
 import Button from "../components/button"
 import Divider from "../components/divider"
+import { Grid, useMediaQuery } from "@material-ui/core"
+import ArrowRight from "../images/right-arrow.svg";
 
 const GreetingBadge = ({ emoji, children }) => {
   return (
@@ -40,20 +42,22 @@ const GreetingBadge = ({ emoji, children }) => {
   )
 }
 const CapabilitiesList = ({ number, children }) => {
+  const webUp = useMediaQuery("(min-width: 960px)")
+  const tabletUp = useMediaQuery("(min-width: 600px)")
   return (
     <div
       style={{
-        marginTop: "32px",
-        marginBottom: "32px",
-        position: "relative",
-        marginLeft: "39%",
+        marginBottom: tabletUp ? 32 : 20,
+        padding: tabletUp ? 0 : 25,
+        border: tabletUp ? "none" : "1px solid #FFFFFF",
+        borderRadius: tabletUp ? 0 : 8,
       }}
     >
       <Typography
         variant="overline"
         style={{
-          verticalAlign: "top",
-          fontSize: "1.125rem",
+          verticalAlign: tabletUp ? "top" : "baseline",
+          fontSize: tabletUp ? "1.125rem" : "0.875rem",
           fontWeight: 400,
         }}
       >
@@ -73,25 +77,29 @@ const CapabilitiesList = ({ number, children }) => {
   )
 }
 const ClientsList = ({ serviceProvided, children }) => {
+  const tabletUp = useMediaQuery("(min-width: 600px)")
+  const webUp = useMediaQuery("(min-width: 960px)")
   return (
     <li
       style={{
         display: "flex",
         justifyContent: "space-between",
         alignItems: "center",
-        padding: "8px 0",
-        borderBottom: "1px solid rgba(255, 255, 255, 0.2)",
+        padding: tabletUp ? "8px 0" : "16px 0",
+        borderBottom: "1px solid rgba(255, 255, 255, 0.3)",
       }}
     >
       <Typography variant="h3">{children}</Typography>
-      <Typography style={{ fontSize: "1.125rem" }}>
+      {webUp ? <Typography style={{ fontSize: "1.125rem" }}>
         {serviceProvided}
-      </Typography>
+      </Typography> : <img src={ArrowRight} alt="details"/>}
     </li>
   )
 }
 
 const IndexPage = () => {
+  const webUp = useMediaQuery("(min-width: 960px)")
+  const tabletUp = useMediaQuery("(min-width: 600px)")
   const data = useStaticQuery(graphql`
     fragment projectImages on File {
       childImageSharp {
@@ -148,22 +156,31 @@ const IndexPage = () => {
       {/* <SEO title="Home" />
       <Link to="/page-2/">Go to page 2</Link> <br />
       <Link to="/using-typescript/">Go to "Using TypeScript"</Link> */}
-      <div style={{ marginTop: "120px", marginBottom: "250px" }}>
-        <GreetingBadge emoji={handEmoji}>Hello, Hello!</GreetingBadge>
-        <Typography
-          variant="h1"
-          style={{ textAlign: "center", maxWidth: "800px", margin: "0 auto" }}
-        >
-          We are Moonsight®. <br />
-          First Superstar International Design Agency
-        </Typography>
-      </div>
-      <div
+      <header
         style={{
-          marginTop: "250px",
-          marginBottom: "240px",
+          marginTop: tabletUp ? 120 : 75,
+          marginBottom: tabletUp ? 250 : 120,
+        }}
+      >
+        <Grid container justify="center">
+          <Grid item xs={12} sm={8}>
+            {tabletUp ? (
+              <GreetingBadge emoji={handEmoji}>Hello, Hello!</GreetingBadge>
+            ) : (
+              <></>
+            )}
+            <Typography variant="h1" style={{ textAlign: "center" }}>
+              We are Moonsight®. <br />
+              First Superstar International Design Agency
+            </Typography>
+          </Grid>
+        </Grid>
+      </header>
+      <section
+        style={{
+          marginBottom: tabletUp ? 240 : 100,
           display: "grid",
-          gridTemplateColumns: "1fr 1fr",
+          gridTemplateColumns: tabletUp ? "1fr 1fr" : "1fr",
           gridGap: "0 48px",
         }}
       >
@@ -186,78 +203,108 @@ const IndexPage = () => {
           <Img fluid={data.project4Img.childImageSharp.fluid} />
           <Img fluid={data.project5Img.childImageSharp.fluid} />
         </div>
-      </div>
-      <div style={{ marginTop: "250px", marginBottom: "250px" }}>
-        <Typography variant="h2" style={{ maxWidth: "700px" }}>
-          Moonsight® is a branding and digital design agency building products,
-          services, and ecommerce experiences that turn cultural values into
-          company value.
-        </Typography>
-        <Button style={{ marginTop: "54px" }}>Learn About Our Company</Button>
-      </div>
-      <div>
-        <Divider leftText="Capabilities" rightText="001" />
-        <Typography
-          variant="h3"
+      </section>
+      <section style={{ marginBottom: tabletUp ? 250 : 135 }}>
+        <Grid container>
+          <Grid item xs={12} sm={7}>
+            <Typography variant="h2" style={{ marginBottom: 54 }}>
+              Moonsight® is a branding and digital design agency building
+              products, services, and ecommerce experiences that turn cultural
+              values into company value.
+            </Typography>
+            <Button>Learn About Our Company</Button>
+          </Grid>
+        </Grid>
+      </section>
+      <section style={{ marginBottom: tabletUp ? 70 : 100 }}>
+        <Divider
+          leftText="Capabilities"
+          middleText={tabletUp ? "section #" : ""}
+          rightText="001"
+          style={{ marginBottom: tabletUp ? 80 : 40 }}
+        />
+        <Grid
+          container
           style={{
-            maxWidth: "670px",
-            marginTop: "80px",
-            marginBottom: "100px",
+            marginBottom: tabletUp ? 100 : 50,
           }}
         >
-          We specialise in helping brands and organisations to simplify their
-          digital experiences for customers, employees and partners.
-        </Typography>
-        <div style={{ marginTop: "100px", marginBottom: "150px" }}>
-          <CapabilitiesList number="01">Branding</CapabilitiesList>
-          <CapabilitiesList number="02">Design</CapabilitiesList>
-          <CapabilitiesList number="03">Development</CapabilitiesList>
-        </div>
+          <Grid item xs={12} sm={7}>
+            <Typography variant="h3">
+              We specialize in helping brands and organizations to simplify
+              their digital experiences for customers, employees and partners.
+            </Typography>
+          </Grid>
+        </Grid>
+        <Grid container style={{ marginBottom: tabletUp ? 150 : 100 }}>
+          <Grid item xs={0} sm={4} />
+          <Grid item xs={12} sm={8}>
+            <CapabilitiesList number="01">Branding</CapabilitiesList>
+            <CapabilitiesList number="02">Design</CapabilitiesList>
+            <CapabilitiesList number="03">Development</CapabilitiesList>
+          </Grid>
+        </Grid>
         <div
           style={{
             position: "relative",
-            display: "grid",
-            gridTemplateColumns: "repeat(36,1fr)",
-            gridTemplateRows: "repeat(10,auto)",
-            marginTop: "150px",
-            marginBottom: "70px",
+            paddingBottom: webUp ? 200 : 100,
           }}
         >
           <figure
             style={{
-              gridRow: "1/8 span",
-              gridColumn: "1/16 span",
-              zIndex: 2,
+              width: webUp ? "45%" : tabletUp ? "50%" : 220,
+              position: "relative",
+              left: webUp ? -24 : 0,
             }}
           >
             <Img fluid={data.capabilities1Img.childImageSharp.fluid} />
             <figcaption style={{ lineHeight: 1.75 }}>001</figcaption>
           </figure>
-          <figure style={{ gridRow: "2/8 span", gridColumn: "7/16 span" }}>
+          <figure
+            style={{
+              width: webUp ? "45%" : tabletUp ? "65%" : 310,
+              position: "absolute",
+              top: 100,
+              left: webUp ? 300 : "unset",
+              right: !webUp ? 0 : "unset",
+            }}
+          >
             <Img fluid={data.capabilities2Img.childImageSharp.fluid} />
             <figcaption style={{ lineHeight: 1.75 }}>002</figcaption>
           </figure>
-          <figure style={{ gridRow: "3/8 span", gridColumn: "21/16 span" }}>
+          <figure
+            style={{
+              width: webUp ? "45%" : tabletUp ? "65%" : 330,
+              position: webUp ? "absolute" : "relative",
+              top: webUp ? 200 : 100,
+              right: webUp ? -24 : "unset",
+            }}
+          >
             <Img fluid={data.capabilities3Img.childImageSharp.fluid} />
             <figcaption style={{ lineHeight: 1.75 }}>003</figcaption>
           </figure>
         </div>
-        <div style={{marginTop: '70px', marginBottom: '200px'}}>
-          <Divider leftText="clients" rightText="002" />
-          <ul style={{marginTop: '90px'}}>
-            <ClientsList serviceProvided="">PWC</ClientsList>
-            <ClientsList serviceProvided="">McKinsey</ClientsList>
-            <ClientsList serviceProvided="">Virgin</ClientsList>
-            <ClientsList serviceProvided="">Raydiant</ClientsList>
-            <ClientsList serviceProvided="">RND</ClientsList>
-            <ClientsList serviceProvided="">Cisco</ClientsList>
-            <ClientsList serviceProvided="">Testim</ClientsList>
-            <ClientsList serviceProvided="">Gameday</ClientsList>
-            <ClientsList serviceProvided="">Mashreq Bank</ClientsList>
-            <ClientsList serviceProvided="">Credit Europe Bank</ClientsList>
-          </ul>
-        </div>
-      </div>
+      </section>
+      <section style={{ marginBottom: tabletUp ? 200 : 100 }}>
+        <Divider
+          leftText="clients"
+          middleText={tabletUp ? "section #" : ""}
+          rightText="002"
+          style={{ marginBottom: tabletUp ? 90 : 50 }}
+        />
+        <ul>
+          <ClientsList serviceProvided="">PWC</ClientsList>
+          <ClientsList serviceProvided="">McKinsey</ClientsList>
+          <ClientsList serviceProvided="">Virgin</ClientsList>
+          <ClientsList serviceProvided="">Raydiant</ClientsList>
+          <ClientsList serviceProvided="">RND</ClientsList>
+          <ClientsList serviceProvided="">Cisco</ClientsList>
+          <ClientsList serviceProvided="">Testim</ClientsList>
+          <ClientsList serviceProvided="">Gameday</ClientsList>
+          <ClientsList serviceProvided="">Mashreq Bank</ClientsList>
+          <ClientsList serviceProvided="">Credit Europe Bank</ClientsList>
+        </ul>
+      </section>
     </Layout>
   )
 }

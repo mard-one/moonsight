@@ -17,3 +17,7 @@ button {
   font-family: "Graphik", Helvetica, Arial, sans-serif;
 }
 
+.currentPage::after {
+  transform: translateX(0%) !important;
+}
+
