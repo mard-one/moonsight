@@ -126,17 +126,17 @@ const IndexPage = () => {
         ...projectImages
       }
       capabilities1Img: file(
-        relativePath: { eq: "capabilities-gallery/picture1.jpg" }
+        relativePath: { eq: "capabilities/picture1.jpg" }
       ) {
         ...capabilitiesImages
       }
       capabilities2Img: file(
-        relativePath: { eq: "capabilities-gallery/picture2.jpg" }
+        relativePath: { eq: "capabilities/picture2.jpg" }
       ) {
         ...capabilitiesImages
       }
       capabilities3Img: file(
-        relativePath: { eq: "capabilities-gallery/picture3.jpg" }
+        relativePath: { eq: "capabilities/picture3.jpg" }
       ) {
         ...capabilitiesImages
       }

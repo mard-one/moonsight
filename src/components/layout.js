@@ -9,7 +9,9 @@ import React from "react"
 import PropTypes from "prop-types"
 import { useStaticQuery, graphql } from "gatsby"
 
-import Header from "./header"
+import { Container } from "@material-ui/core"
+
+import Nav from "./nav"
 import "./layout.css"
 import "../styles/font-import.css"
 import "../styles/reset.css"
@@ -18,7 +20,7 @@ import Footer from "./footer"
 
 const Layout = ({ children, isCtaVisible = true, ctaText }) => {
   const data = useStaticQuery(graphql`
-    query SiteTitleQuery {
+    query {
       site {
         siteMetadata {
           title
@@ -27,30 +29,18 @@ const Layout = ({ children, isCtaVisible = true, ctaText }) => {
     }
   `)
 
+  {
+    /* <Nav siteTitle={data.site.siteMetadata?.title || `Title`} /> */
+  }
   return (
     <>
-      <Header siteTitle={data.site.siteMetadata?.title || `Title`} />
-      {
-        /* <div
-        style={{
-          margin: `0 auto`,
-          maxWidth: 960,
-          padding: `0 1.0875rem 1.45rem`,
-        }}
-      >*/
-        <main>{children}</main>
-        /*<footer
-          style={{
-            marginTop: `2rem`,
-          }}
-        >
-          © {new Date().getFullYear()}, Built with
-          {` `}
-          <a href="https://www.gatsbyjs.com">Gatsby</a>
-        </footer>
-      </div> */
-      }
-      {isCtaVisible && <Cta ctaText={ctaText} />}
+      <Nav />
+      <main>
+        <Container maxWidth="lg">
+          {children}
+          {isCtaVisible && <Cta ctaText={ctaText} />}
+        </Container>
+      </main>
       <Footer />
     </>
   )

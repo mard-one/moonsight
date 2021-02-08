@@ -82,7 +82,7 @@ const RecognitionFlag = ({ color, bgColor, text, number, lastElem }) => {
     </div>
   )
 }
-const RecognizedByCompany = ({ logo, name }) => {
+const RecognizedByOrganization = ({ logo, name }) => {
   const PlusSign = ({ x, y }) => (
     <div style={{ position: "absolute", left: x, top: y }}>
       <div
@@ -123,7 +123,7 @@ const RecognizedByCompany = ({ logo, name }) => {
       <PlusSign x={0} y={"100%"} />
       <PlusSign x={"100%"} y={0} />
       <PlusSign x={"100%"} y={"100%"} />
-      <img src={logo} alt="name" />
+      <img src={logo} alt={name} />
     </div>
   )
 }
@@ -138,8 +138,8 @@ const About = () => {
           }
         }
       }
-      companiesJson {
-        organizations {
+      recognizedByJson {
+        recognizedByOrganizations {
           logo {
             publicURL
           }
@@ -154,7 +154,7 @@ const About = () => {
           text
         }
       }
-      influenceJson {
+      influencesJson {
         influences {
           platform
           viewType
@@ -170,9 +170,9 @@ const About = () => {
     }
   `)
   console.log("data", data)
-  const organizations = data.companiesJson.organizations
+  const organizations = data.recognizedByJson.recognizedByOrganizations
   const platforms = data.platformsJson.platforms
-  const influences = data.influenceJson.influences
+  const influences = data.influencesJson.influences
   const capabilities = data.capabilitiesJson.capabilities
   return (
     <Layout>
@@ -314,7 +314,7 @@ const About = () => {
             organizations.map((organization, index) => {
               const { name, logo } = organization
               return (
-                <RecognizedByCompany
+                <RecognizedByOrganization
                   key={name + index}
                   logo={logo.publicURL}
                   name={name}
