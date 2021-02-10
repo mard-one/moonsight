@@ -20,7 +20,7 @@ export const Capability = styled.div`
   padding: 0;
   border: none;
   border-radius: 0;
-  ${props => props.theme.breakpoints.down("sm")} {
+  ${props => props.theme.breakpoints.down("xs")} {
     margin-bottom: 20px;
     padding: 25px;
     border: 1px solid #ffffff;

@@ -1,21 +1,40 @@
 import { Container, Typography, useMediaQuery } from "@material-ui/core"
 import React from "react"
+import styled from "styled-components"
 import logoBlack from "../images/logo.svg"
+
+const LetsConnect = styled(Container)`
+  display: flex;
+  justify-content: space-between;
+  padding-top: 90px;
+  padding-bottom: 90px;
+  ${props => props.theme.breakpoints.down('sm')}{
+    display: none;
+  }
+`
+const TAndC = styled.div`
+  display: flex;
+  color: #5E5E5E;
+  flex-flow: row;
+  justify-content: space-between;
+  padding: 24px 100px;
+  background-color: #E8E8E8;
+  ${props => props.theme.breakpoints.down('sm')}{
+    flex-flow: column;
+    color: #aaaaaa;
+    justify-content: center;
+    align-items: center;
+    padding: 24px;
+    background-color: #111111;
+  }
+`
 
 const Footer = () => {
   const webUp = useMediaQuery("(min-width: 960px)")
-  const tabletUp = useMediaQuery("(min-width: 600px)")
   // TODO: fix the logo black. Ask Ivan to import or use the same SVG file
   return (
     <footer style={{ backgroundColor: "#F4F4F4", color: "#030303" }}>
-      {webUp ? <Container
-        maxWidth="lg"
-        style={{
-          display: "flex",
-          justifyContent: "space-between",
-          padding: "90px 0",
-        }}
-      >
+      <LetsConnect maxWidth="lg">
         <img
           src={logoBlack}
           alt="logo"
@@ -34,17 +53,9 @@ const Footer = () => {
         >
           We collaborate with ambitious brands and people. Let’s connect :)
         </Typography>
-      </Container> : <></>}
-      <div
-        style={{
-          display: "flex",
-          flexFlow: webUp ? 'row': "column",
-          justifyContent: webUp ? "space-between" : "center",
-          padding: webUp ? "24px 100px" : 24,
-          backgroundColor: webUp ? "#E8E8E8" : "#111111",
-          color: "#5E5E5E",
-        }}
-      >
+      </LetsConnect>
+
+      <TAndC>
         <Typography variant="overline" style={{ fontSize: "0.688rem", margin: webUp ? 0 : "8px 0"  }}>
           Moonsight® 2020
         </Typography>
@@ -54,7 +65,7 @@ const Footer = () => {
         <Typography variant="overline" style={{ fontSize: "0.688rem", margin: webUp ? 0 : "8px 0"  }}>
           TERMS, PRIVACY POLICY
         </Typography>
-      </div>
+      </TAndC>
     </footer>
   )
 }
