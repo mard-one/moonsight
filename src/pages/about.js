@@ -1,11 +1,11 @@
 import { graphql, useStaticQuery } from "gatsby"
 import React from "react"
-import Layout from "../components/layout"
-import Typography from "../components/typography"
+import Layout from "../layout"
 import Img from "gatsby-image"
 import Divider from "../components/divider"
 import Button from "../components/button"
 import HeaderText from "../components/headerText"
+import { Typography } from "@material-ui/core"
 
 const CapabilityDetail = ({ title, list = [] }) => {
   return (

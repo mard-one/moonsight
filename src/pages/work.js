@@ -1,12 +1,11 @@
+import { Typography } from "@material-ui/core"
 import { useStaticQuery, graphql } from "gatsby"
 import Img from "gatsby-image"
 import React from "react"
 import { Fragment } from "react"
 import { useState } from "react"
-import Layout from "../components/layout"
-import Typography from "../components/typography"
+import Layout from "../layout"
 import workStyles from "./work.module.css"
-import buttonStyles from "../components/button.module.css"
 
 const Work = () => {
   const [selProjTypes, setSelProjTypes] = useState([])
@@ -52,7 +51,9 @@ const Work = () => {
       }
     }
   }
-
+  const buttonStyles = {
+    btn: ''
+  }
   return (
     <Layout>
       <div style={{ marginTop: "200px", marginBottom: "100px" }}>

@@ -1,7 +1,6 @@
 import React from "react"
-import Typography from "./typography"
 import Button from "./button"
-import { Grid, useMediaQuery } from "@material-ui/core"
+import { Grid, Typography, useMediaQuery } from "@material-ui/core"
 
 const Cta = ({ ctaText = "Have a project in mind? Let's get to work." }) => {
   const webUp = useMediaQuery("(min-width: 960px)")

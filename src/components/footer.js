@@ -1,7 +1,6 @@
-import { Container, useMediaQuery } from "@material-ui/core"
+import { Container, Typography, useMediaQuery } from "@material-ui/core"
 import React from "react"
 import logoBlack from "../images/logo.svg"
-import Typography from "./typography"
 
 const Footer = () => {
   const webUp = useMediaQuery("(min-width: 960px)")

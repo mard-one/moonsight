@@ -2,32 +2,20 @@ import React from "react"
 import { graphql, Link, useStaticQuery } from "gatsby"
 import Img from "gatsby-image"
 
-import Layout from "../components/layout"
+import Layout from "../layout"
 import SEO from "../components/seo"
-import Typography from "../components/typography"
 import Cta from "../components/cta"
 import Footer from "../components/footer"
 import handEmoji from "../images/hand-emoji.svg"
 import Button from "../components/button"
 import Divider from "../components/divider"
-import { Grid, useMediaQuery } from "@material-ui/core"
-import ArrowRight from "../images/right-arrow.svg";
+import { Grid, Typography, useMediaQuery } from "@material-ui/core"
+import ArrowRight from "../images/right-arrow.svg"
+import * as S from "./index.style"
 
 const GreetingBadge = ({ emoji, children }) => {
   return (
-    <div
-      style={{
-        display: "inline-block",
-        padding: "14px 40px 14px 28px",
-        backgroundColor: "white",
-        color: "#030303",
-        borderRadius: "35px",
-        margin: "16px auto",
-        position: "relative",
-        left: "50%",
-        transform: "translateX(-50%)",
-      }}
-    >
+    <S.Badge>
       <img src={emoji} alt="emoji" style={{ marginRight: "18px" }} />
       <span
         style={{
@@ -38,21 +26,13 @@ const GreetingBadge = ({ emoji, children }) => {
       >
         {children}
       </span>
-    </div>
+    </S.Badge>
   )
 }
 const CapabilitiesList = ({ number, children }) => {
-  const webUp = useMediaQuery("(min-width: 960px)")
   const tabletUp = useMediaQuery("(min-width: 600px)")
   return (
-    <div
-      style={{
-        marginBottom: tabletUp ? 32 : 20,
-        padding: tabletUp ? 0 : 25,
-        border: tabletUp ? "none" : "1px solid #FFFFFF",
-        borderRadius: tabletUp ? 0 : 8,
-      }}
-    >
+    <S.Capability>
       <Typography
         variant="overline"
         style={{
@@ -73,32 +53,26 @@ const CapabilitiesList = ({ number, children }) => {
       >
         {children}
       </Typography>
-    </div>
+    </S.Capability>
   )
 }
 const ClientsList = ({ serviceProvided, children }) => {
-  const tabletUp = useMediaQuery("(min-width: 600px)")
   const webUp = useMediaQuery("(min-width: 960px)")
   return (
-    <li
-      style={{
-        display: "flex",
-        justifyContent: "space-between",
-        alignItems: "center",
-        padding: tabletUp ? "8px 0" : "16px 0",
-        borderBottom: "1px solid rgba(255, 255, 255, 0.3)",
-      }}
-    >
+    <S.Clients>
       <Typography variant="h3">{children}</Typography>
-      {webUp ? <Typography style={{ fontSize: "1.125rem" }}>
-        {serviceProvided}
-      </Typography> : <img src={ArrowRight} alt="details"/>}
-    </li>
+      {webUp ? (
+        <Typography style={{ fontSize: "1.125rem" }}>
+          {serviceProvided}
+        </Typography>
+      ) : (
+        <img src={ArrowRight} alt="details" />
+      )}
+    </S.Clients>
   )
 }
 
 const IndexPage = () => {
-  const webUp = useMediaQuery("(min-width: 960px)")
   const tabletUp = useMediaQuery("(min-width: 600px)")
   const data = useStaticQuery(graphql`
     fragment projectImages on File {
@@ -153,158 +127,112 @@ const IndexPage = () => {
 
   return (
     <Layout>
-      {/* <SEO title="Home" />
-      <Link to="/page-2/">Go to page 2</Link> <br />
-      <Link to="/using-typescript/">Go to "Using TypeScript"</Link> */}
-      <header
-        style={{
-          marginTop: tabletUp ? 120 : 75,
-          marginBottom: tabletUp ? 250 : 120,
-        }}
-      >
-        <Grid container justify="center">
-          <Grid item xs={12} sm={8}>
-            {tabletUp ? (
+      {/* <SEO title="Home" />*/}
+      <S.Margin tmd={120} txs={75} bmd={250} bxs={120}>
+        <header>
+          <Grid container justify="center">
+            <Grid item xs={12} sm={8}>
               <GreetingBadge emoji={handEmoji}>Hello, Hello!</GreetingBadge>
-            ) : (
-              <></>
-            )}
-            <Typography variant="h1" style={{ textAlign: "center" }}>
-              We are Moonsight®. <br />
-              First Superstar International Design Agency
-            </Typography>
+              <Typography variant="h1" align="center">
+                We are Moonsight®. <br />
+                First Superstar International Design Agency
+              </Typography>
+            </Grid>
           </Grid>
-        </Grid>
-      </header>
-      <section
-        style={{
-          marginBottom: tabletUp ? 240 : 100,
-          display: "grid",
-          gridTemplateColumns: tabletUp ? "1fr 1fr" : "1fr",
-          gridGap: "0 48px",
-        }}
-      >
-        <div
-          style={{
-            display: "grid",
-            gridGap: "48px 0",
-          }}
-        >
-          <Img fluid={data.project1Img.childImageSharp.fluid} />
-          <Img fluid={data.project3Img.childImageSharp.fluid} />
-        </div>
-        <div
-          style={{
-            display: "grid",
-            gridGap: "48px 0",
-          }}
-        >
-          <Img fluid={data.project2Img.childImageSharp.fluid} />
-          <Img fluid={data.project4Img.childImageSharp.fluid} />
-          <Img fluid={data.project5Img.childImageSharp.fluid} />
-        </div>
-      </section>
-      <section style={{ marginBottom: tabletUp ? 250 : 135 }}>
-        <Grid container>
-          <Grid item xs={12} sm={7}>
-            <Typography variant="h2" style={{ marginBottom: 54 }}>
-              Moonsight® is a branding and digital design agency building
-              products, services, and ecommerce experiences that turn cultural
-              values into company value.
-            </Typography>
-            <Button>Learn About Our Company</Button>
+        </header>
+      </S.Margin>
+      <S.Margin bsm={240} bxs={100}>
+        <S.Projects>
+          <S.ProjectsGrid>
+            <Img fluid={data.project1Img.childImageSharp.fluid} />
+            <Img fluid={data.project3Img.childImageSharp.fluid} />
+          </S.ProjectsGrid>
+          <S.ProjectsGrid>
+            <Img fluid={data.project2Img.childImageSharp.fluid} />
+            <Img fluid={data.project4Img.childImageSharp.fluid} />
+            <Img fluid={data.project5Img.childImageSharp.fluid} />
+          </S.ProjectsGrid>
+        </S.Projects>
+      </S.Margin>
+      <S.Margin bsm={250} bxs={135}>
+        <section>
+          <Grid container>
+            <Grid item xs={12} sm={7}>
+              <Typography variant="h2">
+                Moonsight® is a branding and digital design agency building
+                products, services, and ecommerce experiences that turn cultural
+                values into company value.
+              </Typography>
+              <S.Margin bsm={54} bxs={30}/>
+              <Button>Learn About Our Company</Button>
+            </Grid>
           </Grid>
-        </Grid>
-      </section>
-      <section style={{ marginBottom: tabletUp ? 70 : 100 }}>
-        <Divider
-          leftText="Capabilities"
-          middleText={tabletUp ? "section #" : ""}
-          rightText="001"
-          style={{ marginBottom: tabletUp ? 80 : 40 }}
-        />
-        <Grid
-          container
-          style={{
-            marginBottom: tabletUp ? 100 : 50,
-          }}
-        >
-          <Grid item xs={12} sm={7}>
-            <Typography variant="h3">
-              We specialize in helping brands and organizations to simplify
-              their digital experiences for customers, employees and partners.
-            </Typography>
+        </section>
+      </S.Margin>
+      <S.Margin bsm={70} bxs={100}>
+        <section>
+          <Divider
+            leftText="Capabilities"
+            middleText={tabletUp ? "section #" : ""}
+            rightText="001"
+          />
+          <S.Margin bsm={80} bxs={40} />
+          <Grid container>
+            <Grid item xs={12} sm={7}>
+              <Typography variant="h3">
+                We specialize in helping brands and organizations to simplify
+                their digital experiences for customers, employees and partners.
+              </Typography>
+            </Grid>
           </Grid>
-        </Grid>
-        <Grid container style={{ marginBottom: tabletUp ? 150 : 100 }}>
-          <Grid item xs={0} sm={4} />
-          <Grid item xs={12} sm={8}>
-            <CapabilitiesList number="01">Branding</CapabilitiesList>
-            <CapabilitiesList number="02">Design</CapabilitiesList>
-            <CapabilitiesList number="03">Development</CapabilitiesList>
+          <S.Margin bsm={100} bxs={50} />
+          <Grid container>
+            <Grid item xs={false} sm={4} />
+            <Grid item xs={12} sm={8}>
+              <CapabilitiesList number="01">Branding</CapabilitiesList>
+              <CapabilitiesList number="02">Design</CapabilitiesList>
+              <CapabilitiesList number="03">Development</CapabilitiesList>
+            </Grid>
           </Grid>
-        </Grid>
-        <div
-          style={{
-            position: "relative",
-            paddingBottom: webUp ? 200 : 100,
-          }}
-        >
-          <figure
-            style={{
-              width: webUp ? "45%" : tabletUp ? "50%" : 220,
-              position: "relative",
-              left: webUp ? -24 : 0,
-            }}
-          >
-            <Img fluid={data.capabilities1Img.childImageSharp.fluid} />
-            <figcaption style={{ lineHeight: 1.75 }}>001</figcaption>
-          </figure>
-          <figure
-            style={{
-              width: webUp ? "45%" : tabletUp ? "65%" : 310,
-              position: "absolute",
-              top: 100,
-              left: webUp ? 300 : "unset",
-              right: !webUp ? 0 : "unset",
-            }}
-          >
-            <Img fluid={data.capabilities2Img.childImageSharp.fluid} />
-            <figcaption style={{ lineHeight: 1.75 }}>002</figcaption>
-          </figure>
-          <figure
-            style={{
-              width: webUp ? "45%" : tabletUp ? "65%" : 330,
-              position: webUp ? "absolute" : "relative",
-              top: webUp ? 200 : 100,
-              right: webUp ? -24 : "unset",
-            }}
-          >
-            <Img fluid={data.capabilities3Img.childImageSharp.fluid} />
-            <figcaption style={{ lineHeight: 1.75 }}>003</figcaption>
-          </figure>
-        </div>
-      </section>
-      <section style={{ marginBottom: tabletUp ? 200 : 100 }}>
-        <Divider
-          leftText="clients"
-          middleText={tabletUp ? "section #" : ""}
-          rightText="002"
-          style={{ marginBottom: tabletUp ? 90 : 50 }}
-        />
-        <ul>
-          <ClientsList serviceProvided="">PWC</ClientsList>
-          <ClientsList serviceProvided="">McKinsey</ClientsList>
-          <ClientsList serviceProvided="">Virgin</ClientsList>
-          <ClientsList serviceProvided="">Raydiant</ClientsList>
-          <ClientsList serviceProvided="">RND</ClientsList>
-          <ClientsList serviceProvided="">Cisco</ClientsList>
-          <ClientsList serviceProvided="">Testim</ClientsList>
-          <ClientsList serviceProvided="">Gameday</ClientsList>
-          <ClientsList serviceProvided="">Mashreq Bank</ClientsList>
-          <ClientsList serviceProvided="">Credit Europe Bank</ClientsList>
-        </ul>
-      </section>
+          <S.Margin bsm={150} bxs={100} />
+          <S.CapabilitiesGallery>
+            <S.GalleryImg1>
+              <Img fluid={data.capabilities1Img.childImageSharp.fluid} />
+              <figcaption style={{ lineHeight: 1.75 }}>001</figcaption>
+            </S.GalleryImg1>
+            <S.GalleryImg2>
+              <Img fluid={data.capabilities2Img.childImageSharp.fluid} />
+              <figcaption style={{ lineHeight: 1.75 }}>002</figcaption>
+            </S.GalleryImg2>
+            <S.GalleryImg3>
+              <Img fluid={data.capabilities3Img.childImageSharp.fluid} />
+              <figcaption style={{ lineHeight: 1.75 }}>003</figcaption>
+            </S.GalleryImg3>
+          </S.CapabilitiesGallery>
+        </section>
+      </S.Margin>
+      <S.Margin bsm={200} bxs={100}>
+        <section>
+          <Divider
+            leftText="clients"
+            middleText={tabletUp ? "section #" : ""}
+            rightText="002"
+          />
+          <S.Margin bsm={90} bxs={50} />
+          <ul>
+            <ClientsList serviceProvided="">PWC</ClientsList>
+            <ClientsList serviceProvided="">McKinsey</ClientsList>
+            <ClientsList serviceProvided="">Virgin</ClientsList>
+            <ClientsList serviceProvided="">Raydiant</ClientsList>
+            <ClientsList serviceProvided="">RND</ClientsList>
+            <ClientsList serviceProvided="">Cisco</ClientsList>
+            <ClientsList serviceProvided="">Testim</ClientsList>
+            <ClientsList serviceProvided="">Gameday</ClientsList>
+            <ClientsList serviceProvided="">Mashreq Bank</ClientsList>
+            <ClientsList serviceProvided="">Credit Europe Bank</ClientsList>
+          </ul>
+        </section>
+      </S.Margin>
     </Layout>
   )
 }

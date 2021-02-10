@@ -1,9 +1,9 @@
 import React from "react"
-import Layout from "../components/layout"
+import Layout from "../layout"
 import HeaderText from "../components/headerText"
-import Typography from "../components/typography"
 import Button from "../components/button"
 import Divider from "../components/divider"
+import { Typography } from "@material-ui/core"
 
 const Contact = () => {
   return (

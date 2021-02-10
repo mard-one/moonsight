@@ -1,5 +1,5 @@
+import { Typography } from "@material-ui/core"
 import React from "react"
-import Typography from "./typography"
 
 const Divider = ({ leftText, middleText = "Section #", rightText, style }) => {
   return (
