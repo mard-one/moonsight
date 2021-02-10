@@ -1,24 +1,32 @@
 import React from "react"
 import Button from "./button"
 import { Grid, Typography, useMediaQuery } from "@material-ui/core"
+import Margin from "./margin"
 
 const Cta = ({ ctaText = "Have a project in mind? Let's get to work." }) => {
-  const webUp = useMediaQuery("(min-width: 960px)")
   const tabletUp = useMediaQuery("(min-width: 600px)")
   return (
-    <Grid container justify="center" style={{ marginBottom: tabletUp ? 200 : 100 }}>
-      <Grid item xs={12} sm={8}>
-        <Typography
-          variant="h1"
-          style={{ textAlign: "center", marginBottom: tabletUp ? 56 : 24 }}
-        >
-          {ctaText}
-        </Typography>
-        <Button style={{ margin: "0 auto", display: "block" }}>
-          Create Something Together
-        </Button>
+    <Margin
+      as="section"
+      tmd={300}
+      bmd={200}
+      tsm={150}
+      bsm={150}
+      txs={100}
+      bxs={100}
+    >
+      <Grid container justify="center">
+        <Grid item xs={12} sm={8}>
+          <Typography variant="h1" align="center">
+            {ctaText}
+          </Typography>
+          <Margin bsm={56} bxs={24} />
+          <Button style={{ margin: "0 auto", display: "block" }}>
+            Create Something Together
+          </Button>
+        </Grid>
       </Grid>
-    </Grid>
+    </Margin>
   )
 }
 

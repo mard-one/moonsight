@@ -12,6 +12,7 @@ import Divider from "../components/divider"
 import { Grid, Typography, useMediaQuery } from "@material-ui/core"
 import ArrowRight from "../images/right-arrow.svg"
 import * as S from "./index.style"
+import Margin from "../components/margin"
 
 const GreetingBadge = ({ emoji, children }) => {
   return (
@@ -128,20 +129,18 @@ const IndexPage = () => {
   return (
     <Layout>
       {/* <SEO title="Home" />*/}
-      <S.Margin tmd={120} txs={75} bmd={250} bxs={120}>
-        <header>
-          <Grid container justify="center">
-            <Grid item xs={12} sm={8}>
-              <GreetingBadge emoji={handEmoji}>Hello, Hello!</GreetingBadge>
-              <Typography variant="h1" align="center">
-                We are Moonsight®. <br />
-                First Superstar International Design Agency
-              </Typography>
-            </Grid>
+      <Margin as="header" tmd={120} txs={75} bmd={250} bxs={120}>
+        <Grid container justify="center">
+          <Grid item xs={12} sm={8}>
+            <GreetingBadge emoji={handEmoji}>Hello, Hello!</GreetingBadge>
+            <Typography variant="h1" align="center">
+              We are Moonsight®. <br />
+              First Superstar International Design Agency
+            </Typography>
           </Grid>
-        </header>
-      </S.Margin>
-      <S.Margin bsm={240} bxs={100}>
+        </Grid>
+      </Margin>
+      <Margin as="section" bsm={240} bxs={100}>
         <S.Projects>
           <S.ProjectsGrid>
             <Img fluid={data.project1Img.childImageSharp.fluid} />
@@ -153,86 +152,80 @@ const IndexPage = () => {
             <Img fluid={data.project5Img.childImageSharp.fluid} />
           </S.ProjectsGrid>
         </S.Projects>
-      </S.Margin>
-      <S.Margin bsm={250} bxs={135}>
-        <section>
-          <Grid container>
-            <Grid item xs={12} sm={7}>
-              <Typography variant="h2">
-                Moonsight® is a branding and digital design agency building
-                products, services, and ecommerce experiences that turn cultural
-                values into company value.
-              </Typography>
-              <S.Margin bsm={54} bxs={30}/>
-              <Button>Learn About Our Company</Button>
-            </Grid>
+      </Margin>
+      <Margin as="section" bsm={250} bxs={135}>
+        <Grid container>
+          <Grid item xs={12} sm={7}>
+            <Typography variant="h2">
+              Moonsight® is a branding and digital design agency building
+              products, services, and ecommerce experiences that turn cultural
+              values into company value.
+            </Typography>
+            <Margin bsm={54} bxs={30} />
+            <Button>Learn About Our Company</Button>
           </Grid>
-        </section>
-      </S.Margin>
-      <S.Margin bsm={70} bxs={100}>
-        <section>
-          <Divider
-            leftText="Capabilities"
-            middleText={tabletUp ? "section #" : ""}
-            rightText="001"
-          />
-          <S.Margin bsm={80} bxs={40} />
-          <Grid container>
-            <Grid item xs={12} sm={7}>
-              <Typography variant="h3">
-                We specialize in helping brands and organizations to simplify
-                their digital experiences for customers, employees and partners.
-              </Typography>
-            </Grid>
+        </Grid>
+      </Margin>
+      <Margin as="section" bsm={70} bxs={100}>
+        <Divider
+          leftText="Capabilities"
+          middleText={tabletUp ? "section #" : ""}
+          rightText="001"
+        />
+        <Margin bsm={80} bxs={40} />
+        <Grid container>
+          <Grid item xs={12} sm={7}>
+            <Typography variant="h3">
+              We specialize in helping brands and organizations to simplify
+              their digital experiences for customers, employees and partners.
+            </Typography>
           </Grid>
-          <S.Margin bsm={100} bxs={50} />
-          <Grid container>
-            <Grid item xs={false} sm={4} />
-            <Grid item xs={12} sm={8}>
-              <CapabilitiesList number="01">Branding</CapabilitiesList>
-              <CapabilitiesList number="02">Design</CapabilitiesList>
-              <CapabilitiesList number="03">Development</CapabilitiesList>
-            </Grid>
+        </Grid>
+        <Margin bsm={100} bxs={50} />
+        <Grid container>
+          <Grid item xs={false} sm={4} />
+          <Grid item xs={12} sm={8}>
+            <CapabilitiesList number="01">Branding</CapabilitiesList>
+            <CapabilitiesList number="02">Design</CapabilitiesList>
+            <CapabilitiesList number="03">Development</CapabilitiesList>
           </Grid>
-          <S.Margin bsm={150} bxs={100} />
-          <S.CapabilitiesGallery>
-            <S.GalleryImg1>
-              <Img fluid={data.capabilities1Img.childImageSharp.fluid} />
-              <figcaption style={{ lineHeight: 1.75 }}>001</figcaption>
-            </S.GalleryImg1>
-            <S.GalleryImg2>
-              <Img fluid={data.capabilities2Img.childImageSharp.fluid} />
-              <figcaption style={{ lineHeight: 1.75 }}>002</figcaption>
-            </S.GalleryImg2>
-            <S.GalleryImg3>
-              <Img fluid={data.capabilities3Img.childImageSharp.fluid} />
-              <figcaption style={{ lineHeight: 1.75 }}>003</figcaption>
-            </S.GalleryImg3>
-          </S.CapabilitiesGallery>
-        </section>
-      </S.Margin>
-      <S.Margin bsm={200} bxs={100}>
-        <section>
-          <Divider
-            leftText="clients"
-            middleText={tabletUp ? "section #" : ""}
-            rightText="002"
-          />
-          <S.Margin bsm={90} bxs={50} />
-          <ul>
-            <ClientsList serviceProvided="">PWC</ClientsList>
-            <ClientsList serviceProvided="">McKinsey</ClientsList>
-            <ClientsList serviceProvided="">Virgin</ClientsList>
-            <ClientsList serviceProvided="">Raydiant</ClientsList>
-            <ClientsList serviceProvided="">RND</ClientsList>
-            <ClientsList serviceProvided="">Cisco</ClientsList>
-            <ClientsList serviceProvided="">Testim</ClientsList>
-            <ClientsList serviceProvided="">Gameday</ClientsList>
-            <ClientsList serviceProvided="">Mashreq Bank</ClientsList>
-            <ClientsList serviceProvided="">Credit Europe Bank</ClientsList>
-          </ul>
-        </section>
-      </S.Margin>
+        </Grid>
+        <Margin bsm={150} bxs={100} />
+        <S.CapabilitiesGallery>
+          <S.GalleryImg1>
+            <Img fluid={data.capabilities1Img.childImageSharp.fluid} />
+            <figcaption style={{ lineHeight: 1.75 }}>001</figcaption>
+          </S.GalleryImg1>
+          <S.GalleryImg2>
+            <Img fluid={data.capabilities2Img.childImageSharp.fluid} />
+            <figcaption style={{ lineHeight: 1.75 }}>002</figcaption>
+          </S.GalleryImg2>
+          <S.GalleryImg3>
+            <Img fluid={data.capabilities3Img.childImageSharp.fluid} />
+            <figcaption style={{ lineHeight: 1.75 }}>003</figcaption>
+          </S.GalleryImg3>
+        </S.CapabilitiesGallery>
+      </Margin>
+      <Margin as="section">
+        <Divider
+          leftText="clients"
+          middleText={tabletUp ? "section #" : ""}
+          rightText="002"
+        />
+        <Margin bsm={90} bxs={50} />
+        <ul>
+          <ClientsList serviceProvided="">PWC</ClientsList>
+          <ClientsList serviceProvided="">McKinsey</ClientsList>
+          <ClientsList serviceProvided="">Virgin</ClientsList>
+          <ClientsList serviceProvided="">Raydiant</ClientsList>
+          <ClientsList serviceProvided="">RND</ClientsList>
+          <ClientsList serviceProvided="">Cisco</ClientsList>
+          <ClientsList serviceProvided="">Testim</ClientsList>
+          <ClientsList serviceProvided="">Gameday</ClientsList>
+          <ClientsList serviceProvided="">Mashreq Bank</ClientsList>
+          <ClientsList serviceProvided="">Credit Europe Bank</ClientsList>
+        </ul>
+      </Margin>
     </Layout>
   )
 }
