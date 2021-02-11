@@ -20,8 +20,9 @@ const NavBar = styled.nav`
   justify-content: space-between;
   align-items: center;
   border-bottom: 1px solid rgba(255, 255, 255, 0.37);
-  padding: 55px 0;
+  padding: 32px 0;
   ${props => props.theme.breakpoints.down("sm")} {
+    padding: 55px 0;
     border-bottom: none;
   }
 `

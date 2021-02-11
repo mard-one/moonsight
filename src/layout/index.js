@@ -3,7 +3,6 @@ import PropTypes from "prop-types"
 import { useStaticQuery, graphql } from "gatsby"
 import "../styles/global.css"
 
-
 import {
   StylesProvider,
   createMuiTheme,
@@ -45,16 +44,22 @@ const theme = createMuiTheme({
         lineHeight: 1.15,
       },
       overline: {
-        fontSize: '0.875rem',
+        fontSize: "0.875rem",
         fontWeight: 500,
         lineHeight: 1.15,
-        letterSpacing: '0.03em',
-      }
-    }
+        letterSpacing: "0.03em",
+      },
+    },
   },
 })
 
-const Layout = ({ children, isCtaVisible = true, ctaText }) => {
+const Layout = ({
+  children,
+  hideCTA = false,
+  ctaText,
+  hideFooter = false,
+  hideNav = false,
+}) => {
   const data = useStaticQuery(graphql`
     query {
       site {
@@ -64,19 +69,19 @@ const Layout = ({ children, isCtaVisible = true, ctaText }) => {
       }
     }
   `)
-  console.log('theme', theme);
+  console.log("theme", theme)
   return (
     <StylesProvider injectFirst>
       <SCThemeProvider theme={theme}>
         <MuiThemeProvider theme={theme}>
-          <Nav />
+          {!hideNav && <Nav />}
           <main>
             <Container maxWidth="lg">
               {children}
-              {isCtaVisible && <Cta ctaText={ctaText} />}
+              {!hideCTA && <Cta ctaText={ctaText} />}
             </Container>
           </main>
-          <Footer />
+          {!hideFooter && <Footer />}
         </MuiThemeProvider>
       </SCThemeProvider>
     </StylesProvider>

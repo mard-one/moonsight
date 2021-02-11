@@ -10,41 +10,38 @@ import styled from "styled-components"
 
 export const StyledCurrentOpening = styled.div`
   margin-bottom: 80px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  & img {
+    display: none
+  }
   ${props => props.theme.breakpoints.down("xs")} {
+    grid-template-columns: 1fr 20px;
     margin-bottom: 0;
     padding: 27px 0;
     border-bottom: 1px solid rgba(255, 255, 255, 0.3);
-    & div {
-      width: 100% !important;
+    & img {
+      display: initial;
+      margin-top: 8px
     }
   }
 `
 
-
 const CurrentOpening = ({ type, children }) => {
   return (
     <StyledCurrentOpening>
-      <div style={{ width: "50%", display: "inline-block" }}>
-        <Typography variant="body1" style={{ fontSize: "1.75rem" }}>
-          {type}
-        </Typography>
-      </div>
+      <Typography variant="body1" style={{ fontSize: "1.75rem" }}>
+        {type}
+      </Typography>
       <Hidden xsDown implementation="css">
-        <div style={{ width: "50%", display: "inline-block" }}>
-          <Typography
-            variant="body1"
-            style={{ fontSize: "1.125rem", color: "rgba(242, 243, 241, 0.7)" }}
-          >
-            {children}
-          </Typography>
-        </div>
+        <Typography
+          variant="body1"
+          style={{ fontSize: "1.125rem", color: "rgba(242, 243, 241, 0.7)" }}
+        >
+          {children}
+        </Typography>
       </Hidden>
-      <Hidden smUp implementation="css">
         <img src={ArrowRight} alt="details" />
-      </Hidden>
     </StyledCurrentOpening>
   )
 }

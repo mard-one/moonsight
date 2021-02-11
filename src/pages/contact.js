@@ -8,7 +8,7 @@ import Margin from "../components/margin"
 
 const Contact = () => {
   return (
-    <Layout isCtaVisible={false}>
+    <Layout hideCTA>
       <HeaderText overline="CONTACT US">
         Interested in working with us? We’d love to hear from you.
       </HeaderText>
@@ -33,11 +33,11 @@ const Contact = () => {
             <Typography variant="h3">Services</Typography>
             <Margin bxs={20} bsm={20} />
             <div>
-              <Button style={{ marginRight: "16px" }}>Web Design</Button>
-              <Button style={{ marginRight: "16px" }}>App Design</Button>
-              <Button style={{ marginRight: "16px" }}>Branding</Button>
-              <Button style={{ marginRight: "16px" }}>Development</Button>
-              <Button style={{ marginRight: "16px" }}>Illustration</Button>
+              <Button style={{ marginRight: "16px", marginBottom: "16px" }}>Web Design</Button>
+              <Button style={{ marginRight: "16px", marginBottom: "16px" }}>App Design</Button>
+              <Button style={{ marginRight: "16px", marginBottom: "16px" }}>Branding</Button>
+              <Button style={{ marginRight: "16px", marginBottom: "16px" }}>Development</Button>
+              <Button style={{ marginRight: "16px", marginBottom: "16px" }}>Illustration</Button>
             </div>
           </Grid>
         </Grid>
