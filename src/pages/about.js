@@ -5,16 +5,18 @@ import Img from "gatsby-image"
 import Divider from "../components/divider"
 import Button from "../components/button"
 import HeaderText from "../components/headerText"
-import { Typography } from "@material-ui/core"
+import { Grid, Hidden, Typography, useMediaQuery } from "@material-ui/core"
+import Margin from "../components/margin"
+import * as S from "./about.style"
 
 const CapabilityDetail = ({ title, list = [] }) => {
   return (
-    <div>
+    <div style={{marginBottom: 60}}>
       <div
         style={{
+          maxWidth: 350,
           padding: "16px 0",
           borderBottom: "2px solid #FFFFFF",
-          minWidth: "275px",
           marginBottom: "24px",
         }}
       >
@@ -24,7 +26,12 @@ const CapabilityDetail = ({ title, list = [] }) => {
         {list.map(c => (
           <li
             key={c}
-            style={{ fontSize: "1rem", lineHeight: 2.5, opacity: 0.8 }}
+            style={{
+              fontSize: "1rem",
+              lineHeight: 1.4,
+              opacity: 0.8,
+              margin: "16px 0",
+            }}
           >
             {c}
           </li>
@@ -37,12 +44,11 @@ const Influence = ({ platform, views, viewType }) => {
   return (
     <div>
       <Button>{platform}</Button>
-      <Typography
-        variant="h1"
-        style={{ marginTop: "52px", marginBottom: "6px" }}
-      >
-        {views}
-      </Typography>
+      <Margin txs={20} tsm={52}>
+        <Typography variant="h1" style={{ marginBottom: "6px" }}>
+          {views}
+        </Typography>
+      </Margin>
       <Typography style={{ fontSize: "1.125rem", lineHeight: 1.55 }}>
         {viewType}
       </Typography>
@@ -119,16 +125,19 @@ const RecognizedByOrganization = ({ logo, name }) => {
         alignItems: "center",
       }}
     >
-      <PlusSign x={0} y={0} />
-      <PlusSign x={0} y={"100%"} />
-      <PlusSign x={"100%"} y={0} />
-      <PlusSign x={"100%"} y={"100%"} />
+      <Hidden xsDown implementation="css">
+        <PlusSign x={0} y={0} />
+        <PlusSign x={0} y={"100%"} />
+        <PlusSign x={"100%"} y={0} />
+        <PlusSign x={"100%"} y={"100%"} />
+      </Hidden>
       <img src={logo} alt={name} />
     </div>
   )
 }
 
 const About = () => {
+  const tabletUp = useMediaQuery("(min-width: 600px)")
   const data = useStaticQuery(graphql`
     query {
       bgImg: file(relativePath: { eq: "work-bg.jpg" }) {
@@ -169,163 +178,276 @@ const About = () => {
       }
     }
   `)
-  console.log("data", data)
   const organizations = data.recognizedByJson.recognizedByOrganizations
   const platforms = data.platformsJson.platforms
   const influences = data.influencesJson.influences
   const capabilities = data.capabilitiesJson.capabilities
-  return (
-    <Layout>
-      <header style={{ marginTop: "140px", marginBottom: "100px" }}>
-        <HeaderText overline="About Moonsight®">
-          We are a unique team of handpicked designers and developers focused on
-          refining your digital products.
-        </HeaderText>
-      </header>
-      <Img
-        fluid={data.bgImg.childImageSharp.fluid}
-        style={{ marginBottom: "236px" }}
-      />
-      <section style={{ width: "60%", marginBottom: "352px" }}>
-        <Divider leftText="Who are we?" middleText="" rightText="•" />
-        <Typography
-          variant="h2"
-          style={{ marginTop: "50px", marginBottom: "40px" }}
-        >
-          We use brains and fancy machines to create brands, products and
-          experiences that help our clients solve problems and seize
-          opportunities.
-        </Typography>
-        <Button>See Our Latest Works</Button>
-      </section>
-      <section style={{ marginBottom: "220px" }}>
-        <Divider leftText="Capabilities" rightText="001" />
-        <Typography
-          variant="h3"
-          style={{ marginTop: "78px", marginBottom: "176px", width: "55%" }}
-        >
-          We work at the intersection of strategy, creativity and technology to
-          hone our usinesses. Partner with us to define your strategy, create
-          exceptional experiences and build your business, by design.
-        </Typography>
-        <div style={{ display: "flex", justifyContent: "space-between" }}>
-          {capabilities ? (
-            capabilities.map(capability => {
-              const { title, list } = capability
-              return <CapabilityDetail key={title} title={title} list={list} />
-            })
-          ) : (
-            <></>
-          )}
-        </div>
-      </section>
-      <section
+
+  const getRecognitionFlags = () => {
+    return platforms ? (
+      platforms.map((platform, index) => {
+        const { bgColor, color, number, text } = platform
+        return (
+          <RecognitionFlag
+            key={text}
+            text={text}
+            bgColor={bgColor}
+            color={color}
+            number={number}
+            lastElem={index === platforms.length - 1}
+          />
+        )
+      })
+    ) : (
+      <></>
+    )
+  }
+  const getMultiLineRecFlags = () => (
+    <div>
+      <div
         style={{
           display: "flex",
-          justifyContent: "space-between",
-          marginBottom: "184px",
+          justifyContent: "flex-end",
+          borderTop: "1px solid rgba(255, 255, 255, 0.29)",
         }}
       >
+        {platforms.map(
+          (platform, index) =>
+            index <= 3 && (
+              <RecognitionFlag
+                key={platform.text}
+                text={platform.text}
+                bgColor={platform.bgColor}
+                color={platform.color}
+                number={platform.number}
+              />
+            )
+        )}
+      </div>
+      <div
+        style={{
+          display: "flex",
+          justifyContent: "flex-start",
+          marginTop: 40,
+          borderTop: "1px solid rgba(255, 255, 255, 0.29)",
+        }}
+      >
+        {platforms.map(
+          (platform, index) =>
+            index >= 3 &&
+            index <= 5 && (
+              <RecognitionFlag
+                key={platform.text}
+                text={platform.text}
+                bgColor={platform.bgColor}
+                color={platform.color}
+                number={platform.number}
+              />
+            )
+        )}
+      </div>
+      <div
+        style={{
+          display: "flex",
+          justifyContent: "flex-end",
+          marginTop: 40,
+          borderTop: "1px solid rgba(255, 255, 255, 0.29)",
+        }}
+      >
+        {platforms.map(
+          (platform, index) =>
+            index >= 6 && (
+              <RecognitionFlag
+                key={platform.text}
+                text={platform.text}
+                bgColor={platform.bgColor}
+                color={platform.color}
+                number={platform.number}
+              />
+            )
+        )}
+      </div>
+    </div>
+  )
+
+  return (
+    <Layout>
+      <HeaderText overline="About Moonsight®">
+        We are a unique team of handpicked designers and developers focused on
+        refining your digital products.
+      </HeaderText>
+      <Margin txs={100} bxs={60} bsm={236}>
+        <S.ImgContainer>
+          <Img fluid={data.bgImg.childImageSharp.fluid} />
+        </S.ImgContainer>
+      </Margin>
+      <Margin as="section" bxs={100} bsm={352}>
+        <Grid container>
+          <Grid item xs={12} sm={7}>
+            <Divider leftText="Who are we?" middleText="" rightText="•" />
+            <Margin bsm={80} bxs={40} />
+            <Typography variant="h2">
+              We use brains and fancy machines to create brands, products and
+              experiences that help our clients solve problems and seize
+              opportunities.
+            </Typography>
+            <Margin bsm={40} bxs={35} />
+            <Button>See Our Latest Works</Button>
+          </Grid>
+        </Grid>
+      </Margin>
+      <Margin as="section" bxs={170} bsm={220}>
         <Divider
-          leftText="We — are our team"
-          middleText=""
-          style={{ width: "30%" }}
+          leftText="Capabilities"
+          middleText={tabletUp ? "Section #" : ""}
+          rightText="001"
         />
-        <div style={{ width: "60%" }}>
-          <Divider leftText="002" middleText="" rightText="•" />
-          <Typography variant="h3" style={{ marginTop: "50px" }}>
-            What makes us different? Our people! We’re 100+ individuals from
-            across the world driven by bold ideas and diverse perspectives,
-            acknowledged by design community and our clients
-          </Typography>
-        </div>
-      </section>
-      <section style={{ marginBottom: "190px" }}>
-        <Divider leftText="INFLUENCE" rightText="002" />
-        <Typography
-          variant="h3"
-          style={{ width: "30%", marginTop: "60px", marginBottom: "60px" }}
-        >
-          We are beloved children of design community with big audience
-        </Typography>
-        <div
-          style={{
-            display: "grid",
-            gridTemplateColumns: "1fr 1fr 1fr",
-            marginBottom: "190px",
-          }}
-        >
-          {influences ? (
-            influences.map(influence => {
-              const { platform, views, viewType } = influence
-              return (
-                <Influence
-                  key={platform}
-                  platform={platform}
-                  views={views}
-                  viewType={viewType}
-                />
-              )
-            })
-          ) : (
-            <></>
-          )}
-        </div>
-      </section>
-      <section style={{ marginBottom: "330px" }}>
-        <div style={{ position: "relative" }}>
-          <Divider leftText="Recognition" middleText="" rightText="" />
-          <div style={{ position: "absolute", right: 0, top: 1 }}>
-            {platforms ? (
-              platforms.map((platform, index) => {
-                const { bgColor, color, number, text } = platform
+        <Margin bsm={80} bxs={40} />
+        <Grid container>
+          <Grid item xs={12} sm={7}>
+            <Typography variant="h3">
+              We work at the intersection of strategy, creativity and technology
+              to hone our usinesses. Partner with us to define your strategy,
+              create exceptional experiences and build your business, by design.
+            </Typography>
+          </Grid>
+        </Grid>
+        <Margin bsm={176} bxs={70} />
+        <div style={{ overflow: "hidden" }}>
+          <Grid container>
+            {capabilities ? (
+              capabilities.map((capability, index) => {
+                const { title, list } = capability
+                const isFirstOrLast =
+                  index === 0 || capabilities.length - 1 === index
                 return (
-                  <RecognitionFlag
-                    key={text}
-                    text={text}
-                    bgColor={bgColor}
-                    color={color}
-                    number={number}
-                    lastElem={index === platforms.length - 1}
-                  />
+                  <>
+                    {!isFirstOrLast && <Grid sm={1} xs={false} />}
+                    <Grid xs={12} sm={5} md={3}>
+                      <CapabilityDetail key={title} title={title} list={list} />
+                    </Grid>
+                    {!isFirstOrLast && <Grid sm={1} xs={false} />}
+                  </>
                 )
               })
             ) : (
               <></>
             )}
-          </div>
+          </Grid>
         </div>
-        <Typography
-          variant="h3"
-          style={{ marginTop: "130px", marginBottom: "200px", width: "30%" }}
-        >
-          It's great to be recognized for our personal efforts:
-        </Typography>
-        <div
-          style={{
-            margin: "100px",
-            overflow: "hidden",
-            display: "grid",
-            gridTemplateColumns: "1fr 1fr 1fr 1fr 1fr",
-            gridAutoRows: "180px",
-          }}
-        >
-          {organizations ? (
-            organizations.map((organization, index) => {
-              const { name, logo } = organization
-              return (
-                <RecognizedByOrganization
-                  key={name + index}
-                  logo={logo.publicURL}
-                  name={name}
-                />
-              )
-            })
-          ) : (
-            <></>
-          )}
+      </Margin>
+      <Margin
+        as="section"
+        bxs={150}
+        bsm={184}
+        style={{
+          display: "flex",
+          justifyContent: "space-between",
+        }}
+      >
+        <Grid container>
+          <Grid item xs={12} sm={4}>
+            <Divider leftText="We — are our team" middleText="" />
+          </Grid>
+          <Grid item xs={0} sm={1}></Grid>
+          <Grid item xs={12} sm={7}>
+            <Hidden xsDown implementation="css">
+              <Divider leftText="002" middleText="" rightText="•" />
+            </Hidden>
+            <Typography variant="h3" style={{ marginTop: "50px" }}>
+              What makes us different? Our people! We’re 100+ individuals from
+              across the world driven by bold ideas and diverse perspectives,
+              acknowledged by design community and our clients
+            </Typography>
+          </Grid>
+        </Grid>
+      </Margin>
+      <Margin as="section" bxs={150} bsm={190}>
+        <Divider
+          leftText="INFLUENCE"
+          middleText={tabletUp ? "Section #" : ""}
+          rightText="002"
+        />
+        <Margin bsm={80} bxs={40} />
+        <Grid container>
+          <Grid item xs={12} sm={5} md={3}>
+            <Typography variant="h3" style={{ marginBottom: "60px" }}>
+              We are beloved children of design community with big audience
+            </Typography>
+          </Grid>
+        </Grid>
+        <div style={{ overflow: "hidden" }}>
+          <Grid container spacing={6}>
+            {influences ? (
+              influences.map(influence => {
+                const { platform, views, viewType } = influence
+                return (
+                  <Grid item xs={12} sm={4}>
+                    <Influence
+                      key={platform}
+                      platform={platform}
+                      views={views}
+                      viewType={viewType}
+                    />
+                  </Grid>
+                )
+              })
+            ) : (
+              <></>
+            )}
+          </Grid>
         </div>
-      </section>
+      </Margin>
+      <Margin as="section">
+        <div style={{ position: "relative" }}>
+          <Divider leftText="Recognition" middleText="" rightText="005" />
+          <Hidden smDown implementation="css">
+            <div style={{ position: "absolute", right: 0, top: 1 }}>
+              {getRecognitionFlags()}
+            </div>
+          </Hidden>
+        </div>
+        <Margin bxs={50} bsm={130} />
+        <Grid container justify="space-between">
+          <Grid item xs={12} sm={5} md={3}>
+            <Typography variant="h3">
+              It's great to be recognized for our personal efforts:
+            </Typography>
+          </Grid>
+        </Grid>
+        <Margin bxs={60} bsm={100} bmd={200} />
+        <Hidden mdUp implementation="css">
+          {getMultiLineRecFlags()} {/* // TODO: improve / refactor */}
+          <Margin bxs={140} bsm={150} />
+        </Hidden>
+        <Grid container justify="center">
+          <Grid item xs={12} md={10}>
+            <div
+              style={{
+                overflow: "hidden",
+                display: "grid",
+                gridTemplateColumns: "repeat(auto-fill, minmax(200px, 1fr))",
+                gridAutoRows: "180px",
+              }}
+            >
+              {organizations ? (
+                organizations.map((organization, index) => {
+                  const { name, logo } = organization
+                  return (
+                    <RecognizedByOrganization
+                      key={name + index}
+                      logo={logo.publicURL}
+                      name={name}
+                    />
+                  )
+                })
+              ) : (
+                <></>
+              )}
+            </div>
+          </Grid>
+        </Grid>
+      </Margin>
     </Layout>
   )
 }
