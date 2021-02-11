@@ -8,7 +8,7 @@ import Margin from "../components/margin"
 import ArrowRight from "../images/right-arrow.svg"
 import styled from "styled-components"
 
-export const CurrentOpening = styled.div`
+export const StyledCurrentOpening = styled.div`
   margin-bottom: 80px;
   display: flex;
   justify-content: space-between;
@@ -26,7 +26,7 @@ export const CurrentOpening = styled.div`
 
 const CurrentOpening = ({ type, children }) => {
   return (
-    <CurrentOpening>
+    <StyledCurrentOpening>
       <div style={{ width: "50%", display: "inline-block" }}>
         <Typography variant="body1" style={{ fontSize: "1.75rem" }}>
           {type}
@@ -45,7 +45,7 @@ const CurrentOpening = ({ type, children }) => {
       <Hidden smUp>
         <img src={ArrowRight} alt="details" />
       </Hidden>
-    </CurrentOpening>
+    </StyledCurrentOpening>
   )
 }
 
