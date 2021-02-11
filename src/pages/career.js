@@ -55,7 +55,6 @@ const Career = () => {
       <HeaderText overline="Careers/Opportunities">
         Doing your job well and want to be paid the same way?{" "}
       </HeaderText>
-      <header style={{ marginBottom: 700 }}></header>
       <Margin as="section" txs={700} bxs={100} tsm={700} bsm={400}>
         <Grid container>
           <Grid item xs={12} sm={7}>
