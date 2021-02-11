@@ -117,7 +117,7 @@ const Badge = styled.div`
 
 const GreetingBadge = ({ emoji, children }) => {
   return (
-    <S.Badge>
+    <Badge>
       <img src={emoji} alt="emoji" style={{ marginRight: "18px" }} />
       <span
         style={{
@@ -128,13 +128,13 @@ const GreetingBadge = ({ emoji, children }) => {
       >
         {children}
       </span>
-    </S.Badge>
+    </Badge>
   )
 }
 const CapabilitiesList = ({ number, children }) => {
   const tabletUp = useMediaQuery("(min-width: 600px)")
   return (
-    <S.Capability>
+    <Capability>
       <Typography
         variant="overline"
         style={{
@@ -155,13 +155,13 @@ const CapabilitiesList = ({ number, children }) => {
       >
         {children}
       </Typography>
-    </S.Capability>
+    </Capability>
   )
 }
 const ClientsList = ({ serviceProvided, children }) => {
   const webUp = useMediaQuery("(min-width: 960px)")
   return (
-    <S.Clients>
+    <Clients>
       <Typography variant="h3">{children}</Typography>
       {webUp ? (
         <Typography style={{ fontSize: "1.125rem" }}>
@@ -170,7 +170,7 @@ const ClientsList = ({ serviceProvided, children }) => {
       ) : (
         <img src={ArrowRight} alt="details" />
       )}
-    </S.Clients>
+    </Clients>
   )
 }
 

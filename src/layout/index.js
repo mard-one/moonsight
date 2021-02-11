@@ -50,9 +50,6 @@ const theme = createMuiTheme({
         lineHeight: 1.15,
         letterSpacing: '0.03em',
       }
-    },
-    MuiHidden: {
-      implementation: 'css'
     }
   },
 })

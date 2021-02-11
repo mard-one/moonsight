@@ -32,7 +32,7 @@ const CurrentOpening = ({ type, children }) => {
           {type}
         </Typography>
       </div>
-      <Hidden xsDown>
+      <Hidden xsDown implementation="css">
         <div style={{ width: "50%", display: "inline-block" }}>
           <Typography
             variant="body1"
@@ -42,7 +42,7 @@ const CurrentOpening = ({ type, children }) => {
           </Typography>
         </div>
       </Hidden>
-      <Hidden smUp>
+      <Hidden smUp implementation="css">
         <img src={ArrowRight} alt="details" />
       </Hidden>
     </StyledCurrentOpening>
