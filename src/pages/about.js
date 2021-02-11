@@ -78,7 +78,7 @@ const RecognitionFlag = ({ color, bgColor, text, number, lastElem }) => {
           marginBottom: "10px",
         }}
       >
-        <Typography variant="p" style={{ fontWeight: 600 }}>
+        <Typography variant="body1" style={{ fontWeight: 600 }}>
           {text}
         </Typography>
       </div>
