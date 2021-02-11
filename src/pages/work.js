@@ -8,7 +8,27 @@ import Margin from "../components/margin"
 import Button from "../components/button"
 import HeaderText from "../components/headerText"
 import Layout from "../layout"
-import * as S from "./work.style"
+import styled from "styled-components"
+
+const ProjectsUnderNDA = styled.div`
+  text-align: center;
+  padding: 70px 100px 80px;
+  border: 2px dashed #ffffff;
+  border-radius: 9px;
+  ${props => props.theme.breakpoints.down("sm")} {
+    display: none;
+  }
+`
+const ProjectsFilter = styled.div`
+  white-space: nowrap;
+  overflow-x: scroll;
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
+  &::-webkit-scrollbar {
+    display: none;
+  }
+`
+
 
 const Work = () => {
   const tabletUp = useMediaQuery("(min-width: 600px)")
@@ -61,7 +81,7 @@ const Work = () => {
       </HeaderText>
       <Margin as="section" bmd={100} bsm={100} bxs={80}>
         <Margin tmd={50} bmd={100} txs={25} bxs={80}>
-          <S.ProjectsFilter>
+          <ProjectsFilter>
             <input
               type="checkbox"
               id="All"
@@ -98,14 +118,14 @@ const Work = () => {
                 </Fragment>
               )
             })}
-          </S.ProjectsFilter>
+          </ProjectsFilter>
         </Margin>
-        <S.ProjectsUnderNDA>
+        <ProjectsUnderNDA>
           <Typography variant="overline">unfortunately</Typography>
           <Typography variant="h3" style={{ marginTop: "10px" }}>
             We have 20+ projects under NDA <br /> which we cannot show...
           </Typography>
-        </S.ProjectsUnderNDA>
+        </ProjectsUnderNDA>
       </Margin>
       <Margin as="section">
         <div style={{ overflow: "hidden" }}>

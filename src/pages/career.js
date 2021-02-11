@@ -6,11 +6,27 @@ import Divider from "../components/divider"
 import { Grid, Hidden, Typography } from "@material-ui/core"
 import Margin from "../components/margin"
 import ArrowRight from "../images/right-arrow.svg"
-import * as S from "./career.style"
+import styled from "styled-components"
+
+export const CurrentOpening = styled.div`
+  margin-bottom: 80px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  ${props => props.theme.breakpoints.down("xs")} {
+    margin-bottom: 0;
+    padding: 27px 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+    & div {
+      width: 100% !important;
+    }
+  }
+`
+
 
 const CurrentOpening = ({ type, children }) => {
   return (
-    <S.CurrentOpening>
+    <CurrentOpening>
       <div style={{ width: "50%", display: "inline-block" }}>
         <Typography variant="body1" style={{ fontSize: "1.75rem" }}>
           {type}
@@ -29,7 +45,7 @@ const CurrentOpening = ({ type, children }) => {
       <Hidden smUp>
         <img src={ArrowRight} alt="details" />
       </Hidden>
-    </S.CurrentOpening>
+    </CurrentOpening>
   )
 }
 

@@ -7,7 +7,14 @@ import Button from "../components/button"
 import HeaderText from "../components/headerText"
 import { Grid, Hidden, Typography, useMediaQuery } from "@material-ui/core"
 import Margin from "../components/margin"
-import * as S from "./about.style"
+import styled from 'styled-components';
+
+export const ImgContainer = styled.div`
+  ${props => props.theme.breakpoints.down("sm")} {
+    height: 300px;
+  }
+`;
+
 
 const CapabilityDetail = ({ title, list = [] }) => {
   return (
@@ -277,9 +284,9 @@ const About = () => {
         refining your digital products.
       </HeaderText>
       <Margin txs={100} bxs={60} bsm={236}>
-        <S.ImgContainer>
+        <ImgContainer>
           <Img fluid={data.bgImg.childImageSharp.fluid} />
-        </S.ImgContainer>
+        </ImgContainer>
       </Margin>
       <Margin as="section" bxs={100} bsm={352}>
         <Grid container>

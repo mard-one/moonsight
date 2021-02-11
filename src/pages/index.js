@@ -11,8 +11,109 @@ import Button from "../components/button"
 import Divider from "../components/divider"
 import { Grid, Typography, useMediaQuery } from "@material-ui/core"
 import ArrowRight from "../images/right-arrow.svg"
-import * as S from "./index.style"
 import Margin from "../components/margin"
+import styled from "styled-components"
+
+const Projects = styled.section`
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-gap: 0 48px;
+  ${props => props.theme.breakpoints.down("sm")} {
+    grid-template-columns: 1fr;
+  }
+`
+const ProjectsGrid = styled.div`
+  display: grid;
+  grid-gap: 48px 0;
+  ${props => props.theme.breakpoints.down("sm")} {
+    grid-gap: 20px 0;
+  }
+`
+const Capability = styled.div`
+  margin-bottom: 32px;
+  padding: 0;
+  border: none;
+  border-radius: 0;
+  ${props => props.theme.breakpoints.down("xs")} {
+    margin-bottom: 20px;
+    padding: 25px;
+    border: 1px solid #ffffff;
+    border-radius: 8px;
+  }
+`
+const Clients = styled.li`
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 8px 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+  ${props => props.theme.breakpoints.down("sm")} {
+    padding: 16px 0;
+  }
+`
+const CapabilitiesGallery = styled.div`
+  position: relative;
+  padding-bottom: 200px;
+  ${props => props.theme.breakpoints.down("sm")} {
+    padding-bottom: 100px;
+  }
+`
+const GalleryImg1 = styled.figure`
+  position: relative;
+  width: 45%;
+  left: -24px;
+  ${props => props.theme.breakpoints.down("sm")} {
+    width: 50%;
+    left: 0;
+  }
+  ${props => props.theme.breakpoints.down("xs")} {
+    width: 220px;
+  }
+`
+const GalleryImg2 = styled.figure`
+  position: absolute;
+  top: 100px;
+  width: 45%;
+  left: 300px;
+  right: unset;
+  ${props => props.theme.breakpoints.down("sm")} {
+    width: 65%;
+    left: unset;
+    right: 0;
+  }
+  ${props => props.theme.breakpoints.down("xs")} {
+    width: 310px;
+  }
+`
+const GalleryImg3 = styled.figure`
+  width: 45%;
+  position: absolute;
+  top: 200px;
+  right: -24px;
+  ${props => props.theme.breakpoints.down("sm")} {
+    width: 65%;
+    position: relative;
+    top: 100px;
+    right: unset;
+  }
+  ${props => props.theme.breakpoints.down("xs")} {
+    width: 330px;
+  }
+`
+const Badge = styled.div`
+  display: inline-block;
+  padding: 14px 40px 14px 28px;
+  background-color: white;
+  color: #030303;
+  border-radius: 35px;
+  margin: 16px auto;
+  position: relative;
+  left: 50%;
+  transform: translateX(-50%);
+  ${props => props.theme.breakpoints.down("sm")} {
+    display: none;
+  }
+`
 
 const GreetingBadge = ({ emoji, children }) => {
   return (
@@ -141,17 +242,17 @@ const IndexPage = () => {
         </Grid>
       </Margin>
       <Margin as="section" bsm={240} bxs={100}>
-        <S.Projects>
-          <S.ProjectsGrid>
+        <Projects>
+          <ProjectsGrid>
             <Img fluid={data.project1Img.childImageSharp.fluid} />
             <Img fluid={data.project3Img.childImageSharp.fluid} />
-          </S.ProjectsGrid>
-          <S.ProjectsGrid>
+          </ProjectsGrid>
+          <ProjectsGrid>
             <Img fluid={data.project2Img.childImageSharp.fluid} />
             <Img fluid={data.project4Img.childImageSharp.fluid} />
             <Img fluid={data.project5Img.childImageSharp.fluid} />
-          </S.ProjectsGrid>
-        </S.Projects>
+          </ProjectsGrid>
+        </Projects>
       </Margin>
       <Margin as="section" bsm={250} bxs={135}>
         <Grid container>
@@ -191,20 +292,20 @@ const IndexPage = () => {
           </Grid>
         </Grid>
         <Margin bsm={150} bxs={100} />
-        <S.CapabilitiesGallery>
-          <S.GalleryImg1>
+        <CapabilitiesGallery>
+          <GalleryImg1>
             <Img fluid={data.capabilities1Img.childImageSharp.fluid} />
             <figcaption style={{ lineHeight: 1.75 }}>001</figcaption>
-          </S.GalleryImg1>
-          <S.GalleryImg2>
+          </GalleryImg1>
+          <GalleryImg2>
             <Img fluid={data.capabilities2Img.childImageSharp.fluid} />
             <figcaption style={{ lineHeight: 1.75 }}>002</figcaption>
-          </S.GalleryImg2>
-          <S.GalleryImg3>
+          </GalleryImg2>
+          <GalleryImg3>
             <Img fluid={data.capabilities3Img.childImageSharp.fluid} />
             <figcaption style={{ lineHeight: 1.75 }}>003</figcaption>
-          </S.GalleryImg3>
-        </S.CapabilitiesGallery>
+          </GalleryImg3>
+        </CapabilitiesGallery>
       </Margin>
       <Margin as="section">
         <Divider
