@@ -285,7 +285,7 @@ const About = () => {
       </HeaderText>
       <Margin txs={100} bxs={60} bsm={236}>
         <ImgContainer>
-          <Img fluid={data.bgImg.childImageSharp.fluid} />
+          <Img fluid={data.bgImg.childImageSharp.fluid} style={{height: '100%'}} />
         </ImgContainer>
       </Margin>
       <Margin as="section" bxs={100} bsm={352}>

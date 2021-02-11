@@ -59,6 +59,7 @@ const Layout = ({
   ctaText,
   hideFooter = false,
   hideNav = false,
+  hideLetsConnect = false,
 }) => {
   const data = useStaticQuery(graphql`
     query {
@@ -81,7 +82,7 @@ const Layout = ({
               {!hideCTA && <Cta ctaText={ctaText} />}
             </Container>
           </main>
-          {!hideFooter && <Footer />}
+          {!hideFooter && <Footer hideLetsConnect={hideLetsConnect} />}
         </MuiThemeProvider>
       </SCThemeProvider>
     </StylesProvider>
