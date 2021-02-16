@@ -7,13 +7,15 @@ import { Grid, Hidden, Typography } from "@material-ui/core"
 import Margin from "../components/margin"
 import ArrowRight from "../images/right-arrow.svg"
 import styled from "styled-components"
+import JsonData from "../data/open-positions/index.json"
+import { Link } from "gatsby"
 
 export const StyledCurrentOpening = styled.div`
   margin-bottom: 80px;
   display: grid;
   grid-template-columns: 1fr 1fr;
   & img {
-    display: none
+    display: none;
   }
   ${props => props.theme.breakpoints.down("xs")} {
     grid-template-columns: 1fr 20px;
@@ -22,17 +24,19 @@ export const StyledCurrentOpening = styled.div`
     border-bottom: 1px solid rgba(255, 255, 255, 0.3);
     & img {
       display: initial;
-      margin-top: 8px
+      margin-top: 8px;
     }
   }
 `
 
-const CurrentOpening = ({ type, children }) => {
+const CurrentOpening = ({ type, children, linkTo }) => {
   return (
     <StyledCurrentOpening>
-      <Typography variant="body1" style={{ fontSize: "1.75rem" }}>
-        {type}
-      </Typography>
+      <Link to={linkTo}>
+        <Typography variant="body1" style={{ fontSize: "1.75rem" }}>
+          {type}
+        </Typography>
+      </Link>
       <Hidden xsDown implementation="css">
         <Typography
           variant="body1"
@@ -41,12 +45,14 @@ const CurrentOpening = ({ type, children }) => {
           {children}
         </Typography>
       </Hidden>
-        <img src={ArrowRight} alt="details" />
+      <img src={ArrowRight} alt="details" />
     </StyledCurrentOpening>
   )
 }
 
 const Career = () => {
+  const openPositions = JsonData.openPositions
+  console.log("openPositions", openPositions)
   return (
     <Layout ctaText="Mind joing Superstar Family? Let’s get to work. ">
       <HeaderText overline="Careers/Opportunities">
@@ -82,11 +88,16 @@ const Career = () => {
               rightText="002"
               style={{ marginBottom: 60 }}
             />
-            <CurrentOpening type="3D Artist">
-              You’re comfortable around 3D stuff and have a good taste in what
-              you are doing
-            </CurrentOpening>
-            <CurrentOpening type="UX Researcher">
+            {openPositions.map(position => {
+              const { title, relPath, shortDesc } = position
+              return (
+                <CurrentOpening key={relPath} type={title} linkTo={relPath}>
+                  {shortDesc}
+                </CurrentOpening>
+              )
+            })}
+
+            {/* <CurrentOpening type="UX Researcher">
               You’re comfortable around 3D stuff and have a good taste in what
               you are doing
             </CurrentOpening>
@@ -101,7 +112,7 @@ const Career = () => {
             <CurrentOpening type="IOS Developer">
               You’re comfortable around 3D stuff and have a good taste in what
               you are doing
-            </CurrentOpening>
+            </CurrentOpening> */}
           </Grid>
         </Grid>
       </Margin>

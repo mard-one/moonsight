@@ -42,6 +42,7 @@ const MenuLink = styled.li`
   & a {
     display: inline-block;
     padding-bottom: 5px;
+    padding-top: 5px;
     position: relative;
     overflow: hidden;
   }
