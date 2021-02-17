@@ -1,4 +1,5 @@
 import { Container, Typography, useMediaQuery } from "@material-ui/core"
+import { Link } from "gatsby"
 import React from "react"
 import styled from "styled-components"
 import logoBlack from "../images/logo.svg"
@@ -58,24 +59,29 @@ const Footer = ({ hideLetsConnect = false }) => {
       )}
 
       <TAndC>
+        <Link to="/">
+
         <Typography
           variant="overline"
           style={{ fontSize: "0.688rem", margin: webUp ? 0 : "8px 0" }}
-        >
+          >
           Moonsight® 2020
         </Typography>
+          </Link>
         <Typography
           variant="overline"
           style={{ fontSize: "0.688rem", margin: webUp ? 0 : "8px 0" }}
         >
           EASY TO UNDERSTAND, IMPOSSIBLE TO IGNORE.™
         </Typography>
+        <Link to="/privacy-policy">
         <Typography
           variant="overline"
           style={{ fontSize: "0.688rem", margin: webUp ? 0 : "8px 0" }}
-        >
+          >
           TERMS, PRIVACY POLICY
         </Typography>
+          </Link>
       </TAndC>
     </footer>
   )

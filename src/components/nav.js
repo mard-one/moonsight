@@ -110,7 +110,9 @@ const Nav = () => (
         <CustomLink title="We are Hiring" link="/career" />
         <CustomLink title="Contact Us" link="/contact" />
       </MenuLinks>
-      <ResponsiveBtn>Write Us Something</ResponsiveBtn>
+      <Link to="/contact">
+        <ResponsiveBtn>Write Us Something</ResponsiveBtn>
+      </Link>
       <Burger>
         <span />
         <span />

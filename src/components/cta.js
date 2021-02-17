@@ -2,6 +2,7 @@ import React from "react"
 import Button from "./button"
 import { Grid, Typography, useMediaQuery } from "@material-ui/core"
 import Margin from "./margin"
+import { Link } from "gatsby"
 
 const Cta = ({ ctaText = "Have a project in mind? Let's get to work." }) => {
   const tabletUp = useMediaQuery("(min-width: 600px)")
@@ -21,9 +22,11 @@ const Cta = ({ ctaText = "Have a project in mind? Let's get to work." }) => {
             {ctaText}
           </Typography>
           <Margin bsm={56} bxs={24} />
-          <Button style={{ margin: "0 auto", display: "block" }}>
-            Create Something Together
-          </Button>
+          <Link to="/contact">
+            <Button style={{ margin: "0 auto", display: "block" }}>
+              Create Something Together
+            </Button>
+          </Link>
         </Grid>
       </Grid>
     </Margin>

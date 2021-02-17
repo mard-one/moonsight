@@ -30,7 +30,12 @@ const ProjectsFilter = styled.div`
 `
 
 
-const Work = () => {
+const Work = ({location}) => {
+  console.log('location', location);
+  // let params = new URLSearchParams(location.search);
+  // let filter = params.get("filter")
+  // console.log('filter', new URLSearchParams(location.search));
+
   const tabletUp = useMediaQuery("(min-width: 600px)")
   const [selProjTypes, setSelProjTypes] = useState([])
   const data = useStaticQuery(graphql`

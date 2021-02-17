@@ -263,7 +263,9 @@ const IndexPage = () => {
               values into company value.
             </Typography>
             <Margin bsm={54} bxs={30} />
-            <Button>Learn About Our Company</Button>
+            <Link to="/about">
+              <Button>Learn About Our Company</Button>
+            </Link>
           </Grid>
         </Grid>
       </Margin>
@@ -286,9 +288,16 @@ const IndexPage = () => {
         <Grid container>
           <Grid item xs={false} sm={4} />
           <Grid item xs={12} sm={8}>
-            <CapabilitiesList number="01">Branding</CapabilitiesList>
-            <CapabilitiesList number="02">Design</CapabilitiesList>
-            <CapabilitiesList number="03">Development</CapabilitiesList>
+            <Link to="/work?filter=branding">
+              {/* TODO: make these project types dynamic */}
+              <CapabilitiesList number="01">Branding</CapabilitiesList>
+            </Link>
+            <Link to="/work?filter=desing">
+              <CapabilitiesList number="02">Design</CapabilitiesList>
+            </Link>
+            <Link to="/work?filter=development">
+              <CapabilitiesList number="03">Development</CapabilitiesList>
+            </Link>
           </Grid>
         </Grid>
         <Margin bsm={150} bxs={100} />

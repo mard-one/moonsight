@@ -1,4 +1,4 @@
-import { graphql, useStaticQuery } from "gatsby"
+import { graphql, Link, useStaticQuery } from "gatsby"
 import React from "react"
 import Layout from "../layout"
 import Img from "gatsby-image"
@@ -7,18 +7,18 @@ import Button from "../components/button"
 import HeaderText from "../components/headerText"
 import { Grid, Hidden, Typography, useMediaQuery } from "@material-ui/core"
 import Margin from "../components/margin"
-import styled from 'styled-components';
+import styled from "styled-components"
+import { Fragment } from "react"
 
 export const ImgContainer = styled.div`
   ${props => props.theme.breakpoints.down("sm")} {
     height: 300px;
   }
-`;
-
+`
 
 const CapabilityDetail = ({ title, list = [] }) => {
   return (
-    <div style={{marginBottom: 60}}>
+    <div style={{ marginBottom: 60 }}>
       <div
         style={{
           maxWidth: 350,
@@ -285,7 +285,10 @@ const About = () => {
       </HeaderText>
       <Margin txs={100} bxs={60} bsm={236}>
         <ImgContainer>
-          <Img fluid={data.bgImg.childImageSharp.fluid} style={{height: '100%'}} />
+          <Img
+            fluid={data.bgImg.childImageSharp.fluid}
+            style={{ height: "100%" }}
+          />
         </ImgContainer>
       </Margin>
       <Margin as="section" bxs={100} bsm={352}>
@@ -299,7 +302,9 @@ const About = () => {
               opportunities.
             </Typography>
             <Margin bsm={40} bxs={35} />
-            <Button>See Our Latest Works</Button>
+            <Link to="/work">
+              <Button>See Our Latest Works</Button>
+            </Link>
           </Grid>
         </Grid>
       </Margin>
@@ -322,24 +327,20 @@ const About = () => {
         <Margin bsm={176} bxs={70} />
         <div style={{ overflow: "hidden" }}>
           <Grid container>
-            {capabilities ? (
-              capabilities.map((capability, index) => {
-                const { title, list } = capability
-                const isFirstOrLast =
-                  index === 0 || capabilities.length - 1 === index
-                return (
-                  <>
-                    {!isFirstOrLast && <Grid sm={1} xs={false} />}
-                    <Grid xs={12} sm={5} md={3}>
-                      <CapabilityDetail key={title} title={title} list={list} />
-                    </Grid>
-                    {!isFirstOrLast && <Grid sm={1} xs={false} />}
-                  </>
-                )
-              })
-            ) : (
-              <></>
-            )}
+            {capabilities.map((capability, index) => {
+              const { title, list } = capability
+              const isFirstOrLast =
+                index === 0 || capabilities.length - 1 === index
+              return (
+                <Fragment key={title + index}>
+                  {!isFirstOrLast && <Grid item sm={1} xs={false} />}
+                  <Grid item xs={12} sm={5} md={3}>
+                    <CapabilityDetail key={title} title={title} list={list} />
+                  </Grid>
+                  {!isFirstOrLast && <Grid item sm={1} xs={false} />}
+                </Fragment>
+              )
+            })}
           </Grid>
         </div>
       </Margin>
@@ -356,7 +357,7 @@ const About = () => {
           <Grid item xs={12} sm={4}>
             <Divider leftText="We — are our team" middleText="" />
           </Grid>
-          <Grid item xs={0} sm={1}></Grid>
+          <Grid item xs={false} sm={1}></Grid>
           <Grid item xs={12} sm={7}>
             <Hidden xsDown implementation="css">
               <Divider leftText="002" middleText="" rightText="•" />
@@ -389,7 +390,7 @@ const About = () => {
               influences.map(influence => {
                 const { platform, views, viewType } = influence
                 return (
-                  <Grid item xs={12} sm={4}>
+                  <Grid key={platform} item xs={12} sm={4}>
                     <Influence
                       key={platform}
                       platform={platform}
