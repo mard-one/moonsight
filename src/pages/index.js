@@ -263,9 +263,9 @@ const IndexPage = () => {
               values into company value.
             </Typography>
             <Margin bsm={54} bxs={30} />
-            <Link to="/about">
-              <Button>Learn About Our Company</Button>
-            </Link>
+            <Button as={Link} to="/about">
+              Learn About Our Company
+            </Button>
           </Grid>
         </Grid>
       </Margin>

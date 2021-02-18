@@ -3,7 +3,7 @@ import { Link } from "gatsby"
 import PropTypes from "prop-types"
 import React, { useEffect, useState } from "react"
 import logo from "../images/logo.svg"
-import styled, { keyframes } from "styled-components"
+import styled, { css, keyframes } from "styled-components"
 import Button from "./button"
 
 const traceIn = keyframes`
@@ -49,6 +49,7 @@ const MenuLink = styled.li`
   & a.active::after {
     transform: translateX(0%);
     animation: none;
+    opacity: 1;
   }
   & a::after {
     content: "";
@@ -58,11 +59,20 @@ const MenuLink = styled.li`
     width: 100%;
     height: 1px;
     background-color: white;
-    animation-duration: ${props => !props.startAnimation && "0s !important;"}
-    animation: ${traceOut} 0.25s cubic-bezier(0.28, 0.44, 0.49, 1) 0s forwards;
+    transition: opacity 1s linear;
+    opacity: 0;
+    ${props =>
+      props.startAnimation
+        ? css`
+            animation: ${traceOut} 0.25s cubic-bezier(0.28, 0.44, 0.49, 1) 0s
+              forwards;
+          `
+        : "transform: translateX(-100%);"}
   }
   & a:hover::after,
   & a:active::after {
+    transition: opacity 0s linear;
+    opacity: 1;
     animation: ${traceIn} 0.25s cubic-bezier(0.28, 0.44, 0.49, 1) 0s forwards;
   }
 `
@@ -89,9 +99,9 @@ const Burger = styled.div`
   }
 `
 
-const CustomLink = ({ title, link }) => {
+const CustomLink = ({ title, link, startAnimation }) => {
   return (
-    <MenuLink>
+    <MenuLink startAnimation={startAnimation}>
       <Link to={link} activeClassName="active">
         {title}
       </Link>
@@ -110,15 +120,31 @@ const Nav = () => {
         <Link to="/">
           <img src={logo} alt="logo" />
         </Link>
-        <MenuLinks startAnimation={startAnimation}>
-          <CustomLink title="Work" link="/work" />
-          <CustomLink title="About Us" link="/about" />
-          <CustomLink title="We are Hiring" link="/career" />
-          <CustomLink title="Contact Us" link="/contact" />
+        <MenuLinks>
+          <CustomLink
+            startAnimation={startAnimation}
+            title="Work"
+            link="/work"
+          />
+          <CustomLink
+            startAnimation={startAnimation}
+            title="About Us"
+            link="/about"
+          />
+          <CustomLink
+            startAnimation={startAnimation}
+            title="We are Hiring"
+            link="/career"
+          />
+          <CustomLink
+            startAnimation={startAnimation}
+            title="Contact Us"
+            link="/contact"
+          />
         </MenuLinks>
-        <Link to="/contact">
-          <ResponsiveBtn>Write Us Something</ResponsiveBtn>
-        </Link>
+        <ResponsiveBtn as={Link} to="/contact">
+          Write Us Something
+        </ResponsiveBtn>
         <Burger>
           <span />
           <span />

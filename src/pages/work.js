@@ -96,6 +96,7 @@ const Work = ({location}) => {
             <Button
               as="label"
               htmlFor="All"
+              selected={selProjTypes.length === 0}
               style={{ marginRight: 16, borderRadius: "21px" }}
             >
               All
@@ -114,6 +115,7 @@ const Work = ({location}) => {
                   <Button
                     as="label"
                     htmlFor={type}
+                    selected={selProjTypes.includes(type)}
                     style={{ marginRight: 16, borderRadius: "21px" }}
                   >
                     {type}

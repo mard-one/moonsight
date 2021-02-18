@@ -165,7 +165,9 @@ const CapabilityDetail = ({ title, list = [] }) => {
 const Influence = ({ platform, views, viewType }) => {
   return (
     <div>
-      <Button>{platform}</Button>
+      <Button as="span" notSelectable>
+        {platform}
+      </Button>
       <Margin txs={20} tsm={52}>
         <Typography variant="h1" style={{ marginBottom: "6px" }}>
           {views}
@@ -378,9 +380,9 @@ const About = () => {
               opportunities.
             </Typography>
             <Margin bsm={40} bxs={35} />
-            <Link to="/work">
-              <Button>See Our Latest Works</Button>
-            </Link>
+            <Button as={Link} to="/work">
+              See Our Latest Works
+            </Button>
           </Grid>
         </Grid>
       </Margin>

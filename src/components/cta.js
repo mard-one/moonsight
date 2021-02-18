@@ -22,11 +22,13 @@ const Cta = ({ ctaText = "Have a project in mind? Let's get to work." }) => {
             {ctaText}
           </Typography>
           <Margin bsm={56} bxs={24} />
-          <Link to="/contact">
-            <Button style={{ margin: "0 auto", display: "block" }}>
-              Create Something Together
-            </Button>
-          </Link>
+          <Button
+            as={Link}
+            to="/contact"
+            style={{ transform: "translateX(-50%)", left: "50%" }}
+          >
+            Create Something Together
+          </Button>
         </Grid>
       </Grid>
     </Margin>

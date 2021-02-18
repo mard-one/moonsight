@@ -1,6 +1,6 @@
 import styled from "styled-components"
 
-const Button = styled.button`
+const Button = styled.a`
   display: inline-block;
   position: relative;
   white-space: nowrap;
@@ -23,21 +23,35 @@ const Button = styled.button`
     position: absolute;
     bottom: 0;
     left: 0;
-    width: calc(100% + 1px);
+    width: 100%;
     height: 100%;
-    -webkit-transform: translate3d(0, 100%, 0);
-    transform: translate3d(0, 100%, 0);
+    transform: translateY(100%);
     background-color: #fff;
     transition: transform 0.3s cubic-bezier(0.28, 0.44, 0.49, 1);
     z-index: -1;
   }
-  &:hover {
+
+  ${props =>
+    !props.notSelectable &&
+    `&:hover {
     color: #030303;
     border-color: transparent;
   }
   &:hover:before {
     transform: translateZ(0);
+  }`}
+  &:active {
+    outline: none;
   }
+  ${props =>
+    props.selected &&
+    `
+    border-color: transparent;
+    color: #030303;
+    &:before {
+      transform: translateZ(0);
+    }
+  `}
 `
 
 export default Button
