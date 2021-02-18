@@ -22,7 +22,7 @@ const StickerOnText = ({
         style={{
           position: "absolute",
           left: "50%",
-          backdropFilter: "blur(10px)",
+          backdropFilter: "blur(5px)",
           backgroundColor: bgColor || "rgba(80, 77, 252, 0.68)",
           borderRadius: "40px",
           transformOrigin: "0% 50%",
@@ -30,7 +30,7 @@ const StickerOnText = ({
             (tiltDeg ? `rotate(${tiltDeg})` : "rotate(-4.73deg)") +
             " translateX(-50%)",
           display: "inline-block",
-          padding: "0.1875em 0.5em",
+          padding: "11px 32px",
           whiteSpace: "nowrap",
         }}
       >
