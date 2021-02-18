@@ -41,16 +41,32 @@ const Capability = styled.div`
     border-radius: 8px;
   }
 `
+const ClientServiceProvided = styled(Typography)`
+  opacity: 0;
+  transition: all 0.2s ease-in-out;
+`
 const Clients = styled.li`
   display: flex;
   justify-content: space-between;
   align-items: center;
   padding: 8px 0;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+  transition: all 0.2s ease-in-out;
+  border-top: 1px solid #353535;
+  border-bottom: 1px solid #353535;
+  color: rgba(255, 255, 255, 0.36);
+  &:hover {
+    color: #f2f3f1;
+    border-top: 1px solid #fff;
+    border-bottom: 1px solid #fff;
+  }
+  &:hover ${ClientServiceProvided} {
+    opacity: 1;
+  }
   ${props => props.theme.breakpoints.down("sm")} {
     padding: 16px 0;
   }
 `
+
 const CapabilitiesGallery = styled.div`
   position: relative;
   padding-bottom: 200px;
@@ -62,6 +78,9 @@ const GalleryImg1 = styled.figure`
   position: relative;
   width: 45%;
   left: -24px;
+  &:hover {
+    z-index: 3;
+  }
   ${props => props.theme.breakpoints.down("sm")} {
     width: 50%;
     left: 0;
@@ -76,6 +95,9 @@ const GalleryImg2 = styled.figure`
   width: 45%;
   left: 300px;
   right: unset;
+  &:hover {
+    z-index: 3;
+  }
   ${props => props.theme.breakpoints.down("sm")} {
     width: 65%;
     left: unset;
@@ -90,6 +112,9 @@ const GalleryImg3 = styled.figure`
   position: absolute;
   top: 200px;
   right: -24px;
+  &:hover {
+    z-index: 3;
+  }
   ${props => props.theme.breakpoints.down("sm")} {
     width: 65%;
     position: relative;
@@ -158,15 +183,15 @@ const CapabilitiesList = ({ number, children }) => {
     </Capability>
   )
 }
-const ClientsList = ({ serviceProvided, children }) => {
+const ClientsList = ({ serviceProvided, children, firstElem }) => {
   const webUp = useMediaQuery("(min-width: 960px)")
   return (
-    <Clients>
+    <Clients firstElem={firstElem}>
       <Typography variant="h3">{children}</Typography>
       {webUp ? (
-        <Typography style={{ fontSize: "1.125rem" }}>
+        <ClientServiceProvided style={{ fontSize: "1.125rem" }}>
           {serviceProvided}
-        </Typography>
+        </ClientServiceProvided>
       ) : (
         <img src={ArrowRight} alt="details" />
       )}
@@ -302,7 +327,7 @@ const IndexPage = () => {
         </Grid>
         <Margin bsm={150} bxs={100} />
         <CapabilitiesGallery>
-          <GalleryImg1>
+          <GalleryImg1 style={{ zIndex: 2 }}>
             <Img fluid={data.capabilities1Img.childImageSharp.fluid} />
             <figcaption style={{ lineHeight: 1.75 }}>001</figcaption>
           </GalleryImg1>
@@ -324,16 +349,39 @@ const IndexPage = () => {
         />
         <Margin bsm={90} bxs={50} />
         <ul>
-          <ClientsList serviceProvided="">PWC</ClientsList>
-          <ClientsList serviceProvided="">McKinsey</ClientsList>
-          <ClientsList serviceProvided="">Virgin</ClientsList>
-          <ClientsList serviceProvided="">Raydiant</ClientsList>
-          <ClientsList serviceProvided="">RND</ClientsList>
-          <ClientsList serviceProvided="">Cisco</ClientsList>
-          <ClientsList serviceProvided="">Testim</ClientsList>
-          <ClientsList serviceProvided="">Gameday</ClientsList>
-          <ClientsList serviceProvided="">Mashreq Bank</ClientsList>
-          <ClientsList serviceProvided="">Credit Europe Bank</ClientsList>
+          <ClientsList
+            serviceProvided="Created website for this agency"
+            firstElem
+          >
+            PWC
+          </ClientsList>
+          <ClientsList serviceProvided="Created website for this agency">
+            McKinsey
+          </ClientsList>
+          <ClientsList serviceProvided="Created website for this agency">
+            Virgin
+          </ClientsList>
+          <ClientsList serviceProvided="Created website for this agency">
+            Raydiant
+          </ClientsList>
+          <ClientsList serviceProvided="Created website for this agency">
+            RND
+          </ClientsList>
+          <ClientsList serviceProvided="Created website for this agency">
+            Cisco
+          </ClientsList>
+          <ClientsList serviceProvided="Created website for this agency">
+            Testim
+          </ClientsList>
+          <ClientsList serviceProvided="Created website for this agency">
+            Gameday
+          </ClientsList>
+          <ClientsList serviceProvided="Created website for this agency">
+            Mashreq Bank
+          </ClientsList>
+          <ClientsList serviceProvided="Created website for this agency">
+            Credit Europe Bank
+          </ClientsList>
         </ul>
       </Margin>
     </Layout>
