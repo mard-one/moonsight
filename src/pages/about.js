@@ -14,6 +14,7 @@ import skolkovoIcon from "../images/recognized-by/skolkovo.svg"
 import mckinseyIcon from "../images/recognized-by/mckinsey.svg"
 import tinkoffIcon from "../images/recognized-by/tinkoff.svg"
 import mashreqIcon from "../images/recognized-by/mashreq.svg"
+import StickerOnText from "../components/stickerOnText"
 
 const organizations = [
   {
@@ -358,8 +359,11 @@ const About = () => {
   return (
     <Layout>
       <HeaderText overline="About Moonsight®">
-        We are a unique team of handpicked designers and developers focused on
-        refining your digital products.
+        We are a unique team of handpicked designers and developers focused on{" "}
+        <StickerOnText text="perfecting" bgColor="rgba(252, 77, 245, 0.68)">
+          refining
+        </StickerOnText>{" "}
+        your digital products.
       </HeaderText>
       <Margin txs={100} bxs={60} bsm={236}>
         <ImgContainer>
@@ -375,9 +379,11 @@ const About = () => {
             <Divider leftText="Who are we?" middleText="" rightText="•" />
             <Margin bsm={80} bxs={40} />
             <Typography variant="h2">
-              We use brains and fancy machines to create brands, products and
-              experiences that help our clients solve problems and seize
-              opportunities.
+              We use brains and fancy machines to create brands, products and{" "}
+              <StickerOnText text="experiences" leftText="✨">
+                experiences
+              </StickerOnText>{" "}
+              that help our clients solve problems and seize opportunities.
             </Typography>
             <Margin bsm={40} bxs={35} />
             <Button as={Link} to="/work">
@@ -396,9 +402,17 @@ const About = () => {
         <Grid container>
           <Grid item xs={12} sm={7}>
             <Typography variant="h3">
-              We work at the intersection of strategy, creativity and technology
-              to hone our usinesses. Partner with us to define your strategy,
-              create exceptional experiences and build your business, by design.
+              We work at the intersection of strategy,{" "}
+              <StickerOnText
+                text="creativity"
+                bgColor="rgba(252, 77, 98, 0.68)"
+                tiltDeg="-7.09deg"
+              >
+                creativity
+              </StickerOnText>{" "}
+              and technology to hone our usinesses. Partner with us to define
+              your strategy, create exceptional experiences and build your
+              business, by design.
             </Typography>
           </Grid>
         </Grid>

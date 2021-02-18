@@ -7,6 +7,7 @@ import { Grid, TextField, Typography } from "@material-ui/core"
 import Margin from "../components/margin"
 import { useStaticQuery } from "gatsby"
 import styled from "styled-components"
+import StickerOnText from "../components/stickerOnText"
 
 const Input = styled.input`
   width: 100%;
@@ -151,9 +152,12 @@ const Contact = () => {
         <Grid container>
           <Grid item xs={12} sm={8}>
             <Typography variant="h3">
-              Perhaps there’s a way your business could benefit from simplifying
-              a process or experience? Please share your thoughts in the form
-              below and we’ll be in touch.
+              Perhaps there’s a way your business{" "}
+              <StickerOnText text="benefit" leftText="💸">
+                could benefit from
+              </StickerOnText>{" "}
+              simplifying a process or experience? Please share your thoughts in
+              the form below and we’ll be in touch.
             </Typography>
           </Grid>
         </Grid>
