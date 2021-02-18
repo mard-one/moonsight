@@ -9,6 +9,121 @@ import { Grid, Hidden, Typography, useMediaQuery } from "@material-ui/core"
 import Margin from "../components/margin"
 import styled from "styled-components"
 import { Fragment } from "react"
+import pwcIcon from "../images/recognized-by/pwc.svg"
+import skolkovoIcon from "../images/recognized-by/skolkovo.svg"
+import mckinseyIcon from "../images/recognized-by/mckinsey.svg"
+import tinkoffIcon from "../images/recognized-by/tinkoff.svg"
+import mashreqIcon from "../images/recognized-by/mashreq.svg"
+
+const organizations = [
+  {
+    name: "pwc",
+    logo: pwcIcon,
+  },
+  {
+    name: "skolkovo",
+    logo: skolkovoIcon,
+  },
+  {
+    name: "mckinsey",
+    logo: mckinseyIcon,
+  },
+  {
+    name: "tinkoff",
+    logo: tinkoffIcon,
+  },
+  {
+    name: "mashreq",
+    logo: mashreqIcon,
+  },
+  {
+    name: "skolkovo",
+    logo: skolkovoIcon,
+  },
+  {
+    name: "pwc",
+    logo: pwcIcon,
+  },
+  {
+    name: "tinkoff",
+    logo: tinkoffIcon,
+  },
+  {
+    name: "mckinsey",
+    logo: mckinseyIcon,
+  },
+  {
+    name: "mashreq",
+    logo: mashreqIcon,
+  },
+]
+const platforms = [
+  { text: "Be", bgColor: "#004FFF", color: "#F2F3F1", number: "4" },
+  { text: "In", bgColor: "#C19F63", color: "#F2F3F1", number: "4" },
+  { text: "Ps", bgColor: "#001E36", color: "#F2F3F1", number: "4" },
+  { text: "Mo", bgColor: "#C19F63", color: "#F2F3F1", number: "24" },
+  { text: "Gr", bgColor: "#C19F63", color: "#F2F3F1", number: "23" },
+  { text: "P", bgColor: "#C4C4C4", color: "#F2F3F1", number: "11" },
+  { text: "Il", bgColor: "#C19F63", color: "#F2F3F1", number: "2" },
+  { text: "Ai", bgColor: "#330000", color: "#FF9A00", number: "4" },
+  { text: "Id", bgColor: "#49021F", color: "#FF3366", number: "120" },
+]
+const influences = [
+  {
+    platform: "Behance",
+    views: "13,000,000",
+    viewType: "Views of our Сases",
+  },
+  {
+    platform: "Dribbble",
+    views: "11,121,323",
+    viewType: "Views on our Shots",
+  },
+  {
+    platform: "Instagram",
+    views: "32,322,234",
+    viewType: "Views on our Posts",
+  },
+]
+const capabilities = [
+  {
+    title: "Branding",
+    list: [
+      "Visual benchmarking",
+      "Style exploration",
+      "Brand strategy",
+      "Identity development",
+      "Visual language",
+      "Art direction",
+      "Brand guidelines",
+    ],
+  },
+  {
+    title: "Design",
+    list: [
+      "Marketing websites",
+      "Digital products",
+      "Dashboards & User Interfaces",
+      "Mobile apps",
+      "Design systems",
+      "Prototyping & Testing",
+      "Illustrations",
+      "Animations",
+    ],
+  },
+  {
+    title: "Development",
+    list: [
+      "Front-end development",
+      "Website development",
+      "Responsive interface development",
+      "Angular, Vue.js, React framework's usage",
+      "Content Management integrations",
+      "Webflow pages, CMS build",
+      "Custom Wordpress Theme / Gutenberg Blocks",
+    ],
+  },
+]
 
 export const ImgContainer = styled.div`
   ${props => props.theme.breakpoints.down("sm")} {
@@ -142,6 +257,87 @@ const RecognizedByOrganization = ({ logo, name }) => {
     </div>
   )
 }
+const RecogFlagSingleLine = ({ platforms }) =>
+  platforms.map((platform, index) => {
+    const { bgColor, color, number, text } = platform
+    return (
+      <RecognitionFlag
+        key={text}
+        text={text}
+        bgColor={bgColor}
+        color={color}
+        number={number}
+        lastElem={index === platforms.length - 1}
+      />
+    )
+  })
+const RecogFlagMultiLine = ({ platforms }) => (
+  <div>
+    <div
+      style={{
+        display: "flex",
+        justifyContent: "flex-end",
+        borderTop: "1px solid rgba(255, 255, 255, 0.29)",
+      }}
+    >
+      {platforms.map(
+        (platform, index) =>
+          index <= 3 && (
+            <RecognitionFlag
+              key={platform.text}
+              text={platform.text}
+              bgColor={platform.bgColor}
+              color={platform.color}
+              number={platform.number}
+            />
+          )
+      )}
+    </div>
+    <div
+      style={{
+        display: "flex",
+        justifyContent: "flex-start",
+        marginTop: 40,
+        borderTop: "1px solid rgba(255, 255, 255, 0.29)",
+      }}
+    >
+      {platforms.map(
+        (platform, index) =>
+          index >= 3 &&
+          index <= 5 && (
+            <RecognitionFlag
+              key={platform.text}
+              text={platform.text}
+              bgColor={platform.bgColor}
+              color={platform.color}
+              number={platform.number}
+            />
+          )
+      )}
+    </div>
+    <div
+      style={{
+        display: "flex",
+        justifyContent: "flex-end",
+        marginTop: 40,
+        borderTop: "1px solid rgba(255, 255, 255, 0.29)",
+      }}
+    >
+      {platforms.map(
+        (platform, index) =>
+          index >= 6 && (
+            <RecognitionFlag
+              key={platform.text}
+              text={platform.text}
+              bgColor={platform.bgColor}
+              color={platform.color}
+              number={platform.number}
+            />
+          )
+      )}
+    </div>
+  </div>
+)
 
 const About = () => {
   const tabletUp = useMediaQuery("(min-width: 600px)")
@@ -154,128 +350,8 @@ const About = () => {
           }
         }
       }
-      recognizedByJson {
-        recognizedByOrganizations {
-          logo {
-            publicURL
-          }
-          name
-        }
-      }
-      platformsJson {
-        platforms {
-          bgColor
-          color
-          number
-          text
-        }
-      }
-      influencesJson {
-        influences {
-          platform
-          viewType
-          views
-        }
-      }
-      capabilitiesJson {
-        capabilities {
-          list
-          title
-        }
-      }
     }
   `)
-  const organizations = data.recognizedByJson.recognizedByOrganizations
-  const platforms = data.platformsJson.platforms
-  const influences = data.influencesJson.influences
-  const capabilities = data.capabilitiesJson.capabilities
-
-  const getRecognitionFlags = () => {
-    return platforms ? (
-      platforms.map((platform, index) => {
-        const { bgColor, color, number, text } = platform
-        return (
-          <RecognitionFlag
-            key={text}
-            text={text}
-            bgColor={bgColor}
-            color={color}
-            number={number}
-            lastElem={index === platforms.length - 1}
-          />
-        )
-      })
-    ) : (
-      <></>
-    )
-  }
-  const getMultiLineRecFlags = () => (
-    <div>
-      <div
-        style={{
-          display: "flex",
-          justifyContent: "flex-end",
-          borderTop: "1px solid rgba(255, 255, 255, 0.29)",
-        }}
-      >
-        {platforms.map(
-          (platform, index) =>
-            index <= 3 && (
-              <RecognitionFlag
-                key={platform.text}
-                text={platform.text}
-                bgColor={platform.bgColor}
-                color={platform.color}
-                number={platform.number}
-              />
-            )
-        )}
-      </div>
-      <div
-        style={{
-          display: "flex",
-          justifyContent: "flex-start",
-          marginTop: 40,
-          borderTop: "1px solid rgba(255, 255, 255, 0.29)",
-        }}
-      >
-        {platforms.map(
-          (platform, index) =>
-            index >= 3 &&
-            index <= 5 && (
-              <RecognitionFlag
-                key={platform.text}
-                text={platform.text}
-                bgColor={platform.bgColor}
-                color={platform.color}
-                number={platform.number}
-              />
-            )
-        )}
-      </div>
-      <div
-        style={{
-          display: "flex",
-          justifyContent: "flex-end",
-          marginTop: 40,
-          borderTop: "1px solid rgba(255, 255, 255, 0.29)",
-        }}
-      >
-        {platforms.map(
-          (platform, index) =>
-            index >= 6 && (
-              <RecognitionFlag
-                key={platform.text}
-                text={platform.text}
-                bgColor={platform.bgColor}
-                color={platform.color}
-                number={platform.number}
-              />
-            )
-        )}
-      </div>
-    </div>
-  )
 
   return (
     <Layout>
@@ -386,23 +462,19 @@ const About = () => {
         </Grid>
         <div style={{ overflow: "hidden" }}>
           <Grid container spacing={6}>
-            {influences ? (
-              influences.map(influence => {
-                const { platform, views, viewType } = influence
-                return (
-                  <Grid key={platform} item xs={12} sm={4}>
-                    <Influence
-                      key={platform}
-                      platform={platform}
-                      views={views}
-                      viewType={viewType}
-                    />
-                  </Grid>
-                )
-              })
-            ) : (
-              <></>
-            )}
+            {influences.map(influence => {
+              const { platform, views, viewType } = influence
+              return (
+                <Grid key={platform} item xs={12} sm={4}>
+                  <Influence
+                    key={platform}
+                    platform={platform}
+                    views={views}
+                    viewType={viewType}
+                  />
+                </Grid>
+              )
+            })}
           </Grid>
         </div>
       </Margin>
@@ -411,7 +483,7 @@ const About = () => {
           <Divider leftText="Recognition" middleText="" rightText="005" />
           <Hidden smDown implementation="css">
             <div style={{ position: "absolute", right: 0, top: 1 }}>
-              {getRecognitionFlags()}
+              <RecogFlagSingleLine platforms={platforms} />
             </div>
           </Hidden>
         </div>
@@ -425,7 +497,7 @@ const About = () => {
         </Grid>
         <Margin bxs={60} bsm={100} bmd={200} />
         <Hidden mdUp implementation="css">
-          {getMultiLineRecFlags()} {/* // TODO: improve / refactor */}
+          <RecogFlagMultiLine platforms={platforms} />
           <Margin bxs={140} bsm={150} />
         </Hidden>
         <Grid container justify="center">
@@ -438,20 +510,16 @@ const About = () => {
                 gridAutoRows: "180px",
               }}
             >
-              {organizations ? (
-                organizations.map((organization, index) => {
-                  const { name, logo } = organization
-                  return (
-                    <RecognizedByOrganization
-                      key={name + index}
-                      logo={logo.publicURL}
-                      name={name}
-                    />
-                  )
-                })
-              ) : (
-                <></>
-              )}
+              {organizations.map((organization, index) => {
+                const { name, logo } = organization
+                return (
+                  <RecognizedByOrganization
+                    key={name + index}
+                    logo={logo}
+                    name={name}
+                  />
+                )
+              })}
             </div>
           </Grid>
         </Grid>

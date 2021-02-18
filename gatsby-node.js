@@ -6,7 +6,7 @@ exports.createPages = ({ actions }) => {
   const { createPage } = actions
 
   const template = path.resolve(`src/templates/open-positions.js`)
-  console.log("data", data)
+
   data.openPositions.forEach((position) => {
 
     createPage({

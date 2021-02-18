@@ -52,7 +52,6 @@ const CurrentOpening = ({ type, children, linkTo }) => {
 
 const Career = () => {
   const openPositions = JsonData.openPositions
-  console.log("openPositions", openPositions)
   return (
     <Layout ctaText="Mind joing Superstar Family? Let’s get to work. ">
       <HeaderText overline="Careers/Opportunities">

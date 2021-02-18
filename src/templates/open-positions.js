@@ -6,7 +6,6 @@ import Margin from "../components/margin"
 import Layout from "../layout"
 
 const OpenPositions = ({ pageContext }) => {
-  console.log("pageContext", pageContext)
   const data = pageContext.data
   return (
     <Layout hideCTA>

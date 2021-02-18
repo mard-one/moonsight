@@ -70,7 +70,6 @@ const Layout = ({
       }
     }
   `)
-  console.log("theme", theme)
   return (
     <StylesProvider injectFirst>
       <SCThemeProvider theme={theme}>
