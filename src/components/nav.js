@@ -1,7 +1,7 @@
 import { Container } from "@material-ui/core"
 import { Link } from "gatsby"
 import PropTypes from "prop-types"
-import React from "react"
+import React, { useEffect, useState } from "react"
 import logo from "../images/logo.svg"
 import styled, { keyframes } from "styled-components"
 import Button from "./button"
@@ -58,6 +58,7 @@ const MenuLink = styled.li`
     width: 100%;
     height: 1px;
     background-color: white;
+    animation-duration: ${props => !props.startAnimation && "0s !important;"}
     animation: ${traceOut} 0.25s cubic-bezier(0.28, 0.44, 0.49, 1) 0s forwards;
   }
   & a:hover::after,
@@ -98,29 +99,35 @@ const CustomLink = ({ title, link }) => {
   )
 }
 
-const Nav = () => (
-  <Container maxWidth="lg">
-    <NavBar>
-      <Link to="/">
-        <img src={logo} alt="logo" />
-      </Link>
-      <MenuLinks>
-        <CustomLink title="Work" link="/work" />
-        <CustomLink title="About Us" link="/about" />
-        <CustomLink title="We are Hiring" link="/career" />
-        <CustomLink title="Contact Us" link="/contact" />
-      </MenuLinks>
-      <Link to="/contact">
-        <ResponsiveBtn>Write Us Something</ResponsiveBtn>
-      </Link>
-      <Burger>
-        <span />
-        <span />
-        <span />
-      </Burger>
-    </NavBar>
-  </Container>
-)
+const Nav = () => {
+  const [startAnimation, setStartAnimation] = useState(false)
+  useEffect(() => {
+    setStartAnimation(true)
+  }, [])
+  return (
+    <Container maxWidth="lg">
+      <NavBar>
+        <Link to="/">
+          <img src={logo} alt="logo" />
+        </Link>
+        <MenuLinks startAnimation={startAnimation}>
+          <CustomLink title="Work" link="/work" />
+          <CustomLink title="About Us" link="/about" />
+          <CustomLink title="We are Hiring" link="/career" />
+          <CustomLink title="Contact Us" link="/contact" />
+        </MenuLinks>
+        <Link to="/contact">
+          <ResponsiveBtn>Write Us Something</ResponsiveBtn>
+        </Link>
+        <Burger>
+          <span />
+          <span />
+          <span />
+        </Burger>
+      </NavBar>
+    </Container>
+  )
+}
 
 // Nav.propTypes = {
 //   siteTitle: PropTypes.string,
