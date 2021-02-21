@@ -6,6 +6,7 @@ exports.onCreateNode = ({ node, actions, getNode }) => {
   const { createNodeField } = actions
   if (node.internal.type === "Mdx") {
     const value = createFilePath({ node, getNode })
+    console.log("value", value)
     createNodeField({
       name: "slug",
       node,
@@ -33,26 +34,24 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
         edges {
           node {
             id
-            fields {
-              slug
-            }
+            slug
           }
         }
       }
     }
   `)
-
   if (result.errors) {
     reporter.panicOnBuild('🚨  ERROR: Loading "createPages" query')
   }
-  const projects = result.data.allMdx.edges
-  projects.forEach(({ node }, index) => {
+  console.log("result", result.data.allMdx.edges[0].node)
+  result.data.allMdx.edges.forEach(edge => {
+    console.log("edge", edge)
+    console.log("slug path", "/" + edge.node.slug + "/")
     createPage({
-      path: node.fields.slug,
+      path: "/" + edge.node.slug,
       component: path.resolve(`./src/layout/projects.js`),
       context: {
-        id: node.id,
-        slug: node.fields.slug,
+        id: edge.node.id,
       },
     })
   })

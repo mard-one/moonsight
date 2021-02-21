@@ -16,6 +16,14 @@ module.exports = {
     {
       resolve: `gatsby-source-filesystem`,
       options: {
+        name: `pages`,
+        path: `${__dirname}/src/pages/`,
+      },
+    },
+    `gatsby-plugin-mdx`,
+    {
+      resolve: `gatsby-source-filesystem`,
+      options: {
         name: `images`,
         path: `${__dirname}/src/images/`,
       },
@@ -25,27 +33,6 @@ module.exports = {
       resolve: `gatsby-source-filesystem`,
       options: {
         path: `${__dirname}/src/data/`,
-      },
-    },
-    {
-      resolve: "gatsby-source-filesystem",
-      options: {
-        name: "projects",
-        path: `${__dirname}/src/pages/projects/`,
-      },
-    },
-    {
-      resolve: `gatsby-plugin-mdx`,
-      options: {
-        gatsbyRemarkPlugins: [
-          {
-            resolve: `gatsby-remark-images`,
-            options: {
-              maxWidth: 1230,
-              linkImagesToOriginal: false,
-            },
-          },
-        ],
       },
     },
     `gatsby-transformer-sharp`,

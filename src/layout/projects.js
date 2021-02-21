@@ -22,22 +22,21 @@ import Paragraph from "../components/projects/paragraph"
 import ProjectDesc from "../components/projects/projectDesc"
 import Image from "../components/projects/image"
 
-const shortcodes = {
-  Section,
-  Grid,
-  Paragraph,
-  ProjectDesc,
-  Image,
-  Margin,
-  Typography,
-}
-
 const Layout = props => {
   const { data } = props
   const frontMatter = data.mdx.frontmatter
   console.log("props", props)
   console.log("frontMatter", frontMatter)
   console.log("data", data)
+  const shortcodes = {
+    Section,
+    Grid,
+    Paragraph,
+    ProjectDesc,
+    Image,
+    Margin,
+    Typography,
+  }
   return (
     <StylesProvider injectFirst>
       <SCThemeProvider theme={theme}>
