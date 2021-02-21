@@ -5,7 +5,7 @@ import Button from "../components/button"
 import Divider from "../components/divider"
 import { Grid, TextField, Typography } from "@material-ui/core"
 import Margin from "../components/margin"
-import { useStaticQuery } from "gatsby"
+import { useStaticQuery, graphql } from "gatsby"
 import styled from "styled-components"
 import StickerOnText from "../components/stickerOnText"
 
@@ -20,7 +20,7 @@ const Input = styled.input`
   background-color: transparent;
   color: white;
   border-bottom: 1px solid #fff;
-  font-size: 18px;
+  font-size: 1.125rem;
   font-family: "Graphik", Helvetica, Arial, sans-serif;
   &:focus {
     outline: none;
@@ -33,8 +33,8 @@ const LabelFloat = styled.label`
   transform: translate(0, 24px) scale(1);
   transition: transform 200ms cubic-bezier(0, 0, 0.2, 1) 0ms;
   font-weight: 500;
-  font-size: 14px;
-  line-height: 200%;
+  font-size: 0.875rem;
+  line-height: 2;
   text-transform: uppercase;
   color: #f2f3f1;
   ${props =>
@@ -100,15 +100,41 @@ const Contact = () => {
   const [detail, setDetail] = useState("")
   const data = useStaticQuery(graphql`
     query {
-      projectsJson {
-        projects {
-          type
+      allFile(filter: { sourceInstanceName: { eq: "projects" } }) {
+        nodes {
+          id
+          childMdx {
+            frontmatter {
+              name
+              mainCategory
+              workPageConfig {
+                span
+                thumbnailLink {
+                  childImageSharp {
+                    fluid(maxWidth: 600) {
+                      ...GatsbyImageSharpFluid
+                    }
+                  }
+                }
+              }
+            }
+            slug
+          }
         }
       }
     }
   `)
-  const projects = data.projectsJson.projects
-  const allProjectTypes = [...new Set(projects.map(project => project.type))]
+  console.log("data", data)
+  const projects = data.allFile.nodes
+  console.log("projects", projects)
+  const allProjectTypes = [
+    ...new Set(
+      projects.map(project => {
+        console.log("project", project.childMdx)
+        return project.childMdx.frontmatter.mainCategory
+      })
+    ),
+  ]
   const [selProjTypes, setSelProjTypes] = useState([])
 
   const handleBudgetChange = event => {
@@ -276,8 +302,8 @@ const Contact = () => {
                 <div
                   style={{
                     marginTop: 8,
-                    fontSize: "18px",
-                    lineHeight: "28px",
+                    fontSize: "1.125rem",
+                    lineHeight: "1.555",
                     color: "rgba(242, 243, 241, 0.54)",
                   }}
                 >

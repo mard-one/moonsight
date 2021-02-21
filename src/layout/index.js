@@ -15,7 +15,7 @@ import Nav from "../components/nav"
 import Cta from "../components/cta"
 import Footer from "../components/footer"
 
-const theme = createMuiTheme({
+export const theme = createMuiTheme({
   typography: {
     fontFamily: "Graphik, Helvetica, Arial, sans-serif",
   },
@@ -40,6 +40,11 @@ const theme = createMuiTheme({
       },
       body1: {
         fontSize: "1.5rem",
+        fontWeight: 400,
+        lineHeight: 1.15,
+      },
+      body2: {
+        fontSize: "1.125rem",
         fontWeight: 400,
         lineHeight: 1.15,
       },

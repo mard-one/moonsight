@@ -1,9 +1,7 @@
 import { Grid, Typography, useMediaQuery } from "@material-ui/core"
-import { useStaticQuery, graphql } from "gatsby"
+import { useStaticQuery, graphql, Link } from "gatsby"
 import Img from "gatsby-image"
-import React from "react"
-import { Fragment } from "react"
-import { useState } from "react"
+import React, { useEffect, Fragment, useState } from "react"
 import Margin from "../components/margin"
 import Button from "../components/button"
 import HeaderText from "../components/headerText"
@@ -29,34 +27,55 @@ const ProjectsFilter = styled.div`
   }
 `
 
-
-const Work = ({location}) => {
-  // let params = new URLSearchParams(location.search);
-  // let filter = params.get("filter")
-
+const Work = ({ location }) => {
   const tabletUp = useMediaQuery("(min-width: 600px)")
-  const [selProjTypes, setSelProjTypes] = useState([])
   const data = useStaticQuery(graphql`
     query {
-      projectsJson {
-        projects {
+      allFile(filter: { sourceInstanceName: { eq: "projects" } }) {
+        nodes {
           id
-          imgLink {
-            childImageSharp {
-              fluid(maxHeight: 550) {
-                ...GatsbyImageSharpFluid_withWebp
+          childMdx {
+            frontmatter {
+              name
+              mainCategory
+              workPageConfig {
+                span
+                thumbnailLink {
+                  childImageSharp {
+                    fluid(maxWidth: 600) {
+                      ...GatsbyImageSharpFluid
+                    }
+                  }
+                }
               }
             }
+            slug
           }
-          name
-          span
-          type
         }
       }
     }
   `)
-  const projects = data.projectsJson.projects
-  const allProjectTypes = [...new Set(projects.map(project => project.type))]
+  console.log("data", data)
+  const projects = data.allFile.nodes
+  console.log("projects", projects)
+  const allProjectTypes = [
+    ...new Set(
+      projects.map(project => {
+        console.log("project", project.childMdx)
+        return project.childMdx.frontmatter.mainCategory
+      })
+    ),
+  ]
+
+  const [selProjTypes, setSelProjTypes] = useState([]) // TODO: refactor. make reusable on contacts page and make filtering case insensative and sync checked buttons and query param
+
+  useEffect(() => {
+    let params = new URLSearchParams(location.search)
+    let filter = params.get("filter")
+    allProjectTypes.includes(filter) && setSelProjTypes(filter)
+  }, [])
+  console.log("allProjectTypes", allProjectTypes)
+  console.log("selProjTypes", selProjTypes)
 
   const handleSelectAll = event => {
     if (event.target.checked) {
@@ -136,13 +155,28 @@ const Work = ({location}) => {
         <div style={{ overflow: "hidden" }}>
           <Grid container spacing={tabletUp ? 5 : 10}>
             {projects.map(project => {
+              console.log("inner project", project)
               return !selProjTypes.length ||
-                selProjTypes.includes(project.type) ? (
-                <Grid item xs={12} sm={project.span} key={project.id}>
-                  <Img fluid={project.imgLink.childImageSharp.fluid} />
+                selProjTypes.includes(
+                  project.childMdx.frontmatter.mainCategory
+                ) ? (
+                <Grid
+                  item
+                  xs={12}
+                  sm={project.childMdx.frontmatter.workPageConfig.span}
+                  key={"/projects/" + project.childMdx.slug}
+                >
+                  <Link to={"/projects/" + project.childMdx.slug}>
+                    <Img
+                      fluid={
+                        project.childMdx.frontmatter.workPageConfig
+                          .thumbnailLink.childImageSharp.fluid
+                      }
+                    />
+                  </Link>
                 </Grid>
               ) : (
-                <Fragment key={project.id} />
+                <Fragment key={"/projects/" + project.childMdx.slug} />
               )
             })}
           </Grid>

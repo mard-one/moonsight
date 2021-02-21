@@ -11,10 +11,10 @@ import styled from "styled-components"
 
 const ContentText = styled(Typography)`
   color: rgba(255, 255, 255, 0.8);
-  font-size: 22px;
+  font-size: 1.375rem;
   line-height: 1.45;
   ${props => props.theme.breakpoints.down("sm")} {
-    font-size: 18px;
+    font-size: 1.125rem;
     line-height: 1.55;
   }
 `
@@ -163,7 +163,10 @@ const PrivacyPolicy = () => {
             {content.map(c => {
               return (
                 <Margin bxs={60} bsm={100}>
-                  <Typography variant="overline" style={{ fontSize: 18 }}>
+                  <Typography
+                    variant="overline"
+                    style={{ ffontSize: "1.125rem" }}
+                  >
                     {c.title}
                   </Typography>
                   <Margin bxs={20}></Margin>

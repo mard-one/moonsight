@@ -3,7 +3,7 @@ import React from "react"
 import Button from "../components/button"
 import Divider from "../components/divider"
 import Margin from "../components/margin"
-import Layout from "../layout"
+import Layout from "."
 
 const OpenPositions = ({ pageContext }) => {
   const data = pageContext.data
@@ -61,7 +61,7 @@ const OpenPositions = ({ pageContext }) => {
             </Typography>
             <Margin bmd={50} bxs={1} />
             <Button>Telegram</Button>
-            <Button style={{margin: '0 16px'}}>Instagram</Button>
+            <Button style={{ margin: "0 16px" }}>Instagram</Button>
             <Button>Email, but...</Button>
           </Grid>
         </Grid>

@@ -1,6 +1,7 @@
 import styled from "styled-components"
 
 const Margin = styled.div`
+  width: 100%;
   ${props => props.theme.breakpoints.up("xs")} {
     ${props => props.txs && `margin-top: ${props.txs}px;`}
     ${props => props.bxs && `margin-bottom: ${props.bxs}px;`}

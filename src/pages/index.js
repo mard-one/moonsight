@@ -217,23 +217,6 @@ const IndexPage = () => {
       }
     }
     query {
-      project1Img: file(relativePath: { eq: "projects/wellton-park.jpg" }) {
-        ...projectImages
-      }
-      project2Img: file(relativePath: { eq: "projects/meloman-video.jpg" }) {
-        ...projectImages
-      }
-      project3Img: file(
-        relativePath: { eq: "projects/tonkotsu-visual-identity.jpg" }
-      ) {
-        ...projectImages
-      }
-      project4Img: file(relativePath: { eq: "projects/kutarq.jpg" }) {
-        ...projectImages
-      }
-      project5Img: file(relativePath: { eq: "projects/water.jpg" }) {
-        ...projectImages
-      }
       capabilities1Img: file(
         relativePath: { eq: "capabilities/picture1.jpg" }
       ) {
@@ -249,9 +232,30 @@ const IndexPage = () => {
       ) {
         ...capabilitiesImages
       }
+      allFile(filter: { sourceInstanceName: { eq: "projects" } }) {
+        nodes {
+          id
+          childMdx {
+            frontmatter {
+              name
+              mainPageConfig {
+                isVisible
+                thumbnailLink {
+                  ...projectImages
+                }
+              }
+            }
+            slug
+          }
+        }
+      }
     }
   `)
-
+  console.log("data", data)
+  const projects = data.allFile.nodes.filter(
+    project => project.childMdx.frontmatter.mainPageConfig.isVisible
+  )
+  console.log("projects", projects)
   return (
     <Layout>
       {/* <SEO title="Home" />*/}
@@ -269,13 +273,42 @@ const IndexPage = () => {
       <Margin as="section" bsm={240} bxs={100}>
         <Projects>
           <ProjectsGrid>
-            <Img fluid={data.project1Img.childImageSharp.fluid} />
-            <Img fluid={data.project3Img.childImageSharp.fluid} />
+            {projects.map((project, index) => {
+              return !(index % 2) ? (
+                <Link
+                  key={"/projects/" + project.childMdx.slug}
+                  to={"/projects/" + project.childMdx.slug}
+                >
+                  <Img
+                    fluid={
+                      project.childMdx.frontmatter.mainPageConfig.thumbnailLink
+                        .childImageSharp.fluid
+                    }
+                  />
+                </Link>
+              ) : (
+                <></>
+              )
+            })}
           </ProjectsGrid>
           <ProjectsGrid>
-            <Img fluid={data.project2Img.childImageSharp.fluid} />
-            <Img fluid={data.project4Img.childImageSharp.fluid} />
-            <Img fluid={data.project5Img.childImageSharp.fluid} />
+            {projects.map((project, index) => {
+              return index % 2 ? (
+                <Link
+                  key={"/projects/" + project.childMdx.slug}
+                  to={"/projects/" + project.childMdx.slug}
+                >
+                  <Img
+                    fluid={
+                      project.childMdx.frontmatter.mainPageConfig.thumbnailLink
+                        .childImageSharp.fluid
+                    }
+                  />
+                </Link>
+              ) : (
+                <></>
+              )
+            })}
           </ProjectsGrid>
         </Projects>
       </Margin>
@@ -313,14 +346,14 @@ const IndexPage = () => {
         <Grid container>
           <Grid item xs={false} sm={4} />
           <Grid item xs={12} sm={8}>
-            <Link to="/work?filter=branding">
+            <Link to="/work?filter=Branding">
               {/* TODO: make these project types dynamic */}
               <CapabilitiesList number="01">Branding</CapabilitiesList>
             </Link>
-            <Link to="/work?filter=desing">
+            <Link to="/work?filter=Design">
               <CapabilitiesList number="02">Design</CapabilitiesList>
             </Link>
-            <Link to="/work?filter=development">
+            <Link to="/work?filter=Development">
               <CapabilitiesList number="03">Development</CapabilitiesList>
             </Link>
           </Grid>

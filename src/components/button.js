@@ -33,7 +33,8 @@ const Button = styled.a`
 
   ${props =>
     !props.notSelectable &&
-    `&:hover {
+    `
+  &:hover {
     color: #030303;
     border-color: transparent;
   }
