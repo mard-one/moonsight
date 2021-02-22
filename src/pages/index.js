@@ -232,10 +232,14 @@ const IndexPage = () => {
       ) {
         ...capabilitiesImages
       }
-      allFile(filter: { sourceInstanceName: { eq: "projects" } }) {
-        nodes {
-          id
-          childMdx {
+      allMdx(
+        filter: {
+          slug: { regex: "/projects/.*/" }
+          frontmatter: { mainPageConfig: { isVisible: { eq: true } } }
+        }
+      ) {
+        edges {
+          node {
             frontmatter {
               name
               mainPageConfig {
@@ -252,9 +256,7 @@ const IndexPage = () => {
     }
   `)
   console.log("data", data)
-  const projects = data.allFile.nodes.filter(
-    project => project.childMdx.frontmatter.mainPageConfig.isVisible
-  )
+  const projects = data.allMdx.edges
   console.log("projects", projects)
   return (
     <Layout>
@@ -273,15 +275,12 @@ const IndexPage = () => {
       <Margin as="section" bsm={240} bxs={100}>
         <Projects>
           <ProjectsGrid>
-            {projects.map((project, index) => {
+            {projects.map(({ node }, index) => {
               return !(index % 2) ? (
-                <Link
-                  key={"/projects/" + project.childMdx.slug}
-                  to={"/projects/" + project.childMdx.slug}
-                >
+                <Link key={"/" + node.slug} to={"/" + node.slug}>
                   <Img
                     fluid={
-                      project.childMdx.frontmatter.mainPageConfig.thumbnailLink
+                      node.frontmatter.mainPageConfig.thumbnailLink
                         .childImageSharp.fluid
                     }
                   />
@@ -292,15 +291,15 @@ const IndexPage = () => {
             })}
           </ProjectsGrid>
           <ProjectsGrid>
-            {projects.map((project, index) => {
+            {projects.map(({ node }, index) => {
               return index % 2 ? (
                 <Link
-                  key={"/projects/" + project.childMdx.slug}
-                  to={"/projects/" + project.childMdx.slug}
+                  key={"/" + node.slug}
+                  to={"/" + node.slug}
                 >
                   <Img
                     fluid={
-                      project.childMdx.frontmatter.mainPageConfig.thumbnailLink
+                      node.frontmatter.mainPageConfig.thumbnailLink
                         .childImageSharp.fluid
                     }
                   />

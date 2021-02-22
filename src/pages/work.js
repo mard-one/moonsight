@@ -31,38 +31,35 @@ const Work = ({ location }) => {
   const tabletUp = useMediaQuery("(min-width: 600px)")
   const data = useStaticQuery(graphql`
     query {
-      allFile(filter: { sourceInstanceName: { eq: "projects" } }) {
+      allMdx(filter: { slug: { regex: "/projects/.*/" } }) {
         nodes {
-          id
-          childMdx {
-            frontmatter {
-              name
-              mainCategory
-              workPageConfig {
-                span
-                thumbnailLink {
-                  childImageSharp {
-                    fluid(maxWidth: 600) {
-                      ...GatsbyImageSharpFluid
-                    }
+          frontmatter {
+            name
+            mainCategory
+            workPageConfig {
+              span
+              thumbnailLink {
+                childImageSharp {
+                  fluid(maxWidth: 600) {
+                    ...GatsbyImageSharpFluid
                   }
                 }
               }
             }
-            slug
           }
+          slug
         }
       }
     }
   `)
   console.log("data", data)
-  const projects = data.allFile.nodes
+  const projects = data.allMdx.nodes
   console.log("projects", projects)
   const allProjectTypes = [
     ...new Set(
       projects.map(project => {
-        console.log("project", project.childMdx)
-        return project.childMdx.frontmatter.mainCategory
+        console.log("project", project)
+        return project.frontmatter.mainCategory
       })
     ),
   ]
@@ -157,26 +154,24 @@ const Work = ({ location }) => {
             {projects.map(project => {
               console.log("inner project", project)
               return !selProjTypes.length ||
-                selProjTypes.includes(
-                  project.childMdx.frontmatter.mainCategory
-                ) ? (
+                selProjTypes.includes(project.frontmatter.mainCategory) ? (
                 <Grid
                   item
                   xs={12}
-                  sm={project.childMdx.frontmatter.workPageConfig.span}
-                  key={"/projects/" + project.childMdx.slug}
+                  sm={project.frontmatter.workPageConfig.span}
+                  key={"/" + project.slug}
                 >
-                  <Link to={"/projects/" + project.childMdx.slug}>
+                  <Link to={"/" + project.slug}>
                     <Img
                       fluid={
-                        project.childMdx.frontmatter.workPageConfig
-                          .thumbnailLink.childImageSharp.fluid
+                        project.frontmatter.workPageConfig.thumbnailLink
+                          .childImageSharp.fluid
                       }
                     />
                   </Link>
                 </Grid>
               ) : (
-                <Fragment key={"/projects/" + project.childMdx.slug} />
+                <Fragment key={"/" + project.slug} />
               )
             })}
           </Grid>
