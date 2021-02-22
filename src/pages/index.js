@@ -4,12 +4,10 @@ import Img from "gatsby-image"
 
 import Layout from "../layout"
 import SEO from "../components/seo"
-import Cta from "../components/cta"
-import Footer from "../components/footer"
 import handEmoji from "../images/hand-emoji.svg"
 import Button from "../components/button"
 import Divider from "../components/divider"
-import { Grid, Typography, useMediaQuery } from "@material-ui/core"
+import { Grid, Typography } from "@material-ui/core"
 import ArrowRight from "../images/right-arrow.svg"
 import Margin from "../components/margin"
 import styled from "styled-components"
@@ -41,9 +39,28 @@ const Capability = styled.div`
     border-radius: 8px;
   }
 `
+const CapabilityNumber = styled(Typography)`
+  font-weight: 400;
+  vertical-align: top;
+  font-size: 1.125rem;
+  ${props => props.theme.breakpoints.down("xs")} {
+    vertical-align: baseline;
+    font-size: 0.875rem;
+  }
+`
 const ClientServiceProvided = styled(Typography)`
   opacity: 0;
   transition: all 0.2s ease-in-out;
+  display: initial;
+  ${props => props.theme.breakpoints.down("sm")} {
+    display: none;
+  }
+`
+const ClientServiceLink = styled.img`
+  display: none;
+  ${props => props.theme.breakpoints.down("sm")} {
+    display: initial;
+  }
 `
 const Clients = styled.li`
   display: flex;
@@ -157,19 +174,9 @@ const GreetingBadge = ({ emoji, children }) => {
   )
 }
 const CapabilitiesList = ({ number, children }) => {
-  const tabletUp = useMediaQuery("(min-width: 600px)")
   return (
     <Capability>
-      <Typography
-        variant="overline"
-        style={{
-          verticalAlign: tabletUp ? "top" : "baseline",
-          fontSize: tabletUp ? "1.125rem" : "0.875rem",
-          fontWeight: 400,
-        }}
-      >
-        {number}
-      </Typography>
+      <CapabilityNumber variant="overline">{number}</CapabilityNumber>
       <Typography
         variant="h1"
         style={{
@@ -184,23 +191,18 @@ const CapabilitiesList = ({ number, children }) => {
   )
 }
 const ClientsList = ({ serviceProvided, children, firstElem }) => {
-  const webUp = useMediaQuery("(min-width: 960px)")
   return (
     <Clients firstElem={firstElem}>
       <Typography variant="h3">{children}</Typography>
-      {webUp ? (
-        <ClientServiceProvided style={{ fontSize: "1.125rem" }}>
-          {serviceProvided}
-        </ClientServiceProvided>
-      ) : (
-        <img src={ArrowRight} alt="details" />
-      )}
+      <ClientServiceProvided style={{ fontSize: "1.125rem" }}>
+        {serviceProvided}
+      </ClientServiceProvided>
+      <ClientServiceLink src={ArrowRight} alt="details" />
     </Clients>
   )
 }
 
 const IndexPage = () => {
-  const tabletUp = useMediaQuery("(min-width: 600px)")
   const data = useStaticQuery(graphql`
     fragment projectImages on File {
       childImageSharp {
@@ -293,10 +295,7 @@ const IndexPage = () => {
           <ProjectsGrid>
             {projects.map(({ node }, index) => {
               return index % 2 ? (
-                <Link
-                  key={"/" + node.slug}
-                  to={"/" + node.slug}
-                >
+                <Link key={"/" + node.slug} to={"/" + node.slug}>
                   <Img
                     fluid={
                       node.frontmatter.mainPageConfig.thumbnailLink
@@ -329,7 +328,7 @@ const IndexPage = () => {
       <Margin as="section" bsm={70} bxs={100}>
         <Divider
           leftText="Capabilities"
-          middleText={tabletUp ? "section #" : ""}
+          middleText="section #"
           rightText="001"
         />
         <Margin bsm={80} bxs={40} />
@@ -374,11 +373,7 @@ const IndexPage = () => {
         </CapabilitiesGallery>
       </Margin>
       <Margin as="section">
-        <Divider
-          leftText="clients"
-          middleText={tabletUp ? "section #" : ""}
-          rightText="002"
-        />
+        <Divider leftText="clients" middleText="section #" rightText="002" />
         <Margin bsm={90} bxs={50} />
         <ul>
           <ClientsList

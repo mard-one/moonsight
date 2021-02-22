@@ -5,7 +5,7 @@ import Img from "gatsby-image"
 import Divider from "../components/divider"
 import Button from "../components/button"
 import HeaderText from "../components/headerText"
-import { Grid, Hidden, Typography, useMediaQuery } from "@material-ui/core"
+import { Grid, Hidden, Typography } from "@material-ui/core"
 import Margin from "../components/margin"
 import styled from "styled-components"
 import { Fragment } from "react"
@@ -343,7 +343,6 @@ const RecogFlagMultiLine = ({ platforms }) => (
 )
 
 const About = () => {
-  const tabletUp = useMediaQuery("(min-width: 600px)")
   const data = useStaticQuery(graphql`
     query {
       bgImg: file(relativePath: { eq: "work-bg.jpg" }) {
@@ -395,7 +394,7 @@ const About = () => {
       <Margin as="section" bxs={170} bsm={220}>
         <Divider
           leftText="Capabilities"
-          middleText={tabletUp ? "Section #" : ""}
+          middleText="Section #"
           rightText="001"
         />
         <Margin bsm={80} bxs={40} />
@@ -463,11 +462,7 @@ const About = () => {
         </Grid>
       </Margin>
       <Margin as="section" bxs={150} bsm={190}>
-        <Divider
-          leftText="INFLUENCE"
-          middleText={tabletUp ? "Section #" : ""}
-          rightText="002"
-        />
+        <Divider leftText="INFLUENCE" middleText="Section #" rightText="002" />
         <Margin bsm={80} bxs={40} />
         <Grid container>
           <Grid item xs={12} sm={5} md={3}>

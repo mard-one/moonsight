@@ -1,4 +1,4 @@
-import { Container, Typography, useMediaQuery } from "@material-ui/core"
+import { Container, Typography } from "@material-ui/core"
 import { Link } from "gatsby"
 import React from "react"
 import styled from "styled-components"
@@ -29,9 +29,16 @@ const TAndC = styled.div`
     background-color: #111111;
   }
 `
+const TAndCText = styled.span`
+  font-size: 0.688rem;
+  margin: 0;
+  text-transform: uppercase;
+  ${props => props.theme.breakpoints.down("sm")} {
+    margin: 8px 0;
+  }
+`
 
 const Footer = ({ hideLetsConnect = false }) => {
-  const webUp = useMediaQuery("(min-width: 960px)")
   // TODO: fix the logo black. Ask Ivan to import or use the same SVG file
   return (
     <footer style={{ backgroundColor: "#F4F4F4", color: "#030303" }}>
@@ -59,29 +66,13 @@ const Footer = ({ hideLetsConnect = false }) => {
       )}
 
       <TAndC>
-        <Link to="/">
-
-        <Typography
-          variant="overline"
-          style={{ fontSize: "0.688rem", margin: webUp ? 0 : "8px 0" }}
-          >
+        <TAndCText as={Link} to="/">
           Moonsight® 2020
-        </Typography>
-          </Link>
-        <Typography
-          variant="overline"
-          style={{ fontSize: "0.688rem", margin: webUp ? 0 : "8px 0" }}
-        >
-          EASY TO UNDERSTAND, IMPOSSIBLE TO IGNORE.™
-        </Typography>
-        <Link to="/privacy-policy">
-        <Typography
-          variant="overline"
-          style={{ fontSize: "0.688rem", margin: webUp ? 0 : "8px 0" }}
-          >
+        </TAndCText>
+        <TAndCText>EASY TO UNDERSTAND, IMPOSSIBLE TO IGNORE.™</TAndCText>
+        <TAndCText as={Link} to="/privacy-policy">
           TERMS, PRIVACY POLICY
-        </Typography>
-          </Link>
+        </TAndCText>
       </TAndC>
     </footer>
   )

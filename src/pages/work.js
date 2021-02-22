@@ -1,4 +1,4 @@
-import { Grid, Typography, useMediaQuery } from "@material-ui/core"
+import { Grid, Typography } from "@material-ui/core"
 import { useStaticQuery, graphql, Link } from "gatsby"
 import Img from "gatsby-image"
 import React, { useEffect, Fragment, useState } from "react"
@@ -28,7 +28,6 @@ const ProjectsFilter = styled.div`
 `
 
 const Work = ({ location }) => {
-  const tabletUp = useMediaQuery("(min-width: 600px)")
   const data = useStaticQuery(graphql`
     query {
       allMdx(filter: { slug: { regex: "/projects/.*/" } }) {
@@ -150,7 +149,7 @@ const Work = ({ location }) => {
       </Margin>
       <Margin as="section">
         <div style={{ overflow: "hidden" }}>
-          <Grid container spacing={tabletUp ? 5 : 10}>
+          <Grid container spacing={5}>
             {projects.map(project => {
               console.log("inner project", project)
               return !selProjTypes.length ||
