@@ -140,16 +140,17 @@ const Work = ({ location }) => {
                 return returnvalue
               })
               .map(({ node: { childMdx } = {} }) => {
-                const { slug, frontmatter } = childMdx
+                const { fields, frontmatter } = childMdx
+                console.log("childMdx", childMdx)
                 return !selProjTypes.length ||
                   selProjTypes.includes(frontmatter.mainCategory) ? (
                   <Grid
                     item
                     xs={12}
                     sm={frontmatter.workPageConfig.span}
-                    key={slug}
+                    key={fields.slug}
                   >
-                    <Link to={slug}>
+                    <Link to={fields.slug}>
                       <Img
                         fluid={
                           frontmatter.workPageConfig.thumbnailLink
@@ -159,7 +160,7 @@ const Work = ({ location }) => {
                     </Link>
                   </Grid>
                 ) : (
-                  <Fragment key={slug} />
+                  <Fragment key={fields.slug} />
                 )
               })}
           </Grid>

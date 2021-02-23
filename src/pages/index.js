@@ -11,6 +11,7 @@ import { Grid, Typography } from "@material-ui/core"
 import ArrowRight from "../images/right-arrow.svg"
 import Margin from "../components/margin"
 import styled from "styled-components"
+import { Fragment } from "react"
 
 const Projects = styled.section`
   display: grid;
@@ -329,7 +330,10 @@ const IndexPage = () => {
           <Grid item xs={12} sm={8}>
             {CapabilitiesData.map(data => {
               return (
-                <Link to={`/work${data.queryParam}`}>
+                <Link
+                  to={`/work${data.queryParam}`}
+                  key={`/work${data.queryParam}`}
+                >
                   <CapabilitiesList number={data.number}>
                     {data.name}
                   </CapabilitiesList>
@@ -370,17 +374,20 @@ const IndexPage = () => {
                 serviceType,
                 isVisible,
               } = node.childMdx.frontmatter.client
-              return (
-                isVisible && (
-                  <Link to={node.childMdx.fields.slug}>
-                    <ClientsList
-                      serviceProvided={serviceType}
-                      firstElem={i === 0}
-                    >
-                      {name}
-                    </ClientsList>
-                  </Link>
-                )
+              return isVisible ? (
+                <Link
+                  to={node.childMdx.fields.slug}
+                  key={node.childMdx.fields.slug}
+                >
+                  <ClientsList
+                    serviceProvided={serviceType}
+                    firstElem={i === 0}
+                  >
+                    {name}
+                  </ClientsList>
+                </Link>
+              ) : (
+                <Fragment key={node.childMdx.fields.slug} />
               )
             })}
         </ul>

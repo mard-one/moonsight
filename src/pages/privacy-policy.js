@@ -147,9 +147,9 @@ const PrivacyPolicy = () => {
           </Typography>
           <Margin bxs={30} />
           <ul>
-            {privPolicyParagraph.map(paragraph => {
+            {privPolicyParagraph.map((paragraph, i) => {
               return (
-                <li>
+                <li key={"paragraph" + i}>
                   <Typography variant="overline" style={{ lineHeight: 2 }}>
                     {paragraph}
                   </Typography>
@@ -162,7 +162,7 @@ const PrivacyPolicy = () => {
           <Margin txs={120} bxs={120} tsm={1} bsm={200}>
             {content.map(c => {
               return (
-                <Margin bxs={60} bsm={100}>
+                <Margin bxs={60} bsm={100} key={c.title}>
                   <Typography
                     variant="overline"
                     style={{ ffontSize: "1.125rem" }}
