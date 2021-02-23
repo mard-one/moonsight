@@ -213,7 +213,7 @@ const IndexPage = () => {
     fragment capabilitiesImages on File {
       childImageSharp {
         fluid(maxWidth: 600) {
-          ...GatsbyImageSharpFluid
+          ...GatsbyImageSharpFluid_withWebp_tracedSVG
         }
       }
     }

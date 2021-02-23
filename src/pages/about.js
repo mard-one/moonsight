@@ -348,7 +348,7 @@ const About = () => {
       bgImg: file(relativePath: { eq: "work-bg.jpg" }) {
         childImageSharp {
           fluid(maxWidth: 1220) {
-            ...GatsbyImageSharpFluid
+            ...GatsbyImageSharpFluid_withWebp
           }
         }
       }

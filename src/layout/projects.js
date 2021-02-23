@@ -45,7 +45,7 @@ export const projectsFragmentQuery = graphql`
                 thumbnailLink {
                   childImageSharp {
                     fluid(maxWidth: 600) {
-                      ...GatsbyImageSharpFluid
+                      ...GatsbyImageSharpFluid_withWebp_tracedSVG
                     }
                   }
                 }
@@ -56,7 +56,7 @@ export const projectsFragmentQuery = graphql`
                 thumbnailLink {
                   childImageSharp {
                     fluid(maxWidth: 600) {
-                      ...GatsbyImageSharpFluid
+                      ...GatsbyImageSharpFluid_withWebp_tracedSVG
                     }
                   }
                 }
@@ -212,7 +212,7 @@ export const pageQuery = graphql`
           img {
             childImageSharp {
               fixed(height: 80, width: 80) {
-                ...GatsbyImageSharpFixed
+                ...GatsbyImageSharpFixed_withWebp_tracedSVG
               }
             }
           }
@@ -221,7 +221,7 @@ export const pageQuery = graphql`
           thumbnailLink {
             childImageSharp {
               fluid(maxWidth: 1920) {
-                ...GatsbyImageSharpFluid
+                ...GatsbyImageSharpFluid_withWebp
               }
             }
           }
