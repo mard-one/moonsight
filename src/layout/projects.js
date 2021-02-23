@@ -22,12 +22,60 @@ import Paragraph from "../components/projects/paragraph"
 import ProjectDesc from "../components/projects/projectDesc"
 import Image from "../components/projects/image"
 
+export const projectsFragmentQuery = graphql`
+  fragment projectsFragment on Query {
+    allFile(filter: { sourceInstanceName: { eq: "projects" } }) {
+      edges {
+        node {
+          childMdx {
+            fields {
+              slug
+            }
+            frontmatter {
+              name
+              mainCategory
+              client {
+                name
+                serviceType
+                order
+                isVisible
+              }
+              mainPageConfig {
+                isVisible
+                thumbnailLink {
+                  childImageSharp {
+                    fluid(maxWidth: 600) {
+                      ...GatsbyImageSharpFluid
+                    }
+                  }
+                }
+              }
+              workPageConfig {
+                span
+                order
+                thumbnailLink {
+                  childImageSharp {
+                    fluid(maxWidth: 600) {
+                      ...GatsbyImageSharpFluid
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+`
+
 const Layout = props => {
   const { data } = props
   const frontMatter = data.mdx.frontmatter
   console.log("props", props)
   console.log("frontMatter", frontMatter)
   console.log("data", data)
+
   const shortcodes = {
     Section,
     Grid,
@@ -158,9 +206,7 @@ export const pageQuery = graphql`
       body
       frontmatter {
         name
-        mainCategory
         allCategories
-        client
         madeBy {
           name
           img {

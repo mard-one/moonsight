@@ -4,13 +4,14 @@ const { createFilePath } = require("gatsby-source-filesystem")
 
 exports.onCreateNode = ({ node, actions, getNode }) => {
   const { createNodeField } = actions
+
   if (node.internal.type === "Mdx") {
+    const sourceInstanceName = getNode(node.parent).sourceInstanceName
     const value = createFilePath({ node, getNode })
-    console.log("value", value)
     createNodeField({
       name: "slug",
       node,
-      value: `/projects${value}`,
+      value: `/${sourceInstanceName}${value}`,
     })
   }
 }
@@ -28,30 +29,64 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
     })
   })
 
-  const result = await graphql(`
+  const resultProjects = await graphql(`
     query {
-      allMdx {
+      allFile(filter: { sourceInstanceName: { eq: "projects" } }) {
         edges {
           node {
-            id
-            slug
+            childMdx {
+              id
+              fields {
+                slug
+              }
+            }
           }
         }
       }
     }
   `)
-  if (result.errors) {
+  console.log("resultProjects", resultProjects)
+  if (resultProjects.errors) {
     reporter.panicOnBuild('🚨  ERROR: Loading "createPages" query')
   }
-  console.log("result", result.data.allMdx.edges[0].node)
-  result.data.allMdx.edges.forEach(edge => {
-    console.log("edge", edge)
-    console.log("slug path", "/" + edge.node.slug + "/")
+  resultProjects.data.allFile.edges.forEach(({ node }) => {
+    console.log("node.childMdx.fields.slug", node.childMdx.fields.slug)
     createPage({
-      path: "/" + edge.node.slug,
+      path: node.childMdx.fields.slug,
       component: path.resolve(`./src/layout/projects.js`),
       context: {
-        id: edge.node.id,
+        id: node.childMdx.id,
+      },
+    })
+  })
+
+  const resultCareer = await graphql(`
+    query {
+      allFile(filter: { sourceInstanceName: { eq: "career" } }) {
+        edges {
+          node {
+            childMdx {
+              id
+              fields {
+                slug
+              }
+            }
+          }
+        }
+      }
+    }
+  `)
+  console.log("resultCareer", resultCareer)
+  if (resultCareer.errors) {
+    reporter.panicOnBuild('🚨  ERROR: Loading "createPages" query')
+  }
+  resultCareer.data.allFile.edges.forEach(({ node }) => {
+    console.log("node.childMdx.fields.slug", node.childMdx.fields.slug)
+    createPage({
+      path: node.childMdx.fields.slug,
+      component: path.resolve(`./src/layout/openPositions.js`),
+      context: {
+        id: node.childMdx.id,
       },
     })
   })

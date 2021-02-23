@@ -2,20 +2,23 @@
 name: "Medigate Security"
 mainCategory: "Web Design"
 allCategories: ["Branding", "Web-Design", "Development"]
-madeBy: { name: "Oleg Kulik", img: "../../images/gatsby-astronaut.png" }
+madeBy: { name: "Oleg Kulik", img: "../images/gatsby-astronaut.png" }
 mainPageConfig:
   {
     isVisible: true,
-    thumbnailLink: "../../images/projects/medigate-main-page.jpg",
+    thumbnailLink: "../images/projects/medigate-main-page.jpg",
   }
 workPageConfig:
-  {
-    span: 4,
-    thumbnailLink: "../../images/projects/medigate-main-page.jpg",
-  }
+  { span: 4, thumbnailLink: "../images/projects/medigate-main-page.jpg", order: 1 }
 projectPageConfig:
-  { thumbnailLink: "../../images/projects/medigate-project-bg.jpg" }
-client: "Medigate"
+  { thumbnailLink: "../images/projects/medigate-project-bg.jpg" }
+client:
+  {
+    name: "Medigate",
+    serviceType: "Created website for this agency",
+    order: 1,
+    isVisible: true,
+  }
 ---
 
 <Section

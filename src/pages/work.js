@@ -30,48 +30,27 @@ const ProjectsFilter = styled.div`
 const Work = ({ location }) => {
   const data = useStaticQuery(graphql`
     query {
-      allMdx(filter: { slug: { regex: "/projects/.*/" } }) {
-        nodes {
-          frontmatter {
-            name
-            mainCategory
-            workPageConfig {
-              span
-              thumbnailLink {
-                childImageSharp {
-                  fluid(maxWidth: 600) {
-                    ...GatsbyImageSharpFluid
-                  }
-                }
-              }
-            }
-          }
-          slug
-        }
-      }
+      ...projectsFragment
     }
   `)
   console.log("data", data)
-  const projects = data.allMdx.nodes
+  const projects = data.allFile.edges
   console.log("projects", projects)
   const allProjectTypes = [
     ...new Set(
-      projects.map(project => {
-        console.log("project", project)
-        return project.frontmatter.mainCategory
-      })
+      projects.map(({ node }) => node.childMdx.frontmatter.mainCategory)
     ),
   ]
 
-  const [selProjTypes, setSelProjTypes] = useState([]) // TODO: refactor. make reusable on contacts page and make filtering case insensative and sync checked buttons and query param
-
+  const [selProjTypes, setSelProjTypes] = useState([])
   useEffect(() => {
     let params = new URLSearchParams(location.search)
-    let filter = params.get("filter")
-    allProjectTypes.includes(filter) && setSelProjTypes(filter)
+    let filter = params.get("filter") || ""
+    const selectedType = allProjectTypes.findIndex(
+      type => type.toLowerCase() === filter.toLowerCase()
+    )
+    setSelProjTypes(allProjectTypes[selectedType] || [])
   }, [])
-  console.log("allProjectTypes", allProjectTypes)
-  console.log("selProjTypes", selProjTypes)
 
   const handleSelectAll = event => {
     if (event.target.checked) {
@@ -150,29 +129,39 @@ const Work = ({ location }) => {
       <Margin as="section">
         <div style={{ overflow: "hidden" }}>
           <Grid container spacing={5}>
-            {projects.map(project => {
-              console.log("inner project", project)
-              return !selProjTypes.length ||
-                selProjTypes.includes(project.frontmatter.mainCategory) ? (
-                <Grid
-                  item
-                  xs={12}
-                  sm={project.frontmatter.workPageConfig.span}
-                  key={"/" + project.slug}
-                >
-                  <Link to={"/" + project.slug}>
-                    <Img
-                      fluid={
-                        project.frontmatter.workPageConfig.thumbnailLink
-                          .childImageSharp.fluid
-                      }
-                    />
-                  </Link>
-                </Grid>
-              ) : (
-                <Fragment key={"/" + project.slug} />
-              )
-            })}
+            {projects
+              .sort((a, b) => {
+                console.log("a", a)
+                console.log("b", b)
+                const returnvalue =
+                  parseInt(a.node.childMdx.frontmatter.workPageConfig.order) -
+                  parseInt(b.node.childMdx.frontmatter.workPageConfig.order)
+                console.log("returnvalue", returnvalue)
+                return returnvalue
+              })
+              .map(({ node: { childMdx } = {} }) => {
+                const { slug, frontmatter } = childMdx
+                return !selProjTypes.length ||
+                  selProjTypes.includes(frontmatter.mainCategory) ? (
+                  <Grid
+                    item
+                    xs={12}
+                    sm={frontmatter.workPageConfig.span}
+                    key={slug}
+                  >
+                    <Link to={slug}>
+                      <Img
+                        fluid={
+                          frontmatter.workPageConfig.thumbnailLink
+                            .childImageSharp.fluid
+                        }
+                      />
+                    </Link>
+                  </Grid>
+                ) : (
+                  <Fragment key={slug} />
+                )
+              })}
           </Grid>
         </div>
       </Margin>

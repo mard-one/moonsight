@@ -90,6 +90,20 @@ const Contact = () => {
     { value: "value4", label: "$100.000 — $150.000", selected: false },
     { value: "value5", label: "$150.000 and up", selected: false },
   ])
+  const data = useStaticQuery(graphql`
+    query {
+      ...projectsFragment
+    }
+  `)
+  console.log("data", data)
+  const allProjectTypes = [
+    ...new Set(
+      data.allFile.edges.map(
+        ({ node }) => node.childMdx.frontmatter.mainCategory
+      )
+    ),
+  ]
+
   const selectedBudget =
     budget.filter(obj => obj.selected) &&
     budget.filter(obj => obj.selected)[0] &&
@@ -98,43 +112,7 @@ const Contact = () => {
   const [email, setEmail] = useState("")
   const [companyName, setCompanyName] = useState("")
   const [detail, setDetail] = useState("")
-  const data = useStaticQuery(graphql`
-    query {
-      allFile(filter: { sourceInstanceName: { eq: "projects" } }) {
-        nodes {
-          id
-          childMdx {
-            frontmatter {
-              name
-              mainCategory
-              workPageConfig {
-                span
-                thumbnailLink {
-                  childImageSharp {
-                    fluid(maxWidth: 600) {
-                      ...GatsbyImageSharpFluid
-                    }
-                  }
-                }
-              }
-            }
-            slug
-          }
-        }
-      }
-    }
-  `)
-  console.log("data", data)
-  const projects = data.allFile.nodes
-  console.log("projects", projects)
-  const allProjectTypes = [
-    ...new Set(
-      projects.map(project => {
-        console.log("project", project.childMdx)
-        return project.childMdx.frontmatter.mainCategory
-      })
-    ),
-  ]
+
   const [selProjTypes, setSelProjTypes] = useState([])
 
   const handleBudgetChange = event => {

@@ -202,15 +202,14 @@ const ClientsList = ({ serviceProvided, children, firstElem }) => {
   )
 }
 
+const CapabilitiesData = [
+  { name: "Branding", number: "01", queryParam: "?filter=branding" },
+  { name: "Design", number: "02", queryParam: "?filter=design" },
+  { name: "Development", number: "03", queryParam: "?filter=development" },
+].sort((a, b) => parseInt(a.number) - parseInt(b.number))
+
 const IndexPage = () => {
   const data = useStaticQuery(graphql`
-    fragment projectImages on File {
-      childImageSharp {
-        fluid(maxWidth: 600) {
-          ...GatsbyImageSharpFluid
-        }
-      }
-    }
     fragment capabilitiesImages on File {
       childImageSharp {
         fluid(maxWidth: 600) {
@@ -234,31 +233,15 @@ const IndexPage = () => {
       ) {
         ...capabilitiesImages
       }
-      allMdx(
-        filter: {
-          slug: { regex: "/projects/.*/" }
-          frontmatter: { mainPageConfig: { isVisible: { eq: true } } }
-        }
-      ) {
-        edges {
-          node {
-            frontmatter {
-              name
-              mainPageConfig {
-                isVisible
-                thumbnailLink {
-                  ...projectImages
-                }
-              }
-            }
-            slug
-          }
-        }
-      }
+      ...projectsFragment
     }
   `)
   console.log("data", data)
-  const projects = data.allMdx.edges
+  const projects = data.allFile.edges
+  const projectsToDisplay = projects.filter(
+    ({ node: { childMdx: { frontmatter } = {} } = {} }) =>
+      frontmatter.mainPageConfig.isVisible
+  )
   console.log("projects", projects)
   return (
     <Layout>
@@ -277,12 +260,12 @@ const IndexPage = () => {
       <Margin as="section" bsm={240} bxs={100}>
         <Projects>
           <ProjectsGrid>
-            {projects.map(({ node }, index) => {
+            {projectsToDisplay.map(({ node: { childMdx } = {} }, index) => {
               return !(index % 2) ? (
-                <Link key={"/" + node.slug} to={"/" + node.slug}>
+                <Link key={childMdx.fields.slug} to={childMdx.fields.slug}>
                   <Img
                     fluid={
-                      node.frontmatter.mainPageConfig.thumbnailLink
+                      childMdx.frontmatter.mainPageConfig.thumbnailLink
                         .childImageSharp.fluid
                     }
                   />
@@ -293,12 +276,12 @@ const IndexPage = () => {
             })}
           </ProjectsGrid>
           <ProjectsGrid>
-            {projects.map(({ node }, index) => {
+            {projectsToDisplay.map(({ node: { childMdx } = {} }, index) => {
               return index % 2 ? (
-                <Link key={"/" + node.slug} to={"/" + node.slug}>
+                <Link key={childMdx.fields.slug} to={childMdx.fields.slug}>
                   <Img
                     fluid={
-                      node.frontmatter.mainPageConfig.thumbnailLink
+                      childMdx.frontmatter.mainPageConfig.thumbnailLink
                         .childImageSharp.fluid
                     }
                   />
@@ -344,16 +327,15 @@ const IndexPage = () => {
         <Grid container>
           <Grid item xs={false} sm={4} />
           <Grid item xs={12} sm={8}>
-            <Link to="/work?filter=Branding">
-              {/* TODO: make these project types dynamic */}
-              <CapabilitiesList number="01">Branding</CapabilitiesList>
-            </Link>
-            <Link to="/work?filter=Design">
-              <CapabilitiesList number="02">Design</CapabilitiesList>
-            </Link>
-            <Link to="/work?filter=Development">
-              <CapabilitiesList number="03">Development</CapabilitiesList>
-            </Link>
+            {CapabilitiesData.map(data => {
+              return (
+                <Link to={`/work${data.queryParam}`}>
+                  <CapabilitiesList number={data.number}>
+                    {data.name}
+                  </CapabilitiesList>
+                </Link>
+              )
+            })}
           </Grid>
         </Grid>
         <Margin bsm={150} bxs={100} />
@@ -376,39 +358,31 @@ const IndexPage = () => {
         <Divider leftText="clients" middleText="section #" rightText="002" />
         <Margin bsm={90} bxs={50} />
         <ul>
-          <ClientsList
-            serviceProvided="Created website for this agency"
-            firstElem
-          >
-            PWC
-          </ClientsList>
-          <ClientsList serviceProvided="Created website for this agency">
-            McKinsey
-          </ClientsList>
-          <ClientsList serviceProvided="Created website for this agency">
-            Virgin
-          </ClientsList>
-          <ClientsList serviceProvided="Created website for this agency">
-            Raydiant
-          </ClientsList>
-          <ClientsList serviceProvided="Created website for this agency">
-            RND
-          </ClientsList>
-          <ClientsList serviceProvided="Created website for this agency">
-            Cisco
-          </ClientsList>
-          <ClientsList serviceProvided="Created website for this agency">
-            Testim
-          </ClientsList>
-          <ClientsList serviceProvided="Created website for this agency">
-            Gameday
-          </ClientsList>
-          <ClientsList serviceProvided="Created website for this agency">
-            Mashreq Bank
-          </ClientsList>
-          <ClientsList serviceProvided="Created website for this agency">
-            Credit Europe Bank
-          </ClientsList>
+          {projects
+            .sort(
+              (a, b) =>
+                parseInt(a.node.childMdx.frontmatter.client.order) -
+                parseInt(b.node.childMdx.frontmatter.client.order)
+            )
+            .map(({ node }, i) => {
+              const {
+                name,
+                serviceType,
+                isVisible,
+              } = node.childMdx.frontmatter.client
+              return (
+                isVisible && (
+                  <Link to={node.childMdx.fields.slug}>
+                    <ClientsList
+                      serviceProvided={serviceType}
+                      firstElem={i === 0}
+                    >
+                      {name}
+                    </ClientsList>
+                  </Link>
+                )
+              )
+            })}
         </ul>
       </Margin>
     </Layout>

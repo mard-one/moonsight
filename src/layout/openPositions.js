@@ -4,9 +4,10 @@ import Button from "../components/button"
 import Divider from "../components/divider"
 import Margin from "../components/margin"
 import Layout from "."
+import { Fragment } from "react"
 
-const OpenPositions = ({ pageContext }) => {
-  const data = pageContext.data
+const OpenPositions = ({ data }) => {
+  const { title, desc, expectations, requirement } = data.mdx.frontmatter
   return (
     <Layout hideCTA>
       <Margin as="header" tmd={80} tsm={1} txs={1}>
@@ -14,14 +15,14 @@ const OpenPositions = ({ pageContext }) => {
           <Grid item xs={12} sm={5}>
             <Typography variant="overline">INTERNATIONAL opening</Typography>
             <Typography variant="h1" style={{ marginTop: "10px" }}>
-              {data.title}
+              {title}
             </Typography>
           </Grid>
         </Grid>
         <Margin bmd={28} bxs={1} />
         <Grid container>
           <Grid item xs={12} sm={6}>
-            <Typography variant="h3">{data.desc}</Typography>
+            <Typography variant="h3">{desc}</Typography>
           </Grid>
         </Grid>
         <Margin bmd={200} bxs={1} />
@@ -35,12 +36,12 @@ const OpenPositions = ({ pageContext }) => {
               rightText="001"
             />
             <Margin bmd={50} bxs={1} />
-            {data.expectations.map(expectation => {
+            {expectations.map((expectation, i) => {
               return (
-                <>
+                <Fragment key={"expectation" + i}>
                   <Typography variant="body1">{expectation}</Typography>
                   <Margin bmd={32} bxs={1} />
-                </>
+                </Fragment>
               )
             })}
           </Grid>
@@ -57,7 +58,7 @@ const OpenPositions = ({ pageContext }) => {
             <Margin bmd={32} bxs={1} />
 
             <Typography variant="body1" style={{ color: "#c4c4c4" }}>
-              {data.requirement}
+              {requirement}
             </Typography>
             <Margin bmd={50} bxs={1} />
             <Button>Telegram</Button>
@@ -69,4 +70,18 @@ const OpenPositions = ({ pageContext }) => {
     </Layout>
   )
 }
+
+export const pageQuery = graphql`
+  query($id: String) {
+    mdx(id: { eq: $id }) {
+      frontmatter {
+        title
+        desc
+        expectations
+        requirement
+      }
+    }
+  }
+`
+
 export default OpenPositions

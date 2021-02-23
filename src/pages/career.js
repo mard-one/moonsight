@@ -8,7 +8,7 @@ import Margin from "../components/margin"
 import ArrowRight from "../images/right-arrow.svg"
 import styled from "styled-components"
 import JsonData from "../data/open-positions/index.json"
-import { Link } from "gatsby"
+import { graphql, Link, useStaticQuery } from "gatsby"
 
 export const StyledCurrentOpening = styled.div`
   margin-bottom: 80px;
@@ -51,7 +51,26 @@ const CurrentOpening = ({ type, children, linkTo }) => {
 }
 
 const Career = () => {
-  const openPositions = JsonData.openPositions
+  const data = useStaticQuery(graphql`
+    query {
+      allFile(filter: { sourceInstanceName: { eq: "career" } }) {
+        edges {
+          node {
+            childMdx {
+              fields {
+                slug
+              }
+              frontmatter {
+                title
+                shortDesc
+              }
+            }
+          }
+        }
+      }
+    }
+  `)
+  const openPositions = data.allFile.edges
   return (
     <Layout ctaText="Mind joing Superstar Family? Let’s get to work. ">
       <HeaderText overline="Careers/Opportunities">
@@ -87,31 +106,18 @@ const Career = () => {
               rightText="002"
               style={{ marginBottom: 60 }}
             />
-            {openPositions.map(position => {
-              const { title, relPath, shortDesc } = position
+            {openPositions.map(({ node: { childMdx } = {} }) => {
+              const { title, shortDesc } = childMdx.frontmatter
               return (
-                <CurrentOpening key={relPath} type={title} linkTo={relPath}>
+                <CurrentOpening
+                  key={childMdx.fields.slug}
+                  type={title}
+                  linkTo={childMdx.fields.slug}
+                >
                   {shortDesc}
                 </CurrentOpening>
               )
             })}
-
-            {/* <CurrentOpening type="UX Researcher">
-              You’re comfortable around 3D stuff and have a good taste in what
-              you are doing
-            </CurrentOpening>
-            <CurrentOpening type="Graphic Designer (Branding)">
-              You’re comfortable around 3D stuff and have a good taste in what
-              you are doing
-            </CurrentOpening>
-            <CurrentOpening type="Creative Frontend Developer">
-              You’re comfortable around 3D stuff and have a good taste in what
-              you are doing
-            </CurrentOpening>
-            <CurrentOpening type="IOS Developer">
-              You’re comfortable around 3D stuff and have a good taste in what
-              you are doing
-            </CurrentOpening> */}
           </Grid>
         </Grid>
       </Margin>

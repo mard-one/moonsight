@@ -2,20 +2,27 @@
 name: "Facebook Chatbot"
 mainCategory: "Branding"
 allCategories: ["Branding", "Illustration"]
-madeBy: { name: "Oleg Kulik", img: "../../images/gatsby-astronaut.png" }
+madeBy: { name: "Oleg Kulik", img: "../images/gatsby-astronaut.png" }
 mainPageConfig:
   {
     isVisible: false,
-    thumbnailLink: "../../images/projects/facebook-chatbot-main-page.jpg",
+    thumbnailLink: "../images/projects/facebook-chatbot-main-page.jpg",
   }
 workPageConfig:
   {
     span: 4,
-    thumbnailLink: "../../images/projects/facebook-chatbot-work-page.jpg",
+    thumbnailLink: "../images/projects/facebook-chatbot-work-page.jpg",
+    order: 2,
   }
 projectPageConfig:
-  { thumbnailLink: "../../images/projects/facebook-chatbot-project-bg.jpg" }
-client: "Facebook"
+  { thumbnailLink: "../images/projects/facebook-chatbot-project-bg.jpg" }
+client:
+  {
+    name: "Facebook",
+    serviceType: "Created website for this agency",
+    order: 2,
+    isVisible: true,
+  }
 ---
 
 <Section
