@@ -7,7 +7,6 @@ import { Grid, Hidden, Typography } from "@material-ui/core"
 import Margin from "../components/margin"
 import ArrowRight from "../images/right-arrow.svg"
 import styled from "styled-components"
-import JsonData from "../data/open-positions/index.json"
 import { graphql, Link, useStaticQuery } from "gatsby"
 
 export const StyledCurrentOpening = styled.div`

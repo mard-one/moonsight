@@ -5,6 +5,7 @@ import Divider from "../components/divider"
 import Margin from "../components/margin"
 import Layout from "."
 import { Fragment } from "react"
+import { graphql } from "gatsby"
 
 const OpenPositions = ({ data }) => {
   const { title, desc, expectations, requirement } = data.mdx.frontmatter

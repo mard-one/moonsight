@@ -272,7 +272,7 @@ const IndexPage = () => {
                   />
                 </Link>
               ) : (
-                <></>
+                <Fragment key={childMdx.fields.slug} />
               )
             })}
           </ProjectsGrid>
@@ -288,7 +288,7 @@ const IndexPage = () => {
                   />
                 </Link>
               ) : (
-                <></>
+                <Fragment key={childMdx.fields.slug} />
               )
             })}
           </ProjectsGrid>

@@ -21,6 +21,7 @@ import Section from "../components/projects/section"
 import Paragraph from "../components/projects/paragraph"
 import ProjectDesc from "../components/projects/projectDesc"
 import Image from "../components/projects/image"
+import Carousel from "../components/projects/carousel"
 
 export const projectsFragmentQuery = graphql`
   fragment projectsFragment on Query {
@@ -84,6 +85,7 @@ const Layout = props => {
     Image,
     Margin,
     Typography,
+    Carousel,
   }
   return (
     <StylesProvider injectFirst>
@@ -114,7 +116,7 @@ const Layout = props => {
                     <Typography
                       style={{ fontSize: "1.125rem", marginBottom: 8 }}
                     >
-                      Our work
+                      Our work / {frontMatter.mainCategory}
                     </Typography>
                     <Typography variant="h1">{frontMatter.name}</Typography>
                     <Margin bxs={24} bsm={24} />
@@ -206,6 +208,7 @@ export const pageQuery = graphql`
       body
       frontmatter {
         name
+        mainCategory
         allCategories
         madeBy {
           name

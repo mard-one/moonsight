@@ -1,5 +1,4 @@
 const path = require("path")
-const data = require("./src/data/open-positions/index.json")
 const { createFilePath } = require("gatsby-source-filesystem")
 
 exports.onCreateNode = ({ node, actions, getNode }) => {
@@ -18,16 +17,6 @@ exports.onCreateNode = ({ node, actions, getNode }) => {
 
 exports.createPages = async ({ graphql, actions, reporter }) => {
   const { createPage } = actions
-
-  data.openPositions.forEach(position => {
-    createPage({
-      path: `/career/` + position.relPath, //TODO: Optimize so you don't have to do this
-      component: path.resolve(`./src/layout/openPositions.js`),
-      context: {
-        data: position,
-      },
-    })
-  })
 
   const resultProjects = await graphql(`
     query {
