@@ -106,7 +106,7 @@ const Layout = props => {
               direction="column"
               style={{ height: "100%" }}
             >
-              <Nav />
+              <Nav navWithBackBtn />
               <Container>
                 <Grid
                   item
@@ -186,7 +186,7 @@ const Layout = props => {
                   frontMatter.projectPageConfig.thumbnailLink.childImageSharp
                     .fluid
                 }
-                style={{ height: "100%" }}
+                style={{ height: "100%", zIndex: -1 }}
               />
             </div>
           </header>

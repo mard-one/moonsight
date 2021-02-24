@@ -19,7 +19,13 @@ const NavBar = styled.nav`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.37);
+  border-bottom: ${props => {
+    console.log("props", props)
+    console.log("!props.navWithBackBtn", !props.navWithBackBtn)
+    return !props.navWithBackBtn
+      ? "1px solid rgba(255, 255, 255, 0.37);"
+      : "none;"
+  }}
   padding: 32px 0;
   ${props => props.theme.breakpoints.down("sm")} {
     padding: 55px 0;
@@ -78,6 +84,7 @@ const MenuLink = styled.li`
 `
 
 const ResponsiveBtn = styled(Button)`
+  z-index: 10;
   ${props => props.theme.breakpoints.down("sm")} {
     display: none;
   }
@@ -109,49 +116,74 @@ const CustomLink = ({ title, link, startAnimation }) => {
   )
 }
 
-const Nav = () => {
+const Nav = ({ navWithBackBtn }) => {
   const [startAnimation, setStartAnimation] = useState(false)
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
   useEffect(() => {
     setStartAnimation(true)
   }, [])
-  return (
+  const handleMobileMenuClick = () => {
+    setMobileMenuOpen(!mobileMenuOpen)
+  }
+  return !mobileMenuOpen ? (
     <Container maxWidth="lg">
-      <NavBar>
+      <NavBar navWithBackBtn={navWithBackBtn}>
         <Link to="/">
           <img src={logo} alt="logo" />
         </Link>
-        <MenuLinks>
-          <CustomLink
-            startAnimation={startAnimation}
-            title="Work"
-            link="/work"
-          />
-          <CustomLink
-            startAnimation={startAnimation}
-            title="About Us"
-            link="/about"
-          />
-          <CustomLink
-            startAnimation={startAnimation}
-            title="We are Hiring"
-            link="/career"
-          />
-          <CustomLink
-            startAnimation={startAnimation}
-            title="Contact Us"
-            link="/contact"
-          />
-        </MenuLinks>
+        {!navWithBackBtn && (
+          <MenuLinks>
+            <CustomLink
+              startAnimation={startAnimation}
+              title="Work"
+              link="/work"
+            />
+            <CustomLink
+              startAnimation={startAnimation}
+              title="About Us"
+              link="/about"
+            />
+            <CustomLink
+              startAnimation={startAnimation}
+              title="We are Hiring"
+              link="/career"
+            />
+            <CustomLink
+              startAnimation={startAnimation}
+              title="Contact Us"
+              link="/contact"
+            />
+          </MenuLinks>
+        )}
         <ResponsiveBtn as={Link} to="/contact">
-          Write Us Something
+          {!navWithBackBtn ? "Write Us Something" : "Want Something Like This?"}
         </ResponsiveBtn>
-        <Burger>
+        <Burger onClick={handleMobileMenuClick}>
           <span />
           <span />
           <span />
         </Burger>
       </NavBar>
+      {navWithBackBtn && (
+        <ResponsiveBtn onClick={() => window.history.back()}>
+          Go Back
+        </ResponsiveBtn>
+      )}
     </Container>
+  ) : (
+    <div
+      style={{
+        position: "fixed",
+        top: 0,
+        left: 0,
+        width: "100vw",
+        height: "100vh",
+        backgroundColor: "black",
+        zIndex: 100,
+      }}
+    >
+      <Container maxWidth="lg"></Container>
+    </div>
   )
 }
 

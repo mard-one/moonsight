@@ -10,7 +10,7 @@ import { graphql } from "gatsby"
 const OpenPositions = ({ data }) => {
   const { title, desc, expectations, requirement } = data.mdx.frontmatter
   return (
-    <Layout hideCTA>
+    <Layout hideCTA navWithBackBtn>
       <Margin as="header" tmd={80} tsm={1} txs={1}>
         <Grid container>
           <Grid item xs={12} sm={5}>

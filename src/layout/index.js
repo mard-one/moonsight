@@ -65,6 +65,7 @@ const Layout = ({
   hideFooter = false,
   hideNav = false,
   hideLetsConnect = false,
+  navWithBackBtn = false
 }) => {
   const data = useStaticQuery(graphql`
     query {
@@ -75,11 +76,12 @@ const Layout = ({
       }
     }
   `)
+  console.log("navWithBackBtn", navWithBackBtn)
   return (
     <StylesProvider injectFirst>
       <SCThemeProvider theme={theme}>
         <MuiThemeProvider theme={theme}>
-          {!hideNav && <Nav />}
+          {!hideNav && <Nav navWithBackBtn={navWithBackBtn} />}
           <main>
             <Container maxWidth="lg">
               {children}
