@@ -1,0 +1,57 @@
+---
+name: "Google MyConcerns"
+mainCategory: "Branding"
+allCategories: ["Branding", "Illustration"]
+madeBy: { name: "Oleg Kulik", img: "../images/gatsby-astronaut.png" }
+mainPageConfig:
+  { isVisible: true, thumbnailLink: "../images/projects/kinto-work-page.jpg" }
+workPageConfig:
+  { span: 4, thumbnailLink: "../images/projects/kinto-work-page.jpg", order: 3 }
+projectPageConfig:
+  { thumbnailLink: "../images/projects/kinto-project-page-bg.jpg" }
+client:
+  {
+    name: "Google",
+    serviceType: "Created website for this agency",
+    order: 4,
+    isVisible: true,
+  }
+---
+
+<Section
+  first
+  sectionName="Project Description"
+  clientName="Medigate Healthcare"
+>
+  <Grid container justify="space-between">
+    <Grid item xs={12} sm={5} style={{ position: "relative" }}>
+      <ProjectDesc
+        features={["PRODUCT BRANDING", "PACKAGING DESIGN", "LOGO DESIGN"]}
+      >
+        Product branding and packaging design for a Japanese tableware brand,
+        KINTO.
+      </ProjectDesc>
+    </Grid>
+    <Grid item xs={12} sm={6}>
+      <Paragraph title="challenge" textAfter>
+        As a healthcare security and analytics company, Medigate faced a major
+        problem - how to explain to their medical clients exactly what they
+        offered. Despite having a unique product and incredible services, they
+        struggled to cut through a crowded market and communicate their value
+        proposition to potential clients who didn’t fully understand what they
+        could do or why their services were needed. <br />
+        <br />
+        <br />
+        Medigate had to find a way to explain exactly what they did and how their
+        services were unique and beneficial in a way that their target audience could
+        easily understand.
+      </Paragraph>
+    </Grid>
+  </Grid>
+  <Margin bxs={160} bsm={160} />
+  {/* <Image src="kinto-project-section-1-banner.jpg" alt="Kinto banner" /> */}
+  <Video
+    videoSrcURL="https://www.youtube.com/embed/dQw4w9WgXcQ"
+    videoTitle="Official Music Video on YouTube"
+  />
+</Section>

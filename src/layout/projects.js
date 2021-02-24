@@ -22,6 +22,7 @@ import Paragraph from "../components/projects/paragraph"
 import ProjectDesc from "../components/projects/projectDesc"
 import Image from "../components/projects/image"
 import Carousel from "../components/projects/carousel"
+import Video from "../components/projects/video"
 
 export const projectsFragmentQuery = graphql`
   fragment projectsFragment on Query {
@@ -86,6 +87,7 @@ const Layout = props => {
     Margin,
     Typography,
     Carousel,
+    Video,
   }
   return (
     <StylesProvider injectFirst>

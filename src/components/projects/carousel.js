@@ -1,5 +1,4 @@
-import React, { useEffect, useRef, useState } from "react"
-import TestComponent from "./testcomponent"
+import React, { useEffect, useRef } from "react"
 
 import styled from "styled-components"
 
@@ -41,12 +40,12 @@ const Carousel = ({ children }) => {
     }
   }
   useEffect(() => {
-    if (ref.current) {
+    if (ref.current && parentRef.current) {
       ref.current.style.transform = `translateX(${position.x}px)`
       width = ref.current.getBoundingClientRect().width
       parentWidth = parentRef.current.getBoundingClientRect().width
     }
-  }, [position])
+  }, [parentRef.current, ref.current])
   const onMouseMove = event => {
     if (pressed) {
       velX = event.movementX
