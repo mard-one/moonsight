@@ -5,7 +5,6 @@ import styled from "styled-components"
 const Container = styled.div`
   display: inline-flex;
   flex-wrap: nowrap;
-  will-change: transform;
   user-drag: none;
   pointer-events: none;
   & * {
@@ -15,28 +14,37 @@ const Container = styled.div`
   }
 `
 
+const StyledCarousel = styled.div`
+  overflow-x: hidden;
+  user-select: none;
+  &:hover {
+    > ${Container} {
+      will-change: transform;
+    }
+  }
+`
+
 const Carousel = ({ children }) => {
   let pressed = false
   let velX = 0
   let position = 0
   let width = 0
   let parentWidth = 0
+  let rAFIndex = 0
   const ref = useRef()
   const parentRef = useRef()
-  const tranformIfInsideBoundary = movementX => {
-    let newPosition = position + movementX * 3
-    if (newPosition <= 0 && newPosition + -parentWidth >= -width) {
-      ref.current.style.transform = `translateX(${newPosition}px)`
-      // console.log("in between")
-      position = newPosition
-    } else if (newPosition >= 0 && newPosition + -parentWidth >= -width) {
-      ref.current.style.transform = `translateX(${0}px)`
-      position = 0
-      // console.log("out left")
-    } else if (newPosition <= 0 && newPosition + -parentWidth <= -width) {
-      ref.current.style.transform = `translateX(${-width + parentWidth}px)`
-      position = -width + parentWidth
-      // console.log("out right")
+  const update = () => {
+    // console.log("animate")
+    ref.current.style.transform = `translateX(${position}px)`
+    // console.log("Math.abs(velX)", Math.abs(velX))
+    // console.log("Math.abs(velX) < 0.5", Math.abs(velX) < 0.5)
+    // console.log("pressed", pressed)
+    if (pressed) {
+      rAFIndex = requestAnimationFrame(update)
+    } else if (Math.abs(velX) > 0.5) {
+      velX = velX * 0.95
+      rAFIndex = requestAnimationFrame(update)
+      updatePositionIfWithinBoundary()
     }
   }
   useEffect(() => {
@@ -46,52 +54,61 @@ const Carousel = ({ children }) => {
       parentWidth = parentRef.current.getBoundingClientRect().width
     }
   }, [parentRef.current, ref.current])
+  const updatePositionIfWithinBoundary = () => {
+    let newPosition = position + velX
+    if (newPosition <= 0 && newPosition + -parentWidth >= -width) {
+      position = newPosition
+    } else if (newPosition >= 0 && newPosition + -parentWidth >= -width) {
+      position = 0
+    } else if (newPosition <= 0 && newPosition + -parentWidth <= -width) {
+      position = -width + parentWidth
+    }
+  }
   const onMouseMove = event => {
     if (pressed) {
-      velX = event.movementX
-      tranformIfInsideBoundary(event.movementX)
+      velX = event.movementX * 3
+      updatePositionIfWithinBoundary()
+      // tranformIfInsideBoundary(event.movementX)
       // beginMomentumTracking()
     }
   }
   const onMouseUp = event => {
     pressed = false
-    beginMomentumTracking()
+    // beginMomentumTracking()
   }
   const onMouseDown = event => {
     pressed = true
-    cancelMomentumTracking()
+    // cancelMomentumTracking()
+    cancelAnimationFrame(rAFIndex)
+    rAFIndex = requestAnimationFrame(update)
   }
-  var momentumID
+  // var momentumID
 
-  function beginMomentumTracking() {
-    cancelMomentumTracking()
-    momentumID = requestAnimationFrame(momentumLoop)
-  }
-  function cancelMomentumTracking() {
-    cancelAnimationFrame(momentumID)
-  }
-  function momentumLoop() {
-    tranformIfInsideBoundary(velX)
-    velX = velX * 0.95
-    if (Math.abs(velX) > 0.5) {
-      momentumID = requestAnimationFrame(momentumLoop)
-    }
-  }
+  // function beginMomentumTracking() {
+  //   cancelMomentumTracking()
+  //   momentumID = requestAnimationFrame(momentumLoop)
+  // }
+  // function cancelMomentumTracking() {
+  //   cancelAnimationFrame(momentumID)
+  // }
+  // function momentumLoop() {
+  //   tranformIfInsideBoundary(velX)
+  //   velX = velX * 0.95
+  //   if (Math.abs(velX) > 0.5) {
+  //     momentumID = requestAnimationFrame(momentumLoop)
+  //   }
+  // }
 
   return (
-    <div
+    <StyledCarousel
       ref={parentRef}
-      style={{
-        overflowX: "hidden",
-        userSelect: "none",
-      }}
       onMouseMove={onMouseMove}
       onMouseDown={onMouseDown}
       onMouseUp={onMouseUp}
       onMouseLeave={onMouseUp}
     >
       <Container ref={ref}>{children}</Container>
-    </div>
+    </StyledCarousel>
   )
 }
 
