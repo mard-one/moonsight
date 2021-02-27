@@ -7,11 +7,11 @@ module.exports = {
   },
   developMiddleware: app => {
     app.use(
-      "/.netlify/lambda/",
+      "/.netlify/functions/",
       createProxyMiddleware({
         target: "http://localhost:9000",
         pathRewrite: {
-          "/.netlify/lambda/": "",
+          "/.netlify/functions/": "",
         },
       })
     )

@@ -147,7 +147,7 @@ const Contact = () => {
     console.log("detail", detail)
 
     try {
-      const response = await fetch("/.netlify/lambda/send-email", {
+      const response = await fetch("/.netlify/functions/send-email", {
         method: "POST",
         body: JSON.stringify({
           selectedBudget,
