@@ -8,7 +8,9 @@
     "@material-ui/core": "^4.11.3",
     "@mdx-js/mdx": "^1.6.22",
     "@mdx-js/react": "^1.6.22",
+    "@sendgrid/mail": "^7.4.2",
     "babel-plugin-styled-components": "^1.12.0",
+    "dotenv": "^8.2.0",
     "gatsby": "^2.26.1",
     "gatsby-image": "^2.5.0",
     "gatsby-plugin-manifest": "^2.6.1",
@@ -29,6 +31,9 @@
   },
   "devDependencies": {
     "gatsby-plugin-webpack-bundle-analyser-v2": "^1.1.20",
+    "http-proxy-middleware": "^1.0.6",
+    "netlify-lambda": "^2.0.3",
+    "npm-run-all": "^4.1.5",
     "prettier": "2.2.1"
   },
   "keywords": [
@@ -36,14 +41,18 @@
   ],
   "license": "0BSD",
   "scripts": {
-    "build": "gatsby build",
-    "develop": "gatsby develop",
     "format": "prettier --write \"**/*.{js,jsx,ts,tsx,json,md}\"",
-    "start": "npm run develop",
     "serve": "gatsby serve",
     "bundle-report": "webpack-bundle-analyzer --port 4200 dist/stats.json",
     "clean": "gatsby clean",
-    "test": "echo \"Write tests! -> https://gatsby.dev/unit-testing\" && exit 1"
+    "test": "echo \"Write tests! -> https://gatsby.dev/unit-testing\" && exit 1",
+    "develop": "gatsby develop",
+    "start": "run-p start:**",
+    "start:app": "npm run develop",
+    "start:lambda": "netlify-lambda serve src/lambda",
+    "build": "gatsby build && netlify-lambda build src/lambda",
+    "build:app": "gatsby build",
+    "build:lambda": "netlify-lambda build src/lambda"
   },
   "repository": {
     "type": "git",

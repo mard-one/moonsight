@@ -237,6 +237,7 @@ const IndexPage = () => {
       ...projectsFragment
     }
   `)
+  
   console.log("data", data)
   const projects = data.allFile.edges
   const projectsToDisplay = projects.filter(

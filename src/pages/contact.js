@@ -137,7 +137,7 @@ const Contact = () => {
       setSelProjTypes([...filtered])
     }
   }
-  const handleSubmit = event => {
+  const handleSubmit = async event => {
     event.preventDefault()
     console.log("selectedBudget", selectedBudget)
     console.log("selProjTypes", selProjTypes)
@@ -145,6 +145,29 @@ const Contact = () => {
     console.log("email", email)
     console.log("companyName", companyName)
     console.log("detail", detail)
+
+    try {
+      const response = await fetch("/.netlify/lambda/send-email", {
+        method: "POST",
+        body: JSON.stringify({
+          selectedBudget,
+          selProjTypes,
+          name,
+          email,
+          companyName,
+          detail,
+        }),
+      })
+      console.log("response", response)
+      if (!response.ok) {
+        //not 200 response
+        return
+      }
+
+      //all OK
+    } catch (e) {
+      //error
+    }
   }
 
   return (
@@ -296,6 +319,8 @@ const Contact = () => {
               </div>
               <Margin bxs={30} bsm={49} />
               <Button
+                as="button"
+                type="submit"
                 style={{
                   width: "273px",
                   borderRadius: "21px",
