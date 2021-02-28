@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 500">
+    <defs>
+        <filter id="f1" x="0" y="0">
+            <feGaussianBlur in="SourceGraphic" stdDeviation="20"/>
+        </filter>
+    </defs>
+    <circle cx="250" cy="250" r="250" fill="white" filter="url(#f1)"/>
+</svg>

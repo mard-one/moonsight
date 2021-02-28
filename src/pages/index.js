@@ -12,6 +12,7 @@ import ArrowRight from "../images/right-arrow.svg"
 import Margin from "../components/margin"
 import styled from "styled-components"
 import { Fragment } from "react"
+import Ray from "../components/ray"
 
 const Projects = styled.section`
   display: grid;
@@ -248,6 +249,7 @@ const IndexPage = () => {
   return (
     <Layout>
       {/* <SEO title="Home" />*/}
+      <Ray/>
       <Margin as="header" tmd={120} txs={75} bmd={250} bxs={120}>
         <Grid container justify="center">
           <Grid item xs={12} sm={8}>
