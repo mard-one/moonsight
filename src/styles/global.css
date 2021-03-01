@@ -84,10 +84,11 @@ fieldset {
 
 html {
   font-size: 100%;
+  min-height: 100%;
+  position: relative;
 }
 
 body {
-  background: #030303;
   font-family: "Graphik", Helvetica, Arial, sans-serif;
   font-size: 1rem;
   line-height: 1;
@@ -95,9 +96,18 @@ body {
   color: #f2f3f1;
   font-style: normal;
   font-weight: 400;
+  height: 100%;
+  background: #030303;
 }
 .bg-dots {
-  background: url(../images/bg_dots.svg) center top;
+  background: url(../images/bg_dots.png) center top;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  overflow: hidden;
+  z-index: -1;
 }
 
 button {

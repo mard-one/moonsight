@@ -13,6 +13,8 @@ import Margin from "../components/margin"
 import styled from "styled-components"
 import { Fragment } from "react"
 import Ray from "../components/ray"
+import Sheet from "../components/shapes/sheet"
+import Sphere from "../components/shapes/sphere"
 
 const Projects = styled.section`
   display: grid;
@@ -238,7 +240,7 @@ const IndexPage = () => {
       ...projectsFragment
     }
   `)
-  
+
   console.log("data", data)
   const projects = data.allFile.edges
   const projectsToDisplay = projects.filter(
@@ -249,8 +251,14 @@ const IndexPage = () => {
   return (
     <Layout>
       {/* <SEO title="Home" />*/}
-      <Ray/>
-      <Margin as="header" tmd={120} txs={75} bmd={250} bxs={120}>
+      <Margin
+        as="header"
+        tmd={120}
+        txs={75}
+        bmd={250}
+        bxs={120}
+        style={{ position: "relative" }}
+      >
         <Grid container justify="center">
           <Grid item xs={12} sm={8}>
             <GreetingBadge emoji={handEmoji}>Hello, Hello!</GreetingBadge>
@@ -260,6 +268,38 @@ const IndexPage = () => {
             </Typography>
           </Grid>
         </Grid>
+        <div
+          style={{
+            position: "absolute",
+            top: 0,
+            left: 0,
+            width: "100%",
+            height: "100%",
+          }}
+        >
+          <Ray
+            style={{
+              width: "150%",
+              left: "50%",
+              transform: "translate(-50%, -67%)",
+              maxWidth: "100vw",
+              overflowX: "hidden",
+            }}
+          >
+            <Sheet
+              style={{
+                bottom: "270px",
+                left: "60%",
+              }}
+            />
+          </Ray>
+          <Sphere
+            style={{
+              bottom: "-500px",
+              left: "-10%",
+            }}
+          />
+        </div>
       </Margin>
       <Margin as="section" bsm={240} bxs={100}>
         <Projects>

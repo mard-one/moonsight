@@ -1,10 +1,11 @@
 import React from "react"
 import Ray from "../components/ray"
+import Sphere from "../components/shapes/sphere"
 import Sheet from "../components/shapes/sheet"
 
 const TestPage = () => {
   return (
-    <div style={{position: 'relative'}}>
+    <div style={{ position: "relative" }}>
       <div
         className="bg-dots"
         style={{
@@ -15,7 +16,18 @@ const TestPage = () => {
         }}
       />
       <Ray style={{ zIndex: 1 }}>
-        <Sheet style={{ zIndex: 3 }} />
+        <Sphere
+          style={{
+            bottom: "500px",
+            right: "500px",
+          }}
+        />
+        {/* <Sheet
+          style={{
+            bottom: "270px",
+            right: "140px",
+          }}
+        /> */}
       </Ray>
     </div>
   )
