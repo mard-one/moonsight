@@ -15,6 +15,7 @@ import mckinseyIcon from "../images/recognized-by/mckinsey.svg"
 import tinkoffIcon from "../images/recognized-by/tinkoff.svg"
 import mashreqIcon from "../images/recognized-by/mashreq.svg"
 import StickerOnText from "../components/stickerOnText"
+import Team from "../components/team"
 
 const organizations = [
   {
@@ -355,6 +356,36 @@ const About = () => {
     }
   `)
 
+  const teamMembers = [
+    { name: "abcx", radius: 50, deviationX: 40, deviationY: 50 },
+    { name: "abcd", radius: 50, deviationX: 0, deviationY: 60 },
+    { name: "abce", radius: 70, deviationX: 50, deviationY: -40 },
+    { name: "abcf", radius: 40, deviationX: 0, deviationY: 30 },
+    { name: "abcg", radius: 50, deviationX: 30, deviationY: -40 },
+    { name: "abch", radius: 35, deviationX: -30, deviationY: 30 },
+    { name: "abci", radius: 40, deviationX: 0, deviationY: 0 },
+    { name: "abcj", radius: 60, deviationX: 0, deviationY: 60 },
+    { name: "abck", radius: 50, deviationX: 0, deviationY: -40 },
+    { name: "abcd", radius: 70, deviationX: 0, deviationY: 100 },
+    { name: "abce", radius: 90, deviationX: 50, deviationY: -50 },
+    { name: "abcf", radius: 40, deviationX: -40, deviationY: 100 },
+    { name: "abcg", radius: 65, deviationX: 0, deviationY: 70 },
+    { name: "abch", radius: 75, deviationX: 50, deviationY: 0 },
+    { name: "abci", radius: 90, deviationX: 0, deviationY: 140 },
+    { name: "abcj", radius: 90, deviationX: 0, deviationY: -100 },
+    { name: "abck", radius: 40, deviationX: 0, deviationY: 0 },
+    { name: "abcd", radius: 90, deviationX: 0, deviationY: 100 },
+    { name: "abce", radius: 50, deviationX: 0, deviationY: -50 },
+    { name: "abcf", radius: 50, deviationX: 0, deviationY: 30 },
+    { name: "abcg", radius: 50, deviationX: 30, deviationY: 100 },
+    { name: "abch", radius: 50, deviationX: 50, deviationY: 0 },
+    { name: "abci", radius: 40, deviationX: 0, deviationY: 70 },
+    { name: "abcj", radius: 45, deviationX: 40, deviationY: 50 },
+    { name: "abck", radius: 50, deviationX: 0, deviationY: 100 },
+    { name: "abcj", radius: 45, deviationX: 0, deviationY: -40 },
+    { name: "abck", radius: 75, deviationX: 0, deviationY: 0 },
+  ]
+
   return (
     <Layout>
       <HeaderText overline="About Moonsight®">
@@ -461,6 +492,7 @@ const About = () => {
           </Grid>
         </Grid>
       </Margin>
+      <Team teamMembers={teamMembers} />
       <Margin as="section" bxs={150} bsm={190}>
         <Divider leftText="INFLUENCE" middleText="Section #" rightText="002" />
         <Margin bsm={80} bxs={40} />
