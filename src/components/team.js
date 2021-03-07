@@ -130,13 +130,7 @@ const Team = ({ teamMembers }) => {
     const context = canvas.getContext("2d")
     resizeCanvas()
     initialDraw(context)
-    let animationFrameId
-
-    const render = () => {
-      draw(context)
-      animationFrameId = window.requestAnimationFrame(render)
-    }
-    render()
+    w
 
     return () => {
       window.removeEventListener("resize", resizeCanvas)

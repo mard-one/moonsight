@@ -15,7 +15,8 @@ import mckinseyIcon from "../images/recognized-by/mckinsey.svg"
 import tinkoffIcon from "../images/recognized-by/tinkoff.svg"
 import mashreqIcon from "../images/recognized-by/mashreq.svg"
 import StickerOnText from "../components/stickerOnText"
-import Team from "../components/team"
+import Team from "../components/teamAsteroid"
+import Imgas from "../images/gatsby-icon.png"
 
 const organizations = [
   {
@@ -355,36 +356,143 @@ const About = () => {
       }
     }
   `)
-
+  console.log("Imgas", Imgas)
   const teamMembers = [
-    { name: "abcx", radius: 50, deviationX: 40, deviationY: 50 },
-    { name: "abcd", radius: 50, deviationX: 0, deviationY: 60 },
-    { name: "abce", radius: 70, deviationX: 50, deviationY: -40 },
-    { name: "abcf", radius: 40, deviationX: 0, deviationY: 30 },
-    { name: "abcg", radius: 50, deviationX: 30, deviationY: -40 },
-    { name: "abch", radius: 35, deviationX: -30, deviationY: 30 },
-    { name: "abci", radius: 40, deviationX: 0, deviationY: 0 },
-    { name: "abcj", radius: 60, deviationX: 0, deviationY: 60 },
-    { name: "abck", radius: 50, deviationX: 0, deviationY: -40 },
-    { name: "abcd", radius: 70, deviationX: 0, deviationY: 100 },
-    { name: "abce", radius: 90, deviationX: 50, deviationY: -50 },
-    { name: "abcf", radius: 40, deviationX: -40, deviationY: 100 },
-    { name: "abcg", radius: 65, deviationX: 0, deviationY: 70 },
-    { name: "abch", radius: 75, deviationX: 50, deviationY: 0 },
-    { name: "abci", radius: 90, deviationX: 0, deviationY: 140 },
-    { name: "abcj", radius: 90, deviationX: 0, deviationY: -100 },
-    { name: "abck", radius: 40, deviationX: 0, deviationY: 0 },
-    { name: "abcd", radius: 90, deviationX: 0, deviationY: 100 },
-    { name: "abce", radius: 50, deviationX: 0, deviationY: -50 },
-    { name: "abcf", radius: 50, deviationX: 0, deviationY: 30 },
-    { name: "abcg", radius: 50, deviationX: 30, deviationY: 100 },
-    { name: "abch", radius: 50, deviationX: 50, deviationY: 0 },
-    { name: "abci", radius: 40, deviationX: 0, deviationY: 70 },
-    { name: "abcj", radius: 45, deviationX: 40, deviationY: 50 },
-    { name: "abck", radius: 50, deviationX: 0, deviationY: 100 },
-    { name: "abcj", radius: 45, deviationX: 0, deviationY: -40 },
-    { name: "abck", radius: 75, deviationX: 0, deviationY: 0 },
+    {
+      name: "abcx",
+      size: {
+        web: 50,
+        tablet: 50,
+        mobile: 50,
+      },
+      posX: {
+        web: "0%",
+        tablet: "0%",
+        mobile: "0%",
+      },
+      posY: {
+        web: "0%",
+        tablet: "0%",
+        mobile: "0%",
+      },
+      img: Imgas,
+      movementBoundary: 5,
+      isMovingUp: true,
+    },
+    {
+      name: "abcd",
+      size: {
+        web: 50,
+        tablet: 50,
+        mobile: 50,
+      },
+      posX: {
+        web: "10%",
+        tablet: "10%",
+        mobile: "10%",
+      },
+      posY: {
+        web: "10%",
+        tablet: "10%",
+        mobile: "10%",
+      },
+      img: Imgas,
+      movementBoundary: 10,
+      isMovingUp: false,
+    },
+    {
+      name: "abce",
+      size: {
+        web: 70,
+        tablet: 70,
+        mobile: 70,
+      },
+      posX: {
+        web: "20%",
+        tablet: "20%",
+        mobile: "20%",
+      },
+      posY: {
+        web: "20%",
+        tablet: "20%",
+        mobile: "20%",
+      },
+      img: Imgas,
+      movementBoundary: 5,
+      isMovingUp: true,
+    },
+    {
+      name: "abcf",
+      size: {
+        web: 40,
+        tablet: 40,
+        mobile: 40,
+      },
+      posX: {
+        web: "30%",
+        tablet: "30%",
+        mobile: "30%",
+      },
+      posY: {
+        web: "30%",
+        tablet: "30%",
+        mobile: "30%",
+      },
+      img: Imgas,
+      movementBoundary: 10,
+      isMovingUp: false,
+    },
+    {
+      name: "abcg",
+      size: {
+        web: 50,
+        tablet: 50,
+        mobile: 50,
+      },
+      posX: {
+        web: "50%",
+        tablet: "50%",
+        mobile: "50%",
+      },
+      posY: {
+        web: "50%",
+        tablet: "50%",
+        mobile: "50%",
+      },
+      img: Imgas,
+      movementBoundary: 10,
+      isMovingUp: true,
+    },
   ]
+  // const teamMembers = [
+  //   { name: "abcx", radius: 50, deviationX: 40, deviationY: 50 },
+  //   { name: "abcd", radius: 50, deviationX: 0, deviationY: 60 },
+  //   { name: "abce", radius: 70, deviationX: 50, deviationY: -40 },
+  //   { name: "abcf", radius: 40, deviationX: 0, deviationY: 30 },
+  //   { name: "abcg", radius: 50, deviationX: 30, deviationY: -40 },
+  //   { name: "abch", radius: 35, deviationX: -30, deviationY: 30 },
+  //   { name: "abci", radius: 40, deviationX: 0, deviationY: 0 },
+  //   { name: "abcj", radius: 60, deviationX: 0, deviationY: 60 },
+  //   { name: "abck", radius: 50, deviationX: 0, deviationY: -40 },
+  //   { name: "abcd", radius: 70, deviationX: 0, deviationY: 100 },
+  //   { name: "abce", radius: 90, deviationX: 50, deviationY: -50 },
+  //   { name: "abcf", radius: 40, deviationX: -40, deviationY: 100 },
+  //   { name: "abcg", radius: 65, deviationX: 0, deviationY: 70 },
+  //   { name: "abch", radius: 75, deviationX: 50, deviationY: 0 },
+  //   { name: "abci", radius: 90, deviationX: 0, deviationY: 140 },
+  //   { name: "abcj", radius: 90, deviationX: 0, deviationY: -100 },
+  //   { name: "abck", radius: 40, deviationX: 0, deviationY: 0 },
+  //   { name: "abcd", radius: 90, deviationX: 0, deviationY: 100 },
+  //   { name: "abce", radius: 50, deviationX: 0, deviationY: -50 },
+  //   { name: "abcf", radius: 50, deviationX: 0, deviationY: 30 },
+  //   { name: "abcg", radius: 50, deviationX: 30, deviationY: 100 },
+  //   { name: "abch", radius: 50, deviationX: 50, deviationY: 0 },
+  //   { name: "abci", radius: 40, deviationX: 0, deviationY: 70 },
+  //   { name: "abcj", radius: 45, deviationX: 40, deviationY: 50 },
+  //   { name: "abck", radius: 50, deviationX: 0, deviationY: 100 },
+  //   { name: "abcj", radius: 45, deviationX: 0, deviationY: -40 },
+  //   { name: "abck", radius: 75, deviationX: 0, deviationY: 0 },
+  // ]
 
   return (
     <Layout>
