@@ -11,8 +11,17 @@ const show = keyframes`
   }
 `
 
+const Tooltip = styled.div`
+  position: absolute;
+  width: 100px;
+  height: 32px;
+  left: 0;
+  right: 0;
+  pointer-events: none;
+`
+
 const Image = styled.img`
-  transition: all 0.2s ease-in-out;
+  transition: transform 0.2s ease-in-out;
   border-radius: 50%;
   animation: ${show} 10s linear infinite;
   animation-play-state: ${props => {
@@ -26,14 +35,18 @@ const Image = styled.img`
     console.log("props", props)
   }}
   &:hover {
-    transform: scale(1.3);
+    transform-origin: center center !important;
+    transform: scale(1.3) !important;
   }
 `
 
 const Team = ({ teamMembers }) => {
   const canvasRef = useRef(null)
+  const tooltipRef = useRef(null)
   const [hoveredElem, setHoveredElem] = useState("")
   const [shapes, setShapes] = useState([])
+  const mouse = { x: null, y: null }
+  let moveTooltip = false
   const getShapes = ({ width, height }) => {
     let shapes = []
     console.log("width", width)
@@ -97,11 +110,35 @@ const Team = ({ teamMembers }) => {
     const { width, height } = canvas.getBoundingClientRect()
     getShapes({ width, height })
   }
+  // console.log("hoveredElem", hoveredElem)
+
+  const handleMouseMove = e => {
+    moveTooltip = true
+    const { offsetX, offsetY } = e.nativeEvent
+    let bounds = canvasRef.current.getBoundingClientRect()
+    let x = e.clientX - bounds.left
+    let y = e.clientY - bounds.top
+    console.log("e.clientX", e.clientX)
+    console.log("bounds.left", bounds.left)
+    // console.log("e.nativeEvent.clientX", e.nativeEvent.clientX)
+    // mouse.x = offsetX
+    // mouse.y = offsetY
+    mouse.x = x
+    mouse.y = y
+    console.log("x", x)
+  }
+
+  const update = () => {
+    // console.log("mouse", mouse)
+    // if (moveTooltip) {
+    tooltipRef.current.style.transform = `translate(${mouse.x}px, ${mouse.y}px)`
+    requestAnimationFrame(update)
+    // }
+  }
 
   useEffect(() => {
     window.addEventListener("resize", resizeCanvas)
     resizeCanvas()
-
     return () => {
       window.removeEventListener("resize", resizeCanvas)
     }
@@ -133,12 +170,26 @@ const Team = ({ teamMembers }) => {
             width: shape.size * 2,
             height: shape.size * 2,
           }}
-          onMouseOver={() => setHoveredElem(shape.name)}
-          onMouseEnter={() => setHoveredElem(shape.name)}
+          onMouseMove={handleMouseMove}
+          onMouseOver={() => {
+            moveTooltip = true
+            setHoveredElem(shape.name)
+          }}
+          onMouseEnter={() => {
+            setHoveredElem(shape.name)
+            moveTooltip = true
+            requestAnimationFrame(update)
+          }}
           onMouseOut={() => setHoveredElem("")}
-          onMouseLeave={() => setHoveredElem("")}
+          onMouseLeave={() => {
+            setHoveredElem("")
+            moveTooltip = false
+          }}
         />
       ))}
+      <Tooltip ref={tooltipRef} style={{}}>
+        asdasd
+      </Tooltip>
     </div>
   )
 }
