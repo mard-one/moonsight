@@ -15,7 +15,7 @@ import mckinseyIcon from "../images/recognized-by/mckinsey.svg"
 import tinkoffIcon from "../images/recognized-by/tinkoff.svg"
 import mashreqIcon from "../images/recognized-by/mashreq.svg"
 import StickerOnText from "../components/stickerOnText"
-import Team from "../components/teamAsteroid"
+import Team from "../components/teamAsteroidHTML"
 import Imgas from "../images/gatsby-icon.png"
 
 const organizations = [
