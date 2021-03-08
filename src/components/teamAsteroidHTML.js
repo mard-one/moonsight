@@ -12,41 +12,43 @@ const show = keyframes`
 `
 
 const Tooltip = styled.div`
-  position: absolute;
+  position: fixed;
   width: 100px;
   height: 32px;
   left: 0;
-  right: 0;
+  top: 0;
   pointer-events: none;
+  transition: opacity 0.2s ease-in-out;
+  opacity: 0;
 `
 
+// animation: ${show} 10s linear infinite;
+// animation-play-state: ${props => {
+//   console.log("props.isAnyElemHovered", props.isAnyElemHovered)
+//   return props.isAnyElemHovered ? "paused;" : "running;"
+// }}
+// ${props => {
+//   if (!props.hovered && props.isAnyElemHovered) {
+//     return "filter: brightness(0.7);"
+//   }
+// }}
 const Image = styled.img`
+  position: relative;
   transition: transform 0.2s ease-in-out;
   border-radius: 50%;
-  animation: ${show} 10s linear infinite;
-  animation-play-state: ${props => {
-    console.log("props.isAnyElemHovered", props.isAnyElemHovered)
-    return props.isAnyElemHovered ? "paused;" : "running;"
-  }}
-  ${props => {
-    if (!props.hovered && props.isAnyElemHovered) {
-      return "filter: brightness(0.7);"
-    }
-    console.log("props", props)
-  }}
   &:hover {
-    transform-origin: center center !important;
-    transform: scale(1.3) !important;
+    transform: scale(1.3);
   }
 `
 
 const Team = ({ teamMembers }) => {
   const canvasRef = useRef(null)
   const tooltipRef = useRef(null)
-  const [hoveredElem, setHoveredElem] = useState("")
   const [shapes, setShapes] = useState([])
-  const mouse = { x: null, y: null }
-  let moveTooltip = false
+  const mouse = useRef({ x: null, y: null })
+  const showToolTip = useRef(false)
+  const [tooltipText, setTooltipText] = useState("")
+  let rAFIndex
   const getShapes = ({ width, height }) => {
     let shapes = []
     console.log("width", width)
@@ -111,29 +113,48 @@ const Team = ({ teamMembers }) => {
     getShapes({ width, height })
   }
   // console.log("hoveredElem", hoveredElem)
-
+  const handleMouseEnter = () => {
+    rAFIndex = requestAnimationFrame(update)
+  }
+  const handleMouseLeave = () => {
+    cancelAnimationFrame(rAFIndex)
+  }
   const handleMouseMove = e => {
-    moveTooltip = true
-    const { offsetX, offsetY } = e.nativeEvent
-    let bounds = canvasRef.current.getBoundingClientRect()
-    let x = e.clientX - bounds.left
-    let y = e.clientY - bounds.top
-    console.log("e.clientX", e.clientX)
-    console.log("bounds.left", bounds.left)
+    const { clientX, clientY } = e
+    mouse.current = { x: clientX, y: clientY }
+    // let bounds = canvasRef.current.getBoundingClientRect()
+    // let x = e.clientX - bounds.left
+    // let y = e.clientY - bounds.top
+    // console.log("bounds.left", bounds.left)
     // console.log("e.nativeEvent.clientX", e.nativeEvent.clientX)
     // mouse.x = offsetX
     // mouse.y = offsetY
-    mouse.x = x
-    mouse.y = y
-    console.log("x", x)
+    // console.log("x", x)
+    // console.log("mouse", mouse)
+  }
+  const handleMouseOver = e => {
+    showToolTip.current = true
+    console.log("mouseover")
+    setTooltipText(e.target.alt)
+  }
+  const handleMouseOut = e => {
+    console.log("mouseout")
+    // setHoveredElem("")
+    showToolTip.current = false
   }
 
   const update = () => {
-    // console.log("mouse", mouse)
-    // if (moveTooltip) {
-    tooltipRef.current.style.transform = `translate(${mouse.x}px, ${mouse.y}px)`
-    requestAnimationFrame(update)
-    // }
+    // console.log("mouse", mouse.current)
+    console.log("showToolTip", showToolTip.current)
+    if (showToolTip.current) {
+      tooltipRef.current.style.opacity = "1"
+    } else {
+      tooltipRef.current.style.opacity = "0"
+    }
+    tooltipRef.current.style.transform = `translate(${
+      mouse.current.x + 10
+    }px, ${mouse.current.y - 20}px)`
+    rAFIndex = requestAnimationFrame(update)
   }
 
   useEffect(() => {
@@ -144,53 +165,40 @@ const Team = ({ teamMembers }) => {
     }
   }, [])
   return (
-    <div
-      ref={canvasRef}
-      style={{
-        position: "relative",
-        width: "100vw",
-        height: 800,
-        position: "relative",
-        left: "50%",
-        transform: "translateX(-50%)",
-        marginTop: -360,
-      }}
-    >
-      {shapes.map(shape => (
-        <Image
-          hovered={hoveredElem === shape.name}
-          isAnyElemHovered={!!hoveredElem}
-          key={shape.name}
-          src={shape.img}
-          alt="sss"
-          style={{
-            position: "absolute",
-            left: shape.posX,
-            top: shape.posY,
-            width: shape.size * 2,
-            height: shape.size * 2,
-          }}
-          onMouseMove={handleMouseMove}
-          onMouseOver={() => {
-            moveTooltip = true
-            setHoveredElem(shape.name)
-          }}
-          onMouseEnter={() => {
-            setHoveredElem(shape.name)
-            moveTooltip = true
-            requestAnimationFrame(update)
-          }}
-          onMouseOut={() => setHoveredElem("")}
-          onMouseLeave={() => {
-            setHoveredElem("")
-            moveTooltip = false
-          }}
-        />
-      ))}
-      <Tooltip ref={tooltipRef} style={{}}>
-        asdasd
-      </Tooltip>
-    </div>
+    <>
+      <div
+        ref={canvasRef}
+        style={{
+          position: "relative",
+          width: "100vw",
+          height: 800,
+          left: "50%",
+          transform: "translateX(-50%)",
+          marginTop: -360,
+        }}
+        onMouseMove={handleMouseMove}
+        onMouseEnter={handleMouseEnter}
+        onMouseLeave={handleMouseLeave}
+      >
+        {shapes.map(shape => (
+          <Image
+            key={shape.name}
+            src={shape.img}
+            alt={shape.name}
+            style={{
+              position: "absolute",
+              left: shape.posX,
+              top: shape.posY,
+              width: shape.size * 2,
+              height: shape.size * 2,
+            }}
+            onMouseOver={handleMouseOver}
+            onMouseOut={handleMouseOut}
+          />
+        ))}
+      </div>
+      <Tooltip ref={tooltipRef}>{tooltipText}</Tooltip>
+    </>
   )
 }
 
