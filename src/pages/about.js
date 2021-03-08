@@ -16,7 +16,7 @@ import tinkoffIcon from "../images/recognized-by/tinkoff.svg"
 import mashreqIcon from "../images/recognized-by/mashreq.svg"
 import StickerOnText from "../components/stickerOnText"
 import Team from "../components/teamAsteroidHTML"
-import Imgas from "../images/gatsby-icon.png"
+import Imgas from "../images/gatsby-astronaut.png"
 
 const organizations = [
   {
@@ -356,114 +356,484 @@ const About = () => {
       }
     }
   `)
-  console.log("Imgas", Imgas)
   const teamMembers = [
     {
-      name: "abcx",
-      size: {
-        web: 50,
-        tablet: 50,
-        mobile: 50,
+      name: "asdqwezxc1",
+      img: Imgas,
+      posY: {
+        web: "0",
+        tablet: "0",
+        mobile: "",
       },
       posX: {
-        web: "0%",
-        tablet: "0%",
-        mobile: "0%",
+        web: "-1%",
+        tablet: "-1%",
+        mobile: "",
       },
-      posY: {
-        web: "0%",
-        tablet: "0%",
-        mobile: "0%",
+      size: {
+        web: "95",
+        tablet: "95",
+        mobile: "",
       },
-      img: Imgas,
-      movementBoundary: 5,
-      isMovingUp: true,
     },
     {
-      name: "abcd",
-      size: {
-        web: 50,
-        tablet: 50,
-        mobile: 50,
+      name: "asdqwezxc2",
+      img: Imgas,
+      posY: {
+        web: "94",
+        tablet: "94",
+        mobile: "",
       },
       posX: {
-        web: "10%",
-        tablet: "10%",
-        mobile: "10%",
+        web: "4%",
+        tablet: "4%",
+        mobile: "",
       },
-      posY: {
-        web: "10%",
-        tablet: "10%",
-        mobile: "10%",
+      size: {
+        web: "95",
+        tablet: "95",
+        mobile: "",
       },
-      img: Imgas,
-      movementBoundary: 10,
-      isMovingUp: false,
     },
     {
-      name: "abce",
-      size: {
-        web: 70,
-        tablet: 70,
-        mobile: 70,
+      name: "asdqwezxc3",
+      img: Imgas,
+      posY: {
+        web: "194",
+        tablet: "194",
+        mobile: "",
       },
       posX: {
-        web: "20%",
-        tablet: "20%",
-        mobile: "20%",
+        web: "8%",
+        tablet: "8%",
+        mobile: "",
       },
-      posY: {
-        web: "20%",
-        tablet: "20%",
-        mobile: "20%",
+      size: {
+        web: "143",
+        tablet: "113",
+        mobile: "",
       },
-      img: Imgas,
-      movementBoundary: 5,
-      isMovingUp: true,
     },
     {
-      name: "abcf",
-      size: {
-        web: 40,
-        tablet: 40,
-        mobile: 40,
+      name: "asdqwezxc4",
+      img: Imgas,
+      posY: {
+        web: "102",
+        tablet: "102",
+        mobile: "",
       },
       posX: {
-        web: "30%",
+        web: "13%",
+        tablet: "13%",
+        mobile: "",
+      },
+      size: {
+        web: "79",
+        tablet: "79",
+        mobile: "",
+      },
+    },
+    {
+      name: "asdqwezxc5",
+      img: Imgas,
+      posY: {
+        web: "272",
+        tablet: "272",
+        mobile: "",
+      },
+      posX: {
+        web: "16%",
+        tablet: "15%",
+        mobile: "",
+      },
+      size: {
+        web: "100",
+        tablet: "100",
+        mobile: "",
+      },
+    },
+    {
+      name: "asdqwezxc6",
+      img: Imgas,
+      posY: {
+        web: "189",
+        tablet: "139",
+        mobile: "",
+      },
+      posX: {
+        web: "17%",
+        tablet: "19%",
+        mobile: "",
+      },
+      size: {
+        web: "77",
+        tablet: "77",
+        mobile: "",
+      },
+    },
+    {
+      name: "asdqwezxc7",
+      img: Imgas,
+      posY: {
+        web: "339",
+        tablet: "339",
+        mobile: "",
+      },
+      posX: {
+        web: "23%",
+        tablet: "22%",
+        mobile: "",
+      },
+      size: {
+        web: "120",
+        tablet: "120",
+        mobile: "",
+      },
+    },
+    {
+      name: "asdqwezxc8",
+      img: Imgas,
+      posY: {
+        web: "241",
+        tablet: "211",
+        mobile: "",
+      },
+      posX: {
+        web: "22%",
+        tablet: "25%",
+        mobile: "",
+      },
+      size: {
+        web: "80",
+        tablet: "80",
+        mobile: "",
+      },
+    },
+    {
+      name: "asdqwezxc9",
+      img: Imgas,
+      posY: {
+        web: "423",
+        tablet: "423",
+        mobile: "",
+      },
+      posX: {
+        web: "27%",
+        tablet: "27%",
+        mobile: "",
+      },
+      size: {
+        web: "100",
+        tablet: "100",
+        mobile: "",
+      },
+    },
+    {
+      name: "asdqwezxc10",
+      img: Imgas,
+      posY: {
+        web: "321",
+        tablet: "231",
+        mobile: "",
+      },
+      posX: {
+        web: "29%",
         tablet: "30%",
-        mobile: "30%",
+        mobile: "",
       },
-      posY: {
-        web: "30%",
-        tablet: "30%",
-        mobile: "30%",
+      size: {
+        web: "178",
+        tablet: "158",
+        mobile: "",
       },
-      img: Imgas,
-      movementBoundary: 10,
-      isMovingUp: false,
     },
     {
-      name: "abcg",
-      size: {
-        web: 50,
-        tablet: 50,
-        mobile: 50,
+      name: "asdqwezxc11",
+      img: Imgas,
+      posY: {
+        web: "410",
+        tablet: "410",
+        mobile: "",
       },
       posX: {
-        web: "50%",
-        tablet: "50%",
-        mobile: "50%",
+        web: "36%",
+        tablet: "36%",
+        mobile: "",
       },
-      posY: {
-        web: "50%",
-        tablet: "50%",
-        mobile: "50%",
+      size: {
+        web: "178",
+        tablet: "178",
+        mobile: "",
       },
+    },
+    {
+      name: "asdqwezxc12",
       img: Imgas,
-      movementBoundary: 10,
-      isMovingUp: true,
+      posY: {
+        web: "562",
+        tablet: "562",
+        mobile: "",
+      },
+      posX: {
+        web: "44%",
+        tablet: "35%",
+        mobile: "",
+      },
+      size: {
+        web: "130",
+        tablet: "130",
+        mobile: "",
+      },
+    },
+    {
+      name: "asdqwezxc13",
+      img: Imgas,
+      posY: {
+        web: "334",
+        tablet: "244",
+        mobile: "",
+      },
+      posX: {
+        web: "41%",
+        tablet: "41%",
+        mobile: "",
+      },
+      size: {
+        web: "178",
+        tablet: "158",
+        mobile: "",
+      },
+    },
+    {
+      name: "asdqwezxc14",
+      img: Imgas,
+      posY: {
+        web: "569",
+        tablet: "569",
+        mobile: "",
+      },
+      posX: {
+        web: "52%",
+        tablet: "48%",
+        mobile: "",
+      },
+      size: {
+        web: "178",
+        tablet: "158",
+        mobile: "",
+      },
+    },
+    {
+      name: "asdqwezxc15",
+      img: Imgas,
+      posY: {
+        web: "400",
+        tablet: "370",
+        mobile: "",
+      },
+      posX: {
+        web: "49%",
+        tablet: "46%",
+        mobile: "",
+      },
+      size: {
+        web: "152",
+        tablet: "152",
+        mobile: "",
+      },
+    },
+    {
+      name: "asdqwezxc16",
+      img: Imgas,
+      posY: {
+        web: "425",
+        tablet: "457",
+        mobile: "",
+      },
+      posX: {
+        web: "58%",
+        tablet: "55%",
+        mobile: "",
+      },
+      size: {
+        web: "178",
+        tablet: "158",
+        mobile: "",
+      },
+    },
+    {
+      name: "asdqwezxc17",
+      img: Imgas,
+      posY: {
+        web: "599",
+        tablet: "599",
+        mobile: "",
+      },
+      posX: {
+        web: "66%",
+        tablet: "64%",
+        mobile: "",
+      },
+      size: {
+        web: "80",
+        tablet: "80",
+        mobile: "",
+      },
+    },
+    {
+      name: "asdqwezxc18",
+      img: Imgas,
+      posY: {
+        web: "415",
+        tablet: "415",
+        mobile: "",
+      },
+      posX: {
+        web: "66%",
+        tablet: "66%",
+        mobile: "",
+      },
+      size: {
+        web: "178",
+        tablet: "158",
+        mobile: "",
+      },
+    },
+    {
+      name: "asdqwezxc19",
+      img: Imgas,
+      posY: {
+        web: "335",
+        tablet: "335",
+        mobile: "",
+      },
+      posX: {
+        web: "64%",
+        tablet: "64%",
+        mobile: "",
+      },
+      size: {
+        web: "80",
+        tablet: "80",
+        mobile: "",
+      },
+    },
+    {
+      name: "asdqwezxc20",
+      img: Imgas,
+      posY: {
+        web: "553",
+        tablet: "583",
+        mobile: "",
+      },
+      posX: {
+        web: "72%",
+        tablet: "70%",
+        mobile: "",
+      },
+      size: {
+        web: "106",
+        tablet: "106",
+        mobile: "",
+      },
+    },
+    {
+      name: "asdqwezxc21",
+      img: Imgas,
+      posY: {
+        web: "533",
+        tablet: "533",
+        mobile: "",
+      },
+      posX: {
+        web: "77%",
+        tablet: "77%",
+        mobile: "",
+      },
+      size: {
+        web: "106",
+        tablet: "106",
+        mobile: "",
+      },
+    },
+    {
+      name: "asdqwezxc22",
+      img: Imgas,
+      posY: {
+        web: "616",
+        tablet: "616",
+        mobile: "",
+      },
+      posX: {
+        web: "80%",
+        tablet: "80%",
+        mobile: "",
+      },
+      size: {
+        web: "100",
+        tablet: "100",
+        mobile: "",
+      },
+    },
+    {
+      name: "asdqwezxc23",
+      img: Imgas,
+      posY: {
+        web: "645",
+        tablet: "625",
+        mobile: "",
+      },
+      posX: {
+        web: "87%",
+        tablet: "89%",
+        mobile: "",
+      },
+      size: {
+        web: "95",
+        tablet: "95",
+        mobile: "",
+      },
+    },
+    {
+      name: "asdqwezxc24",
+      img: Imgas,
+      posY: {
+        web: "729",
+        tablet: "729",
+        mobile: "",
+      },
+      posX: {
+        web: "93%",
+        tablet: "83%",
+        mobile: "",
+      },
+      size: {
+        web: "95",
+        tablet: "95",
+        mobile: "",
+      },
+    },
+    {
+      name: "asdqwezxc25",
+      img: Imgas,
+      posY: {
+        web: "817",
+        tablet: "807",
+        mobile: "",
+      },
+      posX: {
+        web: "96%",
+        tablet: "90%",
+        mobile: "",
+      },
+      size: {
+        web: "150",
+        tablet: "100",
+        mobile: "",
+      },
     },
   ]
+
   // const teamMembers = [
   //   { name: "abcx", radius: 50, deviationX: 40, deviationY: 50 },
   //   { name: "abcd", radius: 50, deviationX: 0, deviationY: 60 },

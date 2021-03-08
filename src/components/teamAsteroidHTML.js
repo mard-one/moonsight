@@ -1,25 +1,18 @@
 import React, { useEffect, useRef, useState } from "react"
 
-import styled, { css, keyframes } from "styled-components"
-
-const show = keyframes`
-  0%, 100% {
-    transform: translateY(0);
-  }
-  50% {
-    transform: translateY(-30px);
-  }
-`
+import styled from "styled-components"
 
 const Tooltip = styled.div`
   position: fixed;
-  width: 100px;
-  height: 32px;
   left: 0;
   top: 0;
   pointer-events: none;
   transition: opacity 0.2s ease-in-out;
   opacity: 0;
+  background-color: white;
+  color: black;
+  padding: 15px 26px;
+  border-radius: 35px;
 `
 
 // animation: ${show} 10s linear infinite;
@@ -38,6 +31,7 @@ const Image = styled.img`
   border-radius: 50%;
   &:hover {
     transform: scale(1.3);
+    z-index: 100;
   }
 `
 
@@ -49,70 +43,52 @@ const Team = ({ teamMembers }) => {
   const showToolTip = useRef(false)
   const [tooltipText, setTooltipText] = useState("")
   let rAFIndex
+
   const getShapes = ({ width, height }) => {
     let shapes = []
     console.log("width", width)
     if (width > 960) {
       shapes = teamMembers.map(member => {
-        const posX = (width * parseInt(member.posX.web)) / 100
-        const posY = (height * parseInt(member.posY.web)) / 100
         return {
           name: member.name,
-          size: member.size.web,
-          posX: posX,
-          posY: posY,
-          movementBoundary: {
-            max: posY + member.movementBoundary,
-            min: posY - member.movementBoundary,
-          },
+          size: parseInt(member.size.web),
+          posX: member.posX.web,
+          posY: parseInt(member.posY.web),
           img: member.img,
-          isMovingUp: member.isMovingUp,
         }
       })
     } else if (width <= 960 && width > 600) {
       shapes = teamMembers.map(member => {
-        const posX = (width * parseInt(member.posX.tablet)) / 100
-        const posY = (width * parseInt(member.posY.tablet)) / 100
         return {
           name: member.name,
-          size: member.size.tablet,
-          posX: posX,
-          posY: posY,
-          movementBoundary: {
-            max: posY + member.movementBoundary,
-            min: posY - member.movementBoundary,
-          },
+          size: parseInt(member.size.tablet),
+          posX: member.posX.tablet,
+          posY: parseInt(member.posY.tablet),
           img: member.img,
-          isMovingUp: member.isMovingUp,
         }
       })
     } else {
       shapes = teamMembers.map(member => {
-        const posX = (width * parseInt(member.posX.mobile)) / 100
-        const posY = (width * parseInt(member.posY.mobile)) / 100
         return {
           name: member.name,
-          size: member.size.mobile,
-          posX: posX,
-          posY: posY,
-          movementBoundary: {
-            max: posY + member.movementBoundary,
-            min: posY - member.movementBoundary,
-          },
+          size: parseInt(member.size.tablet) / 2,
+          posX: member.posX.mobile,
+          posY: parseInt(member.posY.mobile),
           img: member.img,
-          isMovingUp: member.isMovingUp,
         }
       })
     }
+
     setShapes(shapes)
     console.log("shapes", shapes)
   }
+
   const resizeCanvas = () => {
     const canvas = canvasRef.current
     const { width, height } = canvas.getBoundingClientRect()
     getShapes({ width, height })
   }
-  // console.log("hoveredElem", hoveredElem)
+
   const handleMouseEnter = () => {
     rAFIndex = requestAnimationFrame(update)
   }
@@ -122,15 +98,6 @@ const Team = ({ teamMembers }) => {
   const handleMouseMove = e => {
     const { clientX, clientY } = e
     mouse.current = { x: clientX, y: clientY }
-    // let bounds = canvasRef.current.getBoundingClientRect()
-    // let x = e.clientX - bounds.left
-    // let y = e.clientY - bounds.top
-    // console.log("bounds.left", bounds.left)
-    // console.log("e.nativeEvent.clientX", e.nativeEvent.clientX)
-    // mouse.x = offsetX
-    // mouse.y = offsetY
-    // console.log("x", x)
-    // console.log("mouse", mouse)
   }
   const handleMouseOver = e => {
     showToolTip.current = true
@@ -139,13 +106,10 @@ const Team = ({ teamMembers }) => {
   }
   const handleMouseOut = e => {
     console.log("mouseout")
-    // setHoveredElem("")
     showToolTip.current = false
   }
 
   const update = () => {
-    // console.log("mouse", mouse.current)
-    console.log("showToolTip", showToolTip.current)
     if (showToolTip.current) {
       tooltipRef.current.style.opacity = "1"
     } else {
@@ -171,10 +135,12 @@ const Team = ({ teamMembers }) => {
         style={{
           position: "relative",
           width: "100vw",
-          height: 800,
+          height: 970,
           left: "50%",
           transform: "translateX(-50%)",
           marginTop: -360,
+          overflowX: "hidden",
+          overflowY: "visible",
         }}
         onMouseMove={handleMouseMove}
         onMouseEnter={handleMouseEnter}
@@ -189,8 +155,8 @@ const Team = ({ teamMembers }) => {
               position: "absolute",
               left: shape.posX,
               top: shape.posY,
-              width: shape.size * 2,
-              height: shape.size * 2,
+              width: shape.size,
+              height: shape.size,
             }}
             onMouseOver={handleMouseOver}
             onMouseOut={handleMouseOut}
