@@ -6,9 +6,11 @@ const Image = styled.img`
   position: relative;
   transition: transform 0.2s ease-in-out;
   border-radius: 50%;
-  &:hover {
-    transform: scale(1.3);
-    z-index: 100;
+  @media (hover: hover) {
+    &:hover {
+      transform: scale(1.3);
+      z-index: 100;
+    }
   }
 `
 const Tooltip = styled.div`
@@ -59,12 +61,6 @@ const Backdrop = styled.div`
   pointer-events: none;
 `
 
-// animation: ${show} 10s linear infinite;
-// animation-play-state: ${props => {
-//   console.log("props.isAnyElemHovered", props.isAnyElemHovered)
-//   return props.isAnyElemHovered ? "paused;" : "running;"
-// }}
-
 const Team = ({ teamMembers }) => {
   const canvasRef = useRef(null)
   const tooltipRef = useRef(null)
@@ -72,6 +68,7 @@ const Team = ({ teamMembers }) => {
   const [shapes, setShapes] = useState([])
   const imageRefs = useRef([])
   const backdrop = useRef(null)
+  const isTouchScreen = useRef("ontouchstart" in document.documentElement)
   let rAFIndex
 
   const getShapes = ({ width, height }) => {
@@ -119,25 +116,24 @@ const Team = ({ teamMembers }) => {
     getShapes({ width, height })
   }
 
-  // const handleMouseEnter = () => {
-  //   rAFIndex = requestAnimationFrame(update)
-  // }
-  // const handleMouseLeave = () => {
-  //   showToolTip.current = false
-  //   cancelAnimationFrame(rAFIndex)
-  // }
   const handleMouseMove = e => {
     const { clientX, clientY } = e
     mouse.current = { x: clientX, y: clientY }
   }
   const handleMouseOver = e => {
+    if (isTouchScreen.current) {
+      return false
+    }
     backdrop.current.style.opacity = "0.5"
     tooltipRef.current.innerText = e.target.alt
     tooltipRef.current.style.opacity = "1"
     console.log("mouseover")
     rAFIndex = requestAnimationFrame(update)
   }
-  const handleMouseOut = (e, index) => {
+  const handleMouseOut = e => {
+    if (isTouchScreen.current) {
+      return false
+    }
     console.log("mouseout")
     backdrop.current.style.opacity = "0"
     tooltipRef.current.style.opacity = "0"
@@ -162,12 +158,7 @@ const Team = ({ teamMembers }) => {
   }, [])
   return (
     <>
-      <Container
-        ref={canvasRef}
-        onMouseMove={handleMouseMove}
-        // onMouseEnter={handleMouseEnter}
-        // onMouseLeave={handleMouseLeave}
-      >
+      <Container ref={canvasRef} onMouseMove={handleMouseMove}>
         {shapes.map((shape, i) => {
           console.log("rerendered")
           return (
