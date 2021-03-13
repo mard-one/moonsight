@@ -2,6 +2,15 @@ import React, { useEffect, useRef, useState } from "react"
 
 import styled from "styled-components"
 
+const Image = styled.img`
+  position: relative;
+  transition: transform 0.2s ease-in-out;
+  border-radius: 50%;
+  &:hover {
+    transform: scale(1.3);
+    z-index: 100;
+  }
+`
 const Tooltip = styled.div`
   position: fixed;
   left: 0;
@@ -13,6 +22,41 @@ const Tooltip = styled.div`
   color: black;
   padding: 15px 26px;
   border-radius: 35px;
+  z-index: 100;
+`
+
+const Container = styled.div`
+  position: relative;
+  width: 100vw;
+  height: 970px;
+  left: 50%;
+  transform: translateX(-50%);
+  margin-top: -360px;
+  overflow-x: hidden;
+  overflow-y: visible;
+  z-index: 90;
+  &:hover {
+    > ${Image}, > ${Image} {
+      will-change: transform;
+    }
+  }
+  ${props => props.theme.breakpoints.down("xs")} {
+    height: 600px;
+    margin-top: -100px;
+  }
+`
+
+const Backdrop = styled.div`
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  left: 0;
+  right: 0;
+  background-color: black;
+  opacity: 0;
+  // visibility: hidden;
+  transition: opacity 0.2s linear;
+  pointer-events: none;
 `
 
 // animation: ${show} 10s linear infinite;
@@ -20,33 +64,19 @@ const Tooltip = styled.div`
 //   console.log("props.isAnyElemHovered", props.isAnyElemHovered)
 //   return props.isAnyElemHovered ? "paused;" : "running;"
 // }}
-// ${props => {
-//   if (!props.hovered && props.isAnyElemHovered) {
-//     return "filter: brightness(0.7);"
-//   }
-// }}
-const Image = styled.img`
-  position: relative;
-  transition: transform 0.2s ease-in-out;
-  border-radius: 50%;
-  &:hover {
-    transform: scale(1.3);
-    z-index: 100;
-  }
-`
 
 const Team = ({ teamMembers }) => {
   const canvasRef = useRef(null)
   const tooltipRef = useRef(null)
-  const [shapes, setShapes] = useState([])
   const mouse = useRef({ x: null, y: null })
-  const showToolTip = useRef(false)
-  const [tooltipText, setTooltipText] = useState("")
+  const [shapes, setShapes] = useState([])
+  const imageRefs = useRef([])
+  const backdrop = useRef(null)
   let rAFIndex
 
   const getShapes = ({ width, height }) => {
     let shapes = []
-    console.log("width", width)
+    // console.log("width", width)
     if (width > 960) {
       shapes = teamMembers.map(member => {
         return {
@@ -71,7 +101,7 @@ const Team = ({ teamMembers }) => {
       shapes = teamMembers.map(member => {
         return {
           name: member.name,
-          size: parseInt(member.size.tablet) / 2,
+          size: parseInt(member.size.mobile),
           posX: member.posX.mobile,
           posY: parseInt(member.posY.mobile),
           img: member.img,
@@ -80,7 +110,7 @@ const Team = ({ teamMembers }) => {
     }
 
     setShapes(shapes)
-    console.log("shapes", shapes)
+    // console.log("shapes", shapes)
   }
 
   const resizeCanvas = () => {
@@ -89,32 +119,33 @@ const Team = ({ teamMembers }) => {
     getShapes({ width, height })
   }
 
-  const handleMouseEnter = () => {
-    rAFIndex = requestAnimationFrame(update)
-  }
-  const handleMouseLeave = () => {
-    cancelAnimationFrame(rAFIndex)
-  }
+  // const handleMouseEnter = () => {
+  //   rAFIndex = requestAnimationFrame(update)
+  // }
+  // const handleMouseLeave = () => {
+  //   showToolTip.current = false
+  //   cancelAnimationFrame(rAFIndex)
+  // }
   const handleMouseMove = e => {
     const { clientX, clientY } = e
     mouse.current = { x: clientX, y: clientY }
   }
   const handleMouseOver = e => {
-    showToolTip.current = true
+    backdrop.current.style.opacity = "0.5"
+    tooltipRef.current.innerText = e.target.alt
+    tooltipRef.current.style.opacity = "1"
     console.log("mouseover")
-    setTooltipText(e.target.alt)
+    rAFIndex = requestAnimationFrame(update)
   }
-  const handleMouseOut = e => {
+  const handleMouseOut = (e, index) => {
     console.log("mouseout")
-    showToolTip.current = false
+    backdrop.current.style.opacity = "0"
+    tooltipRef.current.style.opacity = "0"
+    cancelAnimationFrame(rAFIndex)
   }
 
   const update = () => {
-    if (showToolTip.current) {
-      tooltipRef.current.style.opacity = "1"
-    } else {
-      tooltipRef.current.style.opacity = "0"
-    }
+    console.log("update")
     tooltipRef.current.style.transform = `translate(${
       mouse.current.x + 10
     }px, ${mouse.current.y - 20}px)`
@@ -126,44 +157,40 @@ const Team = ({ teamMembers }) => {
     resizeCanvas()
     return () => {
       window.removeEventListener("resize", resizeCanvas)
+      cancelAnimationFrame(rAFIndex)
     }
   }, [])
   return (
     <>
-      <div
+      <Container
         ref={canvasRef}
-        style={{
-          position: "relative",
-          width: "100vw",
-          height: 970,
-          left: "50%",
-          transform: "translateX(-50%)",
-          marginTop: -360,
-          overflowX: "hidden",
-          overflowY: "visible",
-        }}
         onMouseMove={handleMouseMove}
-        onMouseEnter={handleMouseEnter}
-        onMouseLeave={handleMouseLeave}
+        // onMouseEnter={handleMouseEnter}
+        // onMouseLeave={handleMouseLeave}
       >
-        {shapes.map(shape => (
-          <Image
-            key={shape.name}
-            src={shape.img}
-            alt={shape.name}
-            style={{
-              position: "absolute",
-              left: shape.posX,
-              top: shape.posY,
-              width: shape.size,
-              height: shape.size,
-            }}
-            onMouseOver={handleMouseOver}
-            onMouseOut={handleMouseOut}
-          />
-        ))}
-      </div>
-      <Tooltip ref={tooltipRef}>{tooltipText}</Tooltip>
+        {shapes.map((shape, i) => {
+          console.log("rerendered")
+          return (
+            <Image
+              key={shape.name}
+              src={shape.img}
+              alt={shape.name}
+              ref={el => (imageRefs.current[i] = el)}
+              style={{
+                position: "absolute",
+                left: shape.posX,
+                top: shape.posY,
+                width: shape.size,
+                height: shape.size,
+              }}
+              onMouseOver={handleMouseOver}
+              onMouseOut={handleMouseOut}
+            />
+          )
+        })}
+        <Backdrop ref={backdrop} />
+      </Container>
+      <Tooltip ref={tooltipRef}></Tooltip>
     </>
   )
 }

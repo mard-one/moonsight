@@ -361,19 +361,19 @@ const About = () => {
       name: "asdqwezxc1",
       img: Imgas,
       posY: {
-        web: "0",
+        web: "16",
         tablet: "0",
-        mobile: "",
+        mobile: "340",
       },
       posX: {
         web: "-1%",
         tablet: "-1%",
-        mobile: "",
+        mobile: "47%",
       },
       size: {
         web: "95",
         tablet: "95",
-        mobile: "",
+        mobile: "60",
       },
     },
     {
@@ -382,17 +382,17 @@ const About = () => {
       posY: {
         web: "94",
         tablet: "94",
-        mobile: "",
+        mobile: "314",
       },
       posX: {
         web: "4%",
         tablet: "4%",
-        mobile: "",
+        mobile: "-3%",
       },
       size: {
         web: "95",
         tablet: "95",
-        mobile: "",
+        mobile: "60",
       },
     },
     {
@@ -401,17 +401,17 @@ const About = () => {
       posY: {
         web: "194",
         tablet: "194",
-        mobile: "",
+        mobile: "70",
       },
       posX: {
         web: "8%",
         tablet: "8%",
-        mobile: "",
+        mobile: "19%",
       },
       size: {
         web: "143",
         tablet: "113",
-        mobile: "",
+        mobile: "96",
       },
     },
     {
@@ -420,17 +420,17 @@ const About = () => {
       posY: {
         web: "102",
         tablet: "102",
-        mobile: "",
+        mobile: "220",
       },
       posX: {
         web: "13%",
         tablet: "13%",
-        mobile: "",
+        mobile: "83%",
       },
       size: {
         web: "79",
         tablet: "79",
-        mobile: "",
+        mobile: "60",
       },
     },
     {
@@ -439,17 +439,17 @@ const About = () => {
       posY: {
         web: "272",
         tablet: "272",
-        mobile: "",
+        mobile: "14",
       },
       posX: {
         web: "16%",
         tablet: "15%",
-        mobile: "",
+        mobile: "26%",
       },
       size: {
         web: "100",
         tablet: "100",
-        mobile: "",
+        mobile: "70",
       },
     },
     {
@@ -458,17 +458,17 @@ const About = () => {
       posY: {
         web: "189",
         tablet: "139",
-        mobile: "",
+        mobile: "420",
       },
       posX: {
         web: "17%",
         tablet: "19%",
-        mobile: "",
+        mobile: "3%",
       },
       size: {
         web: "77",
         tablet: "77",
-        mobile: "",
+        mobile: "60",
       },
     },
     {
@@ -477,17 +477,17 @@ const About = () => {
       posY: {
         web: "339",
         tablet: "339",
-        mobile: "",
+        mobile: "177",
       },
       posX: {
         web: "23%",
         tablet: "22%",
-        mobile: "",
+        mobile: "25%",
       },
       size: {
         web: "120",
         tablet: "120",
-        mobile: "",
+        mobile: "70",
       },
     },
     {
@@ -496,17 +496,17 @@ const About = () => {
       posY: {
         web: "241",
         tablet: "211",
-        mobile: "",
+        mobile: "390",
       },
       posX: {
         web: "22%",
         tablet: "25%",
-        mobile: "",
+        mobile: "59%",
       },
       size: {
         web: "80",
         tablet: "80",
-        mobile: "",
+        mobile: "60",
       },
     },
     {
@@ -515,17 +515,17 @@ const About = () => {
       posY: {
         web: "423",
         tablet: "423",
-        mobile: "",
+        mobile: "320",
       },
       posX: {
         web: "27%",
         tablet: "27%",
-        mobile: "",
+        mobile: "68%",
       },
       size: {
         web: "100",
         tablet: "100",
-        mobile: "",
+        mobile: "70",
       },
     },
     {
@@ -534,17 +534,17 @@ const About = () => {
       posY: {
         web: "321",
         tablet: "231",
-        mobile: "",
+        mobile: "330",
       },
       posX: {
         web: "29%",
         tablet: "30%",
-        mobile: "",
+        mobile: "11%",
       },
       size: {
         web: "178",
         tablet: "158",
-        mobile: "",
+        mobile: "110",
       },
     },
     {
@@ -553,17 +553,17 @@ const About = () => {
       posY: {
         web: "410",
         tablet: "410",
-        mobile: "",
+        mobile: "243",
       },
       posX: {
         web: "36%",
         tablet: "36%",
-        mobile: "",
+        mobile: "29%",
       },
       size: {
         web: "178",
         tablet: "178",
-        mobile: "",
+        mobile: "110",
       },
     },
     {
@@ -572,17 +572,17 @@ const About = () => {
       posY: {
         web: "562",
         tablet: "562",
-        mobile: "",
+        mobile: "307",
       },
       posX: {
         web: "44%",
         tablet: "35%",
-        mobile: "",
+        mobile: "80%",
       },
       size: {
         web: "130",
         tablet: "130",
-        mobile: "",
+        mobile: "70",
       },
     },
     {
@@ -591,17 +591,17 @@ const About = () => {
       posY: {
         web: "334",
         tablet: "244",
-        mobile: "",
+        mobile: "235",
       },
       posX: {
         web: "41%",
         tablet: "41%",
-        mobile: "",
+        mobile: "53%",
       },
       size: {
         web: "178",
         tablet: "158",
-        mobile: "",
+        mobile: "110",
       },
     },
     {
@@ -610,17 +610,17 @@ const About = () => {
       posY: {
         web: "569",
         tablet: "569",
-        mobile: "",
+        mobile: "104",
       },
       posX: {
         web: "52%",
         tablet: "48%",
-        mobile: "",
+        mobile: "65%",
       },
       size: {
         web: "178",
         tablet: "158",
-        mobile: "",
+        mobile: "110",
       },
     },
     {
@@ -629,17 +629,17 @@ const About = () => {
       posY: {
         web: "400",
         tablet: "370",
-        mobile: "",
+        mobile: "416",
       },
       posX: {
         web: "49%",
         tablet: "46%",
-        mobile: "",
+        mobile: "67%",
       },
       size: {
         web: "152",
         tablet: "152",
-        mobile: "",
+        mobile: "96",
       },
     },
     {
@@ -648,17 +648,17 @@ const About = () => {
       posY: {
         web: "425",
         tablet: "457",
-        mobile: "",
+        mobile: "20",
       },
       posX: {
         web: "58%",
         tablet: "55%",
-        mobile: "",
+        mobile: "46%",
       },
       size: {
         web: "178",
         tablet: "158",
-        mobile: "",
+        mobile: "110",
       },
     },
     {
@@ -667,17 +667,17 @@ const About = () => {
       posY: {
         web: "599",
         tablet: "599",
-        mobile: "",
+        mobile: "450",
       },
       posX: {
         web: "66%",
         tablet: "64%",
-        mobile: "",
+        mobile: "18%",
       },
       size: {
         web: "80",
         tablet: "80",
-        mobile: "",
+        mobile: "100",
       },
     },
     {
@@ -686,17 +686,17 @@ const About = () => {
       posY: {
         web: "415",
         tablet: "415",
-        mobile: "",
+        mobile: "97",
       },
       posX: {
         web: "66%",
         tablet: "66%",
-        mobile: "",
+        mobile: "-7%",
       },
       size: {
         web: "178",
         tablet: "158",
-        mobile: "",
+        mobile: "110",
       },
     },
     {
@@ -705,17 +705,17 @@ const About = () => {
       posY: {
         web: "335",
         tablet: "335",
-        mobile: "",
+        mobile: "500",
       },
       posX: {
         web: "64%",
         tablet: "64%",
-        mobile: "",
+        mobile: "53%",
       },
       size: {
         web: "80",
         tablet: "80",
-        mobile: "",
+        mobile: "60",
       },
     },
     {
@@ -724,17 +724,17 @@ const About = () => {
       posY: {
         web: "553",
         tablet: "583",
-        mobile: "",
+        mobile: "113",
       },
       posX: {
         web: "72%",
         tablet: "70%",
-        mobile: "",
+        mobile: "40%",
       },
       size: {
         web: "106",
         tablet: "106",
-        mobile: "",
+        mobile: "70",
       },
     },
     {
@@ -743,17 +743,17 @@ const About = () => {
       posY: {
         web: "533",
         tablet: "533",
-        mobile: "",
+        mobile: "24",
       },
       posX: {
         web: "77%",
         tablet: "77%",
-        mobile: "",
+        mobile: "6%",
       },
       size: {
         web: "106",
         tablet: "106",
-        mobile: "",
+        mobile: "70",
       },
     },
     {
@@ -762,17 +762,17 @@ const About = () => {
       posY: {
         web: "616",
         tablet: "616",
-        mobile: "",
+        mobile: "16",
       },
       posX: {
         web: "80%",
         tablet: "80%",
-        mobile: "",
+        mobile: "77%",
       },
       size: {
         web: "100",
         tablet: "100",
-        mobile: "",
+        mobile: "70",
       },
     },
     {
@@ -781,36 +781,36 @@ const About = () => {
       posY: {
         web: "645",
         tablet: "625",
-        mobile: "",
+        mobile: "420",
       },
       posX: {
         web: "87%",
         tablet: "89%",
-        mobile: "",
+        mobile: "42%",
       },
       size: {
         web: "95",
         tablet: "95",
-        mobile: "",
+        mobile: "60",
       },
     },
     {
       name: "asdqwezxc24",
       img: Imgas,
       posY: {
-        web: "729",
+        web: "700",
         tablet: "729",
-        mobile: "",
+        mobile: "186",
       },
       posX: {
         web: "93%",
         tablet: "83%",
-        mobile: "",
+        mobile: "48%",
       },
       size: {
         web: "95",
         tablet: "95",
-        mobile: "",
+        mobile: "60",
       },
     },
     {
@@ -819,17 +819,17 @@ const About = () => {
       posY: {
         web: "817",
         tablet: "807",
-        mobile: "",
+        mobile: "226",
       },
       posX: {
-        web: "96%",
+        web: "94%",
         tablet: "90%",
-        mobile: "",
+        mobile: "4%",
       },
       size: {
-        web: "150",
+        web: "100",
         tablet: "100",
-        mobile: "",
+        mobile: "96",
       },
     },
   ]
@@ -958,7 +958,12 @@ const About = () => {
             <Divider leftText="We — are our team" middleText="" />
           </Grid>
           <Grid item xs={false} sm={1}></Grid>
-          <Grid item xs={12} sm={7}>
+          <Grid
+            item
+            xs={12}
+            sm={7}
+            style={{ position: "relative", zIndex: 100 }}
+          >
             <Hidden xsDown implementation="css">
               <Divider leftText="002" middleText="" rightText="•" />
             </Hidden>
