@@ -307,6 +307,7 @@ const IndexPage = () => {
           transform: "translateX(-50%)",
           width: "100vw",
           overflowX: "hidden",
+          zIndex: -2,
         }}
       >
         <Ray
