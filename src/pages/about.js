@@ -16,7 +16,6 @@ import tinkoffIcon from "../images/recognized-by/tinkoff.svg"
 import mashreqIcon from "../images/recognized-by/mashreq.svg"
 import StickerOnText from "../components/stickerOnText"
 import Team from "../components/teamAsteroidHTML"
-// import "../images/gatsby-astronaut.png" from "../images/gatsby-astronaut.png"
 
 const organizations = [
   {

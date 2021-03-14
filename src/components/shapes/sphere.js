@@ -11,7 +11,6 @@ import styled from "styled-components"
 const Shape = styled.div`
   position: relative;
   display: flex;
-  position: absolute;
   width: 426px;
   height: 426px;
   background: #26072b;
@@ -24,7 +23,7 @@ const Layer = styled.img`
   transform: rotate(209deg);
 `
 
-const Sheet = ({ style }) => {
+const Sheet = ({ style, className }) => {
   const data = useStaticQuery(graphql`
     query {
       layer1: file(relativePath: { eq: "shapes/sphere-layer-1.png" }) {
@@ -46,7 +45,7 @@ const Sheet = ({ style }) => {
   `)
 
   return (
-    <Shape style={style}>
+    <Shape style={style} className={className}>
       <Layer
         src={data.layer1.publicURL}
         alt="123"

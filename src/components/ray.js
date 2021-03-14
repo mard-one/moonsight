@@ -10,10 +10,10 @@ const Ray = styled(Img)`
   // left: 195px;
   // top: -823px;
 `
-const RayGrad = styled.span`
-  position: absolute;
-  padding-bottom: 100%;
-  height: 0;
+const RayGrad = styled.div`
+  // position: absolute;
+  // padding-bottom: 100%;
+  // height: 0;
   background: radial-gradient(closest-side, transparent, #030303),
     linear-gradient(
       314deg,
@@ -23,11 +23,11 @@ const RayGrad = styled.span`
       #55e6e680 90.25%
     ),
     black;
-  border-radius: 50%;
+  // border-radius: 50%;
   z-index: -2;
 `
 
-const Gradient = ({ style, children }) => {
+const Gradient = ({ style, className, children }) => {
   const data = useStaticQuery(graphql`
     query {
       ray: file(relativePath: { eq: "ray.png" }) {
@@ -39,7 +39,11 @@ const Gradient = ({ style, children }) => {
       }
     }
   `)
-  return <RayGrad style={style}>{children}</RayGrad>
+  return (
+    <RayGrad style={style} className={className}>
+      {children}
+    </RayGrad>
+  )
 }
 
 export default Gradient

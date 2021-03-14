@@ -5,29 +5,33 @@ import Sheet from "../components/shapes/sheet"
 
 const TestPage = () => {
   return (
-    <div style={{ position: "relative" }}>
-      <div
-        className="bg-dots"
+    <div
+      style={{
+        position: "absolute",
+        left: "50%",
+        top: 0,
+        transform: "translateX(-50%)",
+        width: "100vw",
+        overflowX: "hidden",
+        zIndex: -2,
+      }}
+    >
+      <Ray
         style={{
           position: "relative",
-          zIndex: 2,
-          width: "100%",
-          height: "100vh",
+          left: "50%",
+          transform: "translateX(-50%)",
+          top: -1500,
+          width: 2200,
+          height: 2200,
         }}
-      />
-      <Ray style={{ zIndex: 1 }}>
-        <Sphere
+      >
+        <Sheet
           style={{
-            bottom: "500px",
-            right: "500px",
+            top: "1450px",
+            right: "400px",
           }}
         />
-        {/* <Sheet
-          style={{
-            bottom: "270px",
-            right: "140px",
-          }}
-        /> */}
       </Ray>
     </div>
   )

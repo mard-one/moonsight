@@ -15,6 +15,7 @@ import { Fragment } from "react"
 import Ray from "../components/ray"
 import Sheet from "../components/shapes/sheet"
 import Sphere from "../components/shapes/sphere"
+import Spiral from "../components/shapes/spiral"
 
 const Projects = styled.section`
   display: grid;
@@ -161,6 +162,54 @@ const Badge = styled.div`
   }
 `
 
+const StyledSheetObject = styled(Sheet)`
+  position: absolute;
+  top: 1450px;
+  right: 520px;
+  ${props => props.theme.breakpoints.down("xs")} {
+    top: 1440px;
+    right: 770px;
+    width: 260px;
+    height: 260px;
+  }
+`
+const StyledSphereObject = styled(Sphere)`
+  position: absolute;
+  left: -10%;
+  ${props => props.theme.breakpoints.down("xs")} {
+    width: 220px;
+    height: 220px;
+  }
+`
+const StyledSecondRay = styled(Ray)`
+  position: absolute;
+  width: 1600px;
+  height: 1600px;
+  top: 700px;
+  left: -250px;
+  ${props => props.theme.breakpoints.down("xs")} {
+    width: 800px;
+    height: 800px;
+    top: 85px;
+    left: 0px;
+  }
+`
+const StyledSpiralWeb = styled(Spiral)`
+  margin: auto;
+  ${props => props.theme.breakpoints.down("xs")} {
+    display: none;
+  }
+`
+const StyledSpiralMobile = styled(Spiral)`
+  display: none;
+  ${props => props.theme.breakpoints.down("xs")} {
+    display: block;
+    width: 320px;
+    height: 320px;
+    margin-left: calc(50vw - 320px / 2 - 16px);
+  }
+`
+
 const GreetingBadge = ({ emoji, children }) => {
   return (
     <Badge>
@@ -249,7 +298,30 @@ const IndexPage = () => {
   )
   console.log("projects", projects)
   return (
-    <Layout>
+    <Layout hiddenOverFlow>
+      <div
+        style={{
+          position: "absolute",
+          left: "50%",
+          top: 0,
+          transform: "translateX(-50%)",
+          width: "100vw",
+          overflowX: "hidden",
+        }}
+      >
+        <Ray
+          style={{
+            position: "relative",
+            left: "50%",
+            transform: "translateX(-50%)",
+            top: -1500,
+            width: 2200,
+            height: 2200,
+          }}
+        >
+          <StyledSheetObject />
+        </Ray>
+      </div>
       {/* <SEO title="Home" />*/}
       <Margin
         as="header"
@@ -268,38 +340,7 @@ const IndexPage = () => {
             </Typography>
           </Grid>
         </Grid>
-        <div
-          style={{
-            position: "absolute",
-            top: 0,
-            left: 0,
-            width: "100%",
-            height: "100%",
-          }}
-        >
-          <Ray
-            style={{
-              width: "150%",
-              left: "50%",
-              transform: "translate(-50%, -67%)",
-              maxWidth: "100vw",
-              overflowX: "hidden",
-            }}
-          >
-            <Sheet
-              style={{
-                bottom: "270px",
-                left: "60%",
-              }}
-            />
-          </Ray>
-          <Sphere
-            style={{
-              bottom: "-500px",
-              left: "-10%",
-            }}
-          />
-        </div>
+        <StyledSphereObject />
       </Margin>
       <Margin as="section" bsm={240} bxs={100}>
         <Projects>
@@ -349,6 +390,20 @@ const IndexPage = () => {
             <Button as={Link} to="/about">
               Learn About Our Company
             </Button>
+          </Grid>
+          <Grid
+            item
+            xs={12}
+            sm={5}
+            style={{
+              position: "relative",
+              minHeight: 400,
+            }}
+          >
+            <StyledSpiralWeb />
+            <StyledSecondRay>
+              <StyledSpiralMobile />
+            </StyledSecondRay>
           </Grid>
         </Grid>
       </Margin>

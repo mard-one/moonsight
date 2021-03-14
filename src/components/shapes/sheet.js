@@ -15,7 +15,7 @@ const Layer = styled.img`
   width: 100%;
 `
 
-const Sheet = ({ style }) => {
+const Sheet = ({ style, className }) => {
   const data = useStaticQuery(graphql`
     query {
       layer1: file(relativePath: { eq: "shapes/sheet-layer-1.png" }) {
@@ -37,7 +37,7 @@ const Sheet = ({ style }) => {
   `)
 
   return (
-    <Shape style={style}>
+    <Shape style={style} className={className}>
       <Layer src={data.layer1.publicURL} alt="123" style={{}} />
       <Layer src={data.layer2.publicURL} alt="123" style={{}} />
       <Layer
