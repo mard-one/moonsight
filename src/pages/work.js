@@ -5,6 +5,7 @@ import React, { useEffect, Fragment, useState } from "react"
 import Margin from "../components/margin"
 import Button from "../components/button"
 import HeaderText from "../components/headerText"
+import Ray from "../components/ray"
 import Layout from "../layout"
 import styled from "styled-components"
 
@@ -73,6 +74,29 @@ const Work = ({ location }) => {
   }
   return (
     <Layout>
+      <div
+        style={{
+          position: "absolute",
+          left: "50%",
+          top: 0,
+          transform: "translateX(-50%)",
+          width: "100vw",
+          height: "100vh",
+          overflowX: "hidden",
+          zIndex: -2,
+        }}
+      >
+        <Ray
+          style={{
+            position: "relative",
+            left: "50%",
+            transform: "translateX(-50%)",
+            top: -1000,
+            width: 1700,
+            height: 1700,
+          }}
+        />
+      </div>
       <HeaderText overline="our work">
         The work we do, <br /> and the people <br /> we help. By our talents
       </HeaderText>

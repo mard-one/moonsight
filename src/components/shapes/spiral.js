@@ -1,20 +1,6 @@
 import { graphql, useStaticQuery } from "gatsby"
 import React from "react"
-import styled from "styled-components"
-
-const Shape = styled.div`
-  position: relative;
-  display: flex;
-  width: 426px;
-  height: 426px;
-  border-radius: 50%;
-`
-
-const Layer = styled.img`
-  width: 100%;
-  position: absolute;
-  // transform: rotate(209deg);
-`
+import { Layer, Shape } from "./ring"
 
 const Spiral = ({ className, style }) => {
   const data = useStaticQuery(graphql`

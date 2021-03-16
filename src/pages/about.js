@@ -1,5 +1,5 @@
-import { graphql, Link, useStaticQuery } from "gatsby"
 import React from "react"
+import { graphql, Link, useStaticQuery } from "gatsby"
 import Layout from "../layout"
 import Img from "gatsby-image"
 import Divider from "../components/divider"
@@ -7,7 +7,6 @@ import Button from "../components/button"
 import HeaderText from "../components/headerText"
 import { Grid, Hidden, Typography } from "@material-ui/core"
 import Margin from "../components/margin"
-import styled from "styled-components"
 import { Fragment } from "react"
 import pwcIcon from "../images/recognized-by/pwc.svg"
 import skolkovoIcon from "../images/recognized-by/skolkovo.svg"
@@ -16,6 +15,13 @@ import tinkoffIcon from "../images/recognized-by/tinkoff.svg"
 import mashreqIcon from "../images/recognized-by/mashreq.svg"
 import StickerOnText from "../components/stickerOnText"
 import Team from "../components/teamAsteroidHTML"
+import Ray from "../components/ray"
+import Ring from "../components/shapes/ring"
+import styled from "styled-components"
+import Plus from "../components/shapes/plus"
+import DottedSphere from "../components/shapes/dottedSphere"
+import Spike from "../components/shapes/spike"
+import Cube from "../components/shapes/cube"
 
 const organizations = [
   {
@@ -343,6 +349,98 @@ const RecogFlagMultiLine = ({ platforms }) => (
   </div>
 )
 
+const StyledRay = styled(Ray)`
+  position: absolute;
+  left: -280px;
+  top: -36px;
+  width: 1500px;
+  height: 1500px;
+  background: radial-gradient(closest-side, transparent, #030303 80%),
+    linear-gradient(
+      314.93deg,
+      #eb758380 7.05%,
+      #a76cc280 51.72%,
+      #8355e680 90.25%,
+      #61008d00 97.53%
+    ),
+    black;
+  ${props => props.theme.breakpoints.down("xs")} {
+    width: 1100px;
+    height: 1100px;
+    top: 0px;
+    left: -16px;
+    background: radial-gradient(closest-side, transparent, #030303),
+      linear-gradient(
+        314.93deg,
+        #eb758380 7.05%,
+        #a76cc280 51.72%,
+        #8355e680 90.25%,
+        #61008d00 97.53%
+      ),
+      black;
+  }
+`
+const StyledRing = styled(Ring)`
+  top: 0px;
+  left: 400px;
+  width: 300px;
+  height: 234px;
+  ${props => props.theme.breakpoints.down("xs")} {
+    width: 340px;
+    height: 180px;
+    top: 0;
+    left: 16px;
+  }
+`
+const StyledPlus = styled(Plus)`
+  width: 160px;
+  height: 160px;
+  top: 165px;
+  left: 700px;
+  ${props => props.theme.breakpoints.down("xs")} {
+    width: 130px;
+    height: 130px;
+    top: 130px;
+    left: 280px;
+  }
+`
+const StyledDottedSphere = styled(DottedSphere)`
+  width: 390px;
+  height: 390px;
+  top: 260px;
+  left: 410px;
+  ${props => props.theme.breakpoints.down("xs")} {
+    width: 300px;
+    height: 300px;
+    top: 200px;
+    left: 40px;
+  }
+`
+const StyledSpike = styled(Spike)`
+  width: 200px;
+  height: 200px;
+  top: 450px;
+  left: 190px;
+  ${props => props.theme.breakpoints.down("xs")} {
+    width: 160px;
+    height: 160px;
+    top: 480px;
+    left: -50px;
+  }
+`
+const StyledCube = styled(Cube)`
+  width: 140px;
+  height: 140px;
+  top: 636px;
+  left: 376px;
+  ${props => props.theme.breakpoints.down("xs")} {
+    width: 110px;
+    height: 110px;
+    top: 580px;
+    left: 120px;
+  }
+`
+
 const About = () => {
   const data = useStaticQuery(graphql`
     query {
@@ -357,7 +455,7 @@ const About = () => {
   `)
 
   return (
-    <Layout>
+    <Layout hiddenOverFlow>
       <HeaderText overline="About Moonsight®">
         We are a unique team of handpicked designers and developers focused on{" "}
         <StickerOnText text="perfecting" bgColor="rgba(252, 77, 245, 0.68)">
@@ -373,7 +471,7 @@ const About = () => {
           />
         </ImgContainer>
       </Margin>
-      <Margin as="section" bxs={100} bsm={352}>
+      <Margin as="section" bxs={100} bsm={100}>
         <Grid container>
           <Grid item xs={12} sm={7}>
             <Divider leftText="Who are we?" middleText="" rightText="•" />
@@ -389,6 +487,20 @@ const About = () => {
             <Button as={Link} to="/work">
               See Our Latest Works
             </Button>
+          </Grid>
+          <Grid
+            item
+            xs={12}
+            sm={5}
+            style={{ position: "relative", minHeight: 700, marginTop: 40 }}
+          >
+            <StyledRay>
+              <StyledRing />
+              <StyledPlus />
+              <StyledDottedSphere />
+              <StyledSpike />
+              <StyledCube />
+            </StyledRay>
           </Grid>
         </Grid>
       </Margin>

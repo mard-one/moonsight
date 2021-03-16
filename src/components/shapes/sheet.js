@@ -1,19 +1,6 @@
 import React from "react"
-import Img from "gatsby-image"
 import { graphql, useStaticQuery } from "gatsby"
-
-import styled from "styled-components"
-
-const Shape = styled.div`
-  position: absolute;
-  width: 450px;
-  height: 452px;
-`
-
-const Layer = styled.img`
-  position: absolute;
-  width: 100%;
-`
+import { Layer, Shape } from "./ring"
 
 const Sheet = ({ style, className }) => {
   const data = useStaticQuery(graphql`

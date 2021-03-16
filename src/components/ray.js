@@ -3,13 +3,6 @@ import styled from "styled-components"
 import Img from "gatsby-image"
 import { graphql, useStaticQuery } from "gatsby"
 
-const Ray = styled(Img)`
-  position: absolute;
-  width: 100vw;
-  height: 100vh;
-  // left: 195px;
-  // top: -823px;
-`
 const RayGrad = styled.div`
   // position: absolute;
   // padding-bottom: 100%;
@@ -27,7 +20,7 @@ const RayGrad = styled.div`
   z-index: -2;
 `
 
-const Gradient = ({ style, className, children }) => {
+const Ray = ({ style, className, children }) => {
   const data = useStaticQuery(graphql`
     query {
       ray: file(relativePath: { eq: "ray.png" }) {
@@ -46,4 +39,4 @@ const Gradient = ({ style, className, children }) => {
   )
 }
 
-export default Gradient
+export default Ray

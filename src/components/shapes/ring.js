@@ -1,29 +1,38 @@
 import React from "react"
-import Img from "gatsby-image"
 import { graphql, useStaticQuery } from "gatsby"
-// childImageSharp {
-//           fixed(width: 2000) {
-//             ...GatsbyImageSharpFixed_withWebp_noBase64
-//           }
-//         }
-import { Layer, Shape } from "./ring"
 
-const Sheet = ({ style, className }) => {
+import styled from "styled-components"
+
+export const Shape = styled.div`
+  position: absolute;
+  height: 100%;
+  width: 100%;
+`
+
+export const Layer = styled.img`
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  object-fit: contain;
+  object-position: left;
+`
+
+const Ring = ({ style, className }) => {
   const data = useStaticQuery(graphql`
     query {
-      layer1: file(relativePath: { eq: "shapes/sphere-layer-1.png" }) {
+      layer1: file(relativePath: { eq: "shapes/ring-layer-1.png" }) {
         publicURL
       }
-      layer2: file(relativePath: { eq: "shapes/sphere-layer-2.png" }) {
+      layer2: file(relativePath: { eq: "shapes/ring-layer-2.png" }) {
         publicURL
       }
-      layer3: file(relativePath: { eq: "shapes/sphere-layer-3.png" }) {
+      layer3: file(relativePath: { eq: "shapes/ring-layer-3.png" }) {
         publicURL
       }
-      layer4: file(relativePath: { eq: "shapes/sphere-layer-4.png" }) {
+      layer4: file(relativePath: { eq: "shapes/ring-layer-4.png" }) {
         publicURL
       }
-      layer5: file(relativePath: { eq: "shapes/sphere-layer-5.png" }) {
+      layer5: file(relativePath: { eq: "shapes/ring-layer-5.png" }) {
         publicURL
       }
     }
@@ -35,16 +44,14 @@ const Sheet = ({ style, className }) => {
         src={data.layer1.publicURL}
         alt="123"
         style={{
-          alignSelf: "flex-end",
-          transform: "rotate(209deg) translate(7%, -3%)",
+          mixBlendMode: "hard-light",
         }}
       />
       <Layer
         src={data.layer2.publicURL}
         alt="123"
         style={{
-          alignSelf: "flex-start",
-          transform: "rotate(209deg) translate(-12.3%, 6%)",
+          mixBlendMode: "hard-light",
         }}
       />
       <Layer
@@ -72,4 +79,4 @@ const Sheet = ({ style, className }) => {
   )
 }
 
-export default Sheet
+export default Ring
