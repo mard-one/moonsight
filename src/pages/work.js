@@ -97,9 +97,13 @@ const Work = ({ location }) => {
           }}
         />
       </div>
-      <HeaderText overline="our work">
-        The work we do, <br /> and the people <br /> we help. By our talents
-      </HeaderText>
+      <Grid container>
+        <Grid item xs={12} sm={6}>
+          <HeaderText overline="our work">
+            The work we do, and the people we help. By our talents
+          </HeaderText>
+        </Grid>
+      </Grid>
       <Margin as="section" bmd={100} bsm={100} bxs={80}>
         <Margin tmd={50} bmd={100} txs={25} bxs={80}>
           <ProjectsFilter>

@@ -3,11 +3,18 @@ import Layout from "../layout"
 import HeaderText from "../components/headerText"
 import Button from "../components/button"
 import Divider from "../components/divider"
-import { Grid, TextField, Typography } from "@material-ui/core"
+import { Grid, Hidden, TextField, Typography } from "@material-ui/core"
 import Margin from "../components/margin"
 import { useStaticQuery, graphql } from "gatsby"
 import styled from "styled-components"
 import StickerOnText from "../components/stickerOnText"
+import Ray from "../components/ray"
+import SpiralTube from "../components/shapes/spiralTube"
+import Coin from "../components/shapes/coin"
+import RotatedSpiral from "../components/shapes/rotatedSpiral"
+import CoinSmall from "../components/shapes/coinSmall"
+import CubeFrame from "../components/shapes/cubeFrame"
+import Pearl from "../components/shapes/pearl"
 
 const Input = styled.input`
   width: 100%;
@@ -42,6 +49,131 @@ const LabelFloat = styled.label`
     `transform: translate(0, 1.5px) scale(0.75);
     transform-origin: top left;`};
 `
+
+const StyledRayWrapper = styled.div`
+  width: 100vw;
+  left: 0;
+  position: absolute;
+  overflow: hidden;
+  transform: translateY(calc(-50% + 100px));
+  z-index: -2;
+  ${props => props.theme.breakpoints.down("xs")} {
+    transform: translateY(calc(-50% - 440px));
+  }
+`
+const StyledRay = styled(Ray)`
+  // position: absolute;
+  // left: 0;
+  // top: 0px;
+  // transform: translate(-50%, -50%);
+  left: 50%;
+  width: 1430px;
+  height: 1430px;
+  position: relative;
+  transform: translateX(-50%);
+  ${props => props.theme.breakpoints.down("xs")} {
+    width: 1000px;
+    height: 1000px;
+  }
+`
+// StyledSpiralTube - 200, 190, 196, 583
+// StyledCoin - 180, 220, 500, 450
+// StyledRotatedSpiral - 455, 370, 145, 190
+// StyledCoinSmall - 170, 86, 95, 175
+// StyledCubeFrame - 260, 233, 510, 10
+// StyledPearl - 180, 180, 210, 0
+
+// StyledSpiralTube - 106, 103, 195, 0
+// StyledCoin - 96, 118, 43, 50
+// StyledRotatedSpiral - 242, 200, 94, 123
+// StyledCoinSmall - 92, 46, 250, 276
+// StyledCubeFrame - 140, 124, -10, 283
+// StyledPearl - 95, 95, 320, 200
+const StyledSpiralTube = styled(SpiralTube)`
+  width: 200px;
+  height: 190px;
+  right: 196px;
+  bottom: 583px;
+  ${props => props.theme.breakpoints.down("xs")} {
+    right: unset;
+    bottom: unset;
+    width: 106px;
+    height: 103px;
+    left: calc(195px);
+    top: 0px;
+  }
+`
+const StyledCoin = styled(Coin)`
+  width: 180px;
+  height: 220px;
+  right: 500px;
+  bottom: 450px;
+  ${props => props.theme.breakpoints.down("xs")} {
+    right: unset;
+    bottom: unset;
+    width: 96px;
+    height: 118px;
+    left: calc(43px);
+    top: 50px;
+  }
+`
+const StyledRotatedSpiral = styled(RotatedSpiral)`
+  width: 455px;
+  height: 370px;
+  right: 145px;
+  bottom: 190px;
+  ${props => props.theme.breakpoints.down("xs")} {
+    right: unset;
+    bottom: unset;
+    width: 242px;
+    height: 200px;
+    left: calc(94px);
+    top: 123px;
+  }
+`
+const StyledCoinSmall = styled(CoinSmall)`
+  width: 170px;
+  height: 86px;
+  right: 95px;
+  bottom: 175px;
+  ${props => props.theme.breakpoints.down("xs")} {
+    right: unset;
+    bottom: unset;
+    width: 92px;
+    height: 46px;
+    left: calc(250px);
+    top: 276px;
+  }
+`
+const StyledCubeFrame = styled(CubeFrame)`
+  width: 260px;
+  height: 233px;
+  right: 510px;
+  bottom: 10px;
+  ${props => props.theme.breakpoints.down("xs")} {
+    right: unset;
+    bottom: unset;
+    width: 140px;
+    height: 124px;
+    left: calc((-10px));
+    top: 283px;
+  }
+`
+const StyledPearl = styled(Pearl)`
+  width: 180px;
+  height: 180px;
+  right: 210px;
+  bottom: 0px;
+  ${props => props.theme.breakpoints.down("xs")} {
+    right: unset;
+    bottom: unset;
+    width: 95px;
+    height: 95px;
+    left: calc(200px);
+    top: 320px;
+  }
+`
+
 const InputField = ({
   type,
   id,
@@ -172,12 +304,62 @@ const Contact = () => {
 
   return (
     <Layout hideCTA>
-      <HeaderText overline="CONTACT US">
-        Interested in working with us? We’d love to hear from you.
-      </HeaderText>
-      <Margin as="section" txs={500} bxs={110} tsm={166} bsm={150}>
-        <Grid container>
-          <Grid item xs={12} sm={8}>
+      <Grid container>
+        <Grid item xs={12} sm={6}>
+          <HeaderText overline="CONTACT US">
+            Interested in working with us? We’d love to hear from you.
+          </HeaderText>
+        </Grid>
+        {/* <Grid item xs={12} sm={6}> */}
+        {/* <Margin tmd={200} tsm={100} txs={20} style={{ position: "relative" }}> */}
+        {/* <div style={{ overflowY: "visible", position: "absolute", left: "0" }}>
+          <div
+            style={{
+              overflowX: "hidden",
+              width: "100vw",
+              zIndex: "-2",
+              transform: "translate(0%, -50%)",
+              position: "relative",
+            }}
+          > */}
+        <div>
+          <StyledRayWrapper>
+            <StyledRay>
+              <Hidden xsDown implementation="css">
+                <StyledSpiralTube />
+                <StyledCoin />
+                <StyledRotatedSpiral />
+                <StyledCoinSmall />
+                <StyledCubeFrame />
+                <StyledPearl />
+              </Hidden>
+            </StyledRay>
+          </StyledRayWrapper>
+          <Hidden smUp implementation="css">
+            <div
+              style={{
+                height: "500px",
+                width: "1px",
+                right: "0",
+                position: "relative",
+              }}
+            >
+              <StyledSpiralTube />
+              <StyledCoin />
+              <StyledRotatedSpiral />
+              <StyledCoinSmall />
+              <StyledCubeFrame />
+              <StyledPearl />
+            </div>
+          </Hidden>
+        </div>
+
+        {/* </div>
+        </div> */}
+        {/* </Margin> */}
+        {/* </Grid> */}
+        <Margin as="section" txs={30} bxs={30} tsm={30} bsm={150}>
+          <Grid item xs={12} sm={5}>
             <Typography variant="h3">
               Perhaps there’s a way your business{" "}
               <StickerOnText text="benefit" leftText="💸">
@@ -187,8 +369,8 @@ const Contact = () => {
               the form below and we’ll be in touch.
             </Typography>
           </Grid>
-        </Grid>
-      </Margin>
+        </Margin>
+      </Grid>
       <Margin as="section" bxs={60} bsm={300}>
         <Divider leftText="Contact Form" middleText="" rightText="Mars" />
         <Margin bxs={80} bsm={96} />

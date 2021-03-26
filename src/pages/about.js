@@ -440,6 +440,19 @@ const StyledCube = styled(Cube)`
     left: 120px;
   }
 `
+const StyledSecondRay = styled(Ray)`
+  position: absolute;
+  left: 0;
+  top: 0;
+  transform: translate(-50%, -50%);
+  width: 1700px;
+  height: 1700px;
+  ${props => props.theme.breakpoints.down("xs")} {
+    left: -50px;
+    width: 1000px;
+    height: 1000px;
+  }
+`
 
 const About = () => {
   const data = useStaticQuery(graphql`
@@ -456,13 +469,18 @@ const About = () => {
 
   return (
     <Layout hiddenOverFlow>
-      <HeaderText overline="About Moonsight®">
-        We are a unique team of handpicked designers and developers focused on{" "}
-        <StickerOnText text="perfecting" bgColor="rgba(252, 77, 245, 0.68)">
-          refining
-        </StickerOnText>{" "}
-        your digital products.
-      </HeaderText>
+      <Grid container>
+        <Grid item xs={12} sm={7}>
+          <HeaderText overline="About Moonsight®">
+            We are a unique team of handpicked designers and developers focused
+            on{" "}
+            <StickerOnText text="perfecting" bgColor="rgba(252, 77, 245, 0.68)">
+              refining
+            </StickerOnText>{" "}
+            your digital products.
+          </HeaderText>
+        </Grid>
+      </Grid>
       <Margin txs={100} bxs={60} bsm={236}>
         <ImgContainer>
           <Img
@@ -580,6 +598,9 @@ const About = () => {
         </Grid>
       </Margin>
       <Team />
+      <div style={{ position: "relative" }}>
+        <StyledSecondRay />
+      </div>
       <Margin as="section" bxs={150} bsm={190}>
         <Divider leftText="INFLUENCE" middleText="Section #" rightText="002" />
         <Margin bsm={80} bxs={40} />

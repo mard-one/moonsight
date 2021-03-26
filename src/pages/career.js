@@ -72,9 +72,13 @@ const Career = () => {
   const openPositions = data.allFile.edges
   return (
     <Layout ctaText="Mind joing Superstar Family? Let’s get to work. ">
-      <HeaderText overline="Careers/Opportunities">
-        Doing your job well and want to be paid the same way?{" "}
-      </HeaderText>
+      <Grid container>
+        <Grid item xs={12} sm={6}>
+          <HeaderText overline="Careers/Opportunities">
+            Doing your job well and want to be paid the same way?{" "}
+          </HeaderText>
+        </Grid>
+      </Grid>
       <Margin as="section" txs={700} bxs={100} tsm={700} bsm={400}>
         <Grid container>
           <Grid item xs={12} sm={7}>
