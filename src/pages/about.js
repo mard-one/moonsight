@@ -468,7 +468,7 @@ const About = () => {
   `)
 
   return (
-    <Layout hiddenOverFlow>
+    <Layout>
       <Grid container>
         <Grid item xs={12} sm={7}>
           <HeaderText overline="About Moonsight®">

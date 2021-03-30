@@ -7,32 +7,44 @@ const TestPage = () => {
   return (
     <div
       style={{
+        backgroundColor: "#74c749",
+        width: "100%",
+        height: "720px",
+        top: "50px",
         position: "absolute",
-        left: "50%",
-        top: 0,
-        transform: "translateX(-50%)",
-        width: "100vw",
-        overflowX: "hidden",
-        zIndex: -2,
       }}
     >
-      <Ray
+      <div
         style={{
+          width: "50%",
+          backgroundColor: "#d0437e",
+          height: "500px",
           position: "relative",
           left: "50%",
           transform: "translateX(-50%)",
-          top: -1500,
-          width: 2200,
-          height: 2200,
         }}
       >
-        <Sheet
+        <div
           style={{
-            top: "1450px",
-            right: "400px",
+            position: "absolute",
+            width: "100px",
+            height: "100px",
+            bottom: "0",
           }}
-        />
-      </Ray>
+        >
+          <div
+            style={{
+              height: "100px",
+              width: "100px",
+              backgroundColor: "coral",
+              mixBlendMode: "difference",
+              position: "absolute",
+              bottom: "0",
+              transform: "rotate(45deg)",
+            }}
+          ></div>
+        </div>
+      </div>
     </div>
   )
 }

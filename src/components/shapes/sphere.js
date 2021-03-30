@@ -30,27 +30,31 @@ const Sheet = ({ style, className }) => {
   `)
 
   return (
-    <Shape style={style} className={className}>
+    <Shape
+      style={{ ...style, backgroundColor: "#4b2243", borderRadius: "50%" }}
+      className={className}
+    >
       <Layer
         src={data.layer1.publicURL}
         alt="123"
         style={{
-          alignSelf: "flex-end",
-          transform: "rotate(209deg) translate(7%, -3%)",
+          transform: "rotate(-150deg)",
+          objectPosition: "top",
         }}
       />
       <Layer
         src={data.layer2.publicURL}
         alt="123"
         style={{
-          alignSelf: "flex-start",
-          transform: "rotate(209deg) translate(-12.3%, 6%)",
+          transform: "rotate(-150deg)",
+          objectPosition: "bottom",
         }}
       />
       <Layer
         src={data.layer3.publicURL}
         alt="123"
         style={{
+          transform: "rotate(-150deg)",
           mixBlendMode: "screen",
         }}
       />
@@ -58,6 +62,7 @@ const Sheet = ({ style, className }) => {
         src={data.layer4.publicURL}
         alt="123"
         style={{
+          transform: "rotate(-150deg)",
           mixBlendMode: "soft-light",
         }}
       />
@@ -65,6 +70,7 @@ const Sheet = ({ style, className }) => {
         src={data.layer5.publicURL}
         alt="123"
         style={{
+          transform: "rotate(-150deg)",
           mixBlendMode: "color-dodge",
         }}
       />

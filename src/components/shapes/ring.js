@@ -14,7 +14,7 @@ export const Layer = styled.img`
   height: 100%;
   width: 100%;
   object-fit: contain;
-  object-position: left;
+  // object-position: left;
 `
 
 const Ring = ({ style, className }) => {

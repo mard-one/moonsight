@@ -65,8 +65,7 @@ const Layout = ({
   hideFooter = false,
   hideNav = false,
   hideLetsConnect = false,
-  navWithBackBtn = false,
-  hiddenOverFlow = false
+  navWithBackBtn = false
 }) => {
   const data = useStaticQuery(graphql`
     query {
@@ -84,7 +83,7 @@ const Layout = ({
         <MuiThemeProvider theme={theme}>
           <div className="bg-dots" />
           {!hideNav && <Nav navWithBackBtn={navWithBackBtn} />}
-          <main style={{ overflow: hiddenOverFlow ? 'hidden' : 'visible' }}>
+          <main>
             <Container maxWidth="lg">
               {children}
               {!hideCTA && <Cta ctaText={ctaText} />}
