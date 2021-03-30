@@ -33,15 +33,29 @@ const Plus = ({ style, className }) => {
         alt="123"
         style={{
           mixBlendMode: "multiply",
+          transform: "rotate(25.77deg)",
         }}
       />
-      <Layer src={data.layer2.publicURL} alt="123" style={{}} />
-      <Layer src={data.layer3.publicURL} alt="123" style={{}} />
+      <Layer
+        src={data.layer2.publicURL}
+        alt="123"
+        style={{
+          transform: "rotate(25.77deg)",
+        }}
+      />
+      <Layer
+        src={data.layer3.publicURL}
+        alt="123"
+        style={{
+          transform: "rotate(25.77deg)",
+        }}
+      />
       <Layer
         src={data.layer4.publicURL}
         alt="123"
         style={{
           mixBlendMode: "screen",
+          transform: "rotate(25.77deg)",
         }}
       />
       <Layer
@@ -49,6 +63,7 @@ const Plus = ({ style, className }) => {
         alt="123"
         style={{
           mixBlendMode: "soft-light",
+          transform: "rotate(25.77deg)",
         }}
       />
       <Layer
@@ -56,6 +71,7 @@ const Plus = ({ style, className }) => {
         alt="123"
         style={{
           mixBlendMode: "color-dodge",
+          transform: "rotate(25.77deg)",
         }}
       />
     </Shape>

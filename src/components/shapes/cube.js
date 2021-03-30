@@ -30,6 +30,7 @@ const Cube = ({ style, className }) => {
         alt="123"
         style={{
           mixBlendMode: "color-dodge",
+          transform: "rotate(53.24deg)",
         }}
       />
       <Layer
@@ -37,6 +38,7 @@ const Cube = ({ style, className }) => {
         alt="123"
         style={{
           mixBlendMode: "multiply",
+          transform: "rotate(53.24deg)",
         }}
       />
       <Layer
@@ -44,6 +46,7 @@ const Cube = ({ style, className }) => {
         alt="123"
         style={{
           mixBlendMode: "screen",
+          transform: "rotate(53.24deg)",
         }}
       />
       <Layer
@@ -51,6 +54,7 @@ const Cube = ({ style, className }) => {
         alt="123"
         style={{
           mixBlendMode: "soft-light",
+          transform: "rotate(53.24deg)",
         }}
       />
       <Layer
@@ -58,6 +62,7 @@ const Cube = ({ style, className }) => {
         alt="123"
         style={{
           mixBlendMode: "color-dodge",
+          transform: "rotate(53.24deg)",
         }}
       />
     </Shape>
