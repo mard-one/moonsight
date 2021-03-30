@@ -55,6 +55,7 @@ const Tooltip = styled.div`
 `
 
 const Container = styled.div`
+  max-width: 2000px;
   position: relative;
   width: 100vw;
   height: 970px;

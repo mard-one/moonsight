@@ -349,47 +349,42 @@ const RecogFlagMultiLine = ({ platforms }) => (
   </div>
 )
 
-const StyledRay = styled(Ray)`
+const StyledRayWrapper = styled.div`
   position: absolute;
-  left: -280px;
-  top: -36px;
-  width: 1500px;
-  height: 1500px;
-  background: radial-gradient(closest-side, transparent, #030303 80%),
-    linear-gradient(
-      314.93deg,
-      #eb758380 7.05%,
-      #a76cc280 51.72%,
-      #8355e680 90.25%,
-      #61008d00 97.53%
-    ),
-    black;
+  left: 0;
+  width: 100vw;
+  overflow: hidden;
+  margin-top: -30px;
+  z-index: -2;
   ${props => props.theme.breakpoints.down("xs")} {
-    width: 1100px;
-    height: 1100px;
+    margin-top: 40px;
+  }
+`
+const StyledRay = styled(Ray)`
+  position: relative;
+  left: calc(50% - 200px);
+  top: 0;
+  width: 1600px;
+  height: 1600px;
+  ${props => props.theme.breakpoints.down("xs")} {
     top: 0px;
-    left: -16px;
-    background: radial-gradient(closest-side, transparent, #030303),
-      linear-gradient(
-        314.93deg,
-        #eb758380 7.05%,
-        #a76cc280 51.72%,
-        #8355e680 90.25%,
-        #61008d00 97.53%
-      ),
-      black;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 950px;
+    height: 950px;
+    background-position-x: 165px;
   }
 `
 const StyledRing = styled(Ring)`
   top: 0px;
-  left: 400px;
+  left: 415px;
   width: 300px;
   height: 234px;
   ${props => props.theme.breakpoints.down("xs")} {
     width: 340px;
     height: 180px;
+    left: calc(50% - 64px);
     top: 0;
-    left: 16px;
   }
 `
 const StyledPlus = styled(Plus)`
@@ -400,20 +395,20 @@ const StyledPlus = styled(Plus)`
   ${props => props.theme.breakpoints.down("xs")} {
     width: 130px;
     height: 130px;
-    top: 130px;
-    left: 280px;
+    left: calc(50% + 165px);
+    top: 185px;
   }
 `
 const StyledDottedSphere = styled(DottedSphere)`
   width: 390px;
   height: 390px;
   top: 260px;
-  left: 410px;
+  left: 415px;
   ${props => props.theme.breakpoints.down("xs")} {
     width: 300px;
     height: 300px;
+    left: calc(50% - 150px);
     top: 200px;
-    left: 40px;
   }
 `
 const StyledSpike = styled(Spike)`
@@ -422,33 +417,44 @@ const StyledSpike = styled(Spike)`
   top: 450px;
   left: 190px;
   ${props => props.theme.breakpoints.down("xs")} {
-    width: 160px;
-    height: 160px;
-    top: 480px;
-    left: -50px;
+    width: 135px;
+    height: 135px;
+    left: calc(50% - 280px);
+    top: 400px;
   }
 `
 const StyledCube = styled(Cube)`
   width: 140px;
   height: 140px;
   top: 636px;
-  left: 376px;
+  left: 380px;
   ${props => props.theme.breakpoints.down("xs")} {
     width: 110px;
     height: 110px;
-    top: 580px;
-    left: 120px;
+    top: 530px;
+    left: calc(50% - 180px);
+  }
+`
+const StyledSecondRayWrapper = styled.div`
+  position: absolute;
+  left: 0;
+  width: 100vw;
+  overflow: hidden;
+  z-index: -2;
+  margin-top: -920px;
+  ${props => props.theme.breakpoints.down("xs")} {
+    margin-top: -550px;
   }
 `
 const StyledSecondRay = styled(Ray)`
-  position: absolute;
-  left: 0;
+  position: relative;
+  left: 50%;
+  transform: translateX(calc(-50% - 580px));
   top: 0;
-  transform: translate(-50%, -50%);
   width: 1700px;
   height: 1700px;
   ${props => props.theme.breakpoints.down("xs")} {
-    left: -50px;
+    transform: translateX(calc(-50% - 250px));
     width: 1000px;
     height: 1000px;
   }
@@ -506,19 +512,16 @@ const About = () => {
               See Our Latest Works
             </Button>
           </Grid>
-          <Grid
-            item
-            xs={12}
-            sm={5}
-            style={{ position: "relative", minHeight: 700, marginTop: 40 }}
-          >
-            <StyledRay>
-              <StyledRing />
-              <StyledPlus />
-              <StyledDottedSphere />
-              <StyledSpike />
-              <StyledCube />
-            </StyledRay>
+          <Grid item xs={12} sm={5} style={{ minHeight: 700 }}>
+            <StyledRayWrapper>
+              <StyledRay>
+                <StyledRing />
+                <StyledPlus />
+                <StyledDottedSphere />
+                <StyledSpike />
+                <StyledCube />
+              </StyledRay>
+            </StyledRayWrapper>
           </Grid>
         </Grid>
       </Margin>
@@ -598,9 +601,9 @@ const About = () => {
         </Grid>
       </Margin>
       <Team />
-      <div style={{ position: "relative" }}>
+      <StyledSecondRayWrapper>
         <StyledSecondRay />
-      </div>
+      </StyledSecondRayWrapper>
       <Margin as="section" bxs={150} bsm={190}>
         <Divider leftText="INFLUENCE" middleText="Section #" rightText="002" />
         <Margin bsm={80} bxs={40} />
