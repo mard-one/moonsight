@@ -48,7 +48,7 @@ const TestPage = () => {
           </div>
         </div>
       </div>
-      <div style={{ position: 'relative', height: 1000, backgroundColor: 'chartreuse', transform: 'rotate(0deg)'}}>
+      <div style={{ position: 'relative', height: 1000, backgroundColor: 'chartreuse', transform: 'rotate(0deg)', display: 'none'}}>
         <div style={{position: 'static', height: 500, width: 500, backgroundColor: 'chocolate'}}>
           <div style={{position: 'absolute', height: 300, width: 300, backgroundColor: 'cyan', top: 300}}></div>
         </div>

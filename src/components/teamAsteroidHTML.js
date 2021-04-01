@@ -574,7 +574,7 @@ const Team = () => {
   const [shapes, setShapes] = useState([])
   const imageRefs = useRef([])
   const backdrop = useRef(null)
-  const isTouchScreen = useRef("ontouchstart" in document.documentElement)
+  const isTouchScreen = useRef(false)
   let rAFIndex
 
   const getShapes = ({ width, height }) => {
@@ -656,6 +656,9 @@ const Team = () => {
 
   useEffect(() => {
     window.addEventListener("resize", resizeCanvas)
+    if (document) {
+      isTouchScreen.current = "ontouchstart" in document.documentElement
+    }
     resizeCanvas()
     return () => {
       window.removeEventListener("resize", resizeCanvas)

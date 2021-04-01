@@ -53,27 +53,21 @@ const LabelFloat = styled.label`
 const StyledRayWrapper = styled.div`
   width: 100vw;
   left: 0;
+  top: 0;
   position: absolute;
   overflow: hidden;
-  transform: translateY(calc(-50% + 100px));
   z-index: -2;
-  ${props => props.theme.breakpoints.down("xs")} {
-    transform: translateY(calc(-50% - 440px));
-  }
 `
 const StyledRay = styled(Ray)`
-  // position: absolute;
-  // left: 0;
-  // top: 0px;
-  // transform: translate(-50%, -50%);
   left: 50%;
   width: 1430px;
   height: 1430px;
   position: relative;
-  transform: translateX(-50%);
+  transform: translate(-50%, calc(-50% + 230px));
   ${props => props.theme.breakpoints.down("xs")} {
-    width: 1000px;
-    height: 1000px;
+    transform: translate(-50%, calc(-50% - 80px));
+    width: 1650px;
+    height: 1650px;
   }
 `
 // StyledSpiralTube - 200, 190, 196, 583
@@ -95,12 +89,10 @@ const StyledSpiralTube = styled(SpiralTube)`
   right: 196px;
   bottom: 583px;
   ${props => props.theme.breakpoints.down("xs")} {
-    right: unset;
-    bottom: unset;
+    right: calc(50% - 115px);
+    bottom: 310px;
     width: 106px;
     height: 103px;
-    left: calc(195px);
-    top: 0px;
   }
 `
 const StyledCoin = styled(Coin)`
@@ -109,12 +101,10 @@ const StyledCoin = styled(Coin)`
   right: 500px;
   bottom: 450px;
   ${props => props.theme.breakpoints.down("xs")} {
-    right: unset;
-    bottom: unset;
+    right: calc(50% + 50px);
+    bottom: 245px;
     width: 96px;
     height: 118px;
-    left: calc(43px);
-    top: 50px;
   }
 `
 const StyledRotatedSpiral = styled(RotatedSpiral)`
@@ -123,12 +113,10 @@ const StyledRotatedSpiral = styled(RotatedSpiral)`
   right: 145px;
   bottom: 190px;
   ${props => props.theme.breakpoints.down("xs")} {
-    right: unset;
-    bottom: unset;
+    right: calc(50% - 150px);
+    bottom: 90px;
     width: 242px;
     height: 200px;
-    left: calc(94px);
-    top: 123px;
   }
 `
 const StyledCoinSmall = styled(CoinSmall)`
@@ -137,12 +125,10 @@ const StyledCoinSmall = styled(CoinSmall)`
   right: 95px;
   bottom: 175px;
   ${props => props.theme.breakpoints.down("xs")} {
-    right: unset;
-    bottom: unset;
+    right: calc(50% - 155px);
+    bottom: 93px;
     width: 92px;
     height: 46px;
-    left: calc(250px);
-    top: 276px;
   }
 `
 const StyledCubeFrame = styled(CubeFrame)`
@@ -151,12 +137,10 @@ const StyledCubeFrame = styled(CubeFrame)`
   right: 510px;
   bottom: 10px;
   ${props => props.theme.breakpoints.down("xs")} {
-    right: unset;
-    bottom: unset;
+    right: calc(50% + 55px);
+    bottom: 8px;
     width: 140px;
     height: 124px;
-    left: calc((-10px));
-    top: 283px;
   }
 `
 const StyledPearl = styled(Pearl)`
@@ -165,12 +149,10 @@ const StyledPearl = styled(Pearl)`
   right: 210px;
   bottom: 0px;
   ${props => props.theme.breakpoints.down("xs")} {
-    right: unset;
-    bottom: unset;
+    right: calc(50% - 108px);
+    bottom: 0px;
     width: 95px;
     height: 95px;
-    left: calc(200px);
-    top: 320px;
   }
 `
 
@@ -322,20 +304,18 @@ const Contact = () => {
               position: "relative",
             }}
           > */}
-        <div>
+        <div style={{ height: "500px", width: '100%' }}>
           <StyledRayWrapper>
             <StyledRay>
-              <Hidden xsDown implementation="css">
-                <StyledSpiralTube />
-                <StyledCoin />
-                <StyledRotatedSpiral />
-                <StyledCoinSmall />
-                <StyledCubeFrame />
-                <StyledPearl />
-              </Hidden>
+              <StyledSpiralTube />
+              <StyledCoin />
+              <StyledRotatedSpiral />
+              <StyledCoinSmall />
+              <StyledCubeFrame />
+              <StyledPearl />
             </StyledRay>
           </StyledRayWrapper>
-          <Hidden smUp implementation="css">
+          {/* <Hidden smUp implementation="css">
             <div
               style={{
                 height: "500px",
@@ -351,7 +331,7 @@ const Contact = () => {
               <StyledCubeFrame />
               <StyledPearl />
             </div>
-          </Hidden>
+          </Hidden> */}
         </div>
 
         {/* </div>
