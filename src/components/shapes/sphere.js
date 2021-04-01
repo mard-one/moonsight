@@ -31,7 +31,7 @@ const Sheet = ({ style, className }) => {
 
   return (
     <Shape
-      style={{ ...style, backgroundColor: "#4b2243", borderRadius: "50%" }}
+      style={{ ...style }}
       className={className}
     >
       <Layer

@@ -201,6 +201,8 @@ const StyledSphere = styled(Sphere)`
   left: -70px;
   width: 430px;
   height: 430px;
+  background-color: #4b2243;
+  border-radius: 50%;
   ${props => props.theme.breakpoints.down("sm")} {
     width: 300px;
     height: 300px;
