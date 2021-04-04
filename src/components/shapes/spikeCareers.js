@@ -2,22 +2,19 @@ import React from "react"
 import { graphql, useStaticQuery } from "gatsby"
 import { Layer, Shape } from "./ring"
 
-const RotatedSpiral = ({ style, className }) => {
+const SpikeCareers = ({ style, className }) => {
   const data = useStaticQuery(graphql`
     query {
-      layer1: file(relativePath: { eq: "shapes/rotated-spiral-layer-1.png" }) {
+      layer1: file(relativePath: { eq: "shapes/spike-layer-1.png" }) {
         publicURL
       }
-      layer2: file(relativePath: { eq: "shapes/rotated-spiral-layer-2.png" }) {
+      layer2: file(relativePath: { eq: "shapes/spike-layer-2.png" }) {
         publicURL
       }
-      layer3: file(relativePath: { eq: "shapes/rotated-spiral-layer-3.png" }) {
+      layer3: file(relativePath: { eq: "shapes/spike-layer-3.png" }) {
         publicURL
       }
-      layer4: file(relativePath: { eq: "shapes/rotated-spiral-layer-4.png" }) {
-        publicURL
-      }
-      layer5: file(relativePath: { eq: "shapes/rotated-spiral-layer-5.png" }) {
+      layer4: file(relativePath: { eq: "shapes/spike-layer-4.png" }) {
         publicURL
       }
     }
@@ -29,38 +26,36 @@ const RotatedSpiral = ({ style, className }) => {
         src={data.layer1.publicURL}
         alt="123"
         style={{
+          // mixBlendMode: "multiply",
+          // transform: "rotate(40.48deg)",
         }}
       />
       <Layer
         src={data.layer2.publicURL}
         alt="123"
         style={{
-          mixBlendMode: "multiply",
+          mixBlendMode: "screen",
+          // transform: "rotate(40.48deg)",
         }}
       />
       <Layer
         src={data.layer3.publicURL}
         alt="123"
         style={{
-          mixBlendMode: "screen",
+          mixBlendMode: "soft-light",
+          // transform: "rotate(40.48deg)",
         }}
       />
       <Layer
         src={data.layer4.publicURL}
         alt="123"
         style={{
-          mixBlendMode: "soft-light",
-        }}
-      />
-      <Layer
-        src={data.layer5.publicURL}
-        alt="123"
-        style={{
           mixBlendMode: "color-dodge",
+          // transform: "rotate(40.48deg)",
         }}
       />
     </Shape>
   )
 }
 
-export default RotatedSpiral
+export default SpikeCareers

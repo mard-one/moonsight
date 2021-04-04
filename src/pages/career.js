@@ -10,10 +10,11 @@ import styled from "styled-components"
 import { graphql, Link, useStaticQuery } from "gatsby"
 import Ray from "../components/ray"
 import Sphere from "../components/shapes/sphere"
-import Spike from "../components/shapes/spike"
 import Ring from "../components/shapes/ring"
 import SpiralBallFirst from "../components/shapes/spiralBallFirst"
 import SpiralBallSecond from "../components/shapes/spiralBallSecond"
+import SpikeCareers from "../components/shapes/spikeCareers"
+import RingCareers from "../components/shapes/ringCareers"
 
 export const StyledCurrentOpening = styled.div`
   margin-bottom: 80px;
@@ -54,10 +55,11 @@ const StyledRay = styled(Ray)`
   transform: translate(calc(-50% + 780px), calc(-50% + 270px));
   background: radial-gradient(closest-side, transparent, black 60%),
     linear-gradient(
-      314deg,
+      314.93deg,
       rgb(235 117 131 / 50%) 7.05%,
       rgb(167 108 194 / 50%) 51.72%,
-      rgb(131 85 230 / 50%) 100%
+      rgb(131 85 230 / 50%) 90.25%,
+      rgba(97, 0, 141, 0) 97.53%
     ),
     black;
   width: 2400px;
@@ -101,7 +103,7 @@ const StyledSpiralBallFirst = styled(SpiralBallFirst)`
     right: calc(50% + 84px);
   }
 `
-const StyledSpike = styled(Spike)`
+const StyledSpike = styled(SpikeCareers)`
   position: absolute;
   width: 460px;
   height: 450px;
@@ -116,7 +118,7 @@ const StyledSpike = styled(Spike)`
     right: calc(50% - 190px);
   }
 `
-const StyledRing = styled(Ring)`
+const StyledRing = styled(RingCareers)`
   position: absolute;
   width: 326px;
   height: 180px;
@@ -125,9 +127,10 @@ const StyledRing = styled(Ring)`
   ${props => props.theme.breakpoints.down("xs")} {
     width: 150px;
     height: 85px;
+    left: unset;
     bottom: unset;
     top: 370px;
-    right: calc(50% + 55px);
+    right: calc(50% - 15px);
   }
 `
 const StyledSphere = styled(Sphere)`
@@ -215,7 +218,7 @@ const Career = () => {
               <StyledSpiralBallFirst />
               <StyledSpike />
               <StyledRing />
-              <StyledSphere />
+              <StyledSphere rotateDeg={15} />
               <StyledSpiralBallSecond />
             </StyledRay>
           </StyledRayWrapper>

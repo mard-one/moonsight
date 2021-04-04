@@ -5,19 +5,19 @@ import { Layer, Shape } from "./ring"
 const CoinSmall = ({ style, className }) => {
   const data = useStaticQuery(graphql`
     query {
-      layer1: file(relativePath: { eq: "shapes/ring-layer-1.png" }) {
+      layer1: file(relativePath: { eq: "shapes/coin-small-layer-1.png" }) {
         publicURL
       }
-      layer2: file(relativePath: { eq: "shapes/ring-layer-2.png" }) {
+      layer2: file(relativePath: { eq: "shapes/coin-small-layer-2.png" }) {
         publicURL
       }
-      layer3: file(relativePath: { eq: "shapes/ring-layer-3.png" }) {
+      layer3: file(relativePath: { eq: "shapes/coin-small-layer-3.png" }) {
         publicURL
       }
-      layer4: file(relativePath: { eq: "shapes/ring-layer-4.png" }) {
+      layer4: file(relativePath: { eq: "shapes/coin-small-layer-4.png" }) {
         publicURL
       }
-      layer5: file(relativePath: { eq: "shapes/ring-layer-5.png" }) {
+      layer5: file(relativePath: { eq: "shapes/coin-small-layer-5.png" }) {
         publicURL
       }
     }
@@ -25,18 +25,12 @@ const CoinSmall = ({ style, className }) => {
 
   return (
     <Shape style={style} className={className}>
-      <Layer
-        src={data.layer1.publicURL}
-        alt="123"
-        style={{
-          mixBlendMode: "hard-light",
-        }}
-      />
+      <Layer src={data.layer1.publicURL} alt="123" style={{}} />
       <Layer
         src={data.layer2.publicURL}
         alt="123"
         style={{
-          mixBlendMode: "hard-light",
+          mixBlendMode: "multiply",
         }}
       />
       <Layer

@@ -8,7 +8,7 @@ import { graphql, useStaticQuery } from "gatsby"
 //         }
 import { Layer, Shape } from "./ring"
 
-const Sheet = ({ style, className }) => {
+const Sheet = ({ style, className, rotateDeg }) => {
   const data = useStaticQuery(graphql`
     query {
       layer1: file(relativePath: { eq: "shapes/sphere-layer-1.png" }) {
@@ -30,15 +30,12 @@ const Sheet = ({ style, className }) => {
   `)
 
   return (
-    <Shape
-      style={{ ...style }}
-      className={className}
-    >
+    <Shape style={{ ...style }} className={className}>
       <Layer
         src={data.layer1.publicURL}
         alt="123"
         style={{
-          transform: "rotate(-150deg)",
+          transform: `rotate(${rotateDeg}deg)`,
           objectPosition: "top",
         }}
       />
@@ -46,7 +43,7 @@ const Sheet = ({ style, className }) => {
         src={data.layer2.publicURL}
         alt="123"
         style={{
-          transform: "rotate(-150deg)",
+          transform: `rotate(${rotateDeg}deg)`,
           objectPosition: "bottom",
         }}
       />
@@ -54,7 +51,7 @@ const Sheet = ({ style, className }) => {
         src={data.layer3.publicURL}
         alt="123"
         style={{
-          transform: "rotate(-150deg)",
+          transform: `rotate(${rotateDeg}deg)`,
           mixBlendMode: "screen",
         }}
       />
@@ -62,7 +59,7 @@ const Sheet = ({ style, className }) => {
         src={data.layer4.publicURL}
         alt="123"
         style={{
-          transform: "rotate(-150deg)",
+          transform: `rotate(${rotateDeg}deg)`,
           mixBlendMode: "soft-light",
         }}
       />
@@ -70,7 +67,7 @@ const Sheet = ({ style, className }) => {
         src={data.layer5.publicURL}
         alt="123"
         style={{
-          transform: "rotate(-150deg)",
+          transform: `rotate(${rotateDeg}deg)`,
           mixBlendMode: "color-dodge",
         }}
       />

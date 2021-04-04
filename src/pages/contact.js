@@ -304,7 +304,7 @@ const Contact = () => {
               position: "relative",
             }}
           > */}
-        <div style={{ height: "500px", width: '100%' }}>
+        <Grid item xs={12} sm={6} style={{ width: "100%" }}>
           <StyledRayWrapper>
             <StyledRay>
               <StyledSpiralTube />
@@ -332,25 +332,26 @@ const Contact = () => {
               <StyledPearl />
             </div>
           </Hidden> */}
-        </div>
+        </Grid>
 
         {/* </div>
         </div> */}
         {/* </Margin> */}
         {/* </Grid> */}
-        <Margin as="section" txs={30} bxs={30} tsm={30} bsm={150}>
-          <Grid item xs={12} sm={5}>
-            <Typography variant="h3">
-              Perhaps there’s a way your business{" "}
-              <StickerOnText text="benefit" leftText="💸">
-                could benefit from
-              </StickerOnText>{" "}
-              simplifying a process or experience? Please share your thoughts in
-              the form below and we’ll be in touch.
-            </Typography>
-          </Grid>
-        </Margin>
       </Grid>
+      <Margin as="section" txs={520} bxs={30} tsm={30} bsm={150}>
+        <Grid item xs={12} sm={5}>
+          <Typography variant="h3">
+            Perhaps there’s a way your business{" "}
+            <StickerOnText text="benefit" leftText="💸">
+              could benefit from
+            </StickerOnText>{" "}
+            simplifying a process or experience? Please share your thoughts in
+            the form below and we’ll be in touch.
+          </Typography>
+        </Grid>
+      </Margin>
+
       <Margin as="section" bxs={60} bsm={300}>
         <Divider leftText="Contact Form" middleText="" rightText="Mars" />
         <Margin bxs={80} bsm={96} />

@@ -8,7 +8,6 @@ const TestPage = () => {
     <>
       <div
         style={{
-          display: "none",
           backgroundColor: "#74c749",
           width: "100%",
           height: "720px",
@@ -39,7 +38,7 @@ const TestPage = () => {
                 height: "100px",
                 width: "100px",
                 backgroundColor: "coral",
-                mixBlendMode: "difference",
+                // mixBlendMode: "color-dodge",
                 position: "absolute",
                 bottom: "0",
                 transform: "rotate(45deg)",
@@ -48,11 +47,35 @@ const TestPage = () => {
           </div>
         </div>
       </div>
-      <div style={{ position: 'relative', height: 1000, backgroundColor: 'chartreuse', transform: 'rotate(0deg)', display: 'none'}}>
+      {/* <div style={{ position: 'relative', height: 1000, backgroundColor: 'chartreuse', transform: 'rotate(0deg)'}}>
         <div style={{position: 'static', height: 500, width: 500, backgroundColor: 'chocolate'}}>
           <div style={{position: 'absolute', height: 300, width: 300, backgroundColor: 'cyan', top: 300}}></div>
         </div>
-      </div>
+      </div> */}
+      {/* <Ray
+        style={{
+          width: 1000,
+          height: 1000,
+          background: `radial-gradient(closest-side, transparent, black),
+    linear-gradient(
+      179deg,
+      rgb(235 117 131 / 50%) 7.05%,
+      rgb(167 108 194 / 50%) 51.72%,
+      rgb(131 85 230 / 50%) 100%
+    ),
+    black`,
+        }}
+      />
+      <Ray
+        style={{
+          width: 1000,
+          height: 1000,
+          background: `radial-gradient(closest-side, rgb(235 117 131 / 100%), black)`,
+          opacity: 0.5,
+          filter: 'blur(100px)',
+          marginTop: 400
+        }}
+      /> */}
     </>
   )
 }

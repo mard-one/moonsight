@@ -366,6 +366,15 @@ const StyledRay = styled(Ray)`
   top: 0;
   width: 1600px;
   height: 1600px;
+  background: radial-gradient(closest-side, transparent, black 100%),
+    linear-gradient(
+      314.93deg,
+      rgb(235 117 131 / 50%) 7.05%,
+      rgb(167 108 194 / 50%) 51.72%,
+      rgb(131 85 230 / 50%) 90.25%,
+      rgba(97, 0, 141, 0) 97.53%
+    ),
+    black;
   ${props => props.theme.breakpoints.down("xs")} {
     top: 0px;
     left: 50%;
@@ -453,6 +462,16 @@ const StyledSecondRay = styled(Ray)`
   top: 0;
   width: 1700px;
   height: 1700px;
+  background: radial-gradient(closest-side, transparent, black 100%),
+    linear-gradient(
+      314.93deg,
+      rgb(164 155 80 / 50%) 11.55%,
+      rgb(235 117 131 / 50%) 26.63%,
+      rgb(169 70 185 / 50%) 51.72%,
+      rgb(85 230 230 / 50%) 90.25%,
+      rgba(97, 0, 141, 0) 97.53%
+    ),
+    black;
   ${props => props.theme.breakpoints.down("xs")} {
     transform: translateX(calc(-50% - 250px));
     width: 1000px;

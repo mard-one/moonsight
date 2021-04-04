@@ -5,19 +5,29 @@ import { Layer, Shape } from "./ring"
 const SpiralBallFirst = ({ className, style }) => {
   const data = useStaticQuery(graphql`
     query {
-      layer1: file(relativePath: { eq: "shapes/spiral-ball-second-layer-1.png" }) {
+      layer1: file(
+        relativePath: { eq: "shapes/spiral-ball-second-layer-1.png" }
+      ) {
         publicURL
       }
-      layer2: file(relativePath: { eq: "shapes/spiral-ball-second-layer-2.png" }) {
+      layer2: file(
+        relativePath: { eq: "shapes/spiral-ball-second-layer-2.png" }
+      ) {
         publicURL
       }
-      layer3: file(relativePath: { eq: "shapes/spiral-ball-second-layer-3.png" }) {
+      layer3: file(
+        relativePath: { eq: "shapes/spiral-ball-second-layer-3.png" }
+      ) {
         publicURL
       }
-      layer4: file(relativePath: { eq: "shapes/spiral-ball-second-layer-4.png" }) {
+      layer4: file(
+        relativePath: { eq: "shapes/spiral-ball-second-layer-4.png" }
+      ) {
         publicURL
       }
-      layer5: file(relativePath: { eq: "shapes/spiral-ball-second-layer-5.png" }) {
+      layer5: file(
+        relativePath: { eq: "shapes/spiral-ball-second-layer-5.png" }
+      ) {
         publicURL
       }
     }
@@ -28,14 +38,14 @@ const SpiralBallFirst = ({ className, style }) => {
         src={data.layer1.publicURL}
         alt="1232"
         style={{
-          // mixBlendMode: "multiply",
+          mixBlendMode: "screen",
         }}
       />
       <Layer
         src={data.layer2.publicURL}
         alt="1233"
         style={{
-          // mixBlendMode: "multiply",
+          mixBlendMode: "color-dodge",
         }}
       />
       <Layer

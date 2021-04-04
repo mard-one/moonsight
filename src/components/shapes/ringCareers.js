@@ -1,23 +1,38 @@
 import React from "react"
 import { graphql, useStaticQuery } from "gatsby"
-import { Layer, Shape } from "./ring"
 
-const RotatedSpiral = ({ style, className }) => {
+import styled from "styled-components"
+
+export const Shape = styled.div`
+  position: absolute;
+  height: 100%;
+  width: 100%;
+`
+
+export const Layer = styled.img`
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  object-fit: contain;
+  // object-position: left;
+`
+
+const RingCareers = ({ style, className }) => {
   const data = useStaticQuery(graphql`
     query {
-      layer1: file(relativePath: { eq: "shapes/rotated-spiral-layer-1.png" }) {
+      layer1: file(relativePath: { eq: "shapes/ring-careers-layer-1.png" }) {
         publicURL
       }
-      layer2: file(relativePath: { eq: "shapes/rotated-spiral-layer-2.png" }) {
+      layer2: file(relativePath: { eq: "shapes/ring-careers-layer-2.png" }) {
         publicURL
       }
-      layer3: file(relativePath: { eq: "shapes/rotated-spiral-layer-3.png" }) {
+      layer3: file(relativePath: { eq: "shapes/ring-careers-layer-3.png" }) {
         publicURL
       }
-      layer4: file(relativePath: { eq: "shapes/rotated-spiral-layer-4.png" }) {
+      layer4: file(relativePath: { eq: "shapes/ring-careers-layer-4.png" }) {
         publicURL
       }
-      layer5: file(relativePath: { eq: "shapes/rotated-spiral-layer-5.png" }) {
+      layer5: file(relativePath: { eq: "shapes/ring-careers-layer-5.png" }) {
         publicURL
       }
     }
@@ -29,13 +44,14 @@ const RotatedSpiral = ({ style, className }) => {
         src={data.layer1.publicURL}
         alt="123"
         style={{
+          mixBlendMode: "color-dodge",
         }}
       />
       <Layer
         src={data.layer2.publicURL}
         alt="123"
         style={{
-          mixBlendMode: "multiply",
+          // mixBlendMode: "hard-light",
         }}
       />
       <Layer
@@ -63,4 +79,4 @@ const RotatedSpiral = ({ style, className }) => {
   )
 }
 
-export default RotatedSpiral
+export default RingCareers

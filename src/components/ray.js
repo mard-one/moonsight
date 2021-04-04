@@ -7,14 +7,22 @@ const RayGrad = styled.div`
   // position: absolute;
   // padding-bottom: 100%;
   // height: 0;
-  background: radial-gradient(closest-side, transparent, black),
+  background: radial-gradient(closest-side, transparent, black 100%),
     linear-gradient(
-      179deg,
+      314deg,
       rgb(235 117 131 / 50%) 7.05%,
       rgb(167 108 194 / 50%) 51.72%,
       rgb(131 85 230 / 50%) 100%
     ),
     black;
+  // background: radial-gradient(closest-side, transparent, black),
+  //   linear-gradient(
+  //     179deg,
+  //     rgb(235 117 131 / 50%) 7.05%,
+  //     rgb(167 108 194 / 50%) 51.72%,
+  //     rgb(131 85 230 / 50%) 100%
+  //   ),
+  //   black;
   // border-radius: 50%;
   z-index: -2;
 `
