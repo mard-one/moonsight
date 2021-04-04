@@ -70,19 +70,6 @@ const StyledRay = styled(Ray)`
     height: 1650px;
   }
 `
-// StyledSpiralTube - 200, 190, 196, 583
-// StyledCoin - 180, 220, 500, 450
-// StyledRotatedSpiral - 455, 370, 145, 190
-// StyledCoinSmall - 170, 86, 95, 175
-// StyledCubeFrame - 260, 233, 510, 10
-// StyledPearl - 180, 180, 210, 0
-
-// StyledSpiralTube - 106, 103, 195, 0
-// StyledCoin - 96, 118, 43, 50
-// StyledRotatedSpiral - 242, 200, 94, 123
-// StyledCoinSmall - 92, 46, 250, 276
-// StyledCubeFrame - 140, 124, -10, 283
-// StyledPearl - 95, 95, 320, 200
 const StyledSpiralTube = styled(SpiralTube)`
   width: 200px;
   height: 190px;

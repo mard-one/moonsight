@@ -1,24 +1,40 @@
 import React from "react"
 import { graphql, useStaticQuery } from "gatsby"
-import { Layer, Shape } from "./ring"
+import { Shape } from "./ring"
+import Img from "gatsby-image"
+import styled from "styled-components"
+
+const Layer = styled(Img)`
+  position: absolute !important;
+  width: 100% !important;
+  height: 100% !important;
+  object-fit: contain;
+`
 
 const SpiralTube = ({ style, className }) => {
   const data = useStaticQuery(graphql`
+    fragment spiralTubeLayerImages on File {
+      childImageSharp {
+        fixed(width: 200) {
+          ...GatsbyImageSharpFixed_withWebp_noBase64
+        }
+      }
+    }
     query {
       layer1: file(relativePath: { eq: "shapes/spiral-tube-layer-1.png" }) {
-        publicURL
+        ...spiralTubeLayerImages
       }
       layer2: file(relativePath: { eq: "shapes/spiral-tube-layer-2.png" }) {
-        publicURL
+        ...spiralTubeLayerImages
       }
       layer3: file(relativePath: { eq: "shapes/spiral-tube-layer-3.png" }) {
-        publicURL
+        ...spiralTubeLayerImages
       }
       layer4: file(relativePath: { eq: "shapes/spiral-tube-layer-4.png" }) {
-        publicURL
+        ...spiralTubeLayerImages
       }
       layer5: file(relativePath: { eq: "shapes/spiral-tube-layer-5.png" }) {
-        publicURL
+        ...spiralTubeLayerImages
       }
     }
   `)
@@ -26,36 +42,56 @@ const SpiralTube = ({ style, className }) => {
   return (
     <Shape style={style} className={className}>
       <Layer
-        src={data.layer1.publicURL}
+        fixed={data.layer1.childImageSharp.fixed}
         alt="123"
+        imgStyle={{
+          objectFit: "contain",
+        }}
         style={{
+          transform: "rotate(15deg)",
         }}
       />
       <Layer
-        src={data.layer2.publicURL}
+        fixed={data.layer2.childImageSharp.fixed}
         alt="123"
+        imgStyle={{
+          objectFit: "contain",
+        }}
         style={{
+          transform: "rotate(15deg)",
           mixBlendMode: "multiply",
         }}
       />
       <Layer
-        src={data.layer3.publicURL}
+        fixed={data.layer3.childImageSharp.fixed}
         alt="123"
+        imgStyle={{
+          objectFit: "contain",
+        }}
         style={{
+          transform: "rotate(15deg)",
           mixBlendMode: "screen",
         }}
       />
       <Layer
-        src={data.layer4.publicURL}
+        fixed={data.layer4.childImageSharp.fixed}
         alt="123"
+        imgStyle={{
+          objectFit: "contain",
+        }}
         style={{
+          transform: "rotate(15deg)",
           mixBlendMode: "soft-light",
         }}
       />
       <Layer
-        src={data.layer5.publicURL}
+        fixed={data.layer5.childImageSharp.fixed}
         alt="123"
+        imgStyle={{
+          objectFit: "contain",
+        }}
         style={{
+          transform: "rotate(15deg)",
           mixBlendMode: "color-dodge",
         }}
       />
