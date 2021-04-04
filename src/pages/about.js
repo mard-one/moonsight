@@ -388,7 +388,7 @@ const StyledRing = styled(Ring)`
   top: 0px;
   left: 415px;
   width: 300px;
-  height: 234px;
+  height: 230px;
   ${props => props.theme.breakpoints.down("xs")} {
     width: 340px;
     height: 180px;
@@ -397,7 +397,7 @@ const StyledRing = styled(Ring)`
   }
 `
 const StyledPlus = styled(Plus)`
-  width: 160px;
+  width: 170px;
   height: 160px;
   top: 165px;
   left: 700px;
@@ -421,8 +421,8 @@ const StyledDottedSphere = styled(DottedSphere)`
   }
 `
 const StyledSpike = styled(Spike)`
-  width: 200px;
-  height: 200px;
+  width: 210px;
+  height: 210px;
   top: 450px;
   left: 190px;
   ${props => props.theme.breakpoints.down("xs")} {

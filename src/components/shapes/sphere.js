@@ -13,28 +13,28 @@ export const Layer = styled(Img)`
 
 const Sphere = ({ style, className, rotateDeg }) => {
   const data = useStaticQuery(graphql`
-    fragment layerImages on File {
+    fragment sphereLayerImages on File {
       childImageSharp {
-        fixed(width: 450, height: 450) {
+        fixed(width: 430, height: 430) {
           ...GatsbyImageSharpFixed_withWebp_noBase64
         }
       }
     }
     query {
       layer1: file(relativePath: { eq: "shapes/sphere-layer-1.png" }) {
-        ...layerImages
+        ...sphereLayerImages
       }
       layer2: file(relativePath: { eq: "shapes/sphere-layer-2.png" }) {
-        ...layerImages
+        ...sphereLayerImages
       }
       layer3: file(relativePath: { eq: "shapes/sphere-layer-3.png" }) {
-        ...layerImages
+        ...sphereLayerImages
       }
       layer4: file(relativePath: { eq: "shapes/sphere-layer-4.png" }) {
-        ...layerImages
+        ...sphereLayerImages
       }
       layer5: file(relativePath: { eq: "shapes/sphere-layer-5.png" }) {
-        ...layerImages
+        ...sphereLayerImages
       }
     }
   `)

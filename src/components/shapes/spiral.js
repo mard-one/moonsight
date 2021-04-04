@@ -13,28 +13,28 @@ export const Layer = styled(Img)`
 
 const Spiral = ({ className, style }) => {
   const data = useStaticQuery(graphql`
-    fragment layerImages on File {
+    fragment spiralLayerImages on File {
       childImageSharp {
-        fixed(width: 450, height: 450) {
+        fixed(width: 430, height: 430) {
           ...GatsbyImageSharpFixed_withWebp_noBase64
         }
       }
     }
     query {
       layer1: file(relativePath: { eq: "shapes/spiral-layer-1.png" }) {
-        ...layerImages
+        ...spiralLayerImages
       }
       layer2: file(relativePath: { eq: "shapes/spiral-layer-2.png" }) {
-        ...layerImages
+        ...spiralLayerImages
       }
       layer3: file(relativePath: { eq: "shapes/spiral-layer-3.png" }) {
-        ...layerImages
+        ...spiralLayerImages
       }
       layer4: file(relativePath: { eq: "shapes/spiral-layer-4.png" }) {
-        ...layerImages
+        ...spiralLayerImages
       }
       layer5: file(relativePath: { eq: "shapes/spiral-layer-5.png" }) {
-        ...layerImages
+        ...spiralLayerImages
       }
     }
   `)

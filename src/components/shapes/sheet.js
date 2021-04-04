@@ -13,7 +13,7 @@ export const Layer = styled(Img)`
 
 const Sheet = ({ style, className }) => {
   const data = useStaticQuery(graphql`
-    fragment layerImages on File {
+    fragment sheetLayerImages on File {
       childImageSharp {
         fixed(width: 450, height: 450) {
           ...GatsbyImageSharpFixed_withWebp_noBase64
@@ -22,19 +22,19 @@ const Sheet = ({ style, className }) => {
     }
     query {
       layer1: file(relativePath: { eq: "shapes/sheet-layer-1.png" }) {
-        ...layerImages
+        ...sheetLayerImages
       }
       layer2: file(relativePath: { eq: "shapes/sheet-layer-2.png" }) {
-        ...layerImages
+        ...sheetLayerImages
       }
       layer3: file(relativePath: { eq: "shapes/sheet-layer-3.png" }) {
-        ...layerImages
+        ...sheetLayerImages
       }
       layer4: file(relativePath: { eq: "shapes/sheet-layer-4.png" }) {
-        ...layerImages
+        ...sheetLayerImages
       }
       layer5: file(relativePath: { eq: "shapes/sheet-layer-5.png" }) {
-        ...layerImages
+        ...sheetLayerImages
       }
     }
   `)
