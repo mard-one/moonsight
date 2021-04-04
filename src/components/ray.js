@@ -28,17 +28,17 @@ const RayGrad = styled.div`
 `
 
 const Ray = ({ style, className, children }) => {
-  const data = useStaticQuery(graphql`
-    query {
-      ray: file(relativePath: { eq: "ray.png" }) {
-        childImageSharp {
-          fluid(maxWidth: 600) {
-            ...GatsbyImageSharpFluid_withWebp_tracedSVG
-          }
-        }
-      }
-    }
-  `)
+  // const data = useStaticQuery(graphql`
+  //   query {
+  //     ray: file(relativePath: { eq: "ray.png" }) {
+  //       childImageSharp {
+  //         fluid(maxWidth: 600) {
+  //           ...GatsbyImageSharpFluid_withWebp_tracedSVG
+  //         }
+  //       }
+  //     }
+  //   }
+  // `)
   return (
     <RayGrad style={style} className={className}>
       {children}

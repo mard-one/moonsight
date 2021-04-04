@@ -253,7 +253,7 @@ const StyledSecondRay = styled(Ray)`
     background-position-x: 180px;
   }
 `
-const StyledSpiralWeb = styled(Spiral)`
+const StyledSpiral = styled(Spiral)`
   position: absolute;
   left: calc(50% + 120px);
   width: 430px;
@@ -437,7 +437,7 @@ const IndexPage = () => {
           ></Grid>
           <StyledSecondRayWrapper>
             <StyledSecondRay>
-              <StyledSpiralWeb />
+              <StyledSpiral />
             </StyledSecondRay>
           </StyledSecondRayWrapper>
         </Grid>

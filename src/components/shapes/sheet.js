@@ -1,48 +1,64 @@
 import React from "react"
 import { graphql, useStaticQuery } from "gatsby"
-import { Layer, Shape } from "./ring"
+import { Shape } from "./ring"
+import Img from "gatsby-image"
+import styled from "styled-components"
+
+export const Layer = styled(Img)`
+  position: absolute !important;
+  width: 100% !important;
+  height: 100% !important;
+  object-fit: contain;
+`
 
 const Sheet = ({ style, className }) => {
   const data = useStaticQuery(graphql`
+    fragment layerImages on File {
+      childImageSharp {
+        fixed(width: 450, height: 450) {
+          ...GatsbyImageSharpFixed_withWebp_noBase64
+        }
+      }
+    }
     query {
       layer1: file(relativePath: { eq: "shapes/sheet-layer-1.png" }) {
-        publicURL
+        ...layerImages
       }
       layer2: file(relativePath: { eq: "shapes/sheet-layer-2.png" }) {
-        publicURL
+        ...layerImages
       }
       layer3: file(relativePath: { eq: "shapes/sheet-layer-3.png" }) {
-        publicURL
+        ...layerImages
       }
       layer4: file(relativePath: { eq: "shapes/sheet-layer-4.png" }) {
-        publicURL
+        ...layerImages
       }
       layer5: file(relativePath: { eq: "shapes/sheet-layer-5.png" }) {
-        publicURL
+        ...layerImages
       }
     }
   `)
 
   return (
     <Shape style={style} className={className}>
-      <Layer src={data.layer1.publicURL} alt="123" style={{}} />
-      <Layer src={data.layer2.publicURL} alt="123" style={{}} />
+      <Layer fixed={data.layer1.childImageSharp.fixed} alt="123" style={{}} />
+      <Layer fixed={data.layer2.childImageSharp.fixed} alt="123" style={{}} />
       <Layer
-        src={data.layer3.publicURL}
+        fixed={data.layer3.childImageSharp.fixed}
         alt="123"
         style={{
           mixBlendMode: "screen",
         }}
       />
       <Layer
-        src={data.layer4.publicURL}
+        fixed={data.layer4.childImageSharp.fixed}
         alt="123"
         style={{
           mixBlendMode: "soft-light",
         }}
       />
       <Layer
-        src={data.layer5.publicURL}
+        fixed={data.layer5.childImageSharp.fixed}
         alt="123"
         style={{
           mixBlendMode: "color-dodge",
