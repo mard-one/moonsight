@@ -2,10 +2,11 @@ import React from "react"
 import Ray from "../components/ray"
 import Sphere from "../components/shapes/sphere"
 import Sheet from "../components/shapes/sheet"
+import Layout from "../layout"
 
 const TestPage = () => {
   return (
-    <>
+    <Layout>
       {/* <div
         style={{
           backgroundColor: "#74c749",
@@ -87,7 +88,7 @@ const TestPage = () => {
           top: 0
         }}>asda</div>
       </div>
-    </>
+    </Layout>
   )
 }
 

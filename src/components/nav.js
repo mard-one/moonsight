@@ -5,37 +5,34 @@ import React, { useEffect, useState } from "react"
 import logo from "../images/logo.svg"
 import styled, { css, keyframes } from "styled-components"
 import Button from "./button"
+import {
+  StyledRayWrapper,
+  StyledRay,
+  StyledSheet,
+  StyledSphere,
+} from "../pages/index"
+import { BgDots } from "../layout"
 
-const traceIn = keyframes`
-  0% { transform: translateX(-100%); }
-  100% { transform: translateX(0); }
-`
-const traceOut = keyframes`
-  0% { transform: translateX(0); }
-  100% { transform: translateX(100%); }
+const Badge = styled.span`
+  position: absolute;
+  padding: 4px 7px;
+  border-radius: 7px;
+  font-size: 12px;
+  line-height: 1.15;
+  color: #f2f3f1;
+  white-space: nowrap;
 `
 
-const NavBar = styled.nav`
-  border-bottom: ${props =>
-    !props.navWithBackBtn ? "1px solid rgba(255, 255, 255, 0.37);" : "none;"}
+const NavBarWeb = styled.nav`
+  border-bottom: 1px solid rgba(255, 255, 255, 0.37);
   padding: 32px 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
   ${props => props.theme.breakpoints.down("sm")} {
     display: none;
   }
 `
-
-const NavBarMobile = styled.nav`
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 55px 0;
-  position: relative;
-  z-index: 101;
-  ${props => props.theme.breakpoints.up("md")} {
-    display: none;
-  }
-`
-
 const MenuLinks = styled.ul`
   color: white;
   flex-grow: 1;
@@ -45,7 +42,16 @@ const MenuLinks = styled.ul`
   list-style: none;
   padding: 0px 5%;
 `
+const traceIn = keyframes`
+  0% { transform: translateX(-100%); }
+  100% { transform: translateX(0); }
+`
+const traceOut = keyframes`
+  0% { transform: translateX(0); }
+  100% { transform: translateX(100%); }
+`
 const MenuLink = styled.li`
+  position: relative;
   & a {
     display: inline-block;
     padding-bottom: 5px;
@@ -84,21 +90,108 @@ const MenuLink = styled.li`
   }
 `
 
-const Btn = styled(Button)`
-  z-index: 10;
+const NavBarMinimal = styled.nav`
+  padding: 32px 0;
+  ${props => props.theme.breakpoints.down("sm")} {
+    display: none;
+  }
 `
 
+const NavBarMobile = styled.nav`
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 55px 0;
+  position: relative;
+  z-index: 101;
+  ${props => props.theme.breakpoints.up("md")} {
+    display: none;
+  }
+`
 const Burger = styled.div`
   display: none;
+  position: relative;
+  z-index: 1;
+  user-select: none;
+
+  & input {
+    display: block;
+    width: 40px;
+    height: 32px;
+    position: absolute;
+    top: -7px;
+    left: -5px;
+
+    cursor: pointer;
+
+    opacity: 0; /* hide this */
+    z-index: 2; /* and place it over the hamburger */
+
+    -webkit-touch-callout: none;
+  }
+
+  /*
+ * Just a quick hamburger
+ */
   & span {
     display: block;
     width: 33px;
     height: 4px;
     margin-bottom: 5px;
     position: relative;
-    background: #cdcdcd;
+
     border-radius: 3px;
+
+    z-index: 1;
+    background-color: white;
+
+    transform-origin: 4px 0px;
+
+    transition: transform 0.5s cubic-bezier(0.77, 0.2, 0.05, 1),
+      background 0.5s cubic-bezier(0.77, 0.2, 0.05, 1), opacity 0.55s ease;
   }
+
+  & span:first-child {
+    transform-origin: 0% 0%;
+  }
+
+  & span:nth-last-child(2) {
+    transform-origin: 0% 100%;
+  }
+
+  /* 
+ * Transform all the slices of hamburger
+ * into a crossmark.
+ */
+  & input:checked ~ span {
+    opacity: 1;
+    transform: rotate(45deg) translate(1.5px, -1px);
+  }
+
+  /*
+ * But let's hide the middle one.
+ */
+  & input:checked ~ span:nth-last-child(2) {
+    opacity: 0;
+    transform: rotate(0deg) scale(0.2, 0.2);
+  }
+
+  /*
+ * Ohyeah and the last one should go the other direction
+ */
+  & input:checked ~ span:nth-last-child(1) {
+    transform: rotate(-45deg) translate(0, -1px);
+  }
+
+  // & span {
+  //   display: block;
+  //   width: 33px;
+  //   height: 4px;
+  //   margin-bottom: 5px;
+  //   position: relative;
+  //   background: #cdcdcd;
+  //   border-radius: 3px;
+  // }
   ${props => props.theme.breakpoints.down("sm")} {
     display: block;
   }
@@ -134,16 +227,16 @@ const MobileMenuBG = styled.div`
   top: 0;
   width: 100vw;
   height: 100vh;
-  background: #030303 url(../../../images/bg_dots.png) center top;
-  zindex: 10;
+  background-color: black;
 `
 
-const CustomLink = ({ title, link, startAnimation }) => {
+const CustomLink = ({ title, link, startAnimation, children }) => {
   return (
     <MenuLink startAnimation={startAnimation}>
       <Link to={link} activeClassName="active">
         {title}
       </Link>
+      {children}
     </MenuLink>
   )
 }
@@ -154,15 +247,23 @@ const Nav = ({ navWithBackBtn }) => {
   const [animateCurtain, setAnimateCurtain] = useState(false)
   useEffect(() => {
     setStartAnimation(true)
+    return () => {
+      setAnimateCurtain(true)
+      document.body.style.overflow = "unset"
+      document.body.style.width = "unset"
+      document.body.style.height = "unset"
+    }
   }, [])
   const handleMobileMenuClick = () => {
     setAnimateCurtain(true)
     clearTimeout(timeout)
     if (mobileMenuOpen) {
+      console.log("mobileMenuOpen", true)
       document.body.style.overflow = "unset"
       document.body.style.width = "unset"
       document.body.style.height = "unset"
     } else {
+      console.log("mobileMenuOpen", false)
       document.body.style.overflow = "hidden"
       document.body.style.width = "100vw"
       document.body.style.height = "100vh"
@@ -173,59 +274,79 @@ const Nav = ({ navWithBackBtn }) => {
   }
   return (
     <Container maxWidth="lg">
-      <NavBar navWithBackBtn={navWithBackBtn}>
-        <div
-          style={{
-            display: "flex",
-            justifyContent: "space-between",
-            alignItems: "center",
-          }}
-        >
+      {navWithBackBtn ? (
+        <NavBarMinimal>
+          <div
+            style={{
+              display: "flex",
+              justifyContent: "space-between",
+              alignItems: "center",
+            }}
+          >
+            <Link to="/">
+              <img src={logo} alt="logo" />
+            </Link>
+            <Button as={Link} to="/contact">
+              Want Something Like This?
+            </Button>
+          </div>
+
+          <div style={{ marginTop: 32 }}>
+            <Button onClick={() => window.history.back()}>Go Back</Button>
+          </div>
+        </NavBarMinimal>
+      ) : (
+        <NavBarWeb>
           <Link to="/">
             <img src={logo} alt="logo" />
           </Link>
-          {!navWithBackBtn && (
-            <MenuLinks>
-              <CustomLink
-                startAnimation={startAnimation}
-                title="Work"
-                link="/work"
-              />
-              <CustomLink
-                startAnimation={startAnimation}
-                title="About Us"
-                link="/about"
-              />
-              <CustomLink
-                startAnimation={startAnimation}
-                title="We are Hiring"
-                link="/career"
-              />
-              <CustomLink
-                startAnimation={startAnimation}
-                title="Contact Us"
-                link="/contact"
-              />
-            </MenuLinks>
-          )}
-          <Btn as={Link} to="/contact">
-            {!navWithBackBtn
-              ? "Write Us Something"
-              : "Want Something Like This?"}
-          </Btn>
-        </div>
 
-        {navWithBackBtn && (
-          <div style={{ marginTop: 32 }}>
-            <Btn onClick={() => window.history.back()}>Go Back</Btn>
-          </div>
-        )}
-      </NavBar>
+          <MenuLinks>
+            <CustomLink
+              startAnimation={startAnimation}
+              title="Work"
+              link="/work"
+            >
+              <Badge
+                style={{ background: "#0085FF", bottom: "100%", left: "100%" }}
+              >
+                +1 new
+              </Badge>
+            </CustomLink>
+            <CustomLink
+              startAnimation={startAnimation}
+              title="About Us"
+              link="/about"
+            />
+            <CustomLink
+              startAnimation={startAnimation}
+              title="We are Hiring"
+              link="/career"
+            >
+              <Badge
+                style={{ background: "#FB4646", bottom: "100%", left: "100%" }}
+              >
+                Constantly
+              </Badge>
+            </CustomLink>
+            <CustomLink
+              startAnimation={startAnimation}
+              title="Contact Us"
+              link="/contact"
+            />
+          </MenuLinks>
+
+          <Button as={Link} to="/contact">
+            Write Us Something
+          </Button>
+        </NavBarWeb>
+      )}
       <NavBarMobile>
         <Link to="/">
           <img src={logo} alt="logo" />
         </Link>
-        <Burger onClick={handleMobileMenuClick}>
+        <Burger>
+          <input type="checkbox" onClick={handleMobileMenuClick} />
           <span />
           <span />
           <span />
@@ -242,59 +363,85 @@ const Nav = ({ navWithBackBtn }) => {
       {mobileMenuOpen && (
         <div
           style={{
-            height: "calc(100vh - 113px)",
+            height: "calc(100vh - 159px)",
             display: "flex",
             flexFlow: "column",
             justifyContent: "flex-end",
           }}
         >
-          <MobileMenuBG></MobileMenuBG>
+          <MobileMenuBG>
+            <BgDots />
+            <StyledRayWrapper>
+              <StyledRay style={{ borderRadius: "50%" }}>
+                <StyledSheet />
+              </StyledRay>
+            </StyledRayWrapper>
+            <StyledSphere style={{ bottom: 80 }} />
+          </MobileMenuBG>
           <div style={{ zIndex: 10 }}>
-            <ul>
-              <li>
-                <Link to="/work">
-                  <Typography variant="h3" style={{ padding: "11px 0" }}>
-                    Work
-                  </Typography>
-                </Link>
-              </li>
-              <li>
-                <Link to="/about">
-                  <Typography variant="h3" style={{ padding: "11px 0" }}>
-                    About us
-                  </Typography>
-                </Link>
-              </li>
-              <li>
-                <Link to="/career">
-                  <Typography variant="h3" style={{ padding: "11px 0" }}>
-                    We are Hiring
-                  </Typography>
-                </Link>
-              </li>
-            </ul>
-            <Button style={{ margin: "34px 0" }}>Write Us Something</Button>
-            <footer
-              style={{
-                width: "100vw",
-                background: "#2D2A2A",
-                color: "#5E5E5E",
-                position: "relative",
-                left: "50%",
-                transform: "translateX(-50%)",
-                paddingTop: 24,
-                paddingBottom: 24,
-              }}
-            >
-              <Container
-                maxWidth="lg"
-                style={{ display: "flex", justifyContent: "space-between" }}
+            <div style={{ padding: "11px 0" }}>
+              <Link
+                to="/work"
+                style={{ fontSize: 36, lineHeight: 1.15, position: "relative" }}
               >
-                <span>Moonsight® 2020</span>
-                <span>20-21</span>
-              </Container>
-            </footer>
+                Work
+                <Badge
+                  style={{
+                    background: "#0085FF",
+                    bottom: "100%",
+                    left: "100%",
+                  }}
+                >
+                  +1 new
+                </Badge>
+              </Link>
+            </div>
+            <div style={{ padding: "11px 0" }}>
+              <Link to="/about" style={{ fontSize: 36, lineHeight: 1.15 }}>
+                About us
+              </Link>
+            </div>
+            <div style={{ padding: "11px 0" }}>
+              <Link
+                to="/career"
+                style={{ fontSize: 36, lineHeight: 1.15, position: "relative" }}
+              >
+                We are Hiring
+                <Badge
+                  style={{
+                    background: "#FB4646",
+                    bottom: "100%",
+                    left: "100%",
+                  }}
+                >
+                  Constantly
+                </Badge>
+              </Link>
+            </div>
+            <Button as={Link} to="/contact" style={{ margin: "34px 0" }}>
+              Write Us Something
+            </Button>
           </div>
+          <footer
+            style={{
+              width: "100vw",
+              background: "#2D2A2A",
+              color: "#5E5E5E",
+              position: "relative",
+              left: "50%",
+              transform: "translateX(-50%)",
+              paddingTop: 24,
+              paddingBottom: 24,
+            }}
+          >
+            <Container
+              maxWidth="lg"
+              style={{ display: "flex", justifyContent: "space-between" }}
+            >
+              <span style={{ fontSize: 11 }}>Moonsight® 2020</span>
+              <span style={{ fontSize: 11 }}>20-21</span>
+            </Container>
+          </footer>
         </div>
       )}
     </Container>

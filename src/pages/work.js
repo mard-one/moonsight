@@ -162,7 +162,7 @@ const Work = ({ location }) => {
       <Margin as="section">
         <div style={{ overflow: "hidden" }}>
           <Grid container spacing={5}>
-            <Grid container item xs={12} sm={6} md={4}>
+            <Grid container item xs={12} sm={6} md={4} style={{ height: 500 }}>
               <div
                 style={{
                   position: "relative",

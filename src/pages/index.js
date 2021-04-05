@@ -162,7 +162,7 @@ const Badge = styled.div`
   }
 `
 
-const StyledRayWrapper = styled.div`
+export const StyledRayWrapper = styled.div`
   position: absolute;
   left: 0;
   top: 0;
@@ -170,7 +170,7 @@ const StyledRayWrapper = styled.div`
   overflow: hidden;
   z-index: -2;
 `
-const StyledRay = styled(Ray)`
+export const StyledRay = styled(Ray)`
   position: relative;
   left: 50%;
   transform: translate(-50%, -50%);
@@ -183,7 +183,7 @@ const StyledRay = styled(Ray)`
     height: 1000px;
   }
 `
-const StyledSheet = styled(Sheet)`
+export const StyledSheet = styled(Sheet)`
   position: absolute;
   width: 450px;
   height: 450px;
@@ -196,7 +196,7 @@ const StyledSheet = styled(Sheet)`
     left: calc(50vw + 270px);
   }
 `
-const StyledSphere = styled(Sphere)`
+export const StyledSphere = styled(Sphere)`
   position: absolute;
   left: -70px;
   width: 430px;

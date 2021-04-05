@@ -8,12 +8,13 @@ import {
   createMuiTheme,
   MuiThemeProvider,
 } from "@material-ui/core/styles"
-import { ThemeProvider as SCThemeProvider } from "styled-components"
+import styled, { ThemeProvider as SCThemeProvider } from "styled-components"
 import { Container } from "@material-ui/core"
 
 import Nav from "../components/nav"
 import Cta from "../components/cta"
 import Footer from "../components/footer"
+import dotsImg from "../images/bg_dots.png";
 
 export const theme = createMuiTheme({
   typography: {
@@ -57,6 +58,16 @@ export const theme = createMuiTheme({
     },
   },
 })
+export const BgDots = styled.div`
+  background: url(${dotsImg}) center top;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  overflow: hidden;
+  z-index: -1;
+`
 
 const Layout = ({
   children,
@@ -65,7 +76,7 @@ const Layout = ({
   hideFooter = false,
   hideNav = false,
   hideLetsConnect = false,
-  navWithBackBtn = false
+  navWithBackBtn = false,
 }) => {
   const data = useStaticQuery(graphql`
     query {
@@ -81,7 +92,7 @@ const Layout = ({
     <StylesProvider injectFirst>
       <SCThemeProvider theme={theme}>
         <MuiThemeProvider theme={theme}>
-          <div className="bg-dots" />
+          <BgDots />
           {!hideNav && <Nav navWithBackBtn={navWithBackBtn} />}
           <main>
             <Container maxWidth="lg">
