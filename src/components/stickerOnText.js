@@ -1,5 +1,17 @@
 import { Typography } from "@material-ui/core"
 import React from "react"
+import styled from "styled-components"
+
+const StickerWrapper = styled.div`
+  position: absolute;
+  left: 50%;
+  backdrop-filter: blur(5px);
+  border-radius: 40px;
+  transform-origin: 0% 50%;
+  display: inline-block;
+  padding: 11px 32px;
+  white-space: nowrap;
+`
 
 const StickerOnText = ({
   children,
@@ -18,20 +30,12 @@ const StickerOnText = ({
         alignItems: "center",
       }}
     >
-      <div
+      <StickerWrapper
         style={{
-          position: "absolute",
-          left: "50%",
-          backdropFilter: "blur(5px)",
           backgroundColor: bgColor || "rgba(80, 77, 252, 0.68)",
-          borderRadius: "40px",
-          transformOrigin: "0% 50%",
           transform:
             (tiltDeg ? `rotate(${tiltDeg})` : "rotate(-4.73deg)") +
             " translateX(-50%)",
-          display: "inline-block",
-          padding: "11px 32px",
-          whiteSpace: "nowrap",
         }}
       >
         <Typography
@@ -41,7 +45,7 @@ const StickerOnText = ({
           <span style={{ verticalAlign: "middle" }}>{leftText}</span>{" "}
           <span>{leftSVG && <img src={leftSVG} alt="alt text" />}</span> {text}
         </Typography>
-      </div>
+      </StickerWrapper>
       <div
         style={{
           whiteSpace: "nowrap",
