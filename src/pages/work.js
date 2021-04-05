@@ -9,15 +9,15 @@ import Ray from "../components/ray"
 import Layout from "../layout"
 import styled from "styled-components"
 
-const ProjectsUnderNDA = styled.div`
-  text-align: center;
-  padding: 70px 100px 80px;
-  border: 2px dashed #ffffff;
-  border-radius: 9px;
-  ${props => props.theme.breakpoints.down("sm")} {
-    display: none;
-  }
-`
+// const ProjectsUnderNDA = styled.div`
+//   text-align: center;
+//   padding: 70px 100px 80px;
+//   border: 2px dashed #ffffff;
+//   border-radius: 9px;
+//   ${props => props.theme.breakpoints.down("sm")} {
+//     display: none;
+//   }
+// `
 const ProjectsFilter = styled.div`
   white-space: nowrap;
   overflow-x: scroll;
