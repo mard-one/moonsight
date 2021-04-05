@@ -98,9 +98,6 @@ const NavBarMinimal = styled.nav`
 `
 
 const NavBarMobile = styled.nav`
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
   padding: 55px 0;
   position: relative;
   z-index: 101;
@@ -121,32 +118,21 @@ const Burger = styled.div`
     position: absolute;
     top: -7px;
     left: -5px;
-
     cursor: pointer;
-
-    opacity: 0; /* hide this */
-    z-index: 2; /* and place it over the hamburger */
-
-    -webkit-touch-callout: none;
+    opacity: 0;
+    z-index: 2;
   }
 
-  /*
- * Just a quick hamburger
- */
   & span {
     display: block;
     width: 33px;
     height: 4px;
     margin-bottom: 5px;
     position: relative;
-
     border-radius: 3px;
-
     z-index: 1;
     background-color: white;
-
     transform-origin: 4px 0px;
-
     transition: transform 0.5s cubic-bezier(0.77, 0.2, 0.05, 1),
       background 0.5s cubic-bezier(0.77, 0.2, 0.05, 1), opacity 0.55s ease;
   }
@@ -159,39 +145,20 @@ const Burger = styled.div`
     transform-origin: 0% 100%;
   }
 
-  /* 
- * Transform all the slices of hamburger
- * into a crossmark.
- */
   & input:checked ~ span {
     opacity: 1;
     transform: rotate(45deg) translate(1.5px, -1px);
   }
 
-  /*
- * But let's hide the middle one.
- */
   & input:checked ~ span:nth-last-child(2) {
     opacity: 0;
     transform: rotate(0deg) scale(0.2, 0.2);
   }
 
-  /*
- * Ohyeah and the last one should go the other direction
- */
   & input:checked ~ span:nth-last-child(1) {
     transform: rotate(-45deg) translate(0, -1px);
   }
 
-  // & span {
-  //   display: block;
-  //   width: 33px;
-  //   height: 4px;
-  //   margin-bottom: 5px;
-  //   position: relative;
-  //   background: #cdcdcd;
-  //   border-radius: 3px;
-  // }
   ${props => props.theme.breakpoints.down("sm")} {
     display: block;
   }
@@ -342,15 +309,28 @@ const Nav = ({ navWithBackBtn }) => {
         </NavBarWeb>
       )}
       <NavBarMobile>
-        <Link to="/">
-          <img src={logo} alt="logo" />
-        </Link>
-        <Burger>
-          <input type="checkbox" onClick={handleMobileMenuClick} />
-          <span />
-          <span />
-          <span />
-        </Burger>
+        <div
+          style={{
+            display: "flex",
+            justifyContent: "space-between",
+            alignItems: "center",
+          }}
+        >
+          <Link to="/">
+            <img src={logo} alt="logo" />
+          </Link>
+          <Burger>
+            <input type="checkbox" onClick={handleMobileMenuClick} />
+            <span />
+            <span />
+            <span />
+          </Burger>
+        </div>
+        {navWithBackBtn && (
+          <div style={{ marginTop: 32 }}>
+            <Button onClick={() => window.history.back()}>Go Back</Button>
+          </div>
+        )}
       </NavBarMobile>
       {animateCurtain && (
         <Curtain

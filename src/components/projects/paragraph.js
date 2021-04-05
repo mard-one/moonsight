@@ -1,6 +1,19 @@
 import { Typography } from "@material-ui/core"
 import React from "react"
 
+import styled from "styled-components"
+
+const MainText = styled(Typography)`
+  margin-top: 20px;
+  color: rgba(255, 255, 255, 0.7);
+  font-size: 1.375rem;
+  line-height: 2;
+  ${props => props.theme.breakpoints.down("xs")} {
+    font-size: 1.125rem;
+    line-height: 1.75rem;
+  }
+`
+
 const Paragraph = ({
   title = "",
   textAfter = false,
@@ -17,17 +30,7 @@ const Paragraph = ({
       }}
     >
       <Typography variant="overline">{title}</Typography>
-      <Typography
-        variant="body1"
-        style={{
-          marginTop: 20,
-          color: "rgba(255, 255, 255, 0.8)",
-          fontSize: "1.375rem",
-          lineHeight: "1.4545",
-        }}
-      >
-        {children}
-      </Typography>
+      <MainText variant="body1">{children}</MainText>
     </div>
   )
 }

@@ -5,7 +5,7 @@ import {
   StylesProvider,
   Typography,
 } from "@material-ui/core"
-import { ThemeProvider as SCThemeProvider } from "styled-components"
+import styled, { ThemeProvider as SCThemeProvider } from "styled-components"
 import { MDXProvider } from "@mdx-js/react"
 import { MDXRenderer } from "gatsby-plugin-mdx"
 import Img from "gatsby-image"
@@ -71,6 +71,46 @@ export const projectsFragmentQuery = graphql`
   }
 `
 
+const HeaderTitle = styled(Typography)`
+  font-size: 1.125rem;
+  margin-bottom: 8px;
+  ${props => props.theme.breakpoints.down("xs")} {
+    font-size: 0.875rem;
+  }
+`
+const ProjectCartegories = styled.div`
+  white-space: nowrap;
+  overflow-x: scroll;
+  scrollbar-width: none;
+  &::-webkit-scrollbar {
+    width: 0px;
+    background: transparent;
+  }
+`
+const CreatorContainer = styled.div`
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  ${props => props.theme.breakpoints.down("xs")} {
+    flex-flow: row-reverse;
+    margin-top: 10px;
+    & p {
+      text-align: left;
+    }
+  }
+`
+const CreatorImage = styled.div`
+  margin-left: 24px;
+  border-radius: 100%;
+  overflow: hidden;
+  height: 80px;
+  width: 80px;
+  ${props => props.theme.breakpoints.down("xs")} {
+    margin-left: unset;
+    margin-right: 24px;
+  }
+`
+
 const Layout = props => {
   const { data } = props
   const frontMatter = data.mdx.frontmatter
@@ -96,7 +136,6 @@ const Layout = props => {
           <header
             style={{
               height: "100vh",
-              paddingBottom: 80,
               position: "relative",
             }}
           >
@@ -108,67 +147,55 @@ const Layout = props => {
             >
               <Nav navWithBackBtn />
               <Container>
-                <Grid
-                  item
-                  container
-                  justify="space-between"
-                  alignItems="flex-end"
-                >
-                  <Grid item xs={12} sm={5}>
-                    <Typography
-                      style={{ fontSize: "1.125rem", marginBottom: 8 }}
-                    >
-                      Our work / {frontMatter.mainCategory}
-                    </Typography>
-                    <Typography variant="h1">{frontMatter.name}</Typography>
-                    <Margin bxs={24} bsm={24} />
-                    {frontMatter.allCategories.map(category => (
-                      <Button
-                        key={category}
-                        as="span"
-                        notSelectable
-                        style={{ marginRight: 16 }}
-                      >
-                        {category}
-                      </Button>
-                    ))}
+                <Margin bsm={80} bxs={40}>
+                  <Grid
+                    item
+                    container
+                    justify="space-between"
+                    alignItems="flex-end"
+                  >
+                    <Grid item xs={12} sm={5}>
+                      <HeaderTitle>
+                        Our work / {frontMatter.mainCategory}
+                      </HeaderTitle>
+                      <Typography variant="h1">{frontMatter.name}</Typography>
+                      <Margin bxs={10} bsm={24} />
+                      <ProjectCartegories>
+                        {frontMatter.allCategories.map(category => (
+                          <Button
+                            key={category}
+                            as="span"
+                            notSelectable
+                            style={{ marginRight: 16 }}
+                          >
+                            {category}
+                          </Button>
+                        ))}
+                      </ProjectCartegories>
+                    </Grid>
+                    <Grid item xs={12} sm={6}>
+                      <CreatorContainer>
+                        <div>
+                          <Typography variant="overline" align="right">
+                            Made possible by
+                          </Typography>
+                          <Typography
+                            variant="body2"
+                            align="right"
+                            style={{ marginTop: 8 }}
+                          >
+                            {frontMatter.madeBy.name}
+                          </Typography>
+                        </div>
+                        <CreatorImage>
+                          <Img
+                            fixed={frontMatter.madeBy.img.childImageSharp.fixed}
+                          />
+                        </CreatorImage>
+                      </CreatorContainer>
+                    </Grid>
                   </Grid>
-                  <Grid item xs={12} sm={6}>
-                    <div
-                      style={{
-                        display: "flex",
-                        justifyContent: "flex-end",
-                        alignItems: "center",
-                      }}
-                    >
-                      <div>
-                        <Typography variant="overline" align="right">
-                          Made possible by
-                        </Typography>
-                        <Typography
-                          variant="body2"
-                          align="right"
-                          style={{ marginTop: 8 }}
-                        >
-                          {frontMatter.madeBy.name}
-                        </Typography>
-                      </div>
-                      <div
-                        style={{
-                          marginLeft: 24,
-                          borderRadius: "100%",
-                          overflow: "hidden",
-                          height: "80px",
-                          width: "80px",
-                        }}
-                      >
-                        <Img
-                          fixed={frontMatter.madeBy.img.childImageSharp.fixed}
-                        />
-                      </div>
-                    </div>
-                  </Grid>
-                </Grid>
+                </Margin>
               </Container>
             </Grid>
             <div
