@@ -4,7 +4,7 @@ import Margin from "./margin"
 
 const HeaderText = ({ children, overline, style }) => {
   return (
-    <Margin as="header" tmd={200} tsm={100} txs={20}>
+    <Margin as="header" tmd={140} tsm={50} txs={10}>
       <Typography variant="overline">{overline}</Typography>
       <Typography variant="h1" style={{ marginTop: "10px", ...style }}>
         {children}

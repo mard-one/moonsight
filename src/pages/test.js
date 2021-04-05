@@ -6,7 +6,7 @@ import Sheet from "../components/shapes/sheet"
 const TestPage = () => {
   return (
     <>
-      <div
+      {/* <div
         style={{
           backgroundColor: "#74c749",
           width: "100%",
@@ -46,7 +46,7 @@ const TestPage = () => {
             ></div>
           </div>
         </div>
-      </div>
+      </div> */}
       {/* <div style={{ position: 'relative', height: 1000, backgroundColor: 'chartreuse', transform: 'rotate(0deg)'}}>
         <div style={{position: 'static', height: 500, width: 500, backgroundColor: 'chocolate'}}>
           <div style={{position: 'absolute', height: 300, width: 300, backgroundColor: 'cyan', top: 300}}></div>
@@ -62,8 +62,8 @@ const TestPage = () => {
       rgb(235 117 131 / 50%) 7.05%,
       rgb(167 108 194 / 50%) 51.72%,
       rgb(131 85 230 / 50%) 100%
-    ),
-    black`,
+    );
+  background-color: black;`,
         }}
       />
       <Ray
@@ -76,6 +76,17 @@ const TestPage = () => {
           marginTop: 400
         }}
       /> */}
+      <div style={{
+        position: 'relative',
+        height: 200,
+        top: 100
+      }}>
+        <div style={{
+          position: 'fixed',
+          left: 0,
+          top: 0
+        }}>asda</div>
+      </div>
     </>
   )
 }

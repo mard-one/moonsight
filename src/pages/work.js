@@ -31,6 +31,13 @@ const ProjectsFilter = styled.div`
 const Work = ({ location }) => {
   const data = useStaticQuery(graphql`
     query {
+      ndaBg: file(relativePath: { eq: "under-nda-bg.png" }) {
+        childImageSharp {
+          fluid(maxWidth: 380) {
+            ...GatsbyImageSharpFluid_withWebp_tracedSVG
+          }
+        }
+      }
       ...projectsFragment
     }
   `)
@@ -104,59 +111,92 @@ const Work = ({ location }) => {
           </HeaderText>
         </Grid>
       </Grid>
-      <Margin as="section" bmd={100} bsm={100} bxs={80}>
-        <Margin tmd={50} bmd={100} txs={25} bxs={80}>
-          <ProjectsFilter>
-            <input
-              type="checkbox"
-              id="All"
-              value="All"
-              checked={selProjTypes.length === 0}
-              onChange={handleSelectAll}
-              style={{ display: "none" }}
-            />
-            <Button
-              as="label"
-              htmlFor="All"
-              selected={selProjTypes.length === 0}
-              style={{ marginRight: 16, borderRadius: "21px" }}
-            >
-              All
-            </Button>
-            {allProjectTypes.map(type => {
-              return (
-                <Fragment key={type}>
-                  <input
-                    type="checkbox"
-                    id={type}
-                    value={type}
-                    checked={selProjTypes.includes(type)}
-                    onChange={handleInputCheck}
-                    style={{ display: "none" }}
-                  />
-                  <Button
-                    as="label"
-                    htmlFor={type}
-                    selected={selProjTypes.includes(type)}
-                    style={{ marginRight: 16, borderRadius: "21px" }}
-                  >
-                    {type}
-                  </Button>
-                </Fragment>
-              )
-            })}
-          </ProjectsFilter>
-        </Margin>
-        <ProjectsUnderNDA>
+      <Margin as="section" bmd={100} bsm={100} bxs={90} tsm={44} txs={30}>
+        <ProjectsFilter>
+          <input
+            type="checkbox"
+            id="All"
+            value="All"
+            checked={selProjTypes.length === 0}
+            onChange={handleSelectAll}
+            style={{ display: "none" }}
+          />
+          <Button
+            as="label"
+            htmlFor="All"
+            selected={selProjTypes.length === 0}
+            style={{ marginRight: 16, borderRadius: "21px" }}
+          >
+            All
+          </Button>
+          {allProjectTypes.map(type => {
+            return (
+              <Fragment key={type}>
+                <input
+                  type="checkbox"
+                  id={type}
+                  value={type}
+                  checked={selProjTypes.includes(type)}
+                  onChange={handleInputCheck}
+                  style={{ display: "none" }}
+                />
+                <Button
+                  as="label"
+                  htmlFor={type}
+                  selected={selProjTypes.includes(type)}
+                  style={{ marginRight: 16, borderRadius: "21px" }}
+                >
+                  {type}
+                </Button>
+              </Fragment>
+            )
+          })}
+        </ProjectsFilter>
+        {/* <ProjectsUnderNDA>
           <Typography variant="overline">unfortunately</Typography>
           <Typography variant="h3" style={{ marginTop: "10px" }}>
             We have 20+ projects under NDA <br /> which we cannot show...
           </Typography>
-        </ProjectsUnderNDA>
+        </ProjectsUnderNDA> */}
       </Margin>
       <Margin as="section">
         <div style={{ overflow: "hidden" }}>
           <Grid container spacing={5}>
+            <Grid container item xs={12} sm={6} md={4}>
+              <div
+                style={{
+                  position: "relative",
+                  borderRadius: 14,
+                  overflow: "hidden",
+                  display: "flex",
+                  alignItems: "flex-end",
+                }}
+              >
+                <Img
+                  fluid={data.ndaBg.childImageSharp.fluid}
+                  style={{
+                    width: "100%",
+                    position: "absolute",
+                    left: 0,
+                    zIndex: -1,
+                  }}
+                />
+                <div style={{ margin: 36 }}>
+                  <Typography
+                    variant="overline"
+                    style={{
+                      color: "rgba(242, 243, 241, 0.41)",
+                    }}
+                  >
+                    unfortunately
+                  </Typography>
+                  <Typography variant="h3" style={{ marginTop: 10 }}>
+                    {" "}
+                    We have 20+ projects under NDA which we cannot show...
+                  </Typography>
+                </div>
+              </div>
+            </Grid>
             {projects
               .sort((a, b) => {
                 console.log("a", a)
@@ -175,8 +215,10 @@ const Work = ({ location }) => {
                   <Grid
                     item
                     xs={12}
-                    sm={frontmatter.workPageConfig.span}
+                    sm={6}
+                    md={4}
                     key={fields.slug}
+                    style={{ height: 500 }}
                   >
                     <Link to={fields.slug}>
                       <Img
@@ -184,6 +226,7 @@ const Work = ({ location }) => {
                           frontmatter.workPageConfig.thumbnailLink
                             .childImageSharp.fluid
                         }
+                        style={{ height: "100%" }}
                       />
                     </Link>
                   </Grid>

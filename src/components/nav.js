@@ -28,7 +28,7 @@ const NavBarMobile = styled.nav`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 32px 0;
+  padding: 55px 0;
   position: relative;
   z-index: 101;
   ${props => props.theme.breakpoints.up("md")} {

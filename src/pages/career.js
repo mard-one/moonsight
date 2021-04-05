@@ -53,19 +53,19 @@ const StyledRay = styled(Ray)`
   position: relative;
   left: 50%;
   transform: translate(calc(-50% + 780px), calc(-50% + 270px));
-  background: radial-gradient(closest-side, transparent, black 60%),
+  background-image: radial-gradient(closest-side, transparent, black 60%),
     linear-gradient(
       314.93deg,
       rgb(235 117 131 / 50%) 7.05%,
       rgb(167 108 194 / 50%) 51.72%,
       rgb(131 85 230 / 50%) 90.25%,
       rgba(97, 0, 141, 0) 97.53%
-    ),
-    black;
+    );
+  background-color: black;
   width: 2400px;
   height: 2400px;
   ${props => props.theme.breakpoints.down("xs")} {
-    background: radial-gradient(closest-side, transparent, black 100%),
+    background-image: radial-gradient(closest-side, transparent, black 100%),
       linear-gradient(
           314.93deg,
           #a49b50 11.55%,

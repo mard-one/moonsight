@@ -279,18 +279,6 @@ const Contact = () => {
             Interested in working with us? We’d love to hear from you.
           </HeaderText>
         </Grid>
-        {/* <Grid item xs={12} sm={6}> */}
-        {/* <Margin tmd={200} tsm={100} txs={20} style={{ position: "relative" }}> */}
-        {/* <div style={{ overflowY: "visible", position: "absolute", left: "0" }}>
-          <div
-            style={{
-              overflowX: "hidden",
-              width: "100vw",
-              zIndex: "-2",
-              transform: "translate(0%, -50%)",
-              position: "relative",
-            }}
-          > */}
         <Grid item xs={12} sm={6} style={{ width: "100%" }}>
           <StyledRayWrapper>
             <StyledRay>
@@ -302,31 +290,9 @@ const Contact = () => {
               <StyledPearl />
             </StyledRay>
           </StyledRayWrapper>
-          {/* <Hidden smUp implementation="css">
-            <div
-              style={{
-                height: "500px",
-                width: "1px",
-                right: "0",
-                position: "relative",
-              }}
-            >
-              <StyledSpiralTube />
-              <StyledCoin />
-              <StyledRotatedSpiral />
-              <StyledCoinSmall />
-              <StyledCubeFrame />
-              <StyledPearl />
-            </div>
-          </Hidden> */}
         </Grid>
-
-        {/* </div>
-        </div> */}
-        {/* </Margin> */}
-        {/* </Grid> */}
       </Grid>
-      <Margin as="section" txs={520} bxs={30} tsm={30} bsm={150}>
+      <Margin txs={520} bxs={30} tsm={30} bsm={300}>
         <Grid item xs={12} sm={5}>
           <Typography variant="h3">
             Perhaps there’s a way your business{" "}

@@ -28,11 +28,29 @@ import teamMember26 from "../images/team/team26.jpg"
 
 import styled from "styled-components"
 
-const Image = styled.img`
+const Container = styled.div`
+  max-width: 2000px;
   position: relative;
+  width: 100vw;
+  height: 970px;
+  left: calc(50% - (100vw / 2));
+  margin-top: -360px;
+  overflow: hidden;
+  &:hover {
+    > ${Image}, > ${Image} {
+      will-change: transform;
+    }
+  }
+  ${props => props.theme.breakpoints.down("xs")} {
+    height: 600px;
+    margin-top: -100px;
+  }
+`
+
+const Image = styled.div`
   transition: transform 0.2s ease-in-out;
   border-radius: 50%;
-  backgroundcolor: transparent;
+  overflow: hidden;
   @media (hover: hover) {
     &:hover {
       transform: scale(1.3);
@@ -54,37 +72,14 @@ const Tooltip = styled.div`
   z-index: 100;
 `
 
-const Container = styled.div`
-  max-width: 2000px;
-  position: relative;
-  width: 100vw;
-  height: 970px;
-  left: 50%;
-  transform: translateX(-50%);
-  margin-top: -360px;
-  overflow-x: hidden;
-  overflow-y: visible;
-  z-index: 90;
-  &:hover {
-    > ${Image}, > ${Image} {
-      will-change: transform;
-    }
-  }
-  ${props => props.theme.breakpoints.down("xs")} {
-    height: 600px;
-    margin-top: -100px;
-  }
-`
-
 const Backdrop = styled.div`
-  width: 100%;
-  height: 100%;
-  position: absolute;
+  width: 100vw;
+  height: 100vh;
+  position: fixed;
   left: 0;
-  right: 0;
+  top: 0;
   background-color: black;
   opacity: 0;
-  // visibility: hidden;
   transition: opacity 0.2s linear;
   pointer-events: none;
 `
@@ -615,13 +610,11 @@ const Team = () => {
     setShapes(shapes)
     // console.log("shapes", shapes)
   }
-
   const resizeCanvas = () => {
     const canvas = canvasRef.current
     const { width, height } = canvas.getBoundingClientRect()
     getShapes({ width, height })
   }
-
   const handleMouseMove = e => {
     const { clientX, clientY } = e
     mouse.current = { x: clientX, y: clientY }
@@ -645,7 +638,6 @@ const Team = () => {
     tooltipRef.current.style.opacity = "0"
     cancelAnimationFrame(rAFIndex)
   }
-
   const update = () => {
     console.log("update")
     tooltipRef.current.style.transform = `translate(${
@@ -672,10 +664,8 @@ const Team = () => {
           console.log("rerendered")
           return (
             <Image
-              key={shape.name}
-              src={shape.img}
-              alt={shape.name}
               ref={el => (imageRefs.current[i] = el)}
+              key={shape.name}
               style={{
                 position: "absolute",
                 left: shape.posX,
@@ -685,7 +675,9 @@ const Team = () => {
               }}
               onMouseOver={handleMouseOver}
               onMouseOut={handleMouseOut}
-            />
+            >
+              <img src={shape.img} alt={shape.name} style={{ width: "100%" }} />
+            </Image>
           )
         })}
         <Backdrop ref={backdrop} />

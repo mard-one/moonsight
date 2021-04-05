@@ -227,14 +227,14 @@ const StyledSecondRay = styled(Ray)`
   height: 3000px;
   left: 50%;
   transform: translateX(-50%);
-  background: radial-gradient(closest-side, transparent, black 50%),
+  background-image: radial-gradient(closest-side, transparent, black 50%),
     linear-gradient(
       314deg,
       rgb(235 117 131 / 50%) 7.05%,
       rgb(167 108 194 / 50%) 51.72%,
       rgb(131 85 230 / 50%) 100%
-    ),
-    black;
+    );
+  background-color: black;
   background-position-x: 650px;
   ${props => props.theme.breakpoints.down("xs")} {
     width: 830px;
@@ -242,14 +242,14 @@ const StyledSecondRay = styled(Ray)`
     top: 0px;
     left: 50%;
     transform: translateX(-50%);
-    background: radial-gradient(closest-side, transparent, black 100%),
+    background-image: radial-gradient(closest-side, transparent, black 100%),
       linear-gradient(
         314deg,
         rgb(235 117 131 / 45%) 7.05%,
         rgb(167 108 194 / 45%) 51.72%,
         rgb(131 85 230 / 45%) 100%
-      ),
-      black;
+      );
+    background-color: black;
     background-position-x: 180px;
   }
 `
@@ -376,7 +376,7 @@ const IndexPage = () => {
             </Typography>
           </Grid>
         </Grid>
-        <StyledSphere rotateDeg={-150}/>
+        <StyledSphere rotateDeg={-150} />
       </Margin>
       <Margin as="section" bsm={240} bxs={100}>
         <Projects>
