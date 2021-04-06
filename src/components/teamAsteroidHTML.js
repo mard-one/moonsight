@@ -27,6 +27,17 @@ import teamMember25 from "../images/team/team25.png"
 import teamMember26 from "../images/team/team26.png"
 
 import styled from "styled-components"
+const Image = styled.div`
+  transition: transform 0.2s ease-in-out;
+  border-radius: 50%;
+  overflow: hidden;
+  @media (hover: hover) {
+    &:hover {
+      transform: scale(1.3);
+      z-index: 100;
+    }
+  }
+`
 
 const Container = styled.div`
   max-width: 2000px;
@@ -44,18 +55,6 @@ const Container = styled.div`
   ${props => props.theme.breakpoints.down("xs")} {
     height: 600px;
     margin-top: -100px;
-  }
-`
-
-const Image = styled.div`
-  transition: transform 0.2s ease-in-out;
-  border-radius: 50%;
-  overflow: hidden;
-  @media (hover: hover) {
-    &:hover {
-      transform: scale(1.3);
-      z-index: 100;
-    }
   }
 `
 const Tooltip = styled.div`
