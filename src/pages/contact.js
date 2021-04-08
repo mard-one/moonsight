@@ -16,38 +16,80 @@ import CoinSmall from "../components/shapes/coinSmall"
 import CubeFrame from "../components/shapes/cubeFrame"
 import Pearl from "../components/shapes/pearl"
 
+const Field = styled.div`
+  display: flex;
+  flex-flow: column-reverse;
+
+  & label,
+  & input,
+  & textarea {
+    transition: all 0.2s;
+    touch-action: manipulation;
+  }
+
+  & input:focus,
+  & textarea:focus {
+    outline: 0;
+    border-bottom: 1px solid #666;
+  }
+
+  & input:placeholder-shown + label,
+  & textarea:placeholder-shown + label {
+    cursor: text;
+    max-width: 66.66%;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    transform-origin: left bottom;
+    transform: translate(0, 2.225rem) scale(1.2857);
+  }
+
+  & input::-webkit-input-placeholder,
+  & textarea::-webkit-input-placeholder {
+    opacity: 0;
+    transition: inherit;
+  }
+
+  & input:focus::-webkit-input-placeholder,
+  & textarea:focus::-webkit-input-placeholder {
+    opacity: 1;
+  }
+
+  & input:not(:placeholder-shown) + label,
+  & textarea:not(:placeholder-shown) + label {
+    transform: translate(0, 0) scale(1);
+    cursor: pointer;
+  }
+
+  & input:focus + label,
+  & textarea:focus + label {
+    transform: translate(0, 0) scale(1);
+    cursor: pointer;
+  }
+`
+
 const Input = styled.input`
-  width: 100%;
+  -webkit-appearance: none;
+  cursor: text;
   border: 0;
-  height: 28px;
-  display: block;
   padding: 10px 0 10px;
-  box-sizing: content-box;
-  animation-duration: 10ms;
   background-color: transparent;
   color: white;
   border-bottom: 1px solid #fff;
   font-size: 1.125rem;
   font-family: "Graphik", Helvetica, Arial, sans-serif;
-  &:focus {
-    outline: none;
-  }
 `
 const LabelFloat = styled.label`
-  top: 0;
-  left: 0;
-  position: absolute;
-  transform: translate(0, 24px) scale(1);
-  transition: transform 200ms cubic-bezier(0, 0, 0.2, 1) 0ms;
-  font-weight: 500;
-  font-size: 0.875rem;
-  line-height: 2;
   text-transform: uppercase;
+  letter-spacing: 0.05em;
+  font-weight: 400;
+  font-size: 0.875rem;
+  line-height: 1.75;
   color: #f2f3f1;
-  ${props =>
-    props.floating &&
-    `transform: translate(0, 1.5px) scale(0.75);
-    transform-origin: top left;`};
+  ${props => props.theme.breakpoints.down("xs")} {
+    font-size: 0.75rem;
+    line-height: 1.5;
+  }
 `
 
 const StyledRayWrapper = styled.div`
@@ -144,42 +186,33 @@ const StyledPearl = styled(Pearl)`
 `
 
 const InputField = ({
-  type,
+  type = "text",
   id,
+  label,
   placeholder,
   value,
   handleOnChange,
   as = "input",
+  required = false,
 }) => {
   const [floating, setFloating] = useState(false)
   return (
-    <div
-      style={{
-        position: "relative",
-        display: "inline-flex",
-        flexDirection: "column",
-        width: "100%",
-      }}
-    >
+    <Field>
+      <Input
+        as={as}
+        type={type}
+        id={id}
+        value={value}
+        onChange={handleOnChange}
+        onFocus={() => setFloating(true)}
+        onBlur={() => setFloating(false)}
+        placeholder={placeholder}
+        required={required}
+      />
       <LabelFloat floating={floating || value} htmlFor={id}>
-        {placeholder}
+        {label}
       </LabelFloat>
-      <div
-        style={{
-          marginTop: 16,
-        }}
-      >
-        <Input
-          as={as}
-          type={type}
-          id={id}
-          value={value}
-          onChange={handleOnChange}
-          onFocus={() => setFloating(true)}
-          onBlur={() => setFloating(false)}
-        />
-      </div>
-    </div>
+    </Field>
   )
 }
 
@@ -374,40 +407,47 @@ const Contact = () => {
             ))}
           </Grid>
         </Grid>
-        <Margin bxs={70} bsm={70} />
+        <Margin bxs={20} bsm={70} />
         <Grid container>
           <Grid item xs={12} sm={6}>
             <form onSubmit={handleSubmit}>
               <InputField
                 type="text"
                 id="name"
-                placeholder="Your Name"
+                label="Your Name"
+                placeholder="John Doe"
+                required
                 value={name}
                 handleOnChange={e => setName(e.target.value)}
               />
-              <Margin bxs={30} bsm={40} />
+              <Margin bxs={14} bsm={40} />
               <InputField
                 type="email"
                 id="email"
-                placeholder="Your Email"
+                label="Your Email"
+                placeholder="example@gmail.com"
+                required
                 value={email}
                 handleOnChange={e => setEmail(e.target.value)}
               />
-              <Margin bxs={30} bsm={40} />
+              <Margin bxs={14} bsm={40} />
               <InputField
                 type="text"
                 id="company-name"
-                placeholder="Company Name"
+                label="Company Name"
+                placeholder="Wonka Industries"
+                required
                 value={companyName}
                 handleOnChange={e => setCompanyName(e.target.value)}
               />
-              <Margin bxs={30} bsm={40} />
+              <Margin bxs={14} bsm={40} />
               <div>
                 <InputField
                   as="textarea"
                   id="project-details"
                   textarea
-                  placeholder="Project Details"
+                  label="Project Details"
+                  placeholder="Give us more details..."
                   value={detail}
                   handleOnChange={e => {
                     e.target.style.height = ""
