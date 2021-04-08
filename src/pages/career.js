@@ -15,24 +15,30 @@ import SpiralBallFirst from "../components/shapes/spiralBallFirst"
 import SpiralBallSecond from "../components/shapes/spiralBallSecond"
 import SpikeCareers from "../components/shapes/spikeCareers"
 import RingCareers from "../components/shapes/ringCareers"
+import Button from "../components/button"
 
 export const StyledCurrentOpening = styled.div`
-  margin-bottom: 80px;
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  & img {
-    display: none;
+  padding: 30px 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+  &:last-of-type {
+    border-bottom: 0;
   }
   ${props => props.theme.breakpoints.down("xs")} {
-    grid-template-columns: 1fr 20px;
     margin-bottom: 0;
     padding: 27px 0;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.3);
     & img {
-      display: initial;
       margin-top: 8px;
     }
   }
+`
+const Badge = styled.span`
+  position: absolute;
+  padding: 4px 7px;
+  border-radius: 7px;
+  font-size: 12px;
+  line-height: 1.15;
+  color: #f2f3f1;
+  white-space: nowrap;
 `
 
 const StyledRayWrapper = styled.div`
@@ -162,48 +168,89 @@ const StyledSpiralBallSecond = styled(SpiralBallSecond)`
   }
 `
 
-const CurrentOpening = ({ type, children, linkTo }) => {
+const CurrentOpening = ({ remote = true, children, linkTo }) => {
   return (
     <StyledCurrentOpening>
-      <Link to={linkTo}>
-        <Typography variant="body1" style={{ fontSize: "1.75rem" }}>
-          {type}
-        </Typography>
-      </Link>
       <Hidden xsDown implementation="css">
-        <Typography
-          variant="body1"
-          style={{ fontSize: "1.125rem", color: "rgba(242, 243, 241, 0.7)" }}
+        <div
+          style={{
+            display: "flex",
+            justifyContent: "space-between",
+            alignItems: "center",
+          }}
         >
-          {children}
-        </Typography>
+          <Typography
+            variant="body1"
+            style={{ fontSize: "1.75rem", position: "relative" }}
+          >
+            {children}
+            {remote ? (
+              <Badge
+                style={{ background: "#FB4646", bottom: "100%", left: "100%" }}
+              >
+                Remote Opportunity
+              </Badge>
+            ) : (
+              <></>
+            )}
+          </Typography>
+          <Button as="a" href="mailto:hello@moonsight.com" target="_newtab">
+            Drop Us Message
+          </Button>
+        </div>
       </Hidden>
-      <img src={ArrowRight} alt="details" />
+      <Hidden smUp implementation="css">
+        <a
+          href="mailto:hello@moonsight.com"
+          target="_newtab"
+          style={{
+            display: "flex",
+            justifyContent: "space-between",
+            alignItems: "center",
+          }}
+        >
+          <Typography
+            variant="body1"
+            style={{ fontSize: "1.75rem", position: "relative" }}
+          >
+            {children}
+          </Typography>
+          <img src={ArrowRight} alt="details" />
+        </a>
+      </Hidden>
     </StyledCurrentOpening>
   )
 }
 
 const Career = () => {
-  const data = useStaticQuery(graphql`
-    query {
-      allFile(filter: { sourceInstanceName: { eq: "career" } }) {
-        edges {
-          node {
-            childMdx {
-              fields {
-                slug
-              }
-              frontmatter {
-                title
-                shortDesc
-              }
-            }
-          }
-        }
-      }
-    }
-  `)
-  const openPositions = data.allFile.edges
+  // const data = useStaticQuery(graphql`
+  //   query {
+  //     allFile(filter: { sourceInstanceName: { eq: "career" } }) {
+  //       edges {
+  //         node {
+  //           childMdx {
+  //             fields {
+  //               slug
+  //             }
+  //             frontmatter {
+  //               title
+  //               shortDesc
+  //             }
+  //           }
+  //         }
+  //       }
+  //     }
+  //   }
+  // `)
+  // const openPositions = data.allFile.edges
+  const openPositions = [
+    "3D Artist",
+    "UX Researcher",
+    "Creative Developer",
+    "IOS Developer",
+    "Android Developer",
+    "Animation Guru",
+  ]
   return (
     <Layout ctaText="Mind joing Superstar Family? Let’s get to work. ">
       <Grid container>
@@ -252,19 +299,10 @@ const Career = () => {
               leftText="Current Openings"
               middleText=""
               rightText="002"
-              style={{ marginBottom: 60 }}
+              style={{ marginBottom: 20 }}
             />
-            {openPositions.map(({ node: { childMdx } = {} }) => {
-              const { title, shortDesc } = childMdx.frontmatter
-              return (
-                <CurrentOpening
-                  key={childMdx.fields.slug}
-                  type={title}
-                  linkTo={childMdx.fields.slug}
-                >
-                  {shortDesc}
-                </CurrentOpening>
-              )
+            {openPositions.map(position => {
+              return <CurrentOpening key={position}>{position}</CurrentOpening>
             })}
           </Grid>
         </Grid>
