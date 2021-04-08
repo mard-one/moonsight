@@ -197,9 +197,9 @@ const MobileMenuBG = styled.div`
   background-color: black;
 `
 
-const CustomLink = ({ title, link, startAnimation, children }) => {
+const CustomLink = ({ title, link, startAnimation, children, style }) => {
   return (
-    <MenuLink startAnimation={startAnimation}>
+    <MenuLink startAnimation={startAnimation} style={style}>
       <Link to={link} activeClassName="active">
         {title}
       </Link>
@@ -273,9 +273,10 @@ const Nav = ({ navWithBackBtn }) => {
               startAnimation={startAnimation}
               title="Work"
               link="/work"
+              style={{ width: 70 }}
             >
               <Badge
-                style={{ background: "#0085FF", bottom: "100%", left: "100%" }}
+                style={{ background: "#0085FF", bottom: "100%", left: 40 }}
               >
                 +1 new
               </Badge>
@@ -289,18 +290,14 @@ const Nav = ({ navWithBackBtn }) => {
               startAnimation={startAnimation}
               title="We are Hiring"
               link="/career"
+              style={{ width: 70, whiteSpace: "nowrap" }}
             >
               <Badge
-                style={{ background: "#FB4646", bottom: "100%", left: "100%" }}
+                style={{ background: "#FB4646", bottom: "100%", left: 100 }}
               >
                 Constantly
               </Badge>
             </CustomLink>
-            <CustomLink
-              startAnimation={startAnimation}
-              title="Contact Us"
-              link="/contact"
-            />
           </MenuLinks>
 
           <Button as={Link} to="/contact">
