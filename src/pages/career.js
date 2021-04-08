@@ -3,19 +3,20 @@ import React from "react"
 import Layout from "../layout"
 import HeaderText from "../components/headerText"
 import Divider from "../components/divider"
-import { Grid, Hidden, Typography } from "@material-ui/core"
+import { Container, Grid, Hidden, Typography } from "@material-ui/core"
 import Margin from "../components/margin"
 import ArrowRight from "../images/right-arrow.svg"
 import styled from "styled-components"
 import { graphql, Link, useStaticQuery } from "gatsby"
 import Ray from "../components/ray"
 import Sphere from "../components/shapes/sphere"
-import Ring from "../components/shapes/ring"
 import SpiralBallFirst from "../components/shapes/spiralBallFirst"
 import SpiralBallSecond from "../components/shapes/spiralBallSecond"
 import SpikeCareers from "../components/shapes/spikeCareers"
 import RingCareers from "../components/shapes/ringCareers"
 import Button from "../components/button"
+import Lottie from "lottie-react-web"
+import copywriterAnimation from "../images/lottie-animations/Copywriter.json"
 
 export const StyledCurrentOpening = styled.div`
   padding: 30px 0;
@@ -271,7 +272,7 @@ const Career = () => {
           </StyledRayWrapper>
         </Grid>
       </Grid>
-      <Margin as="section" bxs={100} bsm={400}>
+      <Margin as="section" bxs={100} bsm={200}>
         <Grid container>
           <Grid item xs={12} sm={7}>
             <Divider leftText="why join us?" middleText="" rightText="•" />
@@ -285,16 +286,38 @@ const Career = () => {
         </Grid>
       </Margin>
       <Margin as="section" bxs={100} bsm={340}>
-        <Grid container justify="flex-end">
+        <Grid
+          container
+          justify="flex-end"
+          style={{ overflowX: "hidden", position: "relative" }}
+        >
           <Grid item container direction="column" xs={12} md={7}>
-            <Grid item xs={12} sm={8}>
-              <Typography variant="body1">
-                We all work remotely, so you can enjoy the comfort of your own
-                home and not spend time on unimportant stuff, just work, hard
-                work.
-              </Typography>
-              <Margin bsm={200} bxs={100} />
-            </Grid>
+            <Hidden smDown implementation="css">
+              <Lottie
+                style={{
+                  width: 1900,
+                  height: 1080,
+                  position: "absolute",
+                  left: "calc(50%)",
+                  transform: "translateX(calc(-50% - 10px))",
+                  bottom: "calc(100% - 330px)",
+                }}
+                options={{
+                  animationData: copywriterAnimation,
+                }}
+              />
+            </Hidden>
+            <Hidden mdUp implementation="css">
+              <Grid item xs={12} sm={8}>
+                <Typography variant="body1">
+                  We all work remotely, so you can enjoy the comfort of your own
+                  home and not spend time on unimportant stuff, just work, hard
+                  work.
+                </Typography>
+              </Grid>
+            </Hidden>
+            <Margin bmd={400} bsm={240} bxs={100} />
+
             <Divider
               leftText="Current Openings"
               middleText=""
