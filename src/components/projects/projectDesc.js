@@ -10,7 +10,7 @@ const ProjectDesc = ({
   children,
 }) => {
   return (
-    <div style={{ position: "sticky", top: 100 }}>
+    <Margin bxs={80} bsm={120} style={{ position: "sticky", top: 100 }}>
       <Typography variant="h3">{children}</Typography>
       <Margin bxs={40} bsm={40} />
       <ul>
@@ -24,7 +24,7 @@ const ProjectDesc = ({
       </ul>
       {websiteLink && (
         <>
-          <Margin bxs={40} bsm={40} />
+          <Margin bxs={32} bsm={40} />
           <Button href={websiteLink} target="_blank">
             Visit Website
           </Button>
@@ -36,7 +36,7 @@ const ProjectDesc = ({
           <Typography variant="h3">{challengeHighlight}</Typography>
         </>
       )}
-    </div>
+    </Margin>
   )
 }
 

@@ -3,6 +3,19 @@ import React from "react"
 
 import styled from "styled-components"
 
+const Container = styled.div`
+  margin-bottom: ${({ noMarginBottom, textAfter }) =>
+    noMarginBottom ? 0 : textAfter ? "80px" : "120px"};
+  position: ${props => (props.sticky ? "sticky" : "static")};
+  top: ${props => (props.sticky ? "100px" : "unset")};
+  ${props => props.theme.breakpoints.down("xs")} {
+    margin-bottom: ${({ noMarginBottom, textAfter }) =>
+      noMarginBottom ? 0 : textAfter ? "60px" : "60px"};
+    position: static;
+    top: unset;
+  }
+`
+
 const MainText = styled(Typography)`
   margin-top: 20px;
   color: rgba(255, 255, 255, 0.7);
@@ -22,16 +35,14 @@ const Paragraph = ({
   children,
 }) => {
   return (
-    <div
-      style={{
-        marginBottom: noMarginBottom ? 0 : textAfter ? 100 : 120,
-        position: sticky ? "sticky" : "relative",
-        top: sticky ? 100 : "unset",
-      }}
+    <Container
+      textAfter={textAfter}
+      noMarginBottom={noMarginBottom}
+      sticky={sticky}
     >
       <Typography variant="overline">{title}</Typography>
       <MainText variant="body1">{children}</MainText>
-    </div>
+    </Container>
   )
 }
 
