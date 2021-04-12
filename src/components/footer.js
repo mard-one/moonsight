@@ -1,10 +1,11 @@
-import { Container, Typography } from "@material-ui/core"
+import { Container, Grid, Typography } from "@material-ui/core"
 import { Link } from "gatsby"
 import React from "react"
 import styled from "styled-components"
 import logoBlack from "../images/logo.svg"
 
 const LetsConnect = styled(Container)`
+  position: relative;
   display: flex;
   justify-content: space-between;
   padding-top: 90px;
@@ -13,20 +14,18 @@ const LetsConnect = styled(Container)`
     display: none;
   }
 `
-const TAndC = styled.div`
+const TAndC = styled(Container)`
   display: flex;
-  color: #5e5e5e;
+  color: #b6b6b6;
   flex-flow: row;
   justify-content: space-between;
-  padding: 24px 100px;
-  background-color: #e8e8e8;
+  padding-top: 28px;
+  padding-bottom: 28px;
   ${props => props.theme.breakpoints.down("sm")} {
     flex-flow: column;
-    color: #aaaaaa;
     justify-content: center;
     align-items: center;
     padding: 24px;
-    background-color: #111111;
   }
 `
 const TAndCText = styled.span`
@@ -41,27 +40,85 @@ const TAndCText = styled.span`
 const Footer = ({ hideLetsConnect = false }) => {
   // TODO: fix the logo black. Ask Ivan to import or use the same SVG file
   return (
-    <footer style={{ backgroundColor: "#F4F4F4", color: "#030303" }}>
+    <footer style={{}}>
       {!hideLetsConnect && (
         <LetsConnect maxWidth="lg">
-          <img
-            src={logoBlack}
-            alt="logo"
-            style={{
-              filter:
-                "invert(100%) sepia(3%) saturate(69%) hue-rotate(176deg) brightness(118%) contrast(100%)",
-            }}
-          />
-          <Typography
-            style={{
-              fontSize: "2rem",
-              lineHeight: 1,
-              letterSpacing: "-0.02em",
-              width: "510px",
-            }}
-          >
-            We collaborate with ambitious brands and people. Let’s connect :)
-          </Typography>
+          <Grid container>
+            <div
+              style={{
+                position: "absolute",
+                top: 0,
+                width: "calc(100% - (24px * 2))",
+                height: "1px",
+                borderBottom: "1px solid rgba(255, 255, 255, 0.28)",
+              }}
+            />
+            <Grid container item sm={7} xs={12} direction="row">
+              <Typography
+                variant="body1"
+                style={{
+                  display: "inline-block",
+                  marginRight: 80,
+                }}
+              >
+                Moonsight® <br /> Studio
+              </Typography>
+              <div>
+                <div style={{ marginBottom: 12 }}>
+                  <Typography
+                    variant="overline"
+                    style={{ lineHeight: 2, color: "rgb(242 243 241 / 60%)" }}
+                  >
+                    menu
+                  </Typography>
+                </div>
+                <Link to="/work">
+                  <Typography
+                    variant="overline"
+                    style={{ lineHeight: 2, display: "block", margin: "4px 0" }}
+                  >
+                    work
+                  </Typography>
+                </Link>
+                <Link to="/about">
+                  <Typography
+                    variant="overline"
+                    style={{ lineHeight: 2, display: "block", margin: "4px 0" }}
+                  >
+                    about us
+                  </Typography>
+                </Link>
+                <Link to="/career">
+                  <Typography
+                    variant="overline"
+                    style={{ lineHeight: 2, display: "block", margin: "4px 0" }}
+                  >
+                    we are hiring
+                  </Typography>
+                </Link>
+              </div>
+            </Grid>
+            <Grid item sm={5} xs={12}>
+              <Typography
+                style={{
+                  fontSize: "2rem",
+                  lineHeight: 1,
+                }}
+              >
+                We are here to help you become a better company which will look
+                the best! Just trust us.
+              </Typography>
+            </Grid>
+            <div
+              style={{
+                position: "absolute",
+                bottom: 0,
+                width: "calc(100% - (24px * 2))",
+                height: "1px",
+                borderBottom: "1px solid rgba(255, 255, 255, 0.28)",
+              }}
+            />
+          </Grid>
         </LetsConnect>
       )}
 

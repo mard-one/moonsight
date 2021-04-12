@@ -17,7 +17,7 @@ const Badge = styled.span`
   position: absolute;
   padding: 4px 7px;
   border-radius: 7px;
-  font-size: 12px;
+  font-size: 0.75rem;
   line-height: 1.15;
   color: #f2f3f1;
   white-space: nowrap;
@@ -359,7 +359,11 @@ const Nav = ({ navWithBackBtn }) => {
             <div style={{ padding: "11px 0" }}>
               <Link
                 to="/work"
-                style={{ fontSize: 36, lineHeight: 1.15, position: "relative" }}
+                style={{
+                  fontSize: "2.25rem",
+                  lineHeight: 1.15,
+                  position: "relative",
+                }}
               >
                 Work
                 <Badge
@@ -374,14 +378,21 @@ const Nav = ({ navWithBackBtn }) => {
               </Link>
             </div>
             <div style={{ padding: "11px 0" }}>
-              <Link to="/about" style={{ fontSize: 36, lineHeight: 1.15 }}>
+              <Link
+                to="/about"
+                style={{ fontSize: "2.25rem", lineHeight: 1.15 }}
+              >
                 About us
               </Link>
             </div>
             <div style={{ padding: "11px 0" }}>
               <Link
                 to="/career"
-                style={{ fontSize: 36, lineHeight: 1.15, position: "relative" }}
+                style={{
+                  fontSize: "2.25rem",
+                  lineHeight: 1.15,
+                  position: "relative",
+                }}
               >
                 We are Hiring
                 <Badge

@@ -7,7 +7,6 @@ import { Container, Grid, Hidden, Typography } from "@material-ui/core"
 import Margin from "../components/margin"
 import ArrowRight from "../images/right-arrow.svg"
 import styled from "styled-components"
-import { graphql, Link, useStaticQuery } from "gatsby"
 import Ray from "../components/ray"
 import Sphere from "../components/shapes/sphere"
 import SpiralBallFirst from "../components/shapes/spiralBallFirst"
@@ -36,7 +35,7 @@ const Badge = styled.span`
   position: absolute;
   padding: 4px 7px;
   border-radius: 7px;
-  font-size: 12px;
+  font-size: 0.75rem;
   line-height: 1.15;
   color: #f2f3f1;
   white-space: nowrap;

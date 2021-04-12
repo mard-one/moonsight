@@ -38,7 +38,7 @@ const Button = styled.a`
     `
   &:hover {
     color: #030303;
-    border-color: transparent;
+    // border-color: transparent;
   }
   &:hover:before {
     transform: translateZ(0);

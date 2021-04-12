@@ -16,15 +16,34 @@ const Cta = ({ ctaText = "Have a project in mind? Let's get to work." }) => {
       bxs={100}
     >
       <Grid container justify="center">
-        <Grid item xs={12} sm={8}>
+        <Grid item xs={12} sm={7}>
           <Typography variant="h1" align="center">
             {ctaText}
           </Typography>
-          <Margin bsm={56} bxs={24} />
+          <Margin bsm={24} bxs={16} />
+          <Typography
+            variant="body1"
+            align="center"
+            style={{
+              fontSize: "1.375rem",
+              width: "80%",
+              margin: "0 auto",
+              lineHeight: 1.5,
+              color: "rgba(255, 255, 255, 0.8)",
+            }}
+          >
+            We are very passionate about our job and want to translate it toward
+            your next project!
+          </Typography>
+          <Margin bsm={40} bxs={24} />
           <Button
             as={Link}
             to="/contact"
-            style={{ transform: "translateX(-50%)", left: "50%" }}
+            style={{
+              transform: "translateX(-50%)",
+              left: "50%",
+              borderRadius: "21px",
+            }}
           >
             Create Something Together
           </Button>
