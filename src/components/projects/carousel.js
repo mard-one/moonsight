@@ -103,7 +103,6 @@ const Carousel = ({ children, style }) => {
             <>
               <StyledCarousel
                 ref={parentRef}
-                style={style}
                 // onTouchStart={onMouseDown}
                 // onTouchEnd={onMouseUp}
                 // onTouchCancel={onMouseUp}

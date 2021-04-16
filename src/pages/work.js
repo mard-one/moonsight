@@ -30,7 +30,7 @@ const ProjectsFilter = styled.div`
 
 const Work = ({ location }) => {
   const data = useStaticQuery(graphql`
-    fragment projectImages on File {
+    fragment workImages on File {
       childImageSharp {
         fluid(maxWidth: 380) {
           ...GatsbyImageSharpFluid_withWebp_tracedSVG
@@ -39,13 +39,13 @@ const Work = ({ location }) => {
     }
     query {
       ndaBg: file(relativePath: { eq: "under-nda-bg.png" }) {
-        ...projectImages
+        ...workImages
       }
       project1: file(relativePath: { eq: "projects/starbucks-work-page.jpg" }) {
-        ...projectImages
+        ...workImages
       }
       project2: file(relativePath: { eq: "projects/game-day-work-page.jpg" }) {
-        ...projectImages
+        ...workImages
       }
     }
   `)

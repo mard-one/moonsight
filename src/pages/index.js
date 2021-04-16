@@ -26,10 +26,10 @@ const Projects = styled.section`
   }
 `
 const ProjectsGrid = styled.div`
-  display: grid;
-  grid-gap: 48px 0;
+  & div {
+    margin-bottom: 48px;
+  }
   ${props => props.theme.breakpoints.down("sm")} {
-    grid-gap: 20px 0;
   }
 `
 const Capability = styled.div`
@@ -319,14 +319,14 @@ const IndexPage = () => {
   const data = useStaticQuery(graphql`
     fragment projectImages on File {
       childImageSharp {
-        fluid(maxWidth: 380) {
+        fluid(maxWidth: 610) {
           ...GatsbyImageSharpFluid_withWebp_tracedSVG
         }
       }
     }
     fragment capabilitiesImages on File {
       childImageSharp {
-        fluid(maxWidth: 600) {
+        fluid(maxWidth: 570) {
           ...GatsbyImageSharpFluid_withWebp_tracedSVG
         }
       }
@@ -345,6 +345,9 @@ const IndexPage = () => {
       project3: file(
         relativePath: { eq: "projects/tonkotsu-visual-identity-main-page.jpg" }
       ) {
+        ...projectImages
+      }
+      project4: file(relativePath: { eq: "projects/kutarq-main-page.jpg" }) {
         ...projectImages
       }
       capabilities1Img: file(
@@ -381,6 +384,11 @@ const IndexPage = () => {
       name: "Tonkotsu Visual Identity",
       img: data.project3.childImageSharp.fluid,
       link: "/projects/tonkotsu-visual-identity",
+    },
+    {
+      name: "KUTARQ Agency Rebranding",
+      img: data.project3.childImageSharp.fluid,
+      link: "/projects/kutarq",
     },
   ]
 
