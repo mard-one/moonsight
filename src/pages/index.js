@@ -1,4 +1,4 @@
-import React from "react"
+import React, { useEffect, useRef } from "react"
 import { graphql, Link, useStaticQuery } from "gatsby"
 import Img from "gatsby-image"
 
@@ -26,12 +26,59 @@ const Projects = styled.section`
   }
 `
 const ProjectsGrid = styled.div`
-  & div {
-    margin-bottom: 48px;
+  ${props => props.theme.breakpoints.down("sm")} {
+  }
+`
+const ProjectName = styled(Typography)`
+  position: absolute;
+  width: 60%;
+  bottom: 30px;
+  left: 30px;
+  transform: translateY(10px);
+  opacity: 0;
+  transition: all 0.1s linear;
+  ${props => props.theme.breakpoints.down("sm")} {
+  }
+`
+const TextBackdrop = styled.div`
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-image: linear-gradient(0deg, black, transparent);
+  bottom: 0px;
+  left: 0px;
+  opacity: 0;
+  transition: all 0.1s linear;
+`
+const Project = styled.div`
+  position: relative;
+  margin-bottom: 48px;
+  &:hover {
+    cursor: none;
+    > ${ProjectName} {
+      transform: translateY(0px);
+      opacity: 1;
+    }
+    > ${TextBackdrop} {
+      opacity: 0.7;
+    }
   }
   ${props => props.theme.breakpoints.down("sm")} {
   }
 `
+const Tooltip = styled.div`
+  position: fixed;
+  left: 0;
+  top: 0;
+  pointer-events: none;
+  transition: opacity 0.2s ease-in-out;
+  opacity: 0;
+  background-color: white;
+  color: black;
+  padding: 15px 26px;
+  border-radius: 35px;
+`
+
 const Capability = styled.div`
   margin-bottom: 32px;
   padding: 0;
@@ -316,6 +363,11 @@ const CapabilitiesData = [
 ].sort((a, b) => parseInt(a.number) - parseInt(b.number))
 
 const IndexPage = () => {
+  const tooltipRef = useRef(null)
+  const mouse = useRef({ x: null, y: null })
+  const isTouchScreen = useRef(false)
+  const rAFIndex = useRef(false)
+
   const data = useStaticQuery(graphql`
     fragment projectImages on File {
       childImageSharp {
@@ -401,6 +453,46 @@ const IndexPage = () => {
     },
   ]
 
+  useEffect(() => {
+    if (document) {
+      isTouchScreen.current = "ontouchstart" in document.documentElement
+    }
+    return () => {
+      cancelAnimationFrame(rAFIndex.current)
+    }
+  }, [])
+
+  const handleMouseMove = e => {
+    const { clientX, clientY } = e
+    mouse.current = { x: clientX, y: clientY }
+  }
+  const handleMouseOver = e => {
+    if (isTouchScreen.current) {
+      return false
+    }
+    // backdrop.current.style.opacity = "0.5"
+    // tooltipRef.current.innerText = e.target.alt
+    tooltipRef.current.style.opacity = "1"
+    console.log("mouseover")
+    rAFIndex.current = requestAnimationFrame(update)
+  }
+  const handleMouseOut = e => {
+    if (isTouchScreen.current) {
+      return false
+    }
+    console.log("mouseout")
+    // backdrop.current.style.opacity = "0"
+    tooltipRef.current.style.opacity = "0"
+    cancelAnimationFrame(rAFIndex.current)
+  }
+  const update = () => {
+    console.log("update")
+    tooltipRef.current.style.transform = `translate(${
+      mouse.current.x - 180
+    }px, ${mouse.current.y - 20}px)`
+    rAFIndex.current = requestAnimationFrame(update)
+  }
+
   return (
     <Layout>
       <StyledRayWrapper>
@@ -429,15 +521,24 @@ const IndexPage = () => {
         <StyledSphere rotateDeg={-150} />
       </Margin>
       <Margin as="section" bsm={240} bxs={100}>
-        <Projects>
+        <Projects onMouseMove={handleMouseMove}>
           <ProjectsGrid>
             {projects.map((project, index) => {
               return !(index % 2) ? (
-                <Link key={project.name} to={project.link}>
-                  <Img fluid={project.img} />
-                </Link>
+                project.link && (
+                  <Link key={project.name || "qwerty"} to={project.link}>
+                    <Project
+                      onMouseOver={handleMouseOver}
+                      onMouseOut={handleMouseOut}
+                    >
+                      {project.img && <Img fluid={project.img} />}
+                      <TextBackdrop />
+                      <ProjectName variant="h3">{project.name}</ProjectName>
+                    </Project>
+                  </Link>
+                )
               ) : (
-                <Fragment key={project.name} />
+                <Fragment key={project.name || "qwerty" + index} />
               )
             })}
           </ProjectsGrid>
@@ -445,13 +546,23 @@ const IndexPage = () => {
             {projects.map((project, index) => {
               return index % 2 ? (
                 <Link key={project.name} to={project.link}>
-                  <Img fluid={project.img} />
+                  <Project
+                    onMouseOver={handleMouseOver}
+                    onMouseOut={handleMouseOut}
+                  >
+                    <Img fluid={project.img} />
+                    <TextBackdrop />
+                    <ProjectName variant="h3">{project.name}</ProjectName>
+                  </Project>
                 </Link>
               ) : (
-                <Fragment key={project.name} />
+                <Fragment key={project.name || "qwerty" + index} />
               )
             })}
           </ProjectsGrid>
+          <Tooltip ref={tooltipRef}>
+            See this Project&nbsp;&nbsp; &#8594;
+          </Tooltip>
         </Projects>
       </Margin>
       <Margin as="section" bsm={250} bxs={135}>

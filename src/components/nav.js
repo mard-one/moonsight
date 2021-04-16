@@ -259,7 +259,9 @@ const Nav = ({ navWithBackBtn }) => {
           </div>
 
           <div style={{ marginTop: 32 }}>
-            <Button onClick={() => window.history.back()}>Go Back</Button>
+            <Button onClick={() => window.history.back()}>
+              &#8592; &nbsp;Go Back
+            </Button>
           </div>
         </NavBarMinimal>
       ) : (
