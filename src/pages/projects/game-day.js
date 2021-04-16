@@ -14,12 +14,11 @@ import {
   StyledGrid,
   StyledGridItem,
 } from "./maxim-kashin-architecture"
-import Video from "../../components/projects/video"
 
 const GameDay = () => {
   const data = useStaticQuery(graphql`
     query {
-      madeByImg: file(relativePath: { eq: "team/team14.png" }) {
+      madeByImg: file(relativePath: { eq: "team/team18.png" }) {
         childImageSharp {
           fixed(width: 80) {
             ...GatsbyImageSharpFixed_withWebp_tracedSVG
@@ -171,14 +170,10 @@ const GameDay = () => {
   `)
   console.log("data", data)
   const projectInfo = {
-    mainCategory: projectTypes.appdesign,
-    name: "GameDay Systems",
-    allCategories: [
-      projectTypes.appdesign,
-      projectTypes.editorial,
-      projectTypes.illustration,
-    ],
-    madeByName: "Viktor Khorobrykh",
+    mainCategory: projectTypes.webdesign,
+    name: "GameDay Vodka Website Revamp",
+    allCategories: ["Web Design", "Photography", "Branding"],
+    madeByName: "Ivan Ermakov",
     madeByImg: data.madeByImg.childImageSharp.fixed,
     bgImg: data.bgImg.childImageSharp.fluid,
   }
@@ -187,25 +182,24 @@ const GameDay = () => {
       <Section first sectionName="Project Description" clientName="001">
         <Grid container justify="space-between">
           <Grid item xs={12} sm={5} style={{ position: "relative" }}>
-            <ProjectDesc features={["Graphic Design", "Web Design", "UI/UX"]}>
-              Product branding and website for GameDay Systems
+            <ProjectDesc features={["WEB DESIGN", "PHOTOGRAPHY", "BRANDING"]}>
+              Web design and branding for an American brand, GameDay Vodka.
             </ProjectDesc>
           </Grid>
           <Grid item xs={12} sm={6}>
             <Paragraph title="challenge" textAfter>
-              GameDay specialize in the creation of systems and complexes for
-              control of technical facilities of ships and vessels, also offers
-              defense products, civil marine equipment, integrated solutions,
-              etc, as well some services like testing centers and meteorological
-              service.
+              GameDay is a brand fueled by an unrivaled passion for community,
+              quality and fun, two friends with a combined 30 years of
+              experience in the industry set out on a journey to create a brand
+              that combined their love for sports and premium vodka. As a
+              result, an All-American vodka for the fan was created in a package
+              that captures the true essence of the game.
               <br />
               <br />
-              The company has risen from creation of a local controller up to
-              implementation of integrated automated control systems and the aim
-              of the project was to create a website showcasing all the services
-              and solutions that the company offers by using illustrative
-              images, an appropriate language and key words friendlier to all
-              visitors.
+              My role as the designer of this project was to create and
+              consolidate the identity of the brand, for both offline and online
+              channels, bringing in consistency to the brand's communication and
+              creating a strategic presence in the digital world.
             </Paragraph>
           </Grid>
         </Grid>
@@ -213,17 +207,24 @@ const GameDay = () => {
       </Section>
 
       <Section sectionName="Branding" clientName="002">
-        <Grid container justify="flex-start">
+        <Grid container justify="flex-end">
           <Grid item xs={12} sm={6}>
-            <Paragraph title="BRAND IDENTITY">
-              GameDay Systems is recognized for their scientific and engineering
-              development and for being one of the leaders in the sector.
+            <Paragraph title="PRODUCT PHOTOGRAPHY">
+              As a part of the project, we made a photoshoot of the various
+              products that the brand offers, maintaining a set of guidelines
+              and the company vision while shooting the photos.
               <br />
               <br />
-              The concept of identity and branding creation was inspired by
-              technology and engineering. The use of colors such as blue, dark,
-              gray and white, shapes and forms of marine and river items
-              represents the company's products and activity.
+              The style of the imagery followed several guidelines such as,
+              lifestyle imagery along with the logo and slogan on every picture,
+              inclusion of people using the product, showcasing the products
+              packaging and, lastly, a strategy of product-placement in
+              different scenarios where people would normally drink or have the
+              GameDay vodka.
+              <br />
+              <br />
+              The colors, scenography, lights and models represent the perfect
+              balance and combination for each product photography.
             </Paragraph>
           </Grid>
         </Grid>
@@ -262,20 +263,20 @@ const GameDay = () => {
       </Section>
 
       <Section sectionName="Branding" clientName="003">
-        <Grid container justify="flex-end">
+        <Grid container justify="flex-start">
           <Grid item xs={12} sm={6}>
-            <Paragraph title="THE WEBSITE">
-              The website design offers an incredible user experience that
-              involves the users with the mix of bright colors, big and readable
-              fonts, fun and modern iconography, high-quality visuals and
-              usability principles.
+            <Paragraph title="WEBSITE REDESIGN">
+              The digital transformation of the brand started by revamping the
+              whole experience of the website.
               <br />
               <br />
-              It is important to underline that the visitors have all the
-              information available at a glance, such as company information,
-              certificates, partners, offices, products, services, processes,
-              manufacturing, contacts, among others things, making this website
-              unique and complete.
+              In that matter, the new design showcase the attributes,
+              characteristics, colors and spirit of the vodka company.
+              <br />
+              <br />
+              Features like “Order Now”, ”Cocktails” and “For the Fans” are a
+              combination between sports, fun and the celebration on what they
+              call “GameDay”.
             </Paragraph>
           </Grid>
         </Grid>
@@ -303,17 +304,20 @@ const GameDay = () => {
         </Carousel>
       </Section>
 
-      <Section sectionName="Illustration " clientName="004" last>
+      <Section sectionName="Branding" clientName="004" last>
         <Grid container justify="space-between">
           <Grid item xs={12} sm={5}>
-            <Paragraph title="RESPONSIVE DESIGN">
-              The mobile view of the website is being created to support
-              different devices, while considering the content, the imagery and
-              general design, not to mention that is ensuring the usability.
+            <Paragraph title="MOBILE VERSION">
+              GameDay website was designed by following the mobile-first
+              approach to ensure the flexibility and fully adaptability of each
+              screen, while supporting a large number of devices.
               <br />
               <br />
-              Is a sleek interface that provides all the information required by
-              the users.
+              The product cards, the images, reads and detail page of the vodka
+              follow a structured and hierquized order to enhance the user
+              experience and engage all our customers on their end-to-end
+              journey, as in, all the way from the web to the taste of the
+              vodka.
             </Paragraph>
           </Grid>
           <Grid item xs={12} sm={6}>
