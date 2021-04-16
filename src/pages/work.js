@@ -14,6 +14,8 @@ export const projectTypes = {
   appdesign: "App Design",
   development: "Development",
   branding: "Branding",
+  graphicdesign: "Graphic Design",
+  typography: "Typography",
 }
 
 const ProjectsFilter = styled.div`

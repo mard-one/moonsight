@@ -183,9 +183,13 @@ const TonkotsuVisualIdentity = () => {
   `)
   console.log("data", data)
   const projectInfo = {
-    mainCategory: projectTypes.webdesign,
-    name: "Meloman Video Company",
-    allCategories: [projectTypes.branding, projectTypes.webdesign],
+    mainCategory: projectTypes.branding,
+    name: "Tonkotsu Visual Identity",
+    allCategories: [
+      projectTypes.branding,
+      projectTypes.graphicdesign,
+      projectTypes.typography,
+    ],
     madeByName: "Viktor",
     madeByImg: data.madeByImg.childImageSharp.fixed,
     bgImg: data.bgImg.childImageSharp.fluid,
@@ -195,55 +199,49 @@ const TonkotsuVisualIdentity = () => {
       <Section first sectionName="Project Description" clientName="001">
         <Grid container justify="space-between">
           <Grid item xs={12} sm={5} style={{ position: "relative" }}>
-            <ProjectDesc features={["UI/UX", "Web Design", "Art Direction"]}>
-              Web design and style guide for Maxim Kashin is an architect based
-              in Moscow
+            <ProjectDesc
+              features={["PRODUCT BRANDING", "PACKAGING DESIGN", "LOGO DESIGN"]}
+            >
+              Branding and visual identity for a Japanese Japanese ramen chain
+              in London, Tonkotsu.
             </ProjectDesc>
           </Grid>
           <Grid item xs={12} sm={6}>
             <Paragraph title="challenge" textAfter>
-              Maxim Kashin was the chief architect in MONOLOKO design when had a
-              vision of creating his personal interior and Architecture brand
-              with the author's design.
+              The key objective of this project was to create for Tonkotsu the
+              brand guidelines and visual identity for the Japanese ramen chain
+              newly launched in London.
               <br />
               <br />
-              As the designer of the project, the biggest challenge was to
-              define and set the structure and architecture of the website as
-              well as designing the visual identity of the upcoming and
-              ambitious venture, that wanted to reflect the sophisticated and
-              award nominated creator’s work, therefore, the creation of UX
-              fundamentals, as well as designing the visual identity of the
-              website.
-            </Paragraph>
-            <Paragraph title="approach">
-              The first step was to understand the business goals in order to
-              design a comprehensive and user oriented website while building
-              the UX fundamentals, such as research and user flows, moving into
-              the creation of a design system to be developed in the website,
-              creating consistency throughout as well as ensuring the
-              scalability of the components and lastly, categorazing and
-              grouping all the information to be included in the web as sections
-              or tabs in the menu. <br />
+              My response to their concept being where modern Japan and modern
+              London meet was a unique mark combining kotsu kanji 骨 with a
+              geometric wordmark.
               <br />
-              All these efforts, translated into an engaging and elegant website
-              that ensure the best user experience for all the customers
-              browsing Maxim Kashin Architecture website.
+              <br />
+              Geometric plains and patterns were textured by hand to represent
+              the craftsmanship of the restaurant.
             </Paragraph>
           </Grid>
         </Grid>
         <Img fluid={data.section1Banner.childImageSharp.fluid} />
       </Section>
 
-      <Section sectionName="Website" clientName="002">
+      <Section sectionName="Branding" clientName="002">
         <Grid container justify="flex-start">
           <Grid item xs={12} sm={6}>
-            <Paragraph title="PROJECTS AND PUBLICATIONS">
-              In the below examples, is clear how the website design is
-              completly align with the different projects that the arquictech
-              has wordked on, from country-side homes to apartments and
-              restaurants both the conceps merge together and give a sense of
-              modernism and style, having always in mind the usability to enhace
-              the experience of each user.
+            <Paragraph title="THE STORE">
+              The brand identity and its implementation represents the
+              traditional Japanese food.
+              <br />
+              <br />
+              The colors, geometric forms along with the flavours and textures,
+              offer an engaging experience for the customers visiting the
+              restaurants.
+              <br />
+              <br />
+              The restaurant, the menu and placemats designs talk about the
+              place, food and style, making this an important part of the visual
+              identity.
             </Paragraph>
           </Grid>
         </Grid>
@@ -321,15 +319,16 @@ const TonkotsuVisualIdentity = () => {
       <Section sectionName="Branding" clientName="003" last>
         <Grid container justify="space-between">
           <Grid item xs={12} sm={5}>
-            <Paragraph title="RESPONSIVE DESIGN">
-              Maxim Kashin Architecture is a website design with the highest
-              design and engineering standards, therefore, UX best practices and
-              responsive design were a fundamental part of the creation of the
-              site.
+            <Paragraph title="SHAPES">
+              The restaurant shows the modernism of both the cultures, London
+              and Japan. Also the restaurant’s menu is aligned with the initial
+              concept and shapes, giving consistency to the whole proposition
+              and brand identity.
               <br />
               <br />
-              The screens reflect the same elegance and consistency as the
-              desktop.
+              The packaging of the products and use of menu pictures provide a
+              competitive advantage and make the designs more attractive and
+              enjoyable.
             </Paragraph>
           </Grid>
           <Grid item xs={12} sm={6}>
