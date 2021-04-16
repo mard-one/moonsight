@@ -350,6 +350,9 @@ const IndexPage = () => {
       project4: file(relativePath: { eq: "projects/kutarq-main-page.jpg" }) {
         ...projectImages
       }
+      project5: file(relativePath: { eq: "projects/avrora-main-page.jpg" }) {
+        ...projectImages
+      }
       capabilities1Img: file(
         relativePath: { eq: "capabilities/picture1.jpg" }
       ) {
@@ -387,8 +390,14 @@ const IndexPage = () => {
     },
     {
       name: "KUTARQ Agency Rebranding",
-      img: data.project3.childImageSharp.fluid,
+      img: data.project4.childImageSharp.fluid,
       link: "/projects/kutarq",
+    },
+    {},
+    {
+      name: "Avrora Systems",
+      img: data.project5.childImageSharp.fluid,
+      link: "/projects/avrora",
     },
   ]
 
