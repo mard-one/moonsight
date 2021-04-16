@@ -18,6 +18,9 @@ export const projectTypes = {
   typography: "Typography",
   editorial: "Editorial",
   illustration: "Illustration",
+  interactiondesign: "Interaction Design",
+  uxui: "UX/UI Design",
+  artdirection: "Art Direction",
 }
 
 const ProjectsFilter = styled.div`
@@ -55,7 +58,7 @@ const Work = ({ location }) => {
     {
       name: "Starbucks Application Concept",
       img: data.project1.childImageSharp.fluid,
-      link: "/asd",
+      link: "/projects/starbucks-app-concept",
       type: projectTypes.webdesign,
     },
     {

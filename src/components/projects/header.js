@@ -71,9 +71,11 @@ const Header = ({
         <Container>
           <Margin bsm={80} bxs={40}>
             <Grid item container justify="space-between" alignItems="flex-end">
-              <Grid item xs={12} sm={5}>
-                <HeaderTitle>Our work / {mainCategory}</HeaderTitle>
-                <Typography variant="h1">{name}</Typography>
+              <Grid item container xs={12} sm={9}>
+                <Grid item xs={12} sm={6}>
+                  <HeaderTitle>Our work / {mainCategory}</HeaderTitle>
+                  <Typography variant="h1">{name}</Typography>
+                </Grid>
                 <Margin bxs={10} bsm={24} />
                 <ProjectCartegories>
                   {allCategories.map(category => (
@@ -88,7 +90,7 @@ const Header = ({
                   ))}
                 </ProjectCartegories>
               </Grid>
-              <Grid item xs={12} sm={6}>
+              <Grid item xs={12} sm={3}>
                 <CreatorContainer>
                   <div>
                     <Typography variant="overline" align="right">
