@@ -1,6 +1,6 @@
+import React from "react"
 import { Grid } from "@material-ui/core"
 import { graphql, useStaticQuery } from "gatsby"
-import React from "react"
 import Carousel from "../../components/projects/carousel"
 import Img from "gatsby-image"
 import Paragraph from "../../components/projects/paragraph"
@@ -9,48 +9,16 @@ import Section from "../../components/projects/section"
 import Layout from "../../layout/projects"
 import { projectTypes } from "../work"
 import styled from "styled-components"
-import Video from "../../components/projects/video"
+import {
+  ResponsiveImgContainer,
+  StyledGrid,
+  StyledGridItem,
+} from "./maxim-kashin-architecture"
 
-export const StyledGrid = styled.div`
-  display: grid;
-  ${props => props.theme.breakpoints.up("md")} {
-    ${props => props.styleMd}
-  }
-  ${props => props.theme.breakpoints.down("sm")} {
-    ${props => props.styleSm}
-  }
-  ${props => props.theme.breakpoints.down("xs")} {
-    ${props => props.styleXs}
-  }
-`
-export const StyledGridItem = styled.div`
-  ${props => props.theme.breakpoints.up("md")} {
-    ${props => props.styleMd}
-  }
-  ${props => props.theme.breakpoints.down("sm")} {
-    ${props => props.styleSm}
-  }
-  ${props => props.theme.breakpoints.down("xs")} {
-    ${props => props.styleXs}
-  }
-`
-
-export const ResponsiveImgContainer = styled.div`
-  ${props => props.theme.breakpoints.up("md")} {
-    ${props => props.styleMd}
-  }
-  ${props => props.theme.breakpoints.down("sm")} {
-    ${props => props.styleSm}
-  }
-  ${props => props.theme.breakpoints.down("xs")} {
-    ${props => props.styleXs}
-  }
-`
-
-const MaximKashinArchitecture = () => {
+const TonkotsuVisualIdentity = () => {
   const data = useStaticQuery(graphql`
     query {
-      madeByImg: file(relativePath: { eq: "team/team11.png" }) {
+      madeByImg: file(relativePath: { eq: "team/team15.png" }) {
         childImageSharp {
           fixed(width: 80) {
             ...GatsbyImageSharpFixed_withWebp_tracedSVG
@@ -59,7 +27,7 @@ const MaximKashinArchitecture = () => {
       }
       bgImg: file(
         relativePath: {
-          eq: "projects/maxim-kashin-architecture-project-page-bg.jpg"
+          eq: "projects/tonkotsu-visual-identity-project-page-bg.jpg"
         }
       ) {
         childImageSharp {
@@ -68,108 +36,97 @@ const MaximKashinArchitecture = () => {
           }
         }
       }
-      section1Carousel1: file(
+      section1Banner: file(
         relativePath: {
-          eq: "projects/maxim-kashin-architecture-project-page-section-1-carousel-1.jpg"
+          eq: "projects/tonkotsu-visual-identity-project-page-section-1-banner.jpg"
         }
       ) {
         childImageSharp {
-          fluid(maxWidth: 1000) {
-            ...GatsbyImageSharpFluid_withWebp_tracedSVG
-          }
-        }
-      }
-      section1Carousel2: file(
-        relativePath: {
-          eq: "projects/maxim-kashin-architecture-project-page-section-1-carousel-2.jpg"
-        }
-      ) {
-        childImageSharp {
-          fluid(maxWidth: 700) {
-            ...GatsbyImageSharpFluid_withWebp_tracedSVG
-          }
-        }
-      }
-      section1Carousel3: file(
-        relativePath: {
-          eq: "projects/maxim-kashin-architecture-project-page-section-1-carousel-3.jpg"
-        }
-      ) {
-        childImageSharp {
-          fluid(maxWidth: 700) {
+          fluid(maxWidth: 1200) {
             ...GatsbyImageSharpFluid_withWebp_tracedSVG
           }
         }
       }
       section2Grid1: file(
         relativePath: {
-          eq: "projects/maxim-kashin-architecture-project-page-section-2-grid-1.jpg"
+          eq: "projects/tonkotsu-visual-identity-project-page-section-2-grid-1.jpg"
         }
       ) {
         childImageSharp {
-          fluid(maxWidth: 600) {
+          fluid(maxWidth: 1200) {
             ...GatsbyImageSharpFluid_withWebp_tracedSVG
           }
         }
       }
       section2Grid2: file(
         relativePath: {
-          eq: "projects/maxim-kashin-architecture-project-page-section-2-grid-2.jpg"
+          eq: "projects/tonkotsu-visual-identity-project-page-section-2-grid-2.jpg"
         }
       ) {
         childImageSharp {
-          fluid(maxWidth: 600) {
+          fluid(maxWidth: 1200) {
             ...GatsbyImageSharpFluid_withWebp_tracedSVG
           }
         }
       }
       section2Grid3: file(
         relativePath: {
-          eq: "projects/maxim-kashin-architecture-project-page-section-2-grid-3.jpg"
+          eq: "projects/tonkotsu-visual-identity-project-page-section-2-grid-3.jpg"
         }
       ) {
         childImageSharp {
-          fluid(maxWidth: 600) {
+          fluid(maxWidth: 1200) {
             ...GatsbyImageSharpFluid_withWebp_tracedSVG
           }
         }
       }
       section2Grid4: file(
         relativePath: {
-          eq: "projects/maxim-kashin-architecture-project-page-section-2-grid-4.jpg"
+          eq: "projects/tonkotsu-visual-identity-project-page-section-2-grid-4.jpg"
         }
       ) {
         childImageSharp {
-          fluid(maxWidth: 600) {
+          fluid(maxWidth: 1200) {
             ...GatsbyImageSharpFluid_withWebp_tracedSVG
           }
         }
       }
       section2Carousel1: file(
         relativePath: {
-          eq: "projects/maxim-kashin-architecture-project-page-section-2-carousel-1.jpg"
+          eq: "projects/tonkotsu-visual-identity-project-page-section-2-carousel-1.jpg"
         }
       ) {
         childImageSharp {
-          fluid(maxWidth: 700) {
+          fluid(maxWidth: 1200) {
             ...GatsbyImageSharpFluid_withWebp_tracedSVG
           }
         }
       }
       section2Carousel2: file(
         relativePath: {
-          eq: "projects/maxim-kashin-architecture-project-page-section-2-carousel-2.jpg"
+          eq: "projects/tonkotsu-visual-identity-project-page-section-2-carousel-2.jpg"
         }
       ) {
         childImageSharp {
-          fluid(maxWidth: 700) {
+          fluid(maxWidth: 1200) {
+            ...GatsbyImageSharpFluid_withWebp_tracedSVG
+          }
+        }
+      }
+      section2Carousel3: file(
+        relativePath: {
+          eq: "projects/tonkotsu-visual-identity-project-page-section-2-carousel-3.jpg"
+        }
+      ) {
+        childImageSharp {
+          fluid(maxWidth: 1200) {
             ...GatsbyImageSharpFluid_withWebp_tracedSVG
           }
         }
       }
       section3Grid1: file(
         relativePath: {
-          eq: "projects/maxim-kashin-architecture-project-page-section-3-grid-1.jpg"
+          eq: "projects/tonkotsu-visual-identity-project-page-section-3-grid-1.jpg"
         }
       ) {
         childImageSharp {
@@ -180,7 +137,7 @@ const MaximKashinArchitecture = () => {
       }
       section3Grid2: file(
         relativePath: {
-          eq: "projects/maxim-kashin-architecture-project-page-section-3-grid-2.jpg"
+          eq: "projects/tonkotsu-visual-identity-project-page-section-3-grid-2.jpg"
         }
       ) {
         childImageSharp {
@@ -191,7 +148,7 @@ const MaximKashinArchitecture = () => {
       }
       section3Grid3: file(
         relativePath: {
-          eq: "projects/maxim-kashin-architecture-project-page-section-3-grid-3.jpg"
+          eq: "projects/tonkotsu-visual-identity-project-page-section-3-grid-3.jpg"
         }
       ) {
         childImageSharp {
@@ -202,7 +159,18 @@ const MaximKashinArchitecture = () => {
       }
       section3Grid4: file(
         relativePath: {
-          eq: "projects/maxim-kashin-architecture-project-page-section-3-grid-4.jpg"
+          eq: "projects/tonkotsu-visual-identity-project-page-section-3-grid-4.jpg"
+        }
+      ) {
+        childImageSharp {
+          fluid(maxWidth: 600) {
+            ...GatsbyImageSharpFluid_withWebp_tracedSVG
+          }
+        }
+      }
+      section3Grid5: file(
+        relativePath: {
+          eq: "projects/tonkotsu-visual-identity-project-page-section-3-grid-5.jpg"
         }
       ) {
         childImageSharp {
@@ -213,11 +181,12 @@ const MaximKashinArchitecture = () => {
       }
     }
   `)
+  console.log("data", data)
   const projectInfo = {
     mainCategory: projectTypes.webdesign,
-    name: "Maxim Kashin Architecture",
-    allCategories: [projectTypes.webdesign],
-    madeByName: "Diana Dubina",
+    name: "Meloman Video Company",
+    allCategories: [projectTypes.branding, projectTypes.webdesign],
+    madeByName: "Viktor",
     madeByImg: data.madeByImg.childImageSharp.fixed,
     bgImg: data.bgImg.childImageSharp.fluid,
   }
@@ -262,40 +231,7 @@ const MaximKashinArchitecture = () => {
             </Paragraph>
           </Grid>
         </Grid>
-        <Carousel>
-          <ResponsiveImgContainer
-            style={{ width: "83.33vw", maxWidth: "1000px" }}
-            styleMd={{
-              marginRight: 40,
-            }}
-            styleSm={{ marginRight: 20 }}
-          >
-            <Img
-              style={{ height: "100%" }}
-              fluid={data.section1Carousel1.childImageSharp.fluid}
-            />
-          </ResponsiveImgContainer>
-          <ResponsiveImgContainer
-            style={{ width: "58.33vw", maxWidth: "700px" }}
-            styleMd={{
-              marginRight: 40,
-            }}
-            styleSm={{ marginRight: 20 }}
-          >
-            <Img
-              style={{ height: "100%" }}
-              fluid={data.section1Carousel2.childImageSharp.fluid}
-            />
-          </ResponsiveImgContainer>
-          <ResponsiveImgContainer
-            style={{ width: "58.33vw", maxWidth: "700px" }}
-          >
-            <Img
-              style={{ height: "100%" }}
-              fluid={data.section1Carousel3.childImageSharp.fluid}
-            />
-          </ResponsiveImgContainer>
-        </Carousel>
+        <Img fluid={data.section1Banner.childImageSharp.fluid} />
       </Section>
 
       <Section sectionName="Website" clientName="002">
@@ -312,50 +248,41 @@ const MaximKashinArchitecture = () => {
           </Grid>
         </Grid>
         <StyledGrid
-          style={{ gridTemplateColumns: "1fr 1fr" }}
+          style={{ gridTemplateColumns: "1fr 1fr 1fr" }}
           styleMd={{ gridGap: 40 }}
           styleSm={{ gridGap: 20 }}
         >
           <StyledGridItem
-            styleMd={{ gridColumn: "1 / span 2" }}
-            styleSm={{ gridColumn: "1 / span 2" }}
-          >
-            <Video
-              videoSrcURL="https://www.youtube.com/embed/dQw4w9WgXcQ"
-              videoTitle="Official Music Video on YouTube"
-            />
-          </StyledGridItem>
-          <StyledGridItem
-            styleMd={{ gridColumn: "1 / span 1" }}
-            styleSm={{ gridColumn: "1 / span 2" }}
+            styleMd={{ gridColumn: "1 / span 3" }}
+            styleSm={{ gridColumn: "1 / span 3" }}
           >
             <Img fluid={data.section2Grid1.childImageSharp.fluid} />
           </StyledGridItem>
           <StyledGridItem
-            styleMd={{ gridColumn: "2 / span 1" }}
-            styleSm={{ gridColumn: "1 / span 2" }}
+            styleMd={{ gridColumn: "1 / span 1" }}
+            styleSm={{ gridColumn: "1 / span 3" }}
           >
             <Img fluid={data.section2Grid2.childImageSharp.fluid} />
           </StyledGridItem>
           <StyledGridItem
-            styleMd={{ gridColumn: "1 / span 1" }}
-            styleSm={{ gridColumn: "1 / span 2" }}
+            styleMd={{ gridColumn: "2 / span 1" }}
+            styleSm={{ gridColumn: "1 / span 3" }}
           >
             <Img fluid={data.section2Grid3.childImageSharp.fluid} />
           </StyledGridItem>
           <StyledGridItem
-            styleMd={{ gridColumn: "2 / span 1" }}
-            styleSm={{ gridColumn: "1 / span 2" }}
+            styleMd={{ gridColumn: "3 / span 1" }}
+            styleSm={{ gridColumn: "1 / span 3" }}
           >
             <Img fluid={data.section2Grid4.childImageSharp.fluid} />
           </StyledGridItem>
           <StyledGridItem
-            styleMd={{ gridColumn: "1 / span 2" }}
-            styleSm={{ gridColumn: "1 / span 2" }}
+            styleMd={{ gridColumn: "1 / span 3" }}
+            styleSm={{ gridColumn: "1 / span 3" }}
           >
             <Carousel>
               <ResponsiveImgContainer
-                style={{ width: "58.33vw", maxWidth: "700px" }}
+                style={{ width: "85vw", maxWidth: "1200px" }}
                 styleMd={{
                   marginRight: 40,
                 }}
@@ -367,7 +294,19 @@ const MaximKashinArchitecture = () => {
                 />
               </ResponsiveImgContainer>
               <ResponsiveImgContainer
-                style={{ width: "58.33vw", maxWidth: "700px" }}
+                style={{ width: "85vw", maxWidth: "1200px" }}
+                styleMd={{
+                  marginRight: 40,
+                }}
+                styleSm={{ marginRight: 20 }}
+              >
+                <Img
+                  style={{ height: "100%" }}
+                  fluid={data.section2Carousel2.childImageSharp.fluid}
+                />
+              </ResponsiveImgContainer>
+              <ResponsiveImgContainer
+                style={{ width: "85vw", maxWidth: "1200px" }}
               >
                 <Img
                   style={{ height: "100%" }}
@@ -380,8 +319,8 @@ const MaximKashinArchitecture = () => {
       </Section>
 
       <Section sectionName="Branding" clientName="003" last>
-        <Grid container justify="flex-start">
-          <Grid item xs={12} sm={6}>
+        <Grid container justify="space-between">
+          <Grid item xs={12} sm={5}>
             <Paragraph title="RESPONSIVE DESIGN">
               Maxim Kashin Architecture is a website design with the highest
               design and engineering standards, therefore, UX best practices and
@@ -393,40 +332,33 @@ const MaximKashinArchitecture = () => {
               desktop.
             </Paragraph>
           </Grid>
+          <Grid item xs={12} sm={6}>
+            <StyledGrid
+              style={{ gridTemplateColumns: "1fr" }}
+              styleMd={{ gridGap: 40 }}
+              styleSm={{ gridGap: 20 }}
+            >
+              <StyledGridItem>
+                <Img fluid={data.section3Grid1.childImageSharp.fluid} />
+              </StyledGridItem>
+              <StyledGridItem>
+                <Img fluid={data.section3Grid2.childImageSharp.fluid} />
+              </StyledGridItem>
+              <StyledGridItem>
+                <Img fluid={data.section3Grid3.childImageSharp.fluid} />
+              </StyledGridItem>
+              <StyledGridItem>
+                <Img fluid={data.section3Grid4.childImageSharp.fluid} />
+              </StyledGridItem>
+              <StyledGridItem>
+                <Img fluid={data.section3Grid5.childImageSharp.fluid} />
+              </StyledGridItem>
+            </StyledGrid>
+          </Grid>
         </Grid>
-        <StyledGrid
-          style={{ GridTemplateColumns: "1fr 1fr" }}
-          styleMd={{ gridGap: 40 }}
-          styleSm={{ gridGap: 20 }}
-        >
-          <StyledGridItem
-            styleMd={{ gridColumn: "1 / span 1" }}
-            styleSm={{ gridColumn: "1 / span 2" }}
-          >
-            <Img fluid={data.section3Grid1.childImageSharp.fluid} />
-          </StyledGridItem>
-          <StyledGridItem
-            styleMd={{ gridColumn: "2 / span 1" }}
-            styleSm={{ gridColumn: "1 / span 2" }}
-          >
-            <Img fluid={data.section3Grid2.childImageSharp.fluid} />
-          </StyledGridItem>
-          <StyledGridItem
-            styleMd={{ gridColumn: "1 / span 1" }}
-            styleSm={{ gridColumn: "1 / span 2" }}
-          >
-            <Img fluid={data.section3Grid3.childImageSharp.fluid} />
-          </StyledGridItem>
-          <StyledGridItem
-            styleMd={{ gridColumn: "2 / span 1" }}
-            styleSm={{ gridColumn: "1 / span 2" }}
-          >
-            <Img fluid={data.section3Grid4.childImageSharp.fluid} />
-          </StyledGridItem>
-        </StyledGrid>
       </Section>
     </Layout>
   )
 }
 
-export default MaximKashinArchitecture
+export default TonkotsuVisualIdentity

@@ -14,10 +14,8 @@ import Cta from "../components/cta"
 
 const StyledMain = styled.main`
   padding-top: 64px;
-  padding-bottom: 200px;
   ${props => props.theme.breakpoints.down("sm")} {
     padding-top: 48px;
-    padding-bottom: 20px;
   }
 `
 

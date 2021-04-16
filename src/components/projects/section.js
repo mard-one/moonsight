@@ -11,7 +11,7 @@ const Section = ({
   bgColorBright = false,
 }) => {
   return (
-    <section>
+    <section style={{ position: "relative" }}>
       <Divider leftText={sectionName} rightText={clientName} middleText="" />
       <Margin
         txs={first ? 60 : 40}

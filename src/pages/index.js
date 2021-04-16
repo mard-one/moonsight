@@ -337,6 +337,16 @@ const IndexPage = () => {
       ) {
         ...projectImages
       }
+      project2: file(
+        relativePath: { eq: "projects/meloman-video-company-main-page.jpg" }
+      ) {
+        ...projectImages
+      }
+      project3: file(
+        relativePath: { eq: "projects/tonkotsu-visual-identity-main-page.jpg" }
+      ) {
+        ...projectImages
+      }
       capabilities1Img: file(
         relativePath: { eq: "capabilities/picture1.jpg" }
       ) {
@@ -352,7 +362,6 @@ const IndexPage = () => {
       ) {
         ...capabilitiesImages
       }
-      # ...projectsFragment
     }
   `)
 
@@ -362,6 +371,16 @@ const IndexPage = () => {
       name: "Maxim Kashin Architecture",
       img: data.project1.childImageSharp.fluid,
       link: "/projects/maxim-kashin-architecture",
+    },
+    {
+      name: "Meloman Video Company",
+      img: data.project2.childImageSharp.fluid,
+      link: "/projects/meloman-video-company",
+    },
+    {
+      name: "Tonkotsu Visual Identity",
+      img: data.project3.childImageSharp.fluid,
+      link: "/projects/tonkotsu-visual-identity",
     },
   ]
 
