@@ -293,7 +293,10 @@ const Starbucks = () => {
               styleMd={{ gridGap: 40 }}
               styleSm={{ gridGap: 20 }}
             >
-              <StyledGridItem styleMd={{ marginTop: 300 }}>
+              <StyledGridItem
+                styleMd={{ marginTop: 300, gridColumn: "1 / span 1" }}
+                styleSm={{ gridColumn: "1 / span 2" }}
+              >
                 <Img fluid={data.section4Grid1.childImageSharp.fluid} />
                 <StyledGridItem
                   styleMd={{ marginTop: 40 }}
@@ -302,7 +305,10 @@ const Starbucks = () => {
                   <Img fluid={data.section4Grid2.childImageSharp.fluid} />
                 </StyledGridItem>
               </StyledGridItem>
-              <StyledGridItem>
+              <StyledGridItem
+                styleMd={{ marginTop: 150, gridColumn: "2 / span 1" }}
+                styleSm={{ gridColumn: "1 / span 2" }}
+              >
                 <Img fluid={data.section4Grid3.childImageSharp.fluid} />
                 <StyledGridItem
                   styleMd={{ marginTop: 40 }}

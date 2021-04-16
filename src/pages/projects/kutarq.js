@@ -232,12 +232,6 @@ const MelomanVideoCompany = () => {
           >
             <Img fluid={data.section2Grid2.childImageSharp.fluid} />
           </StyledGridItem>
-          {/* <StyledGridItem
-            styleMd={{ gridColumn: "1 / span 2" }}
-            styleSm={{ gridColumn: "1 / span 2" }}
-          >
-            
-          </StyledGridItem> */}
         </StyledGrid>
       </Section>
     </Layout>

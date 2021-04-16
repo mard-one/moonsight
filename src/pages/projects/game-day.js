@@ -16,7 +16,7 @@ import {
 } from "./maxim-kashin-architecture"
 import Video from "../../components/projects/video"
 
-const Avrora = () => {
+const GameDay = () => {
   const data = useStaticQuery(graphql`
     query {
       madeByImg: file(relativePath: { eq: "team/team14.png" }) {
@@ -26,142 +26,143 @@ const Avrora = () => {
           }
         }
       }
-      bgImg: file(relativePath: { eq: "projects/avrora-project-page-bg.jpg" }) {
+      bgImg: file(
+        relativePath: { eq: "projects/game-day-project-page-bg.jpg" }
+      ) {
         childImageSharp {
           fluid(maxWidth: 1700) {
             ...GatsbyImageSharpFluid_withWebp_tracedSVG
           }
         }
       }
-      section2Carousel1: file(
+      section1Banner: file(
         relativePath: {
-          eq: "projects/avrora-project-page-section-2-carousel-1.jpg"
+          eq: "projects/game-day-project-page-section-1-banner.jpg"
         }
       ) {
         childImageSharp {
           fluid(maxWidth: 1200) {
+            ...GatsbyImageSharpFluid_withWebp_tracedSVG
+          }
+        }
+      }
+      section2Carousel1: file(
+        relativePath: {
+          eq: "projects/game-day-project-page-section-2-carousel-1.jpg"
+        }
+      ) {
+        childImageSharp {
+          fluid(maxWidth: 650) {
             ...GatsbyImageSharpFluid_withWebp_tracedSVG
           }
         }
       }
       section2Carousel2: file(
         relativePath: {
-          eq: "projects/avrora-project-page-section-2-carousel-2.jpg"
+          eq: "projects/game-day-project-page-section-2-carousel-2.jpg"
         }
       ) {
         childImageSharp {
-          fluid(maxWidth: 1200) {
+          fluid(maxWidth: 650) {
             ...GatsbyImageSharpFluid_withWebp_tracedSVG
           }
         }
       }
       section2Carousel3: file(
         relativePath: {
-          eq: "projects/avrora-project-page-section-2-carousel-3.jpg"
+          eq: "projects/game-day-project-page-section-2-carousel-3.jpg"
         }
       ) {
         childImageSharp {
-          fluid(maxWidth: 510) {
+          fluid(maxWidth: 650) {
             ...GatsbyImageSharpFluid_withWebp_tracedSVG
           }
         }
       }
-      section2Carousel4: file(
+      section3Carousel1: file(
         relativePath: {
-          eq: "projects/avrora-project-page-section-2-carousel-4.jpg"
+          eq: "projects/game-day-project-page-section-3-carousel-1.jpg"
         }
       ) {
         childImageSharp {
-          fluid(maxWidth: 600) {
+          fluid(maxWidth: 800) {
             ...GatsbyImageSharpFluid_withWebp_tracedSVG
           }
         }
       }
-      section3Grid1: file(
+      section3Carousel2: file(
         relativePath: {
-          eq: "projects/avrora-project-page-section-3-grid-1.jpg"
+          eq: "projects/game-day-project-page-section-3-carousel-2.jpg"
         }
       ) {
         childImageSharp {
-          fluid(maxWidth: 600) {
+          fluid(maxWidth: 800) {
             ...GatsbyImageSharpFluid_withWebp_tracedSVG
           }
         }
       }
-      section3Grid2: file(
-        relativePath: {
-          eq: "projects/avrora-project-page-section-3-grid-2.jpg"
-        }
-      ) {
-        childImageSharp {
-          fluid(maxWidth: 600) {
-            ...GatsbyImageSharpFluid_withWebp_tracedSVG
-          }
-        }
-      }
-      section3Grid3: file(
-        relativePath: {
-          eq: "projects/avrora-project-page-section-3-grid-3.jpg"
-        }
-      ) {
-        childImageSharp {
-          fluid(maxWidth: 600) {
-            ...GatsbyImageSharpFluid_withWebp_tracedSVG
-          }
-        }
-      }
-      section3Grid4: file(
-        relativePath: {
-          eq: "projects/avrora-project-page-section-3-grid-4.jpg"
-        }
-      ) {
-        childImageSharp {
-          fluid(maxWidth: 600) {
-            ...GatsbyImageSharpFluid_withWebp_tracedSVG
-          }
-        }
-      }
-
       section4Grid1: file(
         relativePath: {
-          eq: "projects/avrora-project-page-section-4-grid-1.jpg"
+          eq: "projects/game-day-project-page-section-4-grid-1.png"
         }
       ) {
         childImageSharp {
-          fluid(maxWidth: 600) {
+          fluid(maxWidth: 300) {
             ...GatsbyImageSharpFluid_withWebp_tracedSVG
           }
         }
       }
       section4Grid2: file(
         relativePath: {
-          eq: "projects/avrora-project-page-section-4-grid-2.jpg"
+          eq: "projects/game-day-project-page-section-4-grid-2.png"
         }
       ) {
         childImageSharp {
-          fluid(maxWidth: 600) {
+          fluid(maxWidth: 300) {
             ...GatsbyImageSharpFluid_withWebp_tracedSVG
           }
         }
       }
       section4Grid3: file(
         relativePath: {
-          eq: "projects/avrora-project-page-section-4-grid-3.jpg"
+          eq: "projects/game-day-project-page-section-4-grid-3.png"
         }
       ) {
         childImageSharp {
-          fluid(maxWidth: 600) {
+          fluid(maxWidth: 300) {
             ...GatsbyImageSharpFluid_withWebp_tracedSVG
           }
         }
       }
       section4Grid4: file(
         relativePath: {
-          eq: "projects/avrora-project-page-section-4-grid-4.jpg"
+          eq: "projects/game-day-project-page-section-4-grid-4.png"
         }
       ) {
         childImageSharp {
-          fluid(maxWidth: 600) {
+          fluid(maxWidth: 300) {
+            ...GatsbyImageSharpFluid_withWebp_tracedSVG
+          }
+        }
+      }
+      section4Grid5: file(
+        relativePath: {
+          eq: "projects/game-day-project-page-section-4-grid-5.png"
+        }
+      ) {
+        childImageSharp {
+          fluid(maxWidth: 300) {
+            ...GatsbyImageSharpFluid_withWebp_tracedSVG
+          }
+        }
+      }
+      section4Grid6: file(
+        relativePath: {
+          eq: "projects/game-day-project-page-section-4-grid-6.png"
+        }
+      ) {
+        childImageSharp {
+          fluid(maxWidth: 300) {
             ...GatsbyImageSharpFluid_withWebp_tracedSVG
           }
         }
@@ -171,7 +172,7 @@ const Avrora = () => {
   console.log("data", data)
   const projectInfo = {
     mainCategory: projectTypes.appdesign,
-    name: "Avrora Systems",
+    name: "GameDay Systems",
     allCategories: [
       projectTypes.appdesign,
       projectTypes.editorial,
@@ -187,12 +188,12 @@ const Avrora = () => {
         <Grid container justify="space-between">
           <Grid item xs={12} sm={5} style={{ position: "relative" }}>
             <ProjectDesc features={["Graphic Design", "Web Design", "UI/UX"]}>
-              Product branding and website for Avrora Systems
+              Product branding and website for GameDay Systems
             </ProjectDesc>
           </Grid>
           <Grid item xs={12} sm={6}>
             <Paragraph title="challenge" textAfter>
-              Avrora specialize in the creation of systems and complexes for
+              GameDay specialize in the creation of systems and complexes for
               control of technical facilities of ships and vessels, also offers
               defense products, civil marine equipment, integrated solutions,
               etc, as well some services like testing centers and meteorological
@@ -208,17 +209,14 @@ const Avrora = () => {
             </Paragraph>
           </Grid>
         </Grid>
-        <Video
-          videoSrcURL="https://www.youtube.com/embed/dQw4w9WgXcQ"
-          videoTitle="Official Music Video on YouTube"
-        />
+        <Img fluid={data.section1Banner.childImageSharp.fluid} />
       </Section>
 
       <Section sectionName="Branding" clientName="002">
         <Grid container justify="flex-start">
           <Grid item xs={12} sm={6}>
             <Paragraph title="BRAND IDENTITY">
-              Avrora Systems is recognized for their scientific and engineering
+              GameDay Systems is recognized for their scientific and engineering
               development and for being one of the leaders in the sector.
               <br />
               <br />
@@ -231,7 +229,7 @@ const Avrora = () => {
         </Grid>
         <Carousel>
           <ResponsiveImgContainer
-            style={{ width: "85vw", maxWidth: "1200px" }}
+            style={{ width: "54vw", maxWidth: "650px" }}
             styleMd={{
               marginRight: 40,
             }}
@@ -243,7 +241,7 @@ const Avrora = () => {
             />
           </ResponsiveImgContainer>
           <ResponsiveImgContainer
-            style={{ width: "85vw", maxWidth: "1200px" }}
+            style={{ width: "54vw", maxWidth: "650px" }}
             styleMd={{
               marginRight: 40,
             }}
@@ -254,22 +252,10 @@ const Avrora = () => {
               fluid={data.section2Carousel2.childImageSharp.fluid}
             />
           </ResponsiveImgContainer>
-          <ResponsiveImgContainer
-            style={{ width: "41.66vw", maxWidth: "500px" }}
-            styleMd={{
-              marginRight: 40,
-            }}
-            styleSm={{ marginRight: 20 }}
-          >
+          <ResponsiveImgContainer style={{ width: "54vw", maxWidth: "650px" }}>
             <Img
               style={{ height: "100%" }}
               fluid={data.section2Carousel3.childImageSharp.fluid}
-            />
-          </ResponsiveImgContainer>
-          <ResponsiveImgContainer style={{ width: "50vw", maxWidth: "600px" }}>
-            <Img
-              style={{ height: "100%" }}
-              fluid={data.section2Carousel4.childImageSharp.fluid}
             />
           </ResponsiveImgContainer>
         </Carousel>
@@ -292,29 +278,29 @@ const Avrora = () => {
               unique and complete.
             </Paragraph>
           </Grid>
-          <Grid container justify="flex-end">
-            <Grid item xs={12} sm={6}>
-              <StyledGrid
-                style={{ gridTemplateColumns: "1fr" }}
-                styleMd={{ gridGap: 40 }}
-                styleSm={{ gridGap: 20 }}
-              >
-                <StyledGridItem>
-                  <Img fluid={data.section3Grid1.childImageSharp.fluid} />
-                </StyledGridItem>
-                <StyledGridItem>
-                  <Img fluid={data.section3Grid2.childImageSharp.fluid} />
-                </StyledGridItem>
-                <StyledGridItem>
-                  <Img fluid={data.section3Grid3.childImageSharp.fluid} />
-                </StyledGridItem>
-                <StyledGridItem>
-                  <Img fluid={data.section3Grid4.childImageSharp.fluid} />
-                </StyledGridItem>
-              </StyledGrid>
-            </Grid>
-          </Grid>
         </Grid>
+        <Carousel>
+          <ResponsiveImgContainer
+            style={{ width: "66.66vw", maxWidth: "800px" }}
+            styleMd={{
+              marginRight: 40,
+            }}
+            styleSm={{ marginRight: 20 }}
+          >
+            <Img
+              style={{ height: "100%" }}
+              fluid={data.section3Carousel1.childImageSharp.fluid}
+            />
+          </ResponsiveImgContainer>
+          <ResponsiveImgContainer
+            style={{ width: "66.66vw", maxWidth: "800px" }}
+          >
+            <Img
+              style={{ height: "100%" }}
+              fluid={data.section3Carousel2.childImageSharp.fluid}
+            />
+          </ResponsiveImgContainer>
+        </Carousel>
       </Section>
 
       <Section sectionName="Illustration " clientName="004" last>
@@ -337,7 +323,7 @@ const Avrora = () => {
               styleSm={{ gridGap: 20 }}
             >
               <StyledGridItem
-                styleMd={{ marginTop: 300, gridColumn: "1 / span 1" }}
+                styleMd={{ marginTop: 150, gridColumn: "1 / span 1" }}
                 styleSm={{ gridColumn: "1 / span 2" }}
               >
                 <Img fluid={data.section4Grid1.childImageSharp.fluid} />
@@ -345,19 +331,31 @@ const Avrora = () => {
                   styleMd={{ marginTop: 40 }}
                   styleSm={{ marginTop: 20 }}
                 >
+                  <Img fluid={data.section4Grid2.childImageSharp.fluid} />
+                </StyledGridItem>
+                <StyledGridItem
+                  styleMd={{ marginTop: 40 }}
+                  styleSm={{ marginTop: 20 }}
+                >
                   <Img fluid={data.section4Grid3.childImageSharp.fluid} />
+                </StyledGridItem>
+                <StyledGridItem
+                  styleMd={{ marginTop: 40 }}
+                  styleSm={{ marginTop: 20 }}
+                >
+                  <Img fluid={data.section4Grid4.childImageSharp.fluid} />
                 </StyledGridItem>
               </StyledGridItem>
               <StyledGridItem
                 styleMd={{ gridColumn: "2 / span 1" }}
                 styleSm={{ gridColumn: "1 / span 2" }}
               >
-                <Img fluid={data.section4Grid2.childImageSharp.fluid} />
+                <Img fluid={data.section4Grid5.childImageSharp.fluid} />
                 <StyledGridItem
                   styleMd={{ marginTop: 40 }}
                   styleSm={{ marginTop: 20 }}
                 >
-                  <Img fluid={data.section4Grid4.childImageSharp.fluid} />
+                  <Img fluid={data.section4Grid6.childImageSharp.fluid} />
                 </StyledGridItem>
               </StyledGridItem>
             </StyledGrid>
@@ -368,4 +366,4 @@ const Avrora = () => {
   )
 }
 
-export default Avrora
+export default GameDay

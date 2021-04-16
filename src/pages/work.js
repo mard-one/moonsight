@@ -62,9 +62,9 @@ const Work = ({ location }) => {
       type: projectTypes.webdesign,
     },
     {
-      name: "GameDay",
+      name: "GameDay Vodka Website Revamp",
       img: data.project2.childImageSharp.fluid,
-      link: "/asd",
+      link: "/projects/game-day",
       type: projectTypes.branding,
     },
   ]
