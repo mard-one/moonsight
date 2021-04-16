@@ -22,6 +22,7 @@ const TAndC = styled(Container)`
   padding-top: 28px;
   padding-bottom: 28px;
   ${props => props.theme.breakpoints.down("sm")} {
+    background-color: #111111;
     flex-flow: column;
     justify-content: center;
     align-items: center;

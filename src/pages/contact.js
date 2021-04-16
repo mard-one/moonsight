@@ -224,18 +224,12 @@ const Contact = () => {
     { value: "value4", label: "$100.000 — $150.000", selected: false },
     { value: "value5", label: "$150.000 and up", selected: false },
   ])
-  const data = useStaticQuery(graphql`
-    query {
-      ...projectsFragment
-    }
-  `)
-  console.log("data", data)
   const allProjectTypes = [
-    ...new Set(
-      data.allFile.edges.map(
-        ({ node }) => node.childMdx.frontmatter.mainCategory
-      )
-    ),
+    "Web Design",
+    "App Design",
+    "Branding",
+    "Development",
+    "Illustration",
   ]
 
   const selectedBudget =

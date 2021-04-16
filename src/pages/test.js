@@ -3,10 +3,27 @@ import Ray from "../components/ray"
 import Sphere from "../components/shapes/sphere"
 import Sheet from "../components/shapes/sheet"
 import Layout from "../layout"
+import Image from "../components/projects/image"
 
 const TestPage = () => {
   return (
     <Layout>
+      <div style={{ display: "flex" }}>
+        <Image
+          src="maxim-kashin-architecture-project-page-section-1-carousel-1.jpg"
+          alt="maxim kashin illustration 1"
+          style={
+            {
+              width: 1040,
+              // display: "inline-table",
+              // marginRight: 20,
+              // flex: "0 0 auto",
+            }
+          }
+        />
+        <div style={{ height: "100px", backgroundColor: "#232" }}>2</div>
+        <div style={{ height: "100px", backgroundColor: "#242" }}>3</div>
+      </div>
       {/* <div
         style={{
           backgroundColor: "#74c749",
@@ -77,16 +94,22 @@ const TestPage = () => {
           marginTop: 400
         }}
       /> */}
-      <div style={{
-        position: 'relative',
-        height: 200,
-        top: 100
-      }}>
-        <div style={{
-          position: 'fixed',
-          left: 0,
-          top: 0
-        }}>asda</div>
+      <div
+        style={{
+          position: "relative",
+          height: 200,
+          top: 100,
+        }}
+      >
+        <div
+          style={{
+            position: "fixed",
+            left: 0,
+            top: 0,
+          }}
+        >
+          asda
+        </div>
       </div>
     </Layout>
   )

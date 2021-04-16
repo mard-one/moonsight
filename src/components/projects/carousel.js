@@ -1,8 +1,9 @@
+import { Container, Hidden } from "@material-ui/core"
 import React, { useEffect, useRef } from "react"
 
 import styled from "styled-components"
 
-const Container = styled.div`
+const StyledCarouselContainer = styled.div`
   display: inline-flex;
   flex-wrap: nowrap;
   user-drag: none;
@@ -15,100 +16,131 @@ const Container = styled.div`
 `
 
 const StyledCarousel = styled.div`
-  overflow-x: hidden;
   user-select: none;
   &:hover {
-    > ${Container} {
+    > ${StyledCarouselContainer} {
       will-change: transform;
     }
   }
 `
+const StyledCarouselMobile = styled.div`
+  user-select: none;
+`
 
-const Carousel = ({ children }) => {
-  let pressed = false
-  let velX = 0
-  let position = 0
-  let width = 0
-  let parentWidth = 0
-  let rAFIndex = 0
+const Carousel = ({ children, style }) => {
+  const pressed = useRef(false)
+  const velX = useRef(0)
+  const position = useRef(0)
+  const width = useRef(0)
+  const parentWidth = useRef(0)
+  const rAFIndex = useRef(0)
   const ref = useRef()
   const parentRef = useRef()
   const update = () => {
-    // console.log("animate")
-    ref.current.style.transform = `translateX(${position}px)`
-    // console.log("Math.abs(velX)", Math.abs(velX))
-    // console.log("Math.abs(velX) < 0.5", Math.abs(velX) < 0.5)
-    // console.log("pressed", pressed)
-    if (pressed) {
-      rAFIndex = requestAnimationFrame(update)
+    ref.current.style.transform = `translateX(${position.current}px)`
+    if (pressed.current) {
+      rAFIndex.current = requestAnimationFrame(update)
     } else if (Math.abs(velX) > 0.5) {
-      velX = velX * 0.95
-      rAFIndex = requestAnimationFrame(update)
+      velX.current = velX.current * 0.95
+      rAFIndex.current = requestAnimationFrame(update)
       updatePositionIfWithinBoundary()
     }
   }
   useEffect(() => {
     if (ref.current && parentRef.current) {
-      ref.current.style.transform = `translateX(${position.x}px)`
-      width = ref.current.getBoundingClientRect().width
-      parentWidth = parentRef.current.getBoundingClientRect().width
+      ref.current.style.transform = `translateX(${position.current.x}px)`
+      width.current = ref.current.getBoundingClientRect().width
+      parentWidth.current = parentRef.current.getBoundingClientRect().width
     }
   }, [parentRef.current, ref.current])
   const updatePositionIfWithinBoundary = () => {
-    let newPosition = position + velX
-    if (newPosition <= 0 && newPosition + -parentWidth >= -width) {
-      position = newPosition
-    } else if (newPosition >= 0 && newPosition + -parentWidth >= -width) {
-      position = 0
-    } else if (newPosition <= 0 && newPosition + -parentWidth <= -width) {
-      position = -width + parentWidth
+    let newPosition = position.current + velX.current
+    if (
+      newPosition <= 0 &&
+      newPosition + -parentWidth.current >= -width.current
+    ) {
+      position.current = newPosition
+    } else if (
+      newPosition >= 0 &&
+      newPosition + -parentWidth.current >= -width.current
+    ) {
+      position.current = 0
+    } else if (
+      newPosition <= 0 &&
+      newPosition + -parentWidth.current <= -width.current
+    ) {
+      position.current = -width.current + parentWidth.current
     }
   }
   const onMouseMove = event => {
-    if (pressed) {
-      velX = event.movementX * 3
+    if (pressed.current) {
+      velX.current = event.movementX * 3
       updatePositionIfWithinBoundary()
-      // tranformIfInsideBoundary(event.movementX)
-      // beginMomentumTracking()
     }
   }
   const onMouseUp = event => {
-    pressed = false
-    // beginMomentumTracking()
+    pressed.current = false
   }
   const onMouseDown = event => {
-    pressed = true
-    // cancelMomentumTracking()
-    cancelAnimationFrame(rAFIndex)
-    rAFIndex = requestAnimationFrame(update)
+    pressed.current = true
+    cancelAnimationFrame(rAFIndex.current)
+    rAFIndex.current = requestAnimationFrame(update)
   }
-  // var momentumID
-
-  // function beginMomentumTracking() {
-  //   cancelMomentumTracking()
-  //   momentumID = requestAnimationFrame(momentumLoop)
-  // }
-  // function cancelMomentumTracking() {
-  //   cancelAnimationFrame(momentumID)
-  // }
-  // function momentumLoop() {
-  //   tranformIfInsideBoundary(velX)
-  //   velX = velX * 0.95
-  //   if (Math.abs(velX) > 0.5) {
-  //     momentumID = requestAnimationFrame(momentumLoop)
-  //   }
-  // }
 
   return (
-    <StyledCarousel
-      ref={parentRef}
-      onMouseMove={onMouseMove}
-      onMouseDown={onMouseDown}
-      onMouseUp={onMouseUp}
-      onMouseLeave={onMouseUp}
-    >
-      <Container ref={ref}>{children}</Container>
-    </StyledCarousel>
+    <>
+      <Hidden smDown implementation="css">
+        <div
+          style={{
+            position: "relative",
+            width: "100vw",
+            left: "50%",
+            transform: "translateX(-50%)",
+            overflow: "hidden",
+          }}
+        >
+          <Container maxWidth="lg">
+            <>
+              <StyledCarousel
+                ref={parentRef}
+                style={style}
+                // onTouchStart={onMouseDown}
+                // onTouchEnd={onMouseUp}
+                // onTouchCancel={onMouseUp}
+                // onTouchMove={onMouseMove}
+                onMouseMove={onMouseMove}
+                onMouseDown={onMouseDown}
+                onMouseUp={onMouseUp}
+                onMouseLeave={onMouseUp}
+              >
+                <StyledCarouselContainer ref={ref}>
+                  {children}
+                </StyledCarouselContainer>
+              </StyledCarousel>
+            </>
+          </Container>
+        </div>
+      </Hidden>
+      <Hidden mdUp implementation="css">
+        <div
+          style={{
+            position: "relative",
+            width: "100vw",
+            left: "50%",
+            transform: "translate(-50%)",
+            overflow: "hidden",
+          }}
+        >
+          <div style={{ overflow: "scroll" }}>
+            <StyledCarouselMobile>
+              <StyledCarouselContainer style={{ padding: "0 16px" }}>
+                {children}
+              </StyledCarouselContainer>
+            </StyledCarouselMobile>
+          </div>
+        </div>
+      </Hidden>
+    </>
   )
 }
 

@@ -25,20 +25,20 @@ module.exports = {
         displayName: true,
       },
     },
-    {
-      resolve: `gatsby-source-filesystem`,
-      options: {
-        name: `career`,
-        path: `${__dirname}/src/career/`,
-      },
-    },
-    {
-      resolve: `gatsby-source-filesystem`,
-      options: {
-        name: `projects`,
-        path: `${__dirname}/src/projects/`,
-      },
-    },
+    // {
+    //   resolve: `gatsby-source-filesystem`,
+    //   options: {
+    //     name: `career`,
+    //     path: `${__dirname}/src/career/`,
+    //   },
+    // },
+    // {
+    //   resolve: `gatsby-source-filesystem`,
+    //   options: {
+    //     name: `projects`,
+    //     path: `${__dirname}/src/projects/`,
+    //   },
+    // },
     `gatsby-plugin-mdx`,
     {
       resolve: `gatsby-source-filesystem`,

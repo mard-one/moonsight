@@ -317,6 +317,13 @@ const CapabilitiesData = [
 
 const IndexPage = () => {
   const data = useStaticQuery(graphql`
+    fragment projectImages on File {
+      childImageSharp {
+        fluid(maxWidth: 380) {
+          ...GatsbyImageSharpFluid_withWebp_tracedSVG
+        }
+      }
+    }
     fragment capabilitiesImages on File {
       childImageSharp {
         fluid(maxWidth: 600) {
@@ -325,6 +332,11 @@ const IndexPage = () => {
       }
     }
     query {
+      project1: file(
+        relativePath: { eq: "projects/maxim-kashin-architecture-main-page.jpg" }
+      ) {
+        ...projectImages
+      }
       capabilities1Img: file(
         relativePath: { eq: "capabilities/picture1.jpg" }
       ) {
@@ -340,17 +352,19 @@ const IndexPage = () => {
       ) {
         ...capabilitiesImages
       }
-      ...projectsFragment
+      # ...projectsFragment
     }
   `)
 
-  console.log("data", data)
-  const projects = data.allFile.edges
-  const projectsToDisplay = projects.filter(
-    ({ node: { childMdx: { frontmatter } = {} } = {} }) =>
-      frontmatter.mainPageConfig.isVisible
-  )
-  console.log("projects", projects)
+  console.log("Data", data)
+  const projects = [
+    {
+      name: "Maxim Kashin Architecture",
+      img: data.project1.childImageSharp.fluid,
+      link: "/projects/maxim-kashin-architecture",
+    },
+  ]
+
   return (
     <Layout>
       <StyledRayWrapper>
@@ -381,34 +395,24 @@ const IndexPage = () => {
       <Margin as="section" bsm={240} bxs={100}>
         <Projects>
           <ProjectsGrid>
-            {projectsToDisplay.map(({ node: { childMdx } = {} }, index) => {
+            {projects.map((project, index) => {
               return !(index % 2) ? (
-                <Link key={childMdx.fields.slug} to={childMdx.fields.slug}>
-                  <Img
-                    fluid={
-                      childMdx.frontmatter.mainPageConfig.thumbnailLink
-                        .childImageSharp.fluid
-                    }
-                  />
+                <Link key={project.name} to={project.link}>
+                  <Img fluid={project.img} />
                 </Link>
               ) : (
-                <Fragment key={childMdx.fields.slug} />
+                <Fragment key={project.name} />
               )
             })}
           </ProjectsGrid>
           <ProjectsGrid>
-            {projectsToDisplay.map(({ node: { childMdx } = {} }, index) => {
+            {projects.map((project, index) => {
               return index % 2 ? (
-                <Link key={childMdx.fields.slug} to={childMdx.fields.slug}>
-                  <Img
-                    fluid={
-                      childMdx.frontmatter.mainPageConfig.thumbnailLink
-                        .childImageSharp.fluid
-                    }
-                  />
+                <Link key={project.name} to={project.link}>
+                  <Img fluid={project.img} />
                 </Link>
               ) : (
-                <Fragment key={childMdx.fields.slug} />
+                <Fragment key={project.name} />
               )
             })}
           </ProjectsGrid>
@@ -491,10 +495,10 @@ const IndexPage = () => {
           </GalleryImg3>
         </CapabilitiesGallery>
       </Margin>
-      <Margin as="section">
+      {/*<Margin as="section">
         <Divider leftText="clients" middleText="section #" rightText="002" />
         <Margin bsm={90} bxs={50} />
-        <ul>
+        {/* <ul>
           {projects
             .sort(
               (a, b) =>
@@ -523,8 +527,8 @@ const IndexPage = () => {
                 <Fragment key={node.childMdx.fields.slug} />
               )
             })}
-        </ul>
-      </Margin>
+        </ul> 
+      </Margin>*/}
     </Layout>
   )
 }

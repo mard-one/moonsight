@@ -10,13 +10,13 @@ const ProjectDesc = ({
   children,
 }) => {
   return (
-    <Margin bxs={80} bsm={120} style={{ position: "sticky", top: 100 }}>
+    <Margin bxs={60} bsm={120} style={{ position: "sticky", top: 100 }}>
       <Typography variant="h3">{children}</Typography>
       <Margin bxs={40} bsm={40} />
       <ul>
         {features.map(feature => (
           <li key={feature}>
-            <Typography variant="overline" style={{ lineHeight: 2 }}>
+            <Typography variant="overline" style={{ lineHeight: 2.5 }}>
               {feature}
             </Typography>
           </li>
