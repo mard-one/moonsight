@@ -55,6 +55,11 @@ const Work = ({ location }) => {
       project3: file(relativePath: { eq: "projects/medigate-work-page.jpg" }) {
         ...workImages
       }
+      project4: file(
+        relativePath: { eq: "projects/clean-bowl-club-work-page.jpg" }
+      ) {
+        ...workImages
+      }
     }
   `)
   const projects = [
@@ -74,6 +79,12 @@ const Work = ({ location }) => {
       name: "Medigate",
       img: data.project3.childImageSharp.fluid,
       link: "/projects/medigate",
+      type: projectTypes.branding,
+    },
+    {
+      name: "Clean Bowl Club Dog Project",
+      img: data.project3.childImageSharp.fluid,
+      link: "/projects/clean-bowl-club",
       type: projectTypes.branding,
     },
   ]
