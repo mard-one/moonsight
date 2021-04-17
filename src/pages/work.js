@@ -115,6 +115,21 @@ const Work = ({ location }) => {
       ) {
         ...workImages
       }
+      project18: file(
+        relativePath: { eq: "projects/lithium-kitchens-work-page.jpg" }
+      ) {
+        ...workImages
+      }
+      project19: file(
+        relativePath: { eq: "projects/scalartis-redesign-work-page.jpg" }
+      ) {
+        ...workImages
+      }
+      project20: file(
+        relativePath: { eq: "projects/modern-metier-work-page.jpg" }
+      ) {
+        ...workImages
+      }
     }
   `)
   const projects = [
@@ -218,6 +233,24 @@ const Work = ({ location }) => {
       name: "Asynchron Book & Application",
       img: data.project17.childImageSharp.fluid,
       link: "/projects/underground-of-suncity",
+      type: projectTypes.branding,
+    },
+    {
+      name: "Asynchron Book & Application",
+      img: data.project18.childImageSharp.fluid,
+      link: "/projects/lithium-kitchens",
+      type: projectTypes.branding,
+    },
+    {
+      name: "Asynchron Book & Application",
+      img: data.project19.childImageSharp.fluid,
+      link: "/projects/scalartis-redesign",
+      type: projectTypes.branding,
+    },
+    {
+      name: "Asynchron Book & Application",
+      img: data.project20.childImageSharp.fluid,
+      link: "/projects/modern-metier",
       type: projectTypes.branding,
     },
   ]
