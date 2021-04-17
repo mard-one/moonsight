@@ -90,7 +90,28 @@ const Work = ({ location }) => {
         ...workImages
       }
       project12: file(
+        relativePath: { eq: "projects/maxim-kashin-architecture-work-page.jpg" }
+      ) {
+        ...workImages
+      }
+      project13: file(relativePath: { eq: "projects/kutarq-work-page.jpg" }) {
+        ...workImages
+      }
+      project14: file(
         relativePath: { eq: "projects/garconne-display-typeface-work-page.jpg" }
+      ) {
+        ...workImages
+      }
+      project15: file(relativePath: { eq: "projects/rently-work-page.jpg" }) {
+        ...workImages
+      }
+      project16: file(
+        relativePath: { eq: "projects/google-myconcerns-work-page.jpg" }
+      ) {
+        ...workImages
+      }
+      project17: file(
+        relativePath: { eq: "projects/underground-of-suncity-work-page.jpg" }
       ) {
         ...workImages
       }
@@ -166,7 +187,37 @@ const Work = ({ location }) => {
     {
       name: "Asynchron Book & Application",
       img: data.project12.childImageSharp.fluid,
+      link: "/projects/maxim-kashin-architecture",
+      type: projectTypes.branding,
+    },
+    {
+      name: "Asynchron Book & Application",
+      img: data.project13.childImageSharp.fluid,
+      link: "/projects/kutarq",
+      type: projectTypes.branding,
+    },
+    {
+      name: "Asynchron Book & Application",
+      img: data.project14.childImageSharp.fluid,
       link: "/projects/garconne-display-typeface",
+      type: projectTypes.branding,
+    },
+    {
+      name: "Asynchron Book & Application",
+      img: data.project15.childImageSharp.fluid,
+      link: "/projects/rently",
+      type: projectTypes.branding,
+    },
+    {
+      name: "Asynchron Book & Application",
+      img: data.project16.childImageSharp.fluid,
+      link: "/projects/google-myconcerns",
+      type: projectTypes.branding,
+    },
+    {
+      name: "Asynchron Book & Application",
+      img: data.project17.childImageSharp.fluid,
+      link: "/projects/underground-of-suncity",
       type: projectTypes.branding,
     },
   ]
