@@ -63,6 +63,11 @@ const Work = ({ location }) => {
       project5: file(relativePath: { eq: "projects/asynchron-work-page.jpg" }) {
         ...workImages
       }
+      project6: file(
+        relativePath: { eq: "projects/nomand-jewelry-work-page.jpg" }
+      ) {
+        ...workImages
+      }
     }
   `)
   const projects = [
@@ -94,6 +99,12 @@ const Work = ({ location }) => {
       name: "Asynchron Book & Application",
       img: data.project4.childImageSharp.fluid,
       link: "/projects/asynchron",
+      type: projectTypes.branding,
+    },
+    {
+      name: "Asynchron Book & Application",
+      img: data.project4.childImageSharp.fluid,
+      link: "/projects/nomand-jewelry",
       type: projectTypes.branding,
     },
   ]
