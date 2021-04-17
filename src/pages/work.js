@@ -89,6 +89,11 @@ const Work = ({ location }) => {
       ) {
         ...workImages
       }
+      project12: file(
+        relativePath: { eq: "projects/garconne-display-typeface-work-page.jpg" }
+      ) {
+        ...workImages
+      }
     }
   `)
   const projects = [
@@ -156,6 +161,12 @@ const Work = ({ location }) => {
       name: "Asynchron Book & Application",
       img: data.project11.childImageSharp.fluid,
       link: "/projects/stamp-ecommerce",
+      type: projectTypes.branding,
+    },
+    {
+      name: "Asynchron Book & Application",
+      img: data.project12.childImageSharp.fluid,
+      link: "/projects/garconne-display-typeface",
       type: projectTypes.branding,
     },
   ]
