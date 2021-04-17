@@ -73,6 +73,14 @@ const Work = ({ location }) => {
       ) {
         ...workImages
       }
+      project8: file(relativePath: { eq: "projects/shadyrays-work-page.jpg" }) {
+        ...workImages
+      }
+      project9: file(
+        relativePath: { eq: "projects/boa-arhitektid-identity-work-page.jpg" }
+      ) {
+        ...workImages
+      }
     }
   `)
   const projects = [
@@ -102,20 +110,32 @@ const Work = ({ location }) => {
     },
     {
       name: "Asynchron Book & Application",
-      img: data.project4.childImageSharp.fluid,
+      img: data.project5.childImageSharp.fluid,
       link: "/projects/asynchron",
       type: projectTypes.branding,
     },
     {
-      name: "Asynchron Book & Application",
-      img: data.project4.childImageSharp.fluid,
+      name: "Nomand Jewelry Brand",
+      img: data.project6.childImageSharp.fluid,
       link: "/projects/nomand-jewelry",
       type: projectTypes.branding,
     },
     {
+      name: "Meloman Video Company",
+      img: data.project7.childImageSharp.fluid,
+      link: "/projects/meloman-video-company",
+      type: projectTypes.branding,
+    },
+    {
       name: "Asynchron Book & Application",
-      img: data.project4.childImageSharp.fluid,
+      img: data.project8.childImageSharp.fluid,
       link: "/projects/shadyrays",
+      type: projectTypes.branding,
+    },
+    {
+      name: "Asynchron Book & Application",
+      img: data.project9.childImageSharp.fluid,
+      link: "/projects/boa-arhitektid-identity",
       type: projectTypes.branding,
     },
   ]
