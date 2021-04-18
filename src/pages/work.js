@@ -11,12 +11,14 @@ import styled from "styled-components"
 
 const ProjectName = styled(Typography)`
   position: absolute;
-  width: 60%;
-  bottom: 30px;
-  left: 30px;
+  width: 70%;
+  bottom: 28px;
+  left: 20px;
   transform: translateY(10px);
   opacity: 0;
   transition: all 0.1s linear;
+  font-size: 30px;
+  line-height: 1.15;
   ${props => props.theme.breakpoints.down("sm")} {
   }
 `
