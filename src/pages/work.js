@@ -9,6 +9,43 @@ import Ray from "../components/ray"
 import Layout from "../layout"
 import styled from "styled-components"
 
+const ProjectName = styled(Typography)`
+  position: absolute;
+  width: 60%;
+  bottom: 30px;
+  left: 30px;
+  transform: translateY(10px);
+  opacity: 0;
+  transition: all 0.1s linear;
+  ${props => props.theme.breakpoints.down("sm")} {
+  }
+`
+const TextBackdrop = styled.div`
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-image: linear-gradient(0deg, black, transparent);
+  bottom: 0px;
+  left: 0px;
+  opacity: 0;
+  transition: all 0.1s linear;
+`
+const Project = styled.div`
+  position: relative;
+  height: 100%;
+  &:hover {
+    > ${ProjectName} {
+      transform: translateY(0px);
+      opacity: 1;
+    }
+    > ${TextBackdrop} {
+      opacity: 0.7;
+    }
+  }
+  ${props => props.theme.breakpoints.down("sm")} {
+  }
+`
+
 export const projectTypes = {
   webdesign: "Web Design",
   appdesign: "App Design",
@@ -130,6 +167,17 @@ const Work = ({ location }) => {
       ) {
         ...workImages
       }
+      project21: file(relativePath: { eq: "projects/sibmet-work-page.jpg" }) {
+        ...workImages
+      }
+      project22: file(
+        relativePath: { eq: "projects/prime-apartments-work-page.jpg" }
+      ) {
+        ...workImages
+      }
+      project23: file(relativePath: { eq: "projects/superdry-work-page.jpg" }) {
+        ...workImages
+      }
     }
   `)
   const projects = [
@@ -143,130 +191,147 @@ const Work = ({ location }) => {
       name: "GameDay Vodka Website Revamp",
       img: data.project2.childImageSharp.fluid,
       link: "/projects/game-day",
-      type: projectTypes.branding,
+      type: projectTypes.webdesign,
     },
     {
       name: "Medigate",
       img: data.project3.childImageSharp.fluid,
       link: "/projects/medigate",
-      type: projectTypes.branding,
+      type: projectTypes.webdesign,
     },
     {
       name: "Clean Bowl Club Dog Project",
       img: data.project4.childImageSharp.fluid,
       link: "/projects/clean-bowl-club",
-      type: projectTypes.branding,
+      type: projectTypes.webdesign,
     },
     {
       name: "Asynchron Book & Application",
       img: data.project5.childImageSharp.fluid,
       link: "/projects/asynchron",
-      type: projectTypes.branding,
+      type: projectTypes.appdesign,
     },
     {
       name: "Nomand Jewelry Brand",
       img: data.project6.childImageSharp.fluid,
       link: "/projects/nomand-jewelry",
-      type: projectTypes.branding,
+      type: projectTypes.webdesign,
     },
     {
       name: "Meloman Video Company",
       img: data.project7.childImageSharp.fluid,
       link: "/projects/meloman-video-company",
-      type: projectTypes.branding,
+      type: projectTypes.webdesign,
     },
     {
-      name: "Asynchron Book & Application",
+      name: "ShadyRays Online Store",
       img: data.project8.childImageSharp.fluid,
       link: "/projects/shadyrays",
-      type: projectTypes.branding,
+      type: projectTypes.webdesign,
     },
     {
-      name: "Asynchron Book & Application",
+      name: "BOA Arhitektid Identity",
       img: data.project9.childImageSharp.fluid,
       link: "/projects/boa-arhitektid-identity",
       type: projectTypes.branding,
     },
     {
-      name: "Asynchron Book & Application",
+      name: "Online Auto-Test Platform Testim",
       img: data.project10.childImageSharp.fluid,
       link: "/projects/testim",
-      type: projectTypes.branding,
+      type: projectTypes.webdesign,
     },
     {
-      name: "Asynchron Book & Application",
+      name: "STAMP E-commerce",
       img: data.project11.childImageSharp.fluid,
       link: "/projects/stamp-ecommerce",
-      type: projectTypes.branding,
+      type: projectTypes.webdesign,
     },
     {
-      name: "Asynchron Book & Application",
+      name: "Maxim Kashin Architecture",
       img: data.project12.childImageSharp.fluid,
       link: "/projects/maxim-kashin-architecture",
-      type: projectTypes.branding,
+      type: projectTypes.webdesign,
     },
     {
-      name: "Asynchron Book & Application",
+      name: "KUTARQ Agency Rebranding",
       img: data.project13.childImageSharp.fluid,
       link: "/projects/kutarq",
-      type: projectTypes.branding,
+      type: projectTypes.appdesign,
     },
     {
-      name: "Asynchron Book & Application",
+      name: "Garçonne Display Typeface",
       img: data.project14.childImageSharp.fluid,
       link: "/projects/garconne-display-typeface",
-      type: projectTypes.branding,
+      type: projectTypes.typography,
     },
     {
-      name: "Asynchron Book & Application",
+      name: "Enterprise Smart Home Solutions Rently",
       img: data.project15.childImageSharp.fluid,
       link: "/projects/rently",
-      type: projectTypes.branding,
+      type: projectTypes.webdesign,
     },
     {
-      name: "Asynchron Book & Application",
+      name: "Google MyConcerns",
       img: data.project16.childImageSharp.fluid,
       link: "/projects/google-myconcerns",
       type: projectTypes.branding,
     },
     {
-      name: "Asynchron Book & Application",
+      name: "Underground Of Suncity",
       img: data.project17.childImageSharp.fluid,
       link: "/projects/underground-of-suncity",
-      type: projectTypes.branding,
+      type: projectTypes.appdesign,
     },
     {
-      name: "Asynchron Book & Application",
+      name: "Lithium Kitchens",
       img: data.project18.childImageSharp.fluid,
       link: "/projects/lithium-kitchens",
-      type: projectTypes.branding,
+      type: projectTypes.webdesign,
     },
     {
-      name: "Asynchron Book & Application",
+      name: "Scalartis Redesign",
       img: data.project19.childImageSharp.fluid,
       link: "/projects/scalartis-redesign",
-      type: projectTypes.branding,
+      type: projectTypes.appdesign,
     },
     {
-      name: "Asynchron Book & Application",
+      name: "Modern Metier",
       img: data.project20.childImageSharp.fluid,
       link: "/projects/modern-metier",
       type: projectTypes.branding,
     },
+    {
+      name: "SIBMET",
+      img: data.project21.childImageSharp.fluid,
+      link: "/projects/sibmet",
+      type: projectTypes.webdesign,
+    },
+    {
+      name: "Prime Apartments – Premium real estate",
+      img: data.project22.childImageSharp.fluid,
+      link: "/projects/prime-apartments",
+      type: projectTypes.appdesign,
+    },
+    {
+      name: "Superdry® Website Redesign",
+      img: data.project23.childImageSharp.fluid,
+      link: "/projects/superdry",
+      type: projectTypes.webdesign,
+    },
   ]
-  console.log("data", data)
-  console.log("projects", projects)
-
+  const uniqueProjectTypes = [...new Set(projects.map(project => project.type))]
   const [selProjTypes, setSelProjTypes] = useState([])
   useEffect(() => {
     let params = new URLSearchParams(location.search)
     let filter = params.get("filter") || ""
-    const selectedType = projects.findIndex(
-      ({ type }) => type.toLowerCase() === filter.toLowerCase()
+    const selectedType = uniqueProjectTypes.findIndex(
+      type => type.toLowerCase() === filter.toLowerCase()
     )
-    console.log("selectedType", selectedType)
     setSelProjTypes(
-      (projects[selectedType] && projects[selectedType].type) || []
+      (uniqueProjectTypes[selectedType] &&
+        uniqueProjectTypes[selectedType].type) ||
+        []
     )
   }, [])
 
@@ -279,7 +344,7 @@ const Work = ({ location }) => {
   const handleInputCheck = event => {
     const selProjType = event.target.value
     if (event.target.checked) {
-      setSelProjTypes([...selProjTypes, selProjType])
+      setSelProjTypes([selProjType])
     } else {
       if (selProjTypes.length > 1) {
         const filtered = selProjTypes.filter(
@@ -339,7 +404,7 @@ const Work = ({ location }) => {
           >
             All
           </Button>
-          {projects.map(({ type }) => {
+          {uniqueProjectTypes.map(type => {
             return (
               <Fragment key={type}>
                 <input
@@ -402,7 +467,6 @@ const Work = ({ location }) => {
               </div>
             </Grid>
             {projects.map(project => {
-              console.log("project", project)
               return !selProjTypes.length ||
                 selProjTypes.includes(project.type) ? (
                 <Grid
@@ -414,7 +478,11 @@ const Work = ({ location }) => {
                   style={{ height: 500 }}
                 >
                   <Link to={project.link}>
-                    <Img fluid={project.img} style={{ height: "100%" }} />
+                    <Project>
+                      <Img fluid={project.img} style={{ height: "100%" }} />
+                      <TextBackdrop />
+                      <ProjectName variant="h3">{project.name}</ProjectName>
+                    </Project>
                   </Link>
                 </Grid>
               ) : (
