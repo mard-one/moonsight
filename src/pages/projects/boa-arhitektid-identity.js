@@ -23,7 +23,7 @@ const BoaArhitektidIdentity = () => {
       madeByImg: file(relativePath: { eq: "team/team14.png" }) {
         childImageSharp {
           fixed(width: 80) {
-            ...GatsbyImageSharpFixed_withWebp_tracedSVG
+            ...GatsbyImageSharpFixed_withWebp
           }
         }
       }
@@ -34,7 +34,7 @@ const BoaArhitektidIdentity = () => {
       ) {
         childImageSharp {
           fluid(maxWidth: 1700) {
-            ...GatsbyImageSharpFluid_withWebp_tracedSVG
+            ...GatsbyImageSharpFluid_withWebp
           }
         }
       }
@@ -45,7 +45,7 @@ const BoaArhitektidIdentity = () => {
       ) {
         childImageSharp {
           fluid(maxWidth: 900) {
-            ...GatsbyImageSharpFluid_withWebp_tracedSVG
+            ...GatsbyImageSharpFluid_withWebp
           }
         }
       }
@@ -56,7 +56,7 @@ const BoaArhitektidIdentity = () => {
       ) {
         childImageSharp {
           fluid(maxWidth: 900) {
-            ...GatsbyImageSharpFluid_withWebp_tracedSVG
+            ...GatsbyImageSharpFluid_withWebp
           }
         }
       }
@@ -67,7 +67,7 @@ const BoaArhitektidIdentity = () => {
       ) {
         childImageSharp {
           fluid(maxWidth: 900) {
-            ...GatsbyImageSharpFluid_withWebp_tracedSVG
+            ...GatsbyImageSharpFluid_withWebp
           }
         }
       }
@@ -78,7 +78,7 @@ const BoaArhitektidIdentity = () => {
       ) {
         childImageSharp {
           fluid(maxWidth: 900) {
-            ...GatsbyImageSharpFluid_withWebp_tracedSVG
+            ...GatsbyImageSharpFluid_withWebp
           }
         }
       }

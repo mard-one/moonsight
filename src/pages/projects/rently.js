@@ -22,14 +22,14 @@ const Rently = () => {
       madeByImg: file(relativePath: { eq: "team/team14.png" }) {
         childImageSharp {
           fixed(width: 80) {
-            ...GatsbyImageSharpFixed_withWebp_tracedSVG
+            ...GatsbyImageSharpFixed_withWebp
           }
         }
       }
       bgImg: file(relativePath: { eq: "projects/rently-project-page-bg.jpg" }) {
         childImageSharp {
           fluid(maxWidth: 1700) {
-            ...GatsbyImageSharpFluid_withWebp_tracedSVG
+            ...GatsbyImageSharpFluid_withWebp
           }
         }
       }
@@ -40,7 +40,7 @@ const Rently = () => {
       ) {
         childImageSharp {
           fluid(maxWidth: 1200) {
-            ...GatsbyImageSharpFluid_withWebp_tracedSVG
+            ...GatsbyImageSharpFluid_withWebp
           }
         }
       }
@@ -51,7 +51,7 @@ const Rently = () => {
       ) {
         childImageSharp {
           fluid(maxWidth: 600) {
-            ...GatsbyImageSharpFluid_withWebp_tracedSVG
+            ...GatsbyImageSharpFluid_withWebp
           }
         }
       }
@@ -62,7 +62,7 @@ const Rently = () => {
       ) {
         childImageSharp {
           fluid(maxWidth: 600) {
-            ...GatsbyImageSharpFluid_withWebp_tracedSVG
+            ...GatsbyImageSharpFluid_withWebp
           }
         }
       }
@@ -73,7 +73,7 @@ const Rently = () => {
       ) {
         childImageSharp {
           fluid(maxWidth: 600) {
-            ...GatsbyImageSharpFluid_withWebp_tracedSVG
+            ...GatsbyImageSharpFluid_withWebp
           }
         }
       }

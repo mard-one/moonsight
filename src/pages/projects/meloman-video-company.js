@@ -43,7 +43,7 @@ const MelomanVideoCompany = () => {
       madeByImg: file(relativePath: { eq: "team/team7.png" }) {
         childImageSharp {
           fixed(width: 80) {
-            ...GatsbyImageSharpFixed_withWebp_tracedSVG
+            ...GatsbyImageSharpFixed_withWebp
           }
         }
       }
@@ -54,7 +54,7 @@ const MelomanVideoCompany = () => {
       ) {
         childImageSharp {
           fluid(maxWidth: 1200) {
-            ...GatsbyImageSharpFluid_withWebp_tracedSVG
+            ...GatsbyImageSharpFluid_withWebp
           }
         }
       }
@@ -65,7 +65,7 @@ const MelomanVideoCompany = () => {
       ) {
         childImageSharp {
           fluid(maxWidth: 740) {
-            ...GatsbyImageSharpFluid_withWebp_tracedSVG
+            ...GatsbyImageSharpFluid_withWebp
           }
         }
       }
@@ -76,7 +76,7 @@ const MelomanVideoCompany = () => {
       ) {
         childImageSharp {
           fluid(maxWidth: 800) {
-            ...GatsbyImageSharpFluid_withWebp_tracedSVG
+            ...GatsbyImageSharpFluid_withWebp
           }
         }
       }
@@ -87,7 +87,7 @@ const MelomanVideoCompany = () => {
       ) {
         childImageSharp {
           fluid(maxWidth: 800) {
-            ...GatsbyImageSharpFluid_withWebp_tracedSVG
+            ...GatsbyImageSharpFluid_withWebp
           }
         }
       }
@@ -98,7 +98,7 @@ const MelomanVideoCompany = () => {
       ) {
         childImageSharp {
           fluid(maxWidth: 800) {
-            ...GatsbyImageSharpFluid_withWebp_tracedSVG
+            ...GatsbyImageSharpFluid_withWebp
           }
         }
       }
@@ -109,7 +109,7 @@ const MelomanVideoCompany = () => {
       ) {
         childImageSharp {
           fluid(maxWidth: 1200) {
-            ...GatsbyImageSharpFluid_withWebp_tracedSVG
+            ...GatsbyImageSharpFluid_withWebp
           }
         }
       }

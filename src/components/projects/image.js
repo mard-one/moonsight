@@ -9,7 +9,7 @@ const Image = ({src, alt, style = {}}) => {
         edges {
           node {
             fluid(maxWidth: 1230) {
-              ...GatsbyImageSharpFluid_withWebp_tracedSVG
+              ...GatsbyImageSharpFluid_withWebp
               originalName
             }
           }

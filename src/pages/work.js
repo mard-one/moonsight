@@ -77,7 +77,7 @@ const Work = ({ location }) => {
     fragment workImages on File {
       childImageSharp {
         fluid(maxWidth: 380) {
-          ...GatsbyImageSharpFluid_withWebp_tracedSVG
+          ...GatsbyImageSharpFluid_withWebp
         }
       }
     }

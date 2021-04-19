@@ -372,14 +372,14 @@ const IndexPage = () => {
     fragment projectImages on File {
       childImageSharp {
         fluid(maxWidth: 610) {
-          ...GatsbyImageSharpFluid_withWebp_tracedSVG
+          ...GatsbyImageSharpFluid_withWebp
         }
       }
     }
     fragment capabilitiesImages on File {
       childImageSharp {
         fluid(maxWidth: 570) {
-          ...GatsbyImageSharpFluid_withWebp_tracedSVG
+          ...GatsbyImageSharpFluid_withWebp
         }
       }
     }
