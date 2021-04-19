@@ -7,7 +7,7 @@ import SEO from "../components/seo"
 import handEmoji from "../images/hand-emoji.svg"
 import Button from "../components/button"
 import Divider from "../components/divider"
-import { Grid, Typography } from "@material-ui/core"
+import { Container, Grid, Hidden, Typography } from "@material-ui/core"
 import ArrowRight from "../images/right-arrow.svg"
 import Margin from "../components/margin"
 import styled from "styled-components"
@@ -79,18 +79,41 @@ const Tooltip = styled.div`
   border-radius: 35px;
 `
 
-const Capability = styled.div`
-  margin-bottom: 32px;
-  padding: 0;
-  border: none;
-  border-radius: 0;
+const CapabilityText = styled(Typography)`
+  line-height: 1.09375;
+  padding: 16px 0;
   ${props => props.theme.breakpoints.down("xs")} {
-    margin-bottom: 20px;
-    padding: 25px;
-    border: 1px solid #ffffff;
-    border-radius: 8px;
+    font-size: 1.875rem;
+    line-height: 1.15;
+    padding: 20px 0;
   }
 `
+const Capability = styled.div`
+  ${props => props.theme.breakpoints.down("xs")} {
+    border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+`
+const CapabilityBorder = styled.div`
+  position: absolute;
+  left: 50vw;
+  transform: translateX(-50%);
+  width: 100vw;
+  height: 10px;
+  overflow: hidden;
+  & div.line {
+    content: "";
+    position: relative;
+    left: 0;
+    bottom: 0;
+    width: 100vw;
+    height: 1px;
+    background-color: rgba(255, 255, 255, 0.3);
+  }
+`
+
 const CapabilityNumber = styled(Typography)`
   font-weight: 400;
   vertical-align: top;
@@ -330,17 +353,22 @@ const GreetingBadge = ({ emoji, children }) => {
 const CapabilitiesList = ({ number, children }) => {
   return (
     <Capability>
-      <CapabilityNumber variant="overline">{number}</CapabilityNumber>
-      <Typography
-        variant="h1"
-        style={{
-          display: "inline-block",
-          lineHeight: 1,
-          marginLeft: "8px",
-        }}
-      >
-        {children}
-      </Typography>
+      <CapabilityText variant="h1">{children}</CapabilityText>
+      <Hidden xsDown implementation="css">
+        <CapabilityBorder>
+          <Container>
+            <Grid container>
+              <Grid item xs={false} sm={4} />
+              <Grid item xs={12} sm={8}>
+                <div className="line" />
+              </Grid>
+            </Grid>
+          </Container>
+        </CapabilityBorder>
+      </Hidden>
+      <Hidden smUp implementation="css">
+        <img src={ArrowRight} alt="details" />
+      </Hidden>
     </Capability>
   )
 }
@@ -357,8 +385,23 @@ const ClientsList = ({ serviceProvided, children, firstElem }) => {
 }
 
 const CapabilitiesData = [
-  { name: "Branding", number: "01", queryParam: "?filter=branding" },
-  { name: "Design", number: "02", queryParam: "?filter=design" },
+  { name: "Web Design", number: "01", queryParam: "?filter=web-design" },
+  { name: "Art Direction", number: "02", queryParam: "?filter=art-direction" },
+  {
+    name: "Digital Strategy",
+    number: "03",
+    queryParam: "?filter=digital-strategy",
+  },
+  {
+    name: "Mobile Applications",
+    number: "01",
+    queryParam: "?filter=mobile-applications",
+  },
+  {
+    name: "Branding & Identity",
+    number: "02",
+    queryParam: "?filter=branding-and-identity",
+  },
   { name: "Development", number: "03", queryParam: "?filter=development" },
 ].sort((a, b) => parseInt(a.number) - parseInt(b.number))
 
@@ -610,7 +653,11 @@ const IndexPage = () => {
         </Grid>
         <Margin bsm={100} bxs={50} />
         <Grid container>
-          <Grid item xs={false} sm={4} />
+          <Grid item xs={false} sm={4}>
+            <Hidden xsDown implementation="css">
+              <Typography variant="overline">our services</Typography>
+            </Hidden>
+          </Grid>
           <Grid item xs={12} sm={8}>
             {CapabilitiesData.map(data => {
               return (

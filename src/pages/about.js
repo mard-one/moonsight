@@ -8,11 +8,30 @@ import HeaderText from "../components/headerText"
 import { Grid, Hidden, Typography } from "@material-ui/core"
 import Margin from "../components/margin"
 import { Fragment } from "react"
-import pwcIcon from "../images/recognized-by/pwc.svg"
-import skolkovoIcon from "../images/recognized-by/skolkovo.svg"
-import mckinseyIcon from "../images/recognized-by/mckinsey.svg"
-import tinkoffIcon from "../images/recognized-by/tinkoff.svg"
-import mashreqIcon from "../images/recognized-by/mashreq.svg"
+import client1 from "../images/recognized-by/client1.svg"
+import client2 from "../images/recognized-by/client2.svg"
+import client3 from "../images/recognized-by/client3.svg"
+import client4 from "../images/recognized-by/client4.svg"
+import client5 from "../images/recognized-by/client5.svg"
+import client6 from "../images/recognized-by/client6.svg"
+import client7 from "../images/recognized-by/client7.svg"
+import client8 from "../images/recognized-by/client8.svg"
+import client9 from "../images/recognized-by/client9.svg"
+import client10 from "../images/recognized-by/client10.svg"
+import client11 from "../images/recognized-by/client11.svg"
+import client12 from "../images/recognized-by/client12.svg"
+import client13 from "../images/recognized-by/client13.svg"
+import client14 from "../images/recognized-by/client14.svg"
+import client15 from "../images/recognized-by/client15.svg"
+import client16 from "../images/recognized-by/client16.svg"
+import client17 from "../images/recognized-by/client17.svg"
+import client18 from "../images/recognized-by/client18.svg"
+import client20 from "../images/recognized-by/client20.svg"
+import client21 from "../images/recognized-by/client21.svg"
+import client22 from "../images/recognized-by/client22.svg"
+import client23 from "../images/recognized-by/client23.svg"
+import client24 from "../images/recognized-by/client24.svg"
+import client25 from "../images/recognized-by/client25.svg"
 import StickerOnText from "../components/stickerOnText"
 import Team from "../components/teamAsteroidHTML"
 import Ray from "../components/ray"
@@ -25,44 +44,100 @@ import Cube from "../components/shapes/cube"
 
 const organizations = [
   {
-    name: "pwc",
-    logo: pwcIcon,
+    name: "client17",
+    logo: client17,
   },
   {
-    name: "skolkovo",
-    logo: skolkovoIcon,
+    name: "client21",
+    logo: client21,
   },
   {
-    name: "mckinsey",
-    logo: mckinseyIcon,
+    name: "client12",
+    logo: client12,
   },
   {
-    name: "tinkoff",
-    logo: tinkoffIcon,
+    name: "client23",
+    logo: client23,
   },
   {
-    name: "mashreq",
-    logo: mashreqIcon,
+    name: "client11",
+    logo: client11,
   },
   {
-    name: "skolkovo",
-    logo: skolkovoIcon,
+    name: "client10",
+    logo: client10,
   },
   {
-    name: "pwc",
-    logo: pwcIcon,
+    name: "client5",
+    logo: client5,
   },
   {
-    name: "tinkoff",
-    logo: tinkoffIcon,
+    name: "client7",
+    logo: client7,
   },
   {
-    name: "mckinsey",
-    logo: mckinseyIcon,
+    name: "client8",
+    logo: client8,
   },
   {
-    name: "mashreq",
-    logo: mashreqIcon,
+    name: "client20",
+    logo: client20,
+  },
+  {
+    name: "client15",
+    logo: client15,
+  },
+  {
+    name: "client2",
+    logo: client2,
+  },
+  {
+    name: "client16",
+    logo: client16,
+  },
+  {
+    name: "client3",
+    logo: client3,
+  },
+  {
+    name: "client4",
+    logo: client4,
+  },
+  {
+    name: "client18",
+    logo: client18,
+  },
+  {
+    name: "client6",
+    logo: client6,
+  },
+  {
+    name: "client22",
+    logo: client22,
+  },
+  {
+    name: "client9",
+    logo: client9,
+  },
+  {
+    name: "client24",
+    logo: client24,
+  },
+  {
+    name: "client13",
+    logo: client13,
+  },
+  {
+    name: "client25",
+    logo: client25,
+  },
+  {
+    name: "client14",
+    logo: client14,
+  },
+  {
+    name: "client1",
+    logo: client1,
   },
 ]
 const platforms = [
@@ -602,12 +677,7 @@ const About = () => {
             <Divider leftText="We — are our team" middleText="" />
           </Grid>
           <Grid item xs={false} sm={1}></Grid>
-          <Grid
-            item
-            xs={12}
-            sm={7}
-            style={{ position: "relative" }}
-          >
+          <Grid item xs={12} sm={7} style={{ position: "relative" }}>
             <Hidden xsDown implementation="css">
               <Divider leftText="002" middleText="" rightText="•" />
             </Hidden>

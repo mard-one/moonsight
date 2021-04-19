@@ -18,15 +18,13 @@ const Button = styled.a`
   border: 1px solid #ffffff;
   border-radius: 1rem;
   overflow: hidden;
-  backface-visibility: hidden;
-  transform: translate3d(0, 0, 0);
   &:before {
     content: "";
     position: absolute;
-    bottom: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
+    bottom: -1px;
+    left: -1px;
+    width: calc(100% + 2px);
+    height: calc(100% + 2px);
     transform: translateY(100%);
     background-color: #fff;
     transition: transform 0.3s cubic-bezier(0.28, 0.44, 0.49, 1);

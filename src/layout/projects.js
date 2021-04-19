@@ -28,7 +28,9 @@ const Layout = ({ projectInfo, children }) => {
           <StyledMain>
             <Container>{children}</Container>
           </StyledMain>
-          <Cta />
+          <Container maxWidth="lg">
+            <Cta />
+          </Container>
           <Footer />
         </MuiThemeProvider>
       </SCThemeProvider>

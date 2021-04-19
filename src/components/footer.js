@@ -127,7 +127,9 @@ const Footer = ({ hideLetsConnect = false }) => {
         <TAndCText as={Link} to="/">
           Moonsight® 2020
         </TAndCText>
-        <TAndCText>EASY TO UNDERSTAND, IMPOSSIBLE TO IGNORE.™</TAndCText>
+        <TAndCText>
+          DOING OUR BEST FOR THE BRANDS WHO WANTS TO BECOME THE BEST.™
+        </TAndCText>
         <TAndCText as={Link} to="/privacy-policy">
           TERMS, PRIVACY POLICY
         </TAndCText>
