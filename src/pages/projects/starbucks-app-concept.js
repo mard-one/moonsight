@@ -274,7 +274,7 @@ const Starbucks = () => {
       <Section sectionName="Responsive Design" clientName="004" last>
         <Grid container justify="space-between">
           <Grid item xs={12} sm={5}>
-            <Paragraph title="Starbucks App">
+            <Paragraph title="Starbucks App" sticky>
               As displayed in the screens below, the mobile application and the
               mobile responsive screens are design neatly and exquisitly with
               componentes and dashboards fully tested and thought for the

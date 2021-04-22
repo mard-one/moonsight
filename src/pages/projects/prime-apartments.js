@@ -241,7 +241,7 @@ const PrimeApartments = () => {
       <Section sectionName="Illustration" clientName="003">
         <Grid container justify="space-between">
           <Grid item xs={12} sm={5}>
-            <Paragraph title="RESPONSIVE DESIGN">
+            <Paragraph title="RESPONSIVE DESIGN" sticky>
               The prime apt, has seven floors and a total of 90 apartments
               Moscow-city, the world trade center, famous theaters, museums, the
               best restaurants- the center of Moscow is the center of attraction

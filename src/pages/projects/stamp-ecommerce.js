@@ -306,7 +306,7 @@ const StampEcommerce = () => {
       <Section sectionName="Branding" clientName="004">
         <Grid container justify="space-between">
           <Grid item xs={12} sm={5}>
-            <Paragraph title="PRODUCT CARD">
+            <Paragraph title="PRODUCT CARD" sticky>
               From the visual perspective, the website design keeps a visual
               consistency and also fully aligns to the values and the brand’s
               identity concept.

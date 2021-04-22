@@ -18,6 +18,8 @@ const Button = styled.a`
   border: 1px solid #ffffff;
   border-radius: 1rem;
   overflow: hidden;
+  backface-visibility: hidden;
+  transform: translate3d(0, 0, 0);
   &:before {
     content: "";
     position: absolute;

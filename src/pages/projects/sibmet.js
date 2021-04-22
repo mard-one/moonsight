@@ -268,7 +268,7 @@ const Sibmet = () => {
       <Section sectionName="Branding" clientName="003">
         <Grid container justify="space-between">
           <Grid item xs={12} sm={5}>
-            <Paragraph title="PRODUCT PAGES">
+            <Paragraph title="PRODUCT PAGES" sticky>
               Simbet’s jewelry boosts creative self-expression, glamorous and
               fashionable, therefore, the website is layout to display the
               various products of the actual collections, in which the user is

@@ -308,7 +308,7 @@ const Asynchron = () => {
       <Section sectionName="App design " clientName="004" last>
         <Grid container justify="space-between" direction="row-reverse">
           <Grid item xs={12} sm={5}>
-            <Paragraph title="THE APP">
+            <Paragraph title="THE APP" sticky>
               The app has various journeys, from the login and registration,
               continuing with finding a chronotype and the user circadian
               rhythm, for that they have to answer some questions about their

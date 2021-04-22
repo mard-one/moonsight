@@ -281,7 +281,7 @@ const CleanBowlClub = () => {
       <Section sectionName="Responsive Design" clientName="004" last>
         <Grid container justify="space-between">
           <Grid item xs={12} sm={5}>
-            <Paragraph title="RESPONSIVE DESIGN">
+            <Paragraph title="RESPONSIVE DESIGN" sticky>
               Delivering quality and freshness to the pets and their owners, is
               the key point of the project, therefore the design has been
               thoughtfully made to communicate so. The food arrives in a

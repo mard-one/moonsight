@@ -392,7 +392,7 @@ const Medigate = () => {
       <Section sectionName="Web Design" clientName="004">
         <Grid container justify="space-between">
           <Grid item xs={12} sm={5}>
-            <Paragraph title="RESPONSIVENESS">
+            <Paragraph title="RESPONSIVENESS" sticky>
               In the designing and development phase, the inclusion of
               responsive web design was highly importante; the goal was to
               provide a good user experience to all people browsing the website

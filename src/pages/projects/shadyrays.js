@@ -295,7 +295,7 @@ const ShadyRays = () => {
       <Section sectionName="Branding" clientName="003">
         <Grid container justify="space-between">
           <Grid item xs={12} sm={5}>
-            <Paragraph title="DETAILS PRODUCT PAGE">
+            <Paragraph title="DETAILS PRODUCT PAGE" sticky>
               From the desktop to the responsive mobile view, the detail page of
               each shades have a clear hierarchization of the information.
               <br />

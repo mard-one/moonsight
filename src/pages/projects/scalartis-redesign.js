@@ -285,7 +285,7 @@ const ScalartisRedesign = () => {
       <Section sectionName="Branding" clientName="003" last>
         <Grid container justify="space-between">
           <Grid item xs={12} sm={5}>
-            <Paragraph title="WEBSITE">
+            <Paragraph title="WEBSITE" sticky>
               The final aim of this project was to create an engaging channel,
               allowing the companies to identify and fulfil the problems or
               needs of their final customer.

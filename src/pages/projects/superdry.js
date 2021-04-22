@@ -281,7 +281,7 @@ const Superdry = () => {
       <Section sectionName="Branding" clientName="004" last>
         <Grid container justify="space-between">
           <Grid item xs={12} sm={5}>
-            <Paragraph title="RESPONSIVE DESIGN">
+            <Paragraph title="RESPONSIVE DESIGN" sticky>
               The final delivery was a refreshing ecommerce website filled with
               fun and colors with an engaging user experience, that describes
               the brand principles from the home page to the check out.

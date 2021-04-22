@@ -156,7 +156,7 @@ const Testim = () => {
       <Section sectionName="Web Design" clientName="003">
         <Grid container justify="space-between">
           <Grid item xs={12} sm={5}>
-            <Paragraph title="THE WEBSITE">
+            <Paragraph title="THE WEBSITE" sticky>
               The result was a explanatory website filled in with quality
               processes, development and new technologies, with descriptive
               illustrations and supportive messages, making it in general a

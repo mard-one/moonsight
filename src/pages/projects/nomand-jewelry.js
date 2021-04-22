@@ -362,7 +362,7 @@ const NomandJewelry = () => {
       <Section sectionName="Catalogue Page" clientName="004">
         <Grid container justify="space-between">
           <Grid item xs={12} sm={5}>
-            <Paragraph title="product listing page">
+            <Paragraph title="product listing page" sticky>
               The product listing page has a small description and key features
               of the listed products, along with the price of each item.
               <br />

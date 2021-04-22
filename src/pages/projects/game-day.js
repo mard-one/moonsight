@@ -307,7 +307,7 @@ const GameDay = () => {
       <Section sectionName="Branding" clientName="004" last>
         <Grid container justify="space-between">
           <Grid item xs={12} sm={5}>
-            <Paragraph title="MOBILE VERSION">
+            <Paragraph title="MOBILE VERSION" sticky>
               GameDay website was designed by following the mobile-first
               approach to ensure the flexibility and fully adaptability of each
               screen, while supporting a large number of devices.

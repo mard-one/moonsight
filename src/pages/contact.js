@@ -67,6 +67,14 @@ const Field = styled.div`
     cursor: pointer;
   }
 `
+const Title = styled(Typography)`
+  font-size: 1.375rem;
+  line-height: 1.5;
+  ${props => props.theme.breakpoints.down("xs")} {
+    font-size: 0.875rem;
+    line-height: 2;
+  }
+`
 
 const Input = styled.input`
   -webkit-appearance: none;
@@ -333,11 +341,13 @@ const Contact = () => {
       </Margin>
 
       <Margin as="section" bxs={60} bsm={300}>
-        <Divider leftText="Contact Form" middleText="" rightText="Mars" />
+        <Hidden xsDown implementation="css">
+          <Divider leftText="Contact Form" middleText="" rightText="Mars" />
+        </Hidden>
         <Margin bxs={80} bsm={96} />
         <Grid container>
           <Grid item xs={12} sm={8}>
-            <Typography variant="h3">Services</Typography>
+            <Title variant="h3">Services</Title>
             <Margin bxs={20} bsm={20} />
             <div>
               {allProjectTypes.map(type => {
@@ -369,10 +379,10 @@ const Contact = () => {
             </div>
           </Grid>
         </Grid>
-        <Margin bxs={50} bsm={48} />
+        <Margin bxs={24} bsm={44} />
         <Grid container>
           <Grid item xs={12} sm={8}>
-            <Typography variant="h3">Budget in USD</Typography>
+            <Title variant="h3">Budget in USD</Title>
             <Margin bxs={20} bsm={20} />
             {budget.map(data => (
               <Fragment key={data.value}>
@@ -401,7 +411,7 @@ const Contact = () => {
             ))}
           </Grid>
         </Grid>
-        <Margin bxs={20} bsm={70} />
+        <Margin bxs={20} bsm={34} />
         <Grid container>
           <Grid item xs={12} sm={6}>
             <form onSubmit={handleSubmit}>
@@ -452,7 +462,7 @@ const Contact = () => {
                 ></InputField>
                 <div
                   style={{
-                    marginTop: 8,
+                    marginTop: 4,
                     fontSize: "1.125rem",
                     lineHeight: "1.555",
                     color: "rgba(242, 243, 241, 0.54)",

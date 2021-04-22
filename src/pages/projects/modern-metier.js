@@ -190,7 +190,7 @@ const ModernMetier = () => {
       <Section sectionName="Branding" clientName="002">
         <Grid container justify="space-between">
           <Grid item xs={12} sm={5}>
-            <Paragraph title="SHAPES AND patterns">
+            <Paragraph title="SHAPES AND patterns" sticky>
               The logo mark consists of two M’s in the name, representing a door
               to the brand. The evenly spaced pattern can be cropped as a
               surprise graphic to create virtually endless composition.

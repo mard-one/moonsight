@@ -18,7 +18,8 @@ import Lottie from "lottie-react-web"
 import copywriterAnimation from "../images/lottie-animations/Copywriter.json"
 
 export const StyledCurrentOpening = styled.div`
-  padding: 30px 0;
+  padding-top: 40px;
+  padding-bottom: 30px;
   border-bottom: 1px solid rgba(255, 255, 255, 0.3);
   &:last-of-type {
     border-bottom: 0;
@@ -179,10 +180,7 @@ const CurrentOpening = ({ remote = true, children, linkTo }) => {
             alignItems: "center",
           }}
         >
-          <Typography
-            variant="body1"
-            style={{ fontSize: "1.75rem", position: "relative" }}
-          >
+          <Typography variant="h3" style={{ position: "relative" }}>
             {children}
             {remote ? (
               <Badge
@@ -211,7 +209,7 @@ const CurrentOpening = ({ remote = true, children, linkTo }) => {
         >
           <Typography
             variant="body1"
-            style={{ fontSize: "1.75rem", position: "relative" }}
+            style={{ fontSize: "1.5rem", position: "relative" }}
           >
             {children}
           </Typography>
