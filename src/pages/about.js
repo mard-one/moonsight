@@ -8,30 +8,7 @@ import HeaderText from "../components/headerText"
 import { Grid, Hidden, Typography } from "@material-ui/core"
 import Margin from "../components/margin"
 import { Fragment } from "react"
-import client1 from "../images/recognized-by/client1.svg"
-import client2 from "../images/recognized-by/client2.svg"
-import client3 from "../images/recognized-by/client3.svg"
-import client4 from "../images/recognized-by/client4.svg"
-import client5 from "../images/recognized-by/client5.svg"
-import client6 from "../images/recognized-by/client6.svg"
-import client7 from "../images/recognized-by/client7.svg"
-import client8 from "../images/recognized-by/client8.svg"
-import client9 from "../images/recognized-by/client9.svg"
-import client10 from "../images/recognized-by/client10.svg"
-import client11 from "../images/recognized-by/client11.svg"
-import client12 from "../images/recognized-by/client12.svg"
-import client13 from "../images/recognized-by/client13.svg"
-import client14 from "../images/recognized-by/client14.svg"
-import client15 from "../images/recognized-by/client15.svg"
-import client16 from "../images/recognized-by/client16.svg"
-import client17 from "../images/recognized-by/client17.svg"
-import client18 from "../images/recognized-by/client18.svg"
-import client20 from "../images/recognized-by/client20.svg"
-import client21 from "../images/recognized-by/client21.svg"
-import client22 from "../images/recognized-by/client22.svg"
-import client23 from "../images/recognized-by/client23.svg"
-import client24 from "../images/recognized-by/client24.svg"
-import client25 from "../images/recognized-by/client25.svg"
+
 import StickerOnText from "../components/stickerOnText"
 import Team from "../components/teamAsteroidHTML"
 import Ray from "../components/ray"
@@ -42,104 +19,105 @@ import DottedSphere from "../components/shapes/dottedSphere"
 import Spike from "../components/shapes/spike"
 import Cube from "../components/shapes/cube"
 
-const organizations = [
-  {
-    name: "client17",
-    logo: client17,
-  },
-  {
-    name: "client21",
-    logo: client21,
-  },
-  {
-    name: "client12",
-    logo: client12,
-  },
-  {
-    name: "client23",
-    logo: client23,
-  },
-  {
-    name: "client11",
-    logo: client11,
-  },
-  {
-    name: "client10",
-    logo: client10,
-  },
-  {
-    name: "client5",
-    logo: client5,
-  },
-  {
-    name: "client7",
-    logo: client7,
-  },
-  {
-    name: "client8",
-    logo: client8,
-  },
-  {
-    name: "client20",
-    logo: client20,
-  },
-  {
-    name: "client15",
-    logo: client15,
-  },
-  {
-    name: "client2",
-    logo: client2,
-  },
-  {
-    name: "client16",
-    logo: client16,
-  },
-  {
-    name: "client3",
-    logo: client3,
-  },
-  {
-    name: "client4",
-    logo: client4,
-  },
-  {
-    name: "client18",
-    logo: client18,
-  },
-  {
-    name: "client6",
-    logo: client6,
-  },
-  {
-    name: "client22",
-    logo: client22,
-  },
-  {
-    name: "client9",
-    logo: client9,
-  },
-  {
-    name: "client24",
-    logo: client24,
-  },
-  {
-    name: "client13",
-    logo: client13,
-  },
-  {
-    name: "client25",
-    logo: client25,
-  },
-  {
-    name: "client14",
-    logo: client14,
-  },
-  {
-    name: "client1",
-    logo: client1,
-  },
-]
+// const organizations = [
+//   {
+//     name: "client17",
+//     logo: client17,
+//   },
+//   {
+//     name: "client21",
+//     logo: client21,
+//   },
+//   {
+//     name: "client12",
+//     logo: client12,
+//   },
+//   {
+//     name: "client23",
+//     logo: client23,
+//   },
+//   {
+//     name: "client11",
+//     logo: client11,
+//   },
+//   {
+//     name: "client10",
+//     logo: client10,
+//   },
+//   {
+//     name: "client5",
+//     logo: client5,
+//   },
+//   {
+//     name: "client7",
+//     logo: client7,
+//   },
+//   {
+//     name: "client8",
+//     logo: client8,
+//   },
+//   {
+//     name: "client20",
+//     logo: client20,
+//   },
+//   {
+//     name: "client15",
+//     logo: client15,
+//   },
+//   {
+//     name: "client2",
+//     logo: client2,
+//   },
+//   {
+//     name: "client16",
+//     logo: client16,
+//   },
+//   {
+//     name: "client3",
+//     logo: client3,
+//   },
+//   {
+//     name: "client4",
+//     logo: client4,
+//   },
+//   {
+//     name: "client18",
+//     logo: client18,
+//   },
+//   {
+//     name: "client6",
+//     logo: client6,
+//   },
+//   {
+//     name: "client22",
+//     logo: client22,
+//   },
+//   {
+//     name: "client9",
+//     logo: client9,
+//   },
+//   {
+//     name: "client24",
+//     logo: client24,
+//   },
+//   {
+//     name: "client13",
+//     logo: client13,
+//   },
+//   {
+//     name: "client25",
+//     logo: client25,
+//   },
+//   {
+//     name: "client14",
+//     logo: client14,
+//   },
+//   {
+//     name: "client1",
+//     logo: client1,
+//   },
+// ]
+
 const platforms = [
   { text: "Be", bgColor: "#004FFF", color: "#F2F3F1", number: "4" },
   { text: "In", bgColor: "#C19F63", color: "#F2F3F1", number: "4" },
@@ -295,29 +273,32 @@ const RecognitionFlag = ({ color, bgColor, text, number, lastElem }) => {
     </div>
   )
 }
+
 const RecognizedByOrganization = ({ logo, name }) => {
-  const PlusSign = ({ x, y }) => (
-    <div style={{ position: "absolute", left: x, top: y }}>
+  const PlusSign = ({ x, y, transform }) => (
+    <div
+      style={{ position: "absolute", left: x, top: y, transform: transform }}
+    >
       <div
         style={{
           position: "absolute",
-          top: "-0.5px",
+          top: "0px",
           left: 0,
           width: "15px",
-          height: "2px",
+          height: "1px",
           backgroundColor: "white",
-          transform: "translate(-50%, 0px)",
+          transform: "translate(0%, 0px)",
         }}
       />
       <div
         style={{
           position: "absolute",
-          top: "-0.5px",
+          top: "0px",
           left: "0px",
           width: "15px",
-          height: "2px",
+          height: "1px",
           backgroundColor: "white",
-          transform: "rotate(90deg) translate(-50%, 0px)",
+          transform: "rotate(90deg) translate(0%, 0px)",
           transformOrigin: "0 1px",
         }}
       />
@@ -334,9 +315,9 @@ const RecognizedByOrganization = ({ logo, name }) => {
     >
       <Hidden xsDown implementation="css">
         <PlusSign x={0} y={0} />
-        <PlusSign x={0} y={"100%"} />
-        <PlusSign x={"100%"} y={0} />
-        <PlusSign x={"100%"} y={"100%"} />
+        <PlusSign x={0} y={"100%"} transform={"rotate(-90deg)"} />
+        <PlusSign x={"100%"} y={0} transform={"rotate(90deg)"} />
+        <PlusSign x={"100%"} y={"100%"} transform={"rotate(180deg)"} />
       </Hidden>
       <img src={logo} alt={name} />
     </div>
@@ -554,6 +535,188 @@ const StyledSecondRay = styled(Ray)`
   }
 `
 
+const Clients = styled.div`
+  & ul {
+    margin: 0;
+    padding: 0;
+    position: relative;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+  }
+  & li {
+    height: 0px;
+    padding-bottom: 100%;
+    position: relative;
+  }
+  & li img {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+  & ul.top:before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    background: url(/clients-grid-corner.png) no-repeat;
+    background-size: 15px auto;
+    height: 16px;
+    width: 15px;
+  }
+  & ul.top li:before {
+    content: "";
+    position: absolute;
+    top: 0;
+    right: -9px;
+    background: url(/clients-grid-tshape.png) no-repeat;
+    background-size: 15px auto;
+    width: 15px;
+    height: 15px;
+    transform: rotate(90deg);
+  }
+  & ul.top li:last-child:before {
+    background: url(/clients-grid-corner.png) no-repeat;
+    background-size: 15px auto;
+    height: 16px;
+    transform: scaleX(-1);
+    right: 0;
+  }
+
+  & ul.middle:before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    background: url(/clients-grid-tshape.png) no-repeat;
+    background-size: 15px auto;
+    height: 15px;
+    width: 15px;
+  }
+  & ul.middle.last:after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    background: url(/clients-grid-tshape.png) no-repeat;
+    background-size: 15px auto;
+    height: 15px;
+    width: 15px;
+  }
+  & ul.middle li:before {
+    content: "";
+    position: absolute;
+    top: 0;
+    right: -9px;
+    background: url(/clients-grid-plus.png) no-repeat;
+    background-size: 15px auto;
+    width: 15px;
+    height: 15px;
+  }
+  & ul.middle.last li::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    right: -9px;
+    background: url(/clients-grid-plus.png) no-repeat;
+    background-size: 15px auto;
+    width: 15px;
+    height: 15px;
+  }
+  & ul.middle li:last-child:before {
+    background: url(/clients-grid-tshape.png) no-repeat;
+    background-size: 15px auto;
+    transform: scaleX(-1);
+    right: 0;
+  }
+  & ul.middle li:last-child:after {
+    background: url(/clients-grid-tshape.png) no-repeat;
+    background-size: 15px auto;
+    transform: scaleX(-1);
+    right: 0;
+  }
+
+  & ul.bottom::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    background: url(/clients-grid-corner.png) no-repeat;
+    background-size: 15px auto;
+    height: 16px;
+    width: 15px;
+    transform: scaleY(-1);
+  }
+  & ul.bottom li:after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    right: -9px;
+    background: url(/clients-grid-tshape.png) no-repeat;
+    background-size: 15px auto;
+    width: 15px;
+    height: 15px;
+    transform: rotate(-90deg);
+  }
+  & ul.bottom li:last-child:after {
+    background: url(/clients-grid-corner.png) no-repeat;
+    background-size: 15px auto;
+    height: 16px;
+    right: 0;
+    transform: scale(-1);
+  }
+  ${props => props.theme.breakpoints.down("sm")} {
+    & ul {
+      grid-template-columns: 1fr 1fr 1fr 1fr;
+    }
+  }
+  ${props => props.theme.breakpoints.down("xs")} {
+    & ul {
+      grid-template-columns: 1fr 1fr 1fr 1fr;
+    }
+    & ul {
+      grid-template-columns: 1fr;
+      display: none;
+    }
+    & ul:nth-child(-n + 2) {
+      display: block;
+    }
+    & ul li {
+      height: auto;
+      padding: 40px 20px;
+    }
+    & ul li img {
+      position: relative;
+      top: unset;
+      transform: translate(-50%);
+    }
+    & ul.top:before {
+      display: none;
+    }
+    & ul.top li:before {
+      display: none;
+    }
+    & ul.middle:before {
+      display: none;
+    }
+    & ul.middle li:before {
+      display: none;
+    }
+    & ul.middle:after {
+      display: none;
+    }
+    & ul.middle li:after {
+      display: none;
+    }
+    & ul.bottom:after {
+      display: none;
+    }
+    & ul.bottom li:after {
+      display: none;
+    }
+  }
+`
+
 const About = () => {
   const data = useStaticQuery(graphql`
     query {
@@ -753,20 +916,119 @@ const About = () => {
                 gridAutoRows: "180px",
               }}
             >
-              {organizations.map((organization, index) => {
-                const { name, logo } = organization
-                return (
-                  <RecognizedByOrganization
-                    key={name + index}
-                    logo={logo}
-                    name={name}
-                  />
-                )
-              })}
+              <>
+                {/* {organizations.map((organization, index) => {
+                  const { name, logo } = organization
+                  return (
+                    <RecognizedByOrganization
+                      key={name + index}
+                      logo={logo}
+                      name={name}
+                    />
+                  )
+                })} */}
+              </>
             </div>
           </Grid>
         </Grid>
       </Margin>
+      <Clients>
+        <ul className="top">
+          <li>
+            <img src={"/client17.svg"} alt="pwc" />
+          </li>
+          <li>
+            <img src="/client21.svg" alt="sk" />
+          </li>
+          <li>
+            <img src="/client12.svg" alt="mckinsey" />
+          </li>
+          <li>
+            <img src="/client23.svg" alt="tinkoff" />
+          </li>
+          <Hidden smDown implementation="css">
+            <li>
+              <img src="/client11.svg" alt="mashreq" />
+            </li>
+          </Hidden>
+        </ul>
+        <ul className="middle">
+          <li>
+            <img src="/client10.svg" alt="rnd" />
+          </li>
+          <li>
+            <img src="/client5.svg" alt="newamerican" />
+          </li>
+          <li>
+            <img src="/client7.svg" alt=" 2" />
+          </li>
+          <li>
+            <img src="/client8.svg" alt="better.com" />
+          </li>
+          <Hidden smDown implementation="css">
+            <li>
+              <img src="/client20.svg" alt="rently" />
+            </li>
+          </Hidden>
+        </ul>
+        <ul className="middle">
+          <li>
+            <img src="/client15.svg" alt="optimizely" />
+          </li>
+          <li>
+            <img src="/client2.svg" alt="allergan" />
+          </li>
+          <li>
+            <img src="/client16.svg" alt="pitneybowes" />
+          </li>
+          <li>
+            <img src="/client3.svg" alt="cisco" />
+          </li>
+          <Hidden smDown implementation="css">
+            <li>
+              <img src="/client4.svg" alt="crazyegg" />
+            </li>
+          </Hidden>
+        </ul>
+        <ul className="middle last">
+          <li>
+            <img src="/client18.svg" alt="raydiant" />
+          </li>
+          <li>
+            <img src="/client6.svg" alt="hotjar" />
+          </li>
+          <li>
+            <img src="/client22.svg" alt="testim" />
+          </li>
+          <li>
+            <img src="/client9.svg" alt="irmi" />
+          </li>
+          <Hidden smDown implementation="css">
+            <li>
+              <img src="/client24.svg" alt="unbounce" />
+            </li>
+          </Hidden>
+        </ul>
+        <ul className="bottom">
+          <li>
+            <img src="/client13.svg" alt="medigate" />
+          </li>
+          <li>
+            <img src="/client25.svg" alt="virgin" />
+          </li>
+          <li>
+            <img src="/client14.svg" alt="optimize" />
+          </li>
+          <li>
+            <img src="/client1.svg" alt="dynamic yield" />
+          </li>
+          <Hidden smDown implementation="css">
+            <li>
+              <img src="/client7.svg" alt="fairway 2" />
+            </li>
+          </Hidden>
+        </ul>
+      </Clients>
     </Layout>
   )
 }
