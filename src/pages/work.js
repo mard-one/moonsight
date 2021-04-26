@@ -35,6 +35,8 @@ const TextBackdrop = styled.div`
 const Project = styled.div`
   position: relative;
   height: 100%;
+  border-radius: 6px;
+  overflow: hidden;
   &:hover {
     > ${ProjectName} {
       transform: translateY(0px);
@@ -437,7 +439,7 @@ const Work = ({ location }) => {
               <div
                 style={{
                   position: "relative",
-                  borderRadius: 14,
+                  borderRadius: 6,
                   overflow: "hidden",
                   display: "flex",
                   alignItems: "flex-end",

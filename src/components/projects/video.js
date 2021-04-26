@@ -6,7 +6,6 @@ const Container = styled.div`
   position: relative;
   overflow: hidden;
   width: 100%;
-  padding-top: 56.25%;
 `
 const IFrame = styled.iframe`
   position: absolute;
@@ -18,10 +17,10 @@ const IFrame = styled.iframe`
   height: 100%;
 `
 
-const Video = ({ videoSrcURL, videoTitle }) => (
-  <Container>
+const Video = ({ videoSrcURL, videoTitle, ratio = "56.25%" }) => (
+  <Container style={{ paddingTop: ratio }}>
     <IFrame
-      src={videoSrcURL}
+      src={videoSrcURL + "?&portrait=0&byline=0&title=0"}
       title={videoTitle}
       allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
       frameBorder="0"

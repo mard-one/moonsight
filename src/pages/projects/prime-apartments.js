@@ -19,7 +19,7 @@ import Video from "../../components/projects/video"
 const PrimeApartments = () => {
   const data = useStaticQuery(graphql`
     query {
-      madeByImg: file(relativePath: { eq: "team/team14.png" }) {
+      madeByImg: file(relativePath: { eq: "team/team10.png" }) {
         childImageSharp {
           fixed(width: 80) {
             ...GatsbyImageSharpFixed_withWebp
@@ -92,7 +92,7 @@ const PrimeApartments = () => {
       }
       section3Grid4: file(
         relativePath: {
-          eq: "projects/prime-apartments-project-page-section-3-grid-4.jpg"
+          eq: "projects/prime-apartments-project-page-section-3-grid-4.png"
         }
       ) {
         childImageSharp {
@@ -189,8 +189,9 @@ const PrimeApartments = () => {
           </Grid>
         </Grid>
         <Video
-          videoSrcURL="https://www.youtube.com/embed/dQw4w9WgXcQ"
-          videoTitle="Official Music Video on YouTube"
+          videoSrcURL="https://player.vimeo.com/video/438205766"
+          videoTitle="Prime Apartments"
+          ratio="56.25%"
         />
       </Section>
 

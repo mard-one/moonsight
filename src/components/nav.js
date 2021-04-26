@@ -22,7 +22,6 @@ const Badge = styled.span`
   color: #f2f3f1;
   white-space: nowrap;
 `
-
 const NavBarWeb = styled.nav`
   border-bottom: 1px solid rgba(255, 255, 255, 0.37);
   padding: 32px 0;
@@ -37,7 +36,7 @@ const MenuLinks = styled.ul`
   color: white;
   flex-grow: 1;
   display: flex;
-  justify-content: space-evenly;
+  justify-content: center;
   align-items: center;
   list-style: none;
   padding: 0px 5%;
@@ -52,6 +51,8 @@ const traceOut = keyframes`
 `
 const MenuLink = styled.li`
   position: relative;
+  margin-left: 25px;
+  margin-right: 25px;
   & a {
     display: inline-block;
     padding-bottom: 5px;

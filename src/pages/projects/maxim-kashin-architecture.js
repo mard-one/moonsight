@@ -321,8 +321,9 @@ const MaximKashinArchitecture = () => {
             styleSm={{ gridColumn: "1 / span 2" }}
           >
             <Video
-              videoSrcURL="https://www.youtube.com/embed/dQw4w9WgXcQ"
-              videoTitle="Official Music Video on YouTube"
+              videoSrcURL="https://www.youtube.com/embed/U2zFTRaaUU8?modestbranding=1"
+              videoTitle="Maxim Kashin Architecture"
+              ratio="56.25%"
             />
           </StyledGridItem>
           <StyledGridItem

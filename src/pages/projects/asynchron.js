@@ -18,7 +18,7 @@ import {
 const Asynchron = () => {
   const data = useStaticQuery(graphql`
     query {
-      madeByImg: file(relativePath: { eq: "team/team14.png" }) {
+      madeByImg: file(relativePath: { eq: "team/team27.png" }) {
         childImageSharp {
           fixed(width: 80) {
             ...GatsbyImageSharpFixed_withWebp

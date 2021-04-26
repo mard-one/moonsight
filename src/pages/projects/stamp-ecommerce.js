@@ -19,7 +19,7 @@ import Video from "../../components/projects/video"
 const StampEcommerce = () => {
   const data = useStaticQuery(graphql`
     query {
-      madeByImg: file(relativePath: { eq: "team/team14.png" }) {
+      madeByImg: file(relativePath: { eq: "team/team16.png" }) {
         childImageSharp {
           fixed(width: 80) {
             ...GatsbyImageSharpFixed_withWebp

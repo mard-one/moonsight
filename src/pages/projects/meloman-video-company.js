@@ -40,7 +40,7 @@ const ResponsiveImgContainer = styled.div`
 const MelomanVideoCompany = () => {
   const data = useStaticQuery(graphql`
     query {
-      madeByImg: file(relativePath: { eq: "team/team7.png" }) {
+      madeByImg: file(relativePath: { eq: "team/team14.png" }) {
         childImageSharp {
           fixed(width: 80) {
             ...GatsbyImageSharpFixed_withWebp
@@ -119,7 +119,7 @@ const MelomanVideoCompany = () => {
     mainCategory: projectTypes.webdesign,
     name: "Meloman Video Company",
     allCategories: [projectTypes.branding, projectTypes.webdesign],
-    madeByName: "Viktor",
+    madeByName: "Viktor Khorobrykh",
     madeByImg: data.madeByImg.childImageSharp.fixed,
     bgImg: data.bgImg.childImageSharp.fluid,
   }

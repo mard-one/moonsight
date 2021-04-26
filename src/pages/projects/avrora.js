@@ -124,7 +124,7 @@ const Avrora = () => {
 
       section4Grid1: file(
         relativePath: {
-          eq: "projects/avrora-project-page-section-4-grid-1.jpg"
+          eq: "projects/avrora-project-page-section-4-grid-1.png"
         }
       ) {
         childImageSharp {
@@ -135,7 +135,7 @@ const Avrora = () => {
       }
       section4Grid2: file(
         relativePath: {
-          eq: "projects/avrora-project-page-section-4-grid-2.jpg"
+          eq: "projects/avrora-project-page-section-4-grid-2.png"
         }
       ) {
         childImageSharp {
@@ -146,7 +146,7 @@ const Avrora = () => {
       }
       section4Grid3: file(
         relativePath: {
-          eq: "projects/avrora-project-page-section-4-grid-3.jpg"
+          eq: "projects/avrora-project-page-section-4-grid-3.png"
         }
       ) {
         childImageSharp {
@@ -157,7 +157,7 @@ const Avrora = () => {
       }
       section4Grid4: file(
         relativePath: {
-          eq: "projects/avrora-project-page-section-4-grid-4.jpg"
+          eq: "projects/avrora-project-page-section-4-grid-4.png"
         }
       ) {
         childImageSharp {
@@ -209,8 +209,9 @@ const Avrora = () => {
           </Grid>
         </Grid>
         <Video
-          videoSrcURL="https://www.youtube.com/embed/dQw4w9WgXcQ"
-          videoTitle="Official Music Video on YouTube"
+          videoSrcURL="https://player.vimeo.com/video/243454805"
+          videoTitle="Avrora Systems"
+          ratio="70.78%"
         />
       </Section>
 

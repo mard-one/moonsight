@@ -78,7 +78,7 @@ const MelomanVideoCompany = () => {
       }
       section2Carousel2: file(
         relativePath: {
-          eq: "projects/maxim-kashin-architecture-project-page-section-2-carousel-2.jpg"
+          eq: "projects/kutarq-project-page-section-2-carousel-2.jpg"
         }
       ) {
         childImageSharp {

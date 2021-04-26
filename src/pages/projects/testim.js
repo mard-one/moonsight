@@ -19,7 +19,7 @@ import Video from "../../components/projects/video"
 const Testim = () => {
   const data = useStaticQuery(graphql`
     query {
-      madeByImg: file(relativePath: { eq: "team/team14.png" }) {
+      madeByImg: file(relativePath: { eq: "team/team18.png" }) {
         childImageSharp {
           fixed(width: 80) {
             ...GatsbyImageSharpFixed_withWebp
@@ -108,8 +108,9 @@ const Testim = () => {
           </Grid>
         </Grid>
         <Video
-          videoSrcURL="https://www.youtube.com/embed/dQw4w9WgXcQ"
-          videoTitle="Official Music Video on YouTube"
+          videoSrcURL="https://player.vimeo.com/video/478714827"
+          videoTitle="Testim"
+          ratio="56.25%"
         />
       </Section>
 

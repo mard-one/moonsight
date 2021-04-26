@@ -19,7 +19,7 @@ import Video from "../../components/projects/video"
 const Rently = () => {
   const data = useStaticQuery(graphql`
     query {
-      madeByImg: file(relativePath: { eq: "team/team14.png" }) {
+      madeByImg: file(relativePath: { eq: "team/team18.png" }) {
         childImageSharp {
           fixed(width: 80) {
             ...GatsbyImageSharpFixed_withWebp
@@ -66,9 +66,9 @@ const Rently = () => {
           }
         }
       }
-      section2Carousel3: file(
+      section2Carousel5: file(
         relativePath: {
-          eq: "projects/rently-project-page-section-2-carousel-3.jpg"
+          eq: "projects/rently-project-page-section-2-carousel-5.jpg"
         }
       ) {
         childImageSharp {
@@ -176,7 +176,7 @@ const Rently = () => {
           <ResponsiveImgContainer style={{ width: "50vw", maxWidth: "600px" }}>
             <Img
               style={{ height: "100%" }}
-              fluid={data.section2Carousel3.childImageSharp.fluid}
+              fluid={data.section2Carousel5.childImageSharp.fluid}
             />
           </ResponsiveImgContainer>
         </Carousel>

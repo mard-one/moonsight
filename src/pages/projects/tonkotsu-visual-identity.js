@@ -308,7 +308,7 @@ const TonkotsuVisualIdentity = () => {
               >
                 <Img
                   style={{ height: "100%" }}
-                  fluid={data.section2Carousel2.childImageSharp.fluid}
+                  fluid={data.section2Carousel3.childImageSharp.fluid}
                 />
               </ResponsiveImgContainer>
             </Carousel>
