@@ -182,6 +182,41 @@ const Work = ({ location }) => {
       project23: file(relativePath: { eq: "projects/superdry-work-page.jpg" }) {
         ...workImages
       }
+
+      project24: file(relativePath: { eq: "projects/fuga-work-page.jpg" }) {
+        ...workImages
+      }
+      project25: file(
+        relativePath: { eq: "projects/poster-series-work-page.jpg" }
+      ) {
+        ...workImages
+      }
+      project26: file(
+        relativePath: { eq: "projects/poster-collection-work-page.jpg" }
+      ) {
+        ...workImages
+      }
+      project27: file(
+        relativePath: { eq: "projects/md-personal-branding-work-page.jpg" }
+      ) {
+        ...workImages
+      }
+      project28: file(
+        relativePath: { eq: "projects/noosphera-work-page.jpg" }
+      ) {
+        ...workImages
+      }
+      project29: file(relativePath: { eq: "projects/manovar-work-page.jpg" }) {
+        ...workImages
+      }
+      project30: file(relativePath: { eq: "projects/avrora-work-page.jpg" }) {
+        ...workImages
+      }
+      project31: file(
+        relativePath: { eq: "projects/mountain-hardwear-work-page.jpg" }
+      ) {
+        ...workImages
+      }
     }
   `)
   const projects = [
@@ -322,6 +357,54 @@ const Work = ({ location }) => {
       img: data.project23.childImageSharp.fluid,
       link: "/projects/superdry",
       type: projectTypes.webdesign,
+    },
+    {
+      name: "FUGA - Online Store",
+      img: data.project24.childImageSharp.fluid,
+      link: "/projects/fuga",
+      type: projectTypes.webdesign,
+    },
+    {
+      name: "Poster Series 001",
+      img: data.project25.childImageSharp.fluid,
+      link: "/projects/poster-series",
+      type: projectTypes.branding,
+    },
+    {
+      name: "Poster Collection / 2018 — 2020",
+      img: data.project26.childImageSharp.fluid,
+      link: "/projects/poster-collection",
+      type: projectTypes.branding,
+    },
+    {
+      name: "MD 2020 — Personal Branding",
+      img: data.project27.childImageSharp.fluid,
+      link: "/projects/md-personal-branding",
+      type: projectTypes.appdesign,
+    },
+    {
+      name: "Noosphera",
+      img: data.project28.childImageSharp.fluid,
+      link: "/projects/noosphera",
+      type: projectTypes.webdesign,
+    },
+    {
+      name: "MANOVAR Island building company",
+      img: data.project29.childImageSharp.fluid,
+      link: "/projects/manovar",
+      type: projectTypes.webdesign,
+    },
+    {
+      name: "Avrora Systems",
+      img: data.project30.childImageSharp.fluid,
+      link: "/projects/avrora",
+      type: projectTypes.appdesign,
+    },
+    {
+      name: "Mountain Hardwear Logowear 2020",
+      img: data.project31.childImageSharp.fluid,
+      link: "/projects/mountain-hardwear",
+      type: projectTypes.branding,
     },
   ]
   const uniqueProjectTypes = [...new Set(projects.map(project => project.type))]
