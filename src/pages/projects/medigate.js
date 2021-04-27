@@ -468,22 +468,10 @@ const Medigate = () => {
               fluid={data.section5Carousel1.childImageSharp.fluid}
             />
           </ResponsiveImgContainer>
-          <ResponsiveImgContainer
-            style={{ width: "50vw", maxWidth: "600px" }}
-            styleMd={{
-              marginRight: 40,
-            }}
-            styleSm={{ marginRight: 20 }}
-          >
-            <Img
-              style={{ height: "100%" }}
-              fluid={data.section5Carousel2.childImageSharp.fluid}
-            />
-          </ResponsiveImgContainer>
           <ResponsiveImgContainer style={{ width: "50vw", maxWidth: "600px" }}>
             <Img
               style={{ height: "100%" }}
-              fluid={data.section5Carousel3.childImageSharp.fluid}
+              fluid={data.section5Carousel2.childImageSharp.fluid}
             />
           </ResponsiveImgContainer>
         </Carousel>

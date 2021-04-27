@@ -20,7 +20,10 @@ const IFrame = styled.iframe`
 const Video = ({ videoSrcURL, videoTitle, ratio = "56.25%" }) => (
   <Container style={{ paddingTop: ratio }}>
     <IFrame
-      src={videoSrcURL + "?&portrait=0&byline=0&title=0"}
+      src={
+        videoSrcURL +
+        "?background=1&amp;amp;autoplay=0&amp;loop=1&amp;title=0&amp;byline=0&amp;portrait=0"
+      }
       title={videoTitle}
       allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
       frameBorder="0"

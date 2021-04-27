@@ -334,8 +334,9 @@ const NomandJewelry = () => {
             styleSm={{ gridColumn: "1 / span 2" }}
           >
             <Video
-              videoSrcURL="https://www.youtube.com/embed/dQw4w9WgXcQ"
-              videoTitle="Official Music Video on YouTube"
+              videoSrcURL="https://player.vimeo.com/video/367572429"
+              videoTitle="Nomand Jewelry Brand"
+              ratio="51.56%"
             />
           </StyledGridItem>
           <StyledGridItem

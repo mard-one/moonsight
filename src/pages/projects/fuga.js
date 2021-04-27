@@ -174,7 +174,7 @@ const Fuga = () => {
           </Grid>
         </Grid>
         <Video
-          videoSrcURL="https://player.vimeo.com/video/401333449?background=1&amp;amp;autoplay=1&amp;loop=1&amp;title=0&amp;byline=0&amp;portrait=0"
+          videoSrcURL="https://player.vimeo.com/video/401333449"
           videoTitle="Web and interaction design for FUGA."
           ratio="56.25%"
         />

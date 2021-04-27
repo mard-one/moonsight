@@ -58,11 +58,33 @@ const Asynchron = () => {
       }
       section2Carousel2: file(
         relativePath: {
-          eq: "projects/asynchron-project-page-section-2-carousel-2.jpg"
+          eq: "projects/asynchron-project-page-section-2-carousel-3.jpg"
         }
       ) {
         childImageSharp {
-          fluid(maxWidth: 1200) {
+          fluid(maxWidth: 900) {
+            ...GatsbyImageSharpFluid_withWebp
+          }
+        }
+      }
+      section2Carousel3: file(
+        relativePath: {
+          eq: "projects/asynchron-project-page-section-2-carousel-4.jpg"
+        }
+      ) {
+        childImageSharp {
+          fluid(maxWidth: 900) {
+            ...GatsbyImageSharpFluid_withWebp
+          }
+        }
+      }
+      section2Carousel4: file(
+        relativePath: {
+          eq: "projects/asynchron-project-page-section-2-carousel-5.jpg"
+        }
+      ) {
+        childImageSharp {
+          fluid(maxWidth: 900) {
             ...GatsbyImageSharpFluid_withWebp
           }
         }
@@ -255,10 +277,34 @@ const Asynchron = () => {
               fluid={data.section2Carousel1.childImageSharp.fluid}
             />
           </ResponsiveImgContainer>
-          <ResponsiveImgContainer style={{ width: "80vw", maxWidth: "900px" }}>
+          <ResponsiveImgContainer
+            style={{ width: "75vw", maxWidth: "900px" }}
+            styleMd={{
+              marginRight: 40,
+            }}
+            styleSm={{ marginRight: 20 }}
+          >
             <Img
               style={{ height: "100%" }}
               fluid={data.section2Carousel2.childImageSharp.fluid}
+            />
+          </ResponsiveImgContainer>
+          <ResponsiveImgContainer
+            style={{ width: "75vw", maxWidth: "900px" }}
+            styleMd={{
+              marginRight: 40,
+            }}
+            styleSm={{ marginRight: 20 }}
+          >
+            <Img
+              style={{ height: "100%" }}
+              fluid={data.section2Carousel3.childImageSharp.fluid}
+            />
+          </ResponsiveImgContainer>
+          <ResponsiveImgContainer style={{ width: "75vw", maxWidth: "900px" }}>
+            <Img
+              style={{ height: "100%" }}
+              fluid={data.section2Carousel4.childImageSharp.fluid}
             />
           </ResponsiveImgContainer>
         </Carousel>
@@ -368,84 +414,6 @@ const Asynchron = () => {
         </Grid>
         <Img fluid={data.section5Banner.childImageSharp.fluid} />
       </Section>
-      {/* <Video
-        videoSrcURL="https://www.youtube.com/embed/dQw4w9WgXcQ"
-        videoTitle="Official Music Video on YouTube"
-      /> */}
-      {/* <StyledGrid
-        style={{ gridTemplateColumns: "1fr 1fr" }}
-        styleMd={{ gridGap: 40 }}
-        styleSm={{ gridGap: 20 }}
-      >
-        <StyledGridItem
-          styleMd={{ marginTop: 300, gridColumn: "1 / span 1" }}
-          styleSm={{ gridColumn: "1 / span 2" }}
-        >
-          <Img fluid={data.section4Grid1.childImageSharp.fluid} />
-          <StyledGridItem
-            styleMd={{ marginTop: 40 }}
-            styleSm={{ marginTop: 20 }}
-          >
-            <Img fluid={data.section4Grid3.childImageSharp.fluid} />
-          </StyledGridItem>
-        </StyledGridItem>
-        <StyledGridItem
-          styleMd={{ gridColumn: "2 / span 1" }}
-          styleSm={{ gridColumn: "1 / span 2" }}
-        >
-          <Img fluid={data.section4Grid2.childImageSharp.fluid} />
-          <StyledGridItem
-            styleMd={{ marginTop: 40 }}
-            styleSm={{ marginTop: 20 }}
-          >
-            <Img fluid={data.section4Grid4.childImageSharp.fluid} />
-          </StyledGridItem>
-        </StyledGridItem>
-      </StyledGrid> */}
-      {/* <Carousel>
-        <ResponsiveImgContainer
-          style={{ width: "85vw", maxWidth: "1200px" }}
-          styleMd={{
-            marginRight: 40,
-          }}
-          styleSm={{ marginRight: 20 }}
-        >
-          <Img
-            style={{ height: "100%" }}
-            fluid={data.section2Carousel1.childImageSharp.fluid}
-          />
-        </ResponsiveImgContainer>
-        <ResponsiveImgContainer
-          style={{ width: "85vw", maxWidth: "1200px" }}
-          styleMd={{
-            marginRight: 40,
-          }}
-          styleSm={{ marginRight: 20 }}
-        >
-          <Img
-            style={{ height: "100%" }}
-            fluid={data.section2Carousel2.childImageSharp.fluid}
-          />
-        </ResponsiveImgContainer>
-        <ResponsiveImgContainer
-          style={{ width: "41.66vw", maxWidth: "500px" }}
-          styleMd={{
-            marginRight: 40,
-          }}
-          styleSm={{ marginRight: 20 }}
-        >
-          <Img
-            style={{ height: "100%" }}
-            fluid={data.section2Carousel3.childImageSharp.fluid}
-          />
-        </ResponsiveImgContainer>
-        <ResponsiveImgContainer style={{ width: "50vw", maxWidth: "600px" }}>
-          <Img
-            style={{ height: "100%" }}
-            fluid={data.section2Carousel4.childImageSharp.fluid}
-          />
-        </ResponsiveImgContainer>
-      </Carousel> */}
     </Layout>
   )
 }
