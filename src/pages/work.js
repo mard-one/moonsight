@@ -84,28 +84,12 @@ const Work = ({ location }) => {
       }
     }
     query {
-      ndaBg: file(relativePath: { eq: "under-nda-bg.png" }) {
-        ...workImages
-      }
-      project1: file(relativePath: { eq: "projects/starbucks-work-page.jpg" }) {
-        ...workImages
-      }
-      project2: file(relativePath: { eq: "projects/game-day-work-page.jpg" }) {
-        ...workImages
-      }
-      project3: file(relativePath: { eq: "projects/medigate-work-page.jpg" }) {
+      ndaBg: file(relativePath: { eq: "under-nda-bg.png" }
+      ) {
         ...workImages
       }
       project4: file(
         relativePath: { eq: "projects/clean-bowl-club-work-page.jpg" }
-      ) {
-        ...workImages
-      }
-      project5: file(relativePath: { eq: "projects/asynchron-work-page.jpg" }) {
-        ...workImages
-      }
-      project6: file(
-        relativePath: { eq: "projects/nomand-jewelry-work-page.jpg" }
       ) {
         ...workImages
       }
@@ -114,15 +98,8 @@ const Work = ({ location }) => {
       ) {
         ...workImages
       }
-      project8: file(relativePath: { eq: "projects/shadyrays-work-page.jpg" }) {
-        ...workImages
-      }
-      project9: file(
-        relativePath: { eq: "projects/boa-arhitektid-identity-work-page.jpg" }
+      project10: file(relativePath: { eq: "projects/testim-work-page.jpg" }
       ) {
-        ...workImages
-      }
-      project10: file(relativePath: { eq: "projects/testim-work-page.jpg" }) {
         ...workImages
       }
       project11: file(
@@ -135,24 +112,12 @@ const Work = ({ location }) => {
       ) {
         ...workImages
       }
-      project13: file(relativePath: { eq: "projects/kutarq-work-page.jpg" }) {
-        ...workImages
-      }
-      project14: file(
-        relativePath: { eq: "projects/garconne-display-typeface-work-page.jpg" }
+      project13: file(relativePath: { eq: "projects/kutarq-work-page.jpg" }
       ) {
-        ...workImages
-      }
-      project15: file(relativePath: { eq: "projects/rently-work-page.jpg" }) {
         ...workImages
       }
       project16: file(
         relativePath: { eq: "projects/google-myconcerns-work-page.jpg" }
-      ) {
-        ...workImages
-      }
-      project17: file(
-        relativePath: { eq: "projects/underground-of-suncity-work-page.jpg" }
       ) {
         ...workImages
       }
@@ -171,28 +136,8 @@ const Work = ({ location }) => {
       ) {
         ...workImages
       }
-      project21: file(relativePath: { eq: "projects/sibmet-work-page.jpg" }) {
-        ...workImages
-      }
       project22: file(
         relativePath: { eq: "projects/prime-apartments-work-page.jpg" }
-      ) {
-        ...workImages
-      }
-      project23: file(relativePath: { eq: "projects/superdry-work-page.jpg" }) {
-        ...workImages
-      }
-
-      project24: file(relativePath: { eq: "projects/fuga-work-page.jpg" }) {
-        ...workImages
-      }
-      project25: file(
-        relativePath: { eq: "projects/poster-series-work-page.jpg" }
-      ) {
-        ...workImages
-      }
-      project26: file(
-        relativePath: { eq: "projects/poster-collection-work-page.jpg" }
       ) {
         ...workImages
       }
@@ -201,15 +146,8 @@ const Work = ({ location }) => {
       ) {
         ...workImages
       }
-      project28: file(
-        relativePath: { eq: "projects/noosphera-work-page.jpg" }
+      project30: file(relativePath: { eq: "projects/avrora-work-page.jpg" }
       ) {
-        ...workImages
-      }
-      project29: file(relativePath: { eq: "projects/manovar-work-page.jpg" }) {
-        ...workImages
-      }
-      project30: file(relativePath: { eq: "projects/avrora-work-page.jpg" }) {
         ...workImages
       }
       project31: file(
@@ -221,39 +159,9 @@ const Work = ({ location }) => {
   `)
   const projects = [
     {
-      name: "Starbucks Application Concept",
-      img: data.project1.childImageSharp.fluid,
-      link: "/projects/starbucks-app-concept",
-      type: projectTypes.webdesign,
-    },
-    {
-      name: "GameDay Vodka Website Revamp",
-      img: data.project2.childImageSharp.fluid,
-      link: "/projects/game-day",
-      type: projectTypes.webdesign,
-    },
-    {
-      name: "Medigate",
-      img: data.project3.childImageSharp.fluid,
-      link: "/projects/medigate",
-      type: projectTypes.webdesign,
-    },
-    {
       name: "Clean Bowl Club Dog Project",
       img: data.project4.childImageSharp.fluid,
       link: "/projects/clean-bowl-club",
-      type: projectTypes.webdesign,
-    },
-    {
-      name: "Asynchron Book & Application",
-      img: data.project5.childImageSharp.fluid,
-      link: "/projects/asynchron",
-      type: projectTypes.appdesign,
-    },
-    {
-      name: "Nomand Jewelry Brand",
-      img: data.project6.childImageSharp.fluid,
-      link: "/projects/nomand-jewelry",
       type: projectTypes.webdesign,
     },
     {
@@ -261,18 +169,6 @@ const Work = ({ location }) => {
       img: data.project7.childImageSharp.fluid,
       link: "/projects/meloman-video-company",
       type: projectTypes.webdesign,
-    },
-    {
-      name: "ShadyRays Online Store",
-      img: data.project8.childImageSharp.fluid,
-      link: "/projects/shadyrays",
-      type: projectTypes.webdesign,
-    },
-    {
-      name: "BOA Arhitektid Identity",
-      img: data.project9.childImageSharp.fluid,
-      link: "/projects/boa-arhitektid-identity",
-      type: projectTypes.branding,
     },
     {
       name: "Online Auto-Test Platform Testim",
@@ -299,28 +195,10 @@ const Work = ({ location }) => {
       type: projectTypes.appdesign,
     },
     {
-      name: "Garçonne Display Typeface",
-      img: data.project14.childImageSharp.fluid,
-      link: "/projects/garconne-display-typeface",
-      type: projectTypes.typography,
-    },
-    {
-      name: "Enterprise Smart Home Solutions Rently",
-      img: data.project15.childImageSharp.fluid,
-      link: "/projects/rently",
-      type: projectTypes.webdesign,
-    },
-    {
       name: "Google MyConcerns",
       img: data.project16.childImageSharp.fluid,
       link: "/projects/google-myconcerns",
       type: projectTypes.branding,
-    },
-    {
-      name: "Underground Of Suncity",
-      img: data.project17.childImageSharp.fluid,
-      link: "/projects/underground-of-suncity",
-      type: projectTypes.appdesign,
     },
     {
       name: "Lithium Kitchens",
@@ -341,58 +219,16 @@ const Work = ({ location }) => {
       type: projectTypes.branding,
     },
     {
-      name: "SIBMET",
-      img: data.project21.childImageSharp.fluid,
-      link: "/projects/sibmet",
-      type: projectTypes.webdesign,
-    },
-    {
       name: "Prime Apartments – Premium real estate",
       img: data.project22.childImageSharp.fluid,
       link: "/projects/prime-apartments",
       type: projectTypes.appdesign,
     },
     {
-      name: "Superdry® Website Redesign",
-      img: data.project23.childImageSharp.fluid,
-      link: "/projects/superdry",
-      type: projectTypes.webdesign,
-    },
-    {
-      name: "FUGA - Online Store",
-      img: data.project24.childImageSharp.fluid,
-      link: "/projects/fuga",
-      type: projectTypes.webdesign,
-    },
-    {
-      name: "Poster Series 001",
-      img: data.project25.childImageSharp.fluid,
-      link: "/projects/poster-series",
-      type: projectTypes.branding,
-    },
-    {
-      name: "Poster Collection / 2018 — 2020",
-      img: data.project26.childImageSharp.fluid,
-      link: "/projects/poster-collection",
-      type: projectTypes.branding,
-    },
-    {
-      name: "MD 2020 — Personal Branding",
+      name: "MD 2021 — Personal Branding",
       img: data.project27.childImageSharp.fluid,
       link: "/projects/md-personal-branding",
       type: projectTypes.appdesign,
-    },
-    {
-      name: "Noosphera",
-      img: data.project28.childImageSharp.fluid,
-      link: "/projects/noosphera",
-      type: projectTypes.webdesign,
-    },
-    {
-      name: "MANOVAR Island building company",
-      img: data.project29.childImageSharp.fluid,
-      link: "/projects/manovar",
-      type: projectTypes.webdesign,
     },
     {
       name: "Avrora Systems",
@@ -401,7 +237,7 @@ const Work = ({ location }) => {
       type: projectTypes.appdesign,
     },
     {
-      name: "Mountain Hardwear Logowear 2020",
+      name: "Mountain Hardwear Logowear 2021",
       img: data.project31.childImageSharp.fluid,
       link: "/projects/mountain-hardwear",
       type: projectTypes.branding,

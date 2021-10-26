@@ -86,7 +86,7 @@ const MdPersonalBranding = () => {
   console.log("data", data)
   const projectInfo = {
     mainCategory: projectTypes.appdesign,
-    name: "MD 2020 — Personal Branding",
+    name: "MD 2021 — Personal Branding",
     allCategories: ["Branding", "Typography", "Graphic Design"],
     madeByName: "Mike Dziambor",
     madeByImg: data.madeByImg.childImageSharp.fixed,
@@ -100,7 +100,7 @@ const MdPersonalBranding = () => {
             <ProjectDesc
               features={["Branding", "Typography", "Graphic Design"]}
             >
-              Branding and graphic design for my personal branding, MD 2020.
+              Branding and graphic design for my personal branding, MD 2021.
             </ProjectDesc>
           </Grid>
           <Grid item xs={12} sm={6}>

@@ -429,7 +429,7 @@ const Nav = ({ navWithBackBtn }) => {
               maxWidth="lg"
               style={{ display: "flex", justifyContent: "space-between" }}
             >
-              <span style={{ fontSize: 11 }}>Moonsight® 2020</span>
+              <span style={{ fontSize: 11 }}>Moonsight® 2021</span>
               <span style={{ fontSize: 11 }}>20-21</span>
             </Container>
           </footer>

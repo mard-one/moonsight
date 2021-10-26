@@ -85,7 +85,7 @@ const Backdrop = styled.div`
 
 const teamMembers = [
   {
-    name: "asdqwezxc1",
+    name: "Bogdan Ivanov",
     img: teamMember1,
     posY: {
       web: "16",
@@ -104,7 +104,7 @@ const teamMembers = [
     },
   },
   {
-    name: "asdqwezxc2",
+    name: "Egor Petrov",
     img: teamMember2,
     posY: {
       web: "94",
@@ -123,7 +123,7 @@ const teamMembers = [
     },
   },
   {
-    name: "asdqwezxc3",
+    name: "Evgeni Sidorov",
     img: teamMember3,
     posY: {
       web: "194",
@@ -142,64 +142,7 @@ const teamMembers = [
     },
   },
   {
-    name: "asdqwezxc4",
-    img: teamMember4,
-    posY: {
-      web: "102",
-      tablet: "102",
-      mobile: "220",
-    },
-    posX: {
-      web: "13%",
-      tablet: "13%",
-      mobile: "83%",
-    },
-    size: {
-      web: "79",
-      tablet: "79",
-      mobile: "60",
-    },
-  },
-  {
-    name: "asdqwezxc5",
-    img: teamMember5,
-    posY: {
-      web: "272",
-      tablet: "272",
-      mobile: "14",
-    },
-    posX: {
-      web: "16%",
-      tablet: "15%",
-      mobile: "26%",
-    },
-    size: {
-      web: "100",
-      tablet: "100",
-      mobile: "70",
-    },
-  },
-  {
-    name: "asdqwezxc6",
-    img: teamMember6,
-    posY: {
-      web: "189",
-      tablet: "139",
-      mobile: "420",
-    },
-    posX: {
-      web: "17%",
-      tablet: "19%",
-      mobile: "3%",
-    },
-    size: {
-      web: "77",
-      tablet: "77",
-      mobile: "60",
-    },
-  },
-  {
-    name: "asdqwezxc7",
+    name: "Fedor Smirnoff",
     img: teamMember7,
     posY: {
       web: "339",
@@ -218,7 +161,7 @@ const teamMembers = [
     },
   },
   {
-    name: "asdqwezxc8",
+    name: "Gavriil Volkov",
     img: teamMember8,
     posY: {
       web: "241",
@@ -237,7 +180,7 @@ const teamMembers = [
     },
   },
   {
-    name: "asdqwezxc9",
+    name: "Ilya Fedorov",
     img: teamMember9,
     posY: {
       web: "423",
@@ -256,7 +199,7 @@ const teamMembers = [
     },
   },
   {
-    name: "asdqwezxc10",
+    name: "Maksim Popov",
     img: teamMember10,
     posY: {
       web: "321",
@@ -275,26 +218,7 @@ const teamMembers = [
     },
   },
   {
-    name: "asdqwezxc11",
-    img: teamMember11,
-    posY: {
-      web: "410",
-      tablet: "410",
-      mobile: "243",
-    },
-    posX: {
-      web: "36%",
-      tablet: "36%",
-      mobile: "29%",
-    },
-    size: {
-      web: "178",
-      tablet: "178",
-      mobile: "110",
-    },
-  },
-  {
-    name: "asdqwezxc12",
+    name: "Ruslan Semenov",
     img: teamMember12,
     posY: {
       web: "562",
@@ -313,7 +237,7 @@ const teamMembers = [
     },
   },
   {
-    name: "asdqwezxc13",
+    name: "Alyosha Mikhailov",
     img: teamMember13,
     posY: {
       web: "334",
@@ -332,7 +256,7 @@ const teamMembers = [
     },
   },
   {
-    name: "asdqwezxc14",
+    name: "Artem Egorov",
     img: teamMember14,
     posY: {
       web: "569",
@@ -351,26 +275,7 @@ const teamMembers = [
     },
   },
   {
-    name: "asdqwezxc15",
-    img: teamMember15,
-    posY: {
-      web: "400",
-      tablet: "370",
-      mobile: "416",
-    },
-    posX: {
-      web: "49%",
-      tablet: "46%",
-      mobile: "67%",
-    },
-    size: {
-      web: "152",
-      tablet: "152",
-      mobile: "96",
-    },
-  },
-  {
-    name: "asdqwezxc16",
+    name: "Faddey Lenkov",
     img: teamMember16,
     posY: {
       web: "425",
@@ -389,26 +294,7 @@ const teamMembers = [
     },
   },
   {
-    name: "asdqwezxc17",
-    img: teamMember17,
-    posY: {
-      web: "599",
-      tablet: "599",
-      mobile: "450",
-    },
-    posX: {
-      web: "66%",
-      tablet: "64%",
-      mobile: "18%",
-    },
-    size: {
-      web: "80",
-      tablet: "80",
-      mobile: "100",
-    },
-  },
-  {
-    name: "asdqwezxc18",
+    name: "Feofan Vasiliev",
     img: teamMember18,
     posY: {
       web: "415",
@@ -427,7 +313,7 @@ const teamMembers = [
     },
   },
   {
-    name: "asdqwezxc19",
+    name: "Kazimir Nikolaev",
     img: teamMember19,
     posY: {
       web: "335",
@@ -446,26 +332,7 @@ const teamMembers = [
     },
   },
   {
-    name: "asdqwezxc20",
-    img: teamMember20,
-    posY: {
-      web: "553",
-      tablet: "583",
-      mobile: "113",
-    },
-    posX: {
-      web: "72%",
-      tablet: "70%",
-      mobile: "40%",
-    },
-    size: {
-      web: "106",
-      tablet: "106",
-      mobile: "70",
-    },
-  },
-  {
-    name: "asdqwezxc21",
+    name: "Kliment Morozov",
     img: teamMember21,
     posY: {
       web: "533",
@@ -484,8 +351,8 @@ const teamMembers = [
     },
   },
   {
-    name: "asdqwezxc22",
-    img: teamMember22,
+    name: "Kolya Stepanov",
+    img: teamMember26,
     posY: {
       web: "616",
       tablet: "616",
@@ -503,7 +370,7 @@ const teamMembers = [
     },
   },
   {
-    name: "asdqwezxc23",
+    name: "Lyosha Novikov",
     img: teamMember23,
     posY: {
       web: "645",
@@ -522,26 +389,7 @@ const teamMembers = [
     },
   },
   {
-    name: "asdqwezxc24",
-    img: teamMember24,
-    posY: {
-      web: "700",
-      tablet: "729",
-      mobile: "186",
-    },
-    posX: {
-      web: "93%",
-      tablet: "83%",
-      mobile: "48%",
-    },
-    size: {
-      web: "95",
-      tablet: "95",
-      mobile: "60",
-    },
-  },
-  {
-    name: "asdqwezxc25",
+    name: "Svyatopolk Kozlov",
     img: teamMember25,
     posY: {
       web: "817",
@@ -557,6 +405,158 @@ const teamMembers = [
       web: "100",
       tablet: "100",
       mobile: "96",
+    },
+  },
+  {
+    name: "Sofia",
+    img: teamMember4,
+    posY: {
+      web: "102",
+      tablet: "102",
+      mobile: "220",
+    },
+    posX: {
+      web: "13%",
+      tablet: "13%",
+      mobile: "83%",
+    },
+    size: {
+      web: "79",
+      tablet: "79",
+      mobile: "60",
+    },
+  },
+  {
+    name: "Anastasia",
+    img: teamMember5,
+    posY: {
+      web: "272",
+      tablet: "272",
+      mobile: "14",
+    },
+    posX: {
+      web: "16%",
+      tablet: "15%",
+      mobile: "26%",
+    },
+    size: {
+      web: "100",
+      tablet: "100",
+      mobile: "70",
+    },
+  },
+  {
+    name: "Anna",
+    img: teamMember6,
+    posY: {
+      web: "189",
+      tablet: "139",
+      mobile: "420",
+    },
+    posX: {
+      web: "17%",
+      tablet: "19%",
+      mobile: "3%",
+    },
+    size: {
+      web: "77",
+      tablet: "77",
+      mobile: "60",
+    },
+  },
+  {
+    name: "Elizabeth Orlova",
+    img: teamMember11,
+    posY: {
+      web: "410",
+      tablet: "410",
+      mobile: "243",
+    },
+    posX: {
+      web: "36%",
+      tablet: "36%",
+      mobile: "29%",
+    },
+    size: {
+      web: "178",
+      tablet: "178",
+      mobile: "110",
+    },
+  },
+  {
+    name: "Victoria",
+    img: teamMember15,
+    posY: {
+      web: "400",
+      tablet: "370",
+      mobile: "416",
+    },
+    posX: {
+      web: "49%",
+      tablet: "46%",
+      mobile: "67%",
+    },
+    size: {
+      web: "152",
+      tablet: "152",
+      mobile: "96",
+    },
+  },
+  {
+    name: "Daria Pavlova",
+    img: teamMember17,
+    posY: {
+      web: "599",
+      tablet: "599",
+      mobile: "450",
+    },
+    posX: {
+      web: "66%",
+      tablet: "64%",
+      mobile: "18%",
+    },
+    size: {
+      web: "80",
+      tablet: "80",
+      mobile: "100",
+    },
+  },
+  {
+    name: "Polina Sokolova",
+    img: teamMember20,
+    posY: {
+      web: "553",
+      tablet: "583",
+      mobile: "113",
+    },
+    posX: {
+      web: "72%",
+      tablet: "70%",
+      mobile: "40%",
+    },
+    size: {
+      web: "106",
+      tablet: "106",
+      mobile: "70",
+    },
+  },
+  {
+    name: "Varvara Lebedeva",
+    img: teamMember24,
+    posY: {
+      web: "700",
+      tablet: "729",
+      mobile: "186",
+    },
+    posX: {
+      web: "93%",
+      tablet: "83%",
+      mobile: "48%",
+    },
+    size: {
+      web: "95",
+      tablet: "95",
+      mobile: "60",
     },
   },
 ]

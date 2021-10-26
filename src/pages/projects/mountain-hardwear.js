@@ -150,7 +150,7 @@ const MountainHardwear = () => {
   console.log("data", data)
   const projectInfo = {
     mainCategory: projectTypes.branding,
-    name: "Mountain Hardwear Logowear 2020",
+    name: "Mountain Hardwear Logowear 2021",
     allCategories: ["Graphic Design", "Fashion", "Typography"],
     madeByName: "Tomomi Maezawa",
     madeByImg: data.madeByImg.childImageSharp.fixed,
@@ -169,7 +169,7 @@ const MountainHardwear = () => {
           <Grid item xs={12} sm={6}>
             <Paragraph title="challenge" textAfter>
               In collaboration with a Californian outdoor brand, I created
-              graphic artworks for their 2020 spring-summer collection. Studying
+              graphic artworks for their 2021 spring-summer collection. Studying
               the different shapes, uses and materials of climbing equipment, I
               aimed to create designs that evoke the physical climbing
               experience.
